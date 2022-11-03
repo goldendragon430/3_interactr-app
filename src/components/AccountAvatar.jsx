@@ -13,10 +13,10 @@ const _propTypes = {
   user: PropTypes.object.isRequired
 };
 function Avatar({ user, users, loginAsUser, parentData }) {
-  const [showAvatarModal, setShowAvatarModal] = useState(false);
-  const isAgency = !!user.is_agency;
-  const isntSubUser = !user.parent_user_id;
-  const parentName = parentData ? parentData.name : '';
+  // const [showAvatarModal, setShowAvatarModal] = useState(false);
+  // const isAgency = !!user.is_agency;
+  // const isntSubUser = !user.parent_user_id;
+  // const parentName = parentData ? parentData.name : '';
   const userAvatar = user.avatar_url ? user.avatar_url : getAsset('/img/avatar-logo.png');
   // Upload button will be occurred only when user has not uploaded yet
   const showUploadIcon = !user.avatar_url;

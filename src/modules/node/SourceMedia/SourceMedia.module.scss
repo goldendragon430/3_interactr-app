@@ -9,6 +9,9 @@
 
 .mediaCard {
   width: 390px;
+  // width: auto !important;
+  max-height: 330px;
+  overflow: hidden;
 }
 
 .emptyMediaCard {

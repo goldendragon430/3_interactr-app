@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useReactiveVar } from '@apollo/client';
 
 import {
@@ -24,6 +24,9 @@ export const SelectVideoThumbnailModal = ({ onClose, onNext, onBack }) => {
 
 	const onSubmit = async () => {
 		setLoading(true);
+		
+		// const playerTag = document.getElementById('add-media-preview-player').firstChild;
+		// const videoRatio = getVideoRatio(playerTag.videoWidth, playerTag.videoHeight);
 
 		try {
 			const res = await uploadBase64(thumbnailAsBase64);
@@ -34,6 +37,7 @@ export const SelectVideoThumbnailModal = ({ onClose, onNext, onBack }) => {
 			setAddMedia({
 				newMediaObject: {
 					thumbnail_url: res.url,
+					// media_size: videoRatio
 				},
 			});
 
@@ -100,3 +104,14 @@ export const SelectVideoThumbnailModal = ({ onClose, onNext, onBack }) => {
 		</Modal>
 	);
 };
+
+// const getVideoRatio = (width, height) => {
+// 	const ratio = width / height;
+// 	if(ratio >= 1.7 && ratio <= 1.8)
+// 		return "16:9";
+// 	if(ratio >= 1.3 && ratio <= 1.4)
+// 		return "4:3";
+// 	if(ratio >= 0.5 && ratio <= 0.6)
+// 		return "9:16";	
+// 	return "16:9";
+// }

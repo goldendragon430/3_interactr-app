@@ -8,7 +8,7 @@ import { LargeTextInput, Option } from 'components/PropertyEditor';
 import { AddProjectGroupSelect } from './AddProjectGroupSelect';
 import { BlankProjectMessage } from './BlankProjectMessage';
 import { PreviewTemplateProject, randomNumberStr } from '../ProjectPreview';
-
+import { ProjectRatio } from './ProjectRatio';
 import { getAddProject } from '@/graphql/LocalState/addProject';
 
 export const AddProjectModalBody = ({
@@ -25,7 +25,7 @@ export const AddProjectModalBody = ({
 		<Modal
 			show={show}
 			onClose={onClose}
-			height={600}
+			height={650}
 			width={1100}
 			heading={
 				<>
@@ -68,6 +68,11 @@ export const AddProjectModalBody = ({
 							value={description}
 							Component={LargeTextInput}
 							onChange={(val) => setState({ description: val })}
+						/>
+					</div>
+					<div className='form-control'>
+						<ProjectRatio 
+							onChange={(val) => setState({ base_width: val })}
 						/>
 					</div>
 					<AddProjectGroupSelect state={state} setState={setState} />

@@ -73,7 +73,7 @@ export function useLoginAsUser() {
 
 export function logout() {
   // Fuck knows why I gota do this here!!
-  axios.post(config.BACKEND.API + 'auth/interactr/logout', {}, {
+  axios.post(import.meta.env.VITE_API_URL + '/auth/interactr/logout', {}, {
     headers: {
       'Authorization': 'Bearer ' + window.localStorage.getItem('auth-token')
     }

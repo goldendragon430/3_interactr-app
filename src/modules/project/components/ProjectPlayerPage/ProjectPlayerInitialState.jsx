@@ -14,8 +14,8 @@ const ProjectPlayerInitialState = ({ project, update, updateSkin, updateEditingS
   }, [updateEditingStatus]);
 
   const handleChangeSize = (e, [embed_width, embed_height]) => {
-    update('embed_width', embed_width);
-    update('embed_height', embed_height);
+    update('embed_width')(embed_width);
+    update('embed_height')(embed_height);
   };
 
   const { autoplay, player_skin, embed_width, embed_height } = project;
@@ -92,8 +92,8 @@ const ProjectPlayerInitialState = ({ project, update, updateSkin, updateEditingS
               </motion.div>
             </AnimatePresence>
           )}
-
-          <h3 className="form-heading">Player Max Size</h3>
+          {/* Commented by MagicPalm */}
+          {/* <h3 className="form-heading">Player Max Size</h3>
           <div className={'form-control'}>
             <Option
               style={{ marginTop: 20 }}
@@ -102,7 +102,7 @@ const ProjectPlayerInitialState = ({ project, update, updateSkin, updateEditingS
               onChange={handleChangeSize}
               ratio={project.base_width / project.base_height}
             />
-          </div>
+          </div> */}
         </div>
       </motion.div>
     </AnimatePresence>

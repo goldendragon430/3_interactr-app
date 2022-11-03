@@ -33,8 +33,7 @@ export const createQueryHook = ({query, typename, variables})=>{
 
     // console.log('-- Update Cache --');
     // console.log(newData);
-    // console.log('------------------');
-
+    // console.log('------------------');    
     client.writeQuery({
       data:{ result : newData },
       query

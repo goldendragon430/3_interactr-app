@@ -119,6 +119,8 @@ export const SHARE_PAGE_FRAGMENT = gql`
         twitter_image_url
         published_path
         storage_path
+        embed_width
+        embed_height
         comments {
             id
             name

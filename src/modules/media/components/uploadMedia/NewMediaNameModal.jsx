@@ -62,6 +62,10 @@ const NewMediaNameModal = ({ onClose, onBack }) => {
 		const { project_id, thumbnail_url } = newMediaObject;
 		// const url = thumbnail_url ? thumbnail_url : '';
 		const projectId = project_id ? project_id : 0;
+		
+		// added for media_size
+		const imageTag = document.getElementById('add-media-preview-image');
+		const mediaRatio = getVideoRatio(imageTag.width, imageTag.height);
 
 		try {
 			// This creates a media record in the DB, the next step will create the job for encoding IF required
@@ -73,6 +77,7 @@ const NewMediaNameModal = ({ onClose, onBack }) => {
 						...{ name },
 						// temp_storage_url: url,
 						project_id: projectId,
+						media_size: mediaRatio
 					},
 				},
 				update(cache, { data: { createMedia } }) {
@@ -169,12 +174,17 @@ const NewMediaNameModal = ({ onClose, onBack }) => {
 	const onSave = async () => {
 		setLoading(true);
 
+		// added for media_size
+		const imageTag = document.getElementById('add-media-preview-image');
+		const mediaRatio = getVideoRatio(imageTag.width, imageTag.height);
+
 		try {
 			const req = await saveMedia({
 				variables: {
 					input: {
 						...newMediaObject,
 						...{ name },
+						media_size: mediaRatio
 					},
 				},
 			});
@@ -277,7 +287,7 @@ const MediaPreview = ({ media }) => {
 
 	if (thumbnail_url || temp_storage_url)
 		return (
-			<img src={thumbnail_url || temp_storage_url} className={'img-fluid'} />
+			<img id={'add-media-preview-image'} src={thumbnail_url || temp_storage_url} className={'img-fluid'} />
 		);
 
 	return (
@@ -404,3 +414,14 @@ const CompressionItemSelect = ({
 		</div>
 	);
 };
+
+const getVideoRatio = (width, height) => {
+	const ratio = width / height;
+	if(ratio >= 1.7 && ratio <= 1.8)
+		return "16:9";
+	if(ratio >= 1.3 && ratio <= 1.4)
+		return "4:3";
+	if(ratio >= 0.5 && ratio <= 0.6)
+		return "9:16";	
+	return "16:9";
+}

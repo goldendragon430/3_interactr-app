@@ -5,8 +5,9 @@ $soft-grey: #748190;
 .wrapper {
   margin-left: auto;
   margin-right: auto;
-  //background-color: blue;
-
+  background-color: #f3f6fd;
+  display: flex;
+  justify-content: center;
   h4 {
   }
 }

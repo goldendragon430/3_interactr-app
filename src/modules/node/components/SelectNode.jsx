@@ -4,7 +4,7 @@ import {useProject} from "../../../graphql/Project/hooks";
 import {useParams} from 'react-router-dom'
 import reduce from 'lodash/reduce';
 
-const SelectNode = ({...props}) => {
+const SelectNode = ({value, ...props}) => {
   const {projectId} = useParams();
   const [project, _, {loading,error}] = useProject(projectId);
 
@@ -16,7 +16,7 @@ const SelectNode = ({...props}) => {
   }, {});
 
   return (
-    <SelectInput {...props} options={{'': 'Select Node', ...options}} />
+    <SelectInput {...props} value={value} options={options} />
   );
 };
 export default SelectNode;

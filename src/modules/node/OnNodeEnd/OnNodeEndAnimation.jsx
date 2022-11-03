@@ -7,7 +7,6 @@ import { Option, SelectInput } from "components/PropertyEditor";
 
 export const OnNodeEndAnimation = ({node, update, tabAnimation}) => {
   const { completeAnimation } = node;
-
   return(
     <motion.div {...tabAnimation}>
       <Option

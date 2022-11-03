@@ -81,7 +81,7 @@ const Form = ({ project }) => {
       <ul style={{paddingLeft: 0}}>
         <CompressionItemSelect
           label={'4k'}
-          description={'3840px x 2160px'}
+          // description={'3840px x 2160px'}
           value={2160}
           selected={encodedSize}
           setSelected={(val)=>setState({
@@ -90,7 +90,7 @@ const Form = ({ project }) => {
         />
         <CompressionItemSelect
           label={'1080p'}
-          description={'1920px x 1080px'}
+          // description={'1920px x 1080px'}
           value={1080}
           selected={encodedSize}
           setSelected={(val)=>setState({
@@ -99,7 +99,7 @@ const Form = ({ project }) => {
         />
         <CompressionItemSelect
           label={'720p (Recommended)'}
-          description={'1280px x 720px'}
+          // description={'1280px x 720px'}
           value={720}
           selected={encodedSize}
           setSelected={(val)=>setState({
@@ -108,7 +108,7 @@ const Form = ({ project }) => {
         />
         <CompressionItemSelect
           label={'540p'}
-          description={'960px x 540px'}
+          // description={'960px x 540px'}
           value={540}
           selected={encodedSize}
           setSelected={(val)=>setState({

@@ -467,7 +467,7 @@ export const SelectInput = ({
 
 	return (
 		<Select
-			defaultValue={value}
+			defaultValue={options.filter(item => item.value == value)}
 			options={options}
 			onChange={changeHandler}
 			// clearable={clearable}

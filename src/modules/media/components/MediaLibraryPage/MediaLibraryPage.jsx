@@ -30,19 +30,20 @@ export const MediaLibraryPage = () => {
 	return (
 		<PageBody
 			subnav={<div style={{ marginBottom: 15 }} />}
-			right={
-				<div>
-					<UploadMediaButton
-						mediaLibraryPage={true}
-						show={showMediaZone}
-						showUploadFileArea
-						onDone={onDoneUploadVideo}
-						toggleMediaZone={() => setShowMediaZone(!showMediaZone)}
-					>
-						<Icon name={'cloud-upload'} /> Upload New Media
-					</UploadMediaButton>
-				</div>
-			}
+			// commented out by MagicPalm 2022-10-25 TODO
+			// right={
+			// 	<div>
+			// 		<UploadMediaButton
+			// 			mediaLibraryPage={true}
+			// 			show={showMediaZone}
+			// 			showUploadFileArea
+			// 			onDone={onDoneUploadVideo}
+			// 			toggleMediaZone={() => setShowMediaZone(!showMediaZone)}
+			// 		>
+			// 			<Icon name={'cloud-upload'} /> Upload New Media
+			// 		</UploadMediaButton>
+			// 	</div>
+			// }
 		>
 			<div className='grid'>
 				<div className='col8' style={{ maxWidth: '960px' }}>

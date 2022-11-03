@@ -19,7 +19,7 @@ export const INITIAL_STATE = {
 	title: '',
 	description: '',
 	project_group_id: null,
-	//base_width: 720,
+	base_width: 720,
 };
 
 export const AddProjectModal = () => {
@@ -66,6 +66,7 @@ export const AddProjectModal = () => {
 					variables: {
 						input: {
 							...state,
+							embed_width: state.base_width,
 							project_group_id:
 								state.project_group_id === 'noFolder'
 									? null

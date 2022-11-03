@@ -59,11 +59,11 @@ function UploadFromFileModal({onClose, onBack, onNext}) {
         />)}
         <p>
           <strong>Videos</strong><br/>
-          All uploaded videos should be aspect ratio 16:9
+          All uploaded videos should be aspect ratio 16:9, 4:3 and 9:16
         </p>
         <p>
           <strong>Images</strong><br/>
-          All uploaded images should be 720px wide by 405px high
+          All uploaded images should be 720px * 405px, 540px * 405px and 228px * 405px
         </p>
       </div>
     </Modal>

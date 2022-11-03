@@ -11,23 +11,29 @@ import { useProjectGroupRoute } from 'modules/project/routeHooks';
 import styles from '../ProjectsPage.module.scss';
 import filterInputStyles from 'components/FilterInput.module.scss';
 
-const filterOptions = [
-	{
-		label: 'Order By Favourites',
-		value: 'is_favourite',
-		clearableValue: false,
-	},
-	{
-		label: 'Order By Name',
-		value: 'title',
-		clearableValue: false,
-	},
-	{
-		label: 'Order By Created Date',
-		value: 'created_at',
-		clearableValue: false,
-	},
-];
+const filterOptions = {
+	is_favourite: 'Order By Favourites',
+	title: 'Order By Name',
+	created_at: 'Order By Created Date'
+};
+
+// const filterOptions = [
+// 	{
+// 		label: 'Order By Favourites',
+// 		value: 'is_favourite',
+// 		clearableValue: false,
+// 	},
+// 	{
+// 		label: 'Order By Name',
+// 		value: 'title',
+// 		clearableValue: false,
+// 	},
+// 	{
+// 		label: 'Order By Created Date',
+// 		value: 'created_at',
+// 		clearableValue: false,
+// 	},
+// ];
 
 /**
  * Use search/orderBy inputs to filter projects with
@@ -44,7 +50,7 @@ export const ProjectPageFilters = ({ parent_user_id, projectsLoading }) => {
 	const updateProjectsList = (options = {}) => {
 		setGroupParams(folderId, { ...options });
 	};
-
+	
 	return (
 		<div className='mt-1'>
 			<div className={cx(styles.topOptions, 'flex')}>

@@ -47,6 +47,8 @@ const TEMPLATE_QUERY = gql`
             id
             base_width
             base_height
+            embed_width
+            embed_height
             start_node_id
         }
     }
@@ -63,13 +65,11 @@ export const PreviewTemplateProject = ({cacheBuster, projectId}) => {
   
   if(player.error) return <ErrorMessage error={player.error} />
   if(error) return <ErrorMessage error={error} />;
-  if(player.error) return <ErrorMessage error={player.error} />
 
   return <Preview
     project={data.result}
     player={player.data.result}
     cacheBuster={cacheBuster}
-    player={player.data.result}
   />
 };
 
@@ -79,6 +79,8 @@ const PROJECT_QUERY = gql`
             id
             base_width
             base_height
+            embed_width
+            embed_height
             start_node_id
         }
     }
@@ -129,7 +131,6 @@ const Preview = React.forwardRef(({project, startNodeId, player, cacheBuster ,fr
   }, []);
 
   if(! project) return null;
-
   const html = generateEmbedCodeForPreviewing(project, player);
   
   return (

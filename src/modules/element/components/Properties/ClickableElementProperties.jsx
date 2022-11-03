@@ -74,16 +74,16 @@ const ClickableElementProperties = ({
 	const save = onSave
 		? onSave
 		: (data) => {
-				const event = new CustomEvent(SAVE_NODE_PAGE, {
-					detail: {
-						__typename,
-						id,
-						...data,
-					},
-				});
-				window.dispatchEvent(event);
-		  };
-
+			const event = new CustomEvent(SAVE_NODE_PAGE, {
+				detail: {
+					__typename,
+					id,
+					...data,
+				},
+			});
+			window.dispatchEvent(event);
+		};
+	
 	return (
 		<motion.div {...tabAnimation}>
 			<Section wrapperStyle={wrapperStyle}>

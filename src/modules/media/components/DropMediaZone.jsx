@@ -189,7 +189,6 @@ export default class DropMediaZone extends React.Component {
 
         return {};
       }
-
       // make simple uploading by presigned url
       const res = await this.defaultUploadRequest({file, meta});;
       return res;
@@ -203,7 +202,6 @@ export default class DropMediaZone extends React.Component {
 
   completeDropzoneUploading = (filePath, remove = null, file) => {
     const { params, onSuccess, uploadSuccessEndpoint, directory, tempUpload } = this.props;
-
     const updateMediaUploadingState = this.props.updateMediaUploadingState;
 
     updateMediaUploadingState && updateMediaUploadingState(true);

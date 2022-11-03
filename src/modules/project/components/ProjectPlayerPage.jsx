@@ -31,7 +31,7 @@ import PlayerEvents from './ProjectPlayerPage/playerEvents';
 
 const ProjectPlayerPage = () => {
   const [project, updateProject, { loading, error }] = useProject();
-
+  
   setBreadcrumbs([
     { text: 'Dashboard', link: dashboardPath() },
     { text: 'Projects', link: projectsPath() },
