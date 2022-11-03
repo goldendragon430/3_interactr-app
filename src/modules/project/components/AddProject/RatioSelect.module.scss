@@ -1,0 +1,18 @@
+@import "../../../../sass/variables";
+
+.ratioSelect {
+    border: 2px solid $grey-light;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.selected {
+    border-color: $blue !important; 
+}
+
+.iconImage {
+    background: #ccc;
+    height: 50px;
+    width: 50px;
+}
