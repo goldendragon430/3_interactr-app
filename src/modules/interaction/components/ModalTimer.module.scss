@@ -1,0 +1,19 @@
+.wrapper {
+  position: absolute;
+  top: 15px;
+  left: 0px;
+  color: white;
+  font-weight: 800;
+  z-index: 50;
+  width: 100px; /* Set the size of the progress bar */
+  height: 100px;
+}
+
+.indicator {
+  position: absolute;
+  top: 16px;
+  left: 40px;
+  width: 20px;
+  margin:0;
+  text-align: center;
+}

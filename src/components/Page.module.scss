@@ -1,0 +1,27 @@
+.page_wrapper {
+
+}
+
+.page_inner {
+  margin: 130px 50px 30px 380px;
+}
+
+.subPagesTabs {
+  margin: 0;
+  padding-left: 0;
+
+  li {
+    margin-top: 6px;
+    list-style: none;
+    float: left;
+    font-size: 16px;
+    margin-right: 20px;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 7px;
+    cursor: pointer;
+  }
+}
+
+.subPagesTabs_active {
+  border-bottom: 2px solid white !important;
+}

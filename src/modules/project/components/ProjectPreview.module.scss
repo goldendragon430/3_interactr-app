@@ -1,0 +1,33 @@
+@import "../../../sass/variables";
+$yellow: #f7db4c;
+$soft-grey: #748190;
+
+.wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  //background-color: blue;
+
+  h4 {
+  }
+}
+
+.noVideo {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(43, 51, 63, 0.9);
+  color: rgba(255, 255, 255, 0.9);;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.playButton {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  cursor: pointer;
+  color: $yellow;
+  font-size: 120px;
+  z-index: 1;
+}

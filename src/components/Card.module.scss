@@ -1,0 +1,237 @@
+@import '../sass/variables';
+@import '../sass/clearfix';
+@import '../sass/typography';
+
+@value width: 260px;
+
+.Card {
+  width: 100%;
+  // min-width: 300px;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 30px;
+  background: #fff;
+  border-radius: 5px;
+  border: 1px solid $grey-light;
+  // box-shadow: 5px 5px 2px #d7d7d7;
+  //box-shadow: 1px 2px 5px 0px rgba(0, 0, 0, 0.38);
+  //box-shadow: 0 2px 43px -4px rgba(0,0,0,.19);
+  //box-shadow: 0 10px 13px -4px rgba(0, 0, 0, 0.19);
+  //box-shadow: 0 12px 28px -5px rgba(0, 0, 0, 0.5);
+  //box-shadow: 0 12px 15px -5px rgba(0,0,0,.25);
+  box-shadow: 0 2px 5px rgba(0,0,0,.1), 0 1px 2px rgba(0,0,0,.05);
+  //transition: all 0.1s;
+  //overflow: hidden;
+  transition: all .2s linear;
+  //border-bottom-right-radius: 45px;
+
+  &:hover {
+    //transform: translateY(2px);
+    //box-shadow: 0 2px 5px rgba(0,0,0,.1), 0 1px 2px rgba(0,0,0,.05);
+  }
+}
+
+// .Card:hover .actions {
+//   bottom: 15px;
+// }
+// .Card:hover .dimmer {
+//   opacity: 1;
+// }
+
+.image, .video {
+  position: relative;
+}
+.image img {
+  max-width: 100%;
+}
+.thumbnailsWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding-top: 56%;
+  padding-right: 10px;
+}
+
+.videoWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.cardThumbnail {
+  position: absolute;
+  width: 84%;
+  height: 96%;
+  top: 10px;
+  left: 10px;
+  border-radius: 7px;
+  @for $i from 1 through 4 {
+    &:nth-of-type(#{$i}) {
+      z-index: 5 - $i;
+      transform: scaleY(1 - (0.11 * $i)) translateX($i * 3.5%);
+    }
+    &:first-of-type {
+      transform: scale(1);
+    }
+  }
+
+  &.single {
+    width: 90%;
+    left: 5%;
+    right:  5%;
+    margin: auto;
+  }
+}
+.previewIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  cursor: pointer;
+}
+
+// ======= Content =======
+
+.content {
+  flex: 1;
+  position: relative;
+  padding: 15px 5%;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+
+  @extend .clearfix;
+}
+
+.largeContent {
+  padding: 15px 20px !important;
+}
+
+.description {
+  // is using .ellipsis-fade 
+  @extend .ellipsis-fade;
+  margin-bottom: 20px;
+
+}
+
+.info {
+  flex: 1;
+  text-align: left;
+  color: $grey-darkest;
+  width: 100%;
+
+  h4 {
+    text-align: left;
+    margin: 0;
+  }
+}
+
+.title {
+  margin: 0;
+  font-size: 1.2em;
+  height: 22px;
+  overflow: hidden;
+  color: $grey-dark;
+  font-weight: 500;
+}
+
+.small_title {
+  font-size: 13px;
+  padding-top: 5px;
+  opacity: 0.8;
+}
+
+.meta {
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: $grey-dark;
+  font-weight: 500;
+  padding-top: 1px;
+
+  ul {
+    width: 100%;
+    height: 22px;
+    padding: 0;
+    //color: #acacac;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    line-height: 19.2px;
+    cursor: pointer;
+
+    li {
+      padding-left: 15px;
+      margin-left: 15px;
+      list-style: none;
+      border-left: 1px $background solid;
+      &:first-of-type {
+        list-style: none;
+        border-left-color: transparent;
+        margin: 0;
+        padding-left: 0;
+      }
+    }
+  }
+}
+
+.actionsBar {
+  width: 100%;
+  //height: 50px;
+  padding-top: 5px;
+  display: flex;
+  //flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+}
+.mainAction {
+  flex: 0 0 auto;
+  button {
+    margin-right: 0;
+  }
+}
+.actions {
+  transition: all 0.2s ease;
+  flex: 0 0 auto;
+  //margin-right: 10px;
+}
+
+
+.label {
+  left: -7px;
+  top: 10px;
+  position: absolute;
+  z-index: 20;
+}
+
+.views {
+  background-color: transparent;
+  position: absolute;
+  top: 11px;
+  right: 10px;
+  z-index: 20;
+  color: #ccc;
+}
+
+.body {
+  padding: 15px 30px;
+}
+
+.templateMetaInfo {
+  opacity: 0.9;
+  color: $grey-dark;
+}
+.templateActionMenu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: red;
+  height: 50px;
+  width: 50px;
+}

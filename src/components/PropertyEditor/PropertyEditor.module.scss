@@ -1,0 +1,106 @@
+@import '../../sass/variables';
+@import '../../sass/clearfix';
+
+$padding: 10px;
+
+.header {
+  //color: white;
+  //background-color: $green;
+  //background-image: linear-gradient(135deg, $primary 0%, #4CB8C4 100%);
+  padding: calc($gutter / 3) 0px;
+  //font-size: 16px;
+  //font-weight: 800;
+  color: $muted;
+  opacity: 0.8;
+  text-transform: uppercase;
+  //margin-bottom: 3px;
+  font-weight: 600;
+  letter-spacing: 1.1px;
+  margin-top: 15px;
+  margin-bottom: -15px;
+  font-size: 14px;
+  //border-bottom: 1px solid #ccc;
+  //margin-top: 30px;
+}
+.option {
+  color: $grey-darkest;
+  //padding: $gutter / 2 $gutter ;
+
+  @extend .clearfix;
+}
+
+.admin {
+  //background-color: $grey-darkest;
+  //color: white;
+}
+
+
+.content {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  max-width: 500px;
+
+
+  @extend .clearfix;
+}
+
+.ScalarInput {
+  display: flex;
+}
+
+.ScalarInput label {
+  display: inline;
+  margin-right: 10px;
+}
+
+.ScalarInput input {
+  max-width: 100px;
+  margin-right: 10px;
+}
+
+// TODO: this has nothing to do with property editor, why the fuck is it here
+.addChapter {
+  margin-top: 10px;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.addChapterForm {
+  display: block;
+
+  @extend .clearfix;
+}
+
+.TimeInput,
+.addChapterFormName {
+  float: left;
+  width: 49%;
+  margin-bottom: 0px;
+  background-color: transparent;
+  border: none;
+  margin-top: 5px;
+  padding: 0;
+}
+
+.addChapterSubmit {
+  background-color: transparent;
+  color: $grey-darkest;
+  float: right;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// Range Slider
+
+.slider {
+  padding-top: 15px !important;
+}
+

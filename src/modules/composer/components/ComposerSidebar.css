@@ -1,0 +1,28 @@
+.ComposerSidebar {
+  background: #333;
+  /*background: white;*/
+  min-height: 100%;
+}
+
+.ComposerSidebarItem {
+  display: block;
+  padding: 15px 15px;
+  color: #555;
+}
+
+.ComposerSidebarItem:hover {
+  color: #f777de;
+}
+
+.active {
+  background: #f777de;
+  color: #fff;
+}
+
+.active:hover {
+  color: #fff;
+}
+
+.icon {
+  font-size: 2.3em;
+}

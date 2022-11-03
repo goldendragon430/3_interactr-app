@@ -1,0 +1,21 @@
+@import '../sass/variables';
+@import "../sass/clearfix";
+
+.deleteIcon {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.wrapper {
+  border-bottom: 2px solid $grey-light;
+  position: relative;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  @extend .clearfix;
+
+  //div {
+  //  width: 50%;
+  //  float: left;
+  //}
+}

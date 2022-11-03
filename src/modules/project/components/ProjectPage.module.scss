@@ -1,0 +1,45 @@
+@import '../../../sass/variables';
+.header_wrapper, .meta_wrapper {
+  h2 {
+    font-weight: 400;
+    max-width: 450px;
+   margin: 0;
+  }
+  small {
+    color: white !important;
+  }
+}
+
+
+.header {
+  font-size: 24px;
+  //padding-top: 10px;
+  //padding-bottom: 5px;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+.header_info {
+  a {
+    color: white;
+  }
+}
+
+.meta_title {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  //padding-left: 40px;
+
+  
+  // .meta_preview_btn{
+  // }
+}
+.meta_description {
+  height: 4.5em;
+  // change ellipsis background color to match bg
+  &:after {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), #6d7fff );
+  }
+}

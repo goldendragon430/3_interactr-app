@@ -1,0 +1,53 @@
+@import '../../../../../sass/variables';
+
+.elementsList {
+	margin: 0;
+	padding: 0;
+
+	li {
+		list-style: none;
+		cursor: pointer;
+		margin-bottom: 14px;
+		font-size: 17px;
+
+		&:hover {
+			color: $secondary;
+		}
+
+		span {
+			margin-right: 15px;
+		}
+	}
+}
+
+.tabHeader {
+	border-bottom: 2px solid transparent;
+	font-size: 14px;
+	display: inline-block;
+	list-style: none;
+	padding: 6px 10px;
+	cursor: pointer;
+	opacity: 0.8;
+	margin-right: 15px;
+}
+
+.tabHeaderWrapper {
+	margin: 0;
+	padding: 0;
+	border-bottom: 1px solid #ccc;
+}
+
+.active {
+	//color: $secondary;
+	//border-bottom-color: $secondary;
+	opacity: 0.95;
+	color: #404952;
+	font-weight: 500;
+	border-bottom-color: #435b71;
+}
+
+.tabBody {
+	overflow: hidden;
+	overflow-y: scroll;
+	height: 480px;
+}

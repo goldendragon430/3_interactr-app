@@ -1,0 +1,42 @@
+.wrapper {
+  display:flex;
+  height: 100vh;
+  // padding: 130px 60px 132px 180px;
+  // padding: 80px 60px 132px 180px;
+}
+.main {
+  flex:1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  overflow-y: auto;
+  z-index: 100;
+  //transform: translateX(500px)
+}
+
+.no_scroll_body {
+  overflow: hidden !important;
+}
+
+.main_body {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  padding: 10px;
+  transform: translateX(500px);
+  opacity: 0;
+  //max-width: 1500px;
+  //padding-left: 230px;
+}
+
+.beaconMask {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background: rgba(0, 0, 0, .9) !important;
+}

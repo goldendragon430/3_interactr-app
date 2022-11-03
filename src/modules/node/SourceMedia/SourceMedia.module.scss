@@ -1,0 +1,44 @@
+.title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 11px;
+}
+
+.mediaCard {
+  width: 390px;
+}
+
+.emptyMediaCard {
+  height: 219px;
+  width:  390px; 
+  border-radius: 10px;
+}
+
+.itemCard {
+  button {
+    opacity: 0!important;
+    position: absolute;
+    top: 37px;
+    left: 36px;
+    transition: 0.2s ease-in-out opacity;
+  }
+
+  &:hover {
+    button {
+      opacity: 1 !important;
+    }
+  }
+}
+
+.mediaWrapper {
+  position: relative;
+
+  img {
+    //border: 1px solid rgb(210, 214, 220);
+    border-radius: 10px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  }
+}

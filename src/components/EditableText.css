@@ -1,0 +1,7 @@
+:global(.ql-tooltip) {
+  min-width: 350px;
+}
+
+:global(.editor-toolbar) {
+  background-color: aqua;
+}

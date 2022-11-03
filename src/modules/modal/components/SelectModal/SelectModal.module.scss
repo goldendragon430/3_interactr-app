@@ -1,0 +1,40 @@
+@import "../../../../sass/variables";
+
+.tabHeader {
+  margin: 0;
+  padding: 0;
+  font-size: 21px;
+  padding-left: 16px;
+  padding-right: 15px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+
+  li {
+    list-style: none;
+    border-bottom: 2px solid transparent;
+    float: left;
+    font-size: 20px;
+    padding: 0px 15px;
+    margin-right: 10px;
+    padding-bottom: 5px;
+    cursor: pointer;
+  }
+}
+
+.active {
+  border-bottom-color: $secondary !important;
+  color: $secondary;
+}
+
+.modalListItem {
+  padding-bottom: 15px !important;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 5px rgba(0,0,0,.1), 0 1px 2px rgba(0,0,0,.05);
+
+  &:nth-last-of-type(odd) {
+    //background: $grey-light;
+  }
+}
+

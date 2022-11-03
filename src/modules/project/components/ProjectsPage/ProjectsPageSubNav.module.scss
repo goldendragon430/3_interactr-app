@@ -1,0 +1,26 @@
+@import 'components/SubNav.module.scss';
+
+.text {
+	@extend .text;
+	padding-bottom: 0;
+}
+
+.item {
+	cursor: pointer;
+	padding: 5px 8px;
+}
+
+.active {
+	border-bottom: 2px solid $secondary;
+	color: $secondary !important;
+}
+
+.verticalFoldersScroll {
+	@extend .verticalFoldersScroll;
+
+	height: 58px;
+
+	&::-webkit-scrollbar {
+		height: 5px;
+	}
+}

@@ -1,0 +1,37 @@
+@import "./sass/styles.scss";
+
+body {
+    background:rgb(24, 48, 85);
+    overflow: hidden;
+}
+
+.ReactModal__Overlay {
+    z-index: 4999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0, 0.75) !important;
+    opacity: 0;
+    transition: opacity 300ms ease-in-out;
+}
+
+
+.ReactModal__Content {
+    padding: 0 !important;
+    position: relative !important;
+    border: none  !important;
+    overflow: hidden !important;
+}
+
+.ReactModal__Overlay--after-open{
+    opacity: 1;
+}
+
+.ReactModal__Overlay--before-close{
+    opacity: 0;
+}
+
+
+.react-daterange-picker__wrapper {
+    border: 0px !important;
+}

@@ -1,0 +1,14 @@
+node_modules
+dist
+.env
+.env.production
+.env.staging
+.vscode
+public/main.js
+public/main.js.map
+.idea/*
+localhost+1.pem
+localhost-key.pem
+localhost.pem
+localhost+1-key.pem
+.vercel

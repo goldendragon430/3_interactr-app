@@ -1,0 +1,52 @@
+@import '../sass/variables';
+
+.TopNav {
+  background: $grey-darkest;
+  //background: white;
+  //box-shadow: 0 1px 15px rgba(0,0,0,.04), 0 1px 6px rgba(0,0,0,.04);
+  box-shadow: rgba(0, 32, 51, 0.6) 0px 2px 7px;
+  padding: 1.5rem 30px;
+  height: 90px;
+  left: 0;
+  position: fixed;
+  right: 0;
+  z-index: 1030;
+  top: 0;
+  display: block;
+
+
+
+  .menuLeft {
+    width: calc(100% / 3);
+    float: left;
+  }
+  .menuCentre {
+    width: calc(100% / 3);
+    float: left;
+
+    img {
+      max-height: 42px;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+    }
+  }
+  .menuRight {
+    width: calc(100% / 3);
+    float: right;
+    text-align: right;
+  }
+}
+
+
+
+
+.my_account_dropdown_menu_header {
+  font-weight: 800 !important;
+  margin-left: -5px;
+}
+
+.upgrade_button {
+  float: right;
+  margin-right: 30px;
+}

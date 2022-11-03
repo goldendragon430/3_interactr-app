@@ -1,0 +1,42 @@
+@import "../../../../sass/variables";
+
+.active {
+  border-bottom: 2px solid transparent !important;
+  border-bottom-color: $secondary !important;
+  color: $secondary !important;
+}
+
+.tabs {
+  display: flex;
+
+  h4 {
+    margin: 0;
+  }
+}
+
+.tabList {
+  display: flex;
+  flex-direction: row;
+
+  li {
+    //border-bottom: 0 !important;
+    margin-right: 20px !important;
+    text-align: left !important;
+    padding-left: 0;
+  }
+}
+
+.tabHeadings {
+  padding-left: 0;
+  padding-bottom: 50px;
+  //min-width: 145px;
+  margin-top: 0;
+
+  li {
+    list-style: none;
+    //width: 145px;
+    //font-weight: 500;
+    padding: 10px;
+    cursor: pointer;
+  }
+}

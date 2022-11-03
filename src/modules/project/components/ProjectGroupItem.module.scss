@@ -1,0 +1,76 @@
+@import "../../../sass/variables";
+
+
+.folderItem {
+  position: relative;
+  display: flex;
+  padding-left: 20px !important;
+  padding-right: 25px !important;
+  align-items: center;
+  height: 40px;
+
+  &Wrapper {
+    width: 100%;
+  }
+
+  &Icon {
+    position: absolute;
+    left: 0;
+    top: 23%;
+    cursor: grab;
+  }
+
+  &Label {
+    //font-weight: bold;
+  }
+
+  &Input {
+    margin-bottom: inherit;
+    height: 30px;
+  }
+
+  &Delete {
+    position: absolute;
+    right: 0;
+    top: 23%;
+  }
+}
+
+.dragHandle {
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  cursor: grab;
+  padding-top: 10px;
+  height: max-content;
+  * {
+    cursor: grab;
+  }
+}
+
+.groupListItem {
+  //margin-top: 15px !important;
+  //margin-bottom: 15px !important;
+  background: #ffffff;
+  border-bottom: 1px solid #ccc;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+.heading {
+  margin-bottom: 0;
+  margin-top: 0;
+  color: #366fe0;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.iconCol {
+  text-align: center;
+  padding-top: 12px;
+}
+
+.icon {
+  cursor: grab;
+}

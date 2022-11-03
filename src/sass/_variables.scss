@@ -1,0 +1,73 @@
+/**
+  Colours
+ */
+
+// Old Pastel Colours
+//$green: #7DBB91;
+//$teal: #66ADB1;
+
+// New More Vibrant Colours
+//$green: #42c299;
+//$teal: #0eb6ac;
+
+// New Colours
+//$green: #00b382;
+//$green: #2EC17E;
+//$green: #40b883;
+//$green: #40b883;
+$green: #41c186;
+//$blue: #00a2e1;
+$blue: #366fe0;
+$red: #ff6961;
+$yellow:#fcd534;
+$pink: #ef3d6f;
+$orange: #f7882f;
+$violet: #6e3667;
+$magenta: #f81b84;
+$indigo: #556aff;
+$indigo-lighter: #7b8bff;
+$blue-lighter: #71a0ee;
+
+$background: rgb(24, 48, 85);
+
+
+//$grey-darkest: #37404A;
+// $grey-darkest: #002033;
+$grey-darkest: #293948;
+
+//$grey-dark: #757575;
+// $grey-dark:#113348;
+$grey-dark: #435b71;
+
+$grey: #D8DDDD;
+//$grey-light: #f1f1f1;
+//$grey-light: #ebeef7;
+$grey-light: #f3f6fd;
+
+$primary: $green;
+$secondary: $blue;
+
+$linkColor: $secondary;
+$sidebar-grey: #e9e9e9;
+$muted: $grey-dark;
+
+/**
+ Grid
+ */
+$gutter: 30px;
+
+
+/* Header vars */
+
+@value HeaderHeight: 110px;
+@value AnnouncementHeight: 40px;
+@value SidebarWidth: 330px;
+
+/* MediaQuery sizes */
+
+$lgTablet: "(min-width: 769px) and (max-width: 999px)";
+$smTablet: "(min-width: 577px) and (max-width: 768px)";
+$phone: "(max-width: 576px)";
+$desktop: "(min-width: 1000px)";
+$lgDesktop: "(min-width: 1400px)";
+$maxLgDesktop: "(max-width: 1400px)";

@@ -1,0 +1,60 @@
+.DateInput_input {
+  margin-bottom: 0;
+  background: transparent !important;
+  //color: white !important;
+  font-weight: 600 !important;
+  border-bottom: 4px solid transparent !important;
+  box-shadow: none !important;
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+
+  &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    //color: white !important;
+    font-weight: 600 !important;
+  }
+}
+
+.DateRangePicker {
+  margin-top: 53px;
+}
+
+.DateRangePickerInput {
+   background: transparent !important;
+  border: none !important;
+}
+
+.DateInput {
+  color: white !important;
+  background: transparent !important;
+}
+
+.DateRangePickerInput_arrow_svg {
+  //fill: white !important;
+}
+
+.DateInput_input__focused {
+  //border-color: white !important;
+}
+
+.DateRangePicker_picker {
+  top: 48px !important;
+  left: -350px !important;
+  z-index: 1200 !important;
+}
+
+.DateInput_fang, .DayPickerKeyboardShortcuts_buttonReset {
+  display: none !important;
+}
+.DayPicker_focusRegion, .DateRangePicker_picker, .DayPicker__withBorder {
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+.DayPicker_transitionContainer {
+  box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.4);
+  border: none !important;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 25px !important;
+  border-bottom-right-radius: 25px !important;
+}

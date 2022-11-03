@@ -1,0 +1,41 @@
+@import "../../../sass/variables";
+
+.wrapper {
+  padding-left: 30px;
+  margin-top: 30px;
+  border-radius: 7px;
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+.check {
+  color: $primary;
+}
+.icon {
+  width: 100%;
+  display: block;
+  float: left;
+  margin-top: 15px;
+  border-radius: 100%;
+}
+
+.listWrapper {
+  padding: 0;
+  margin: 0;
+
+
+  small {
+    padding-left: 22px;
+  }
+}
+.hoverItem {
+  cursor: pointer;
+
+  &:hover {
+    color: $blue;
+  }
+}
+.listItem {
+  list-style: none;
+  margin-bottom: 10px;
+
+}

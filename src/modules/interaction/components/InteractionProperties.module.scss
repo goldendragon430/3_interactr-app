@@ -1,0 +1,45 @@
+@import '../../../sass/variables';
+
+.backToVideo {
+  padding: 10px 15px;
+  color: $grey-dark;
+  display:block;
+  cursor: pointer;
+  float: left;
+
+  &:hover {
+    color: $secondary;
+  }
+}
+
+.elementIcon {
+  float: right;
+  display: block;
+  width: 50%;
+  text-align: right;
+
+  h4 {
+    margin: 10px;
+    opacity: 0.8;
+  }
+}
+
+.tab_headers_wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding: 10px 0px;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+
+  .tab_header {
+    cursor: pointer;
+    padding: 5px;
+    color: #435b71;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 800;
+    margin:0;
+    margin-right: 20px;
+  }
+}

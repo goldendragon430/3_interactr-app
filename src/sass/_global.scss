@@ -1,0 +1,203 @@
+@import 'variables';
+
+* {
+  box-sizing: border-box;
+}
+
+:global(#appRoot),
+html,
+body {
+  min-height: 100%;
+  height: 100%;
+  background-color: #f3f3f3;
+  overflow-x: hidden; // fix for draggables messing with layout like media on right side from media library
+}
+
+circle,
+polygon {
+  cursor: move;
+}
+
+a {
+  cursor: pointer;
+}
+
+.transparentBackground {
+  background: url('/img/transparent.png') no-repeat;
+  background-size: cover;
+  //padding: 10px;
+}
+
+.reservedForPlayerControls {
+  height: 35px;
+  width: 100%;
+  background-color: rgba(43, 51, 63, 0.8);
+  color: white;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  z-index: 20;
+  border-radius: 0px 0px 10px 10px;
+
+  p {
+    margin: 0;
+    text-transform: uppercase;
+    opacity: 0.8;
+    letter-spacing: 1.2px;
+  }
+}
+
+.img-fluid {
+  max-width: 100%;
+  display: block;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+/* ============  Flex classes helper classes ====================*/
+.d-flex {
+  display: flex;
+}
+.flex-column{
+  flex-direction: column;
+}
+.flex-column-reverse{
+  flex-direction: column-reverse;
+}
+.flex-row{
+  flex-direction: row;
+}
+.flex-row-reverse{
+  flex-direction: row-reverse;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.justify-around {
+  justify-content: space-around;
+}
+.justify-evenly {
+  justify-content: space-evenly;
+}
+.justify-start {
+  justify-content: flex-start;
+}
+.justify-end {
+  justify-content: flex-end;
+}
+.align-center {
+  align-items: center;
+}
+.align-start {
+  align-items: flex-start;
+}
+.align-end {
+  align-items: flex-end;
+}
+.flex-1 {
+  flex: 1;
+}
+.flex-2 {
+  flex: 2;
+}
+.flex-3 {
+  flex: 3;
+}
+.flex-4 {
+  flex: 4;
+}
+.flex-5 {
+  flex: 5;
+}
+.flex-6 {
+  flex: 6;
+}
+.flex-7 {
+  flex: 7;
+}
+.flex-8 {
+  flex: 8;
+}
+.flex-9 {
+  flex: 9;
+}
+.flex-10 {
+  flex: 10;
+}
+.flex-11 {
+  flex: 11;
+}
+.flex-12 {
+  flex: 12;
+}
+/* =============== End of Flex section =============== */
+.rounded {
+  border-radius: .5em;
+}
+.rounded-1 {
+  border-radius: 1em;
+}
+.rounded-2 {
+  border-radius: 2em;
+}
+.rounded-3 {
+  border-radius: 3em;
+}
+.rounded-4 {
+  border-radius: 4em;
+}
+
+
+.vjs-fullscreen-control {
+  display: none !important;
+}
+
+.link {
+  color: rgb(102, 173, 177);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.nav_link {
+  text-decoration: none;
+  color: inherit;
+}
+
+@media screen and (min-width: 992px) {
+  // leave normal scrollbars on smaller screens
+  /* Scrollbar styles */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    // box-shadow: inset 0 0 1px rgba(0,0,0,0.3);
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+  }
+}
+.noMarginRight {
+  margin-right: 0 !important;
+}
+
+/* Select styles for react-select overwriting =========== */
+
+.Select-menu-outer {
+  // the ul that shows up on opening the select
+  overflow: hidden;
+  overflow-y: auto;
+}
+/* ========================*/

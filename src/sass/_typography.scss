@@ -1,0 +1,148 @@
+@import "variables";
+
+
+
+.fa{
+  margin-right: 7px;
+}
+
+h1,h2, h3 {
+  //font-weight: normal;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 500;
+}
+h4, h5 {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 400;
+}
+
+.faded-text {
+  color: $muted;
+  opacity: 0.6;
+}
+
+.faded-heading {
+  color: $muted;
+  opacity: 0.6;
+  margin-bottom: 3px;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1.1px;
+  margin-top: 0;
+}
+
+small {
+  color: $muted;
+}
+
+
+:global(#appRoot),
+html,
+body {
+  //font-family:'Quicksand', sans-serif ;
+  font-family: 'Lato', sans-serif;
+  color: $grey-dark;
+}
+button, p, h1, h2, h3, h4, h5, h6, small, div, a, input, label {
+  font-family: interstate, sans-serif;
+}
+// very important for text elements to use project font
+.reset_children_font *{
+  font-family: unset;
+}
+
+a {
+  text-decoration: none;
+  color: $grey-dark;
+}
+strong {
+  font-weight: 600 !important;
+}
+.linkColor {
+  color: $linkColor;
+}
+
+a:hover {
+  color: $secondary;
+}
+
+.clickable {
+  cursor: pointer;
+
+  &:hover {
+    color: $secondary;
+  }
+}
+
+.underline-heading-primary {
+  position: relative;
+  margin-bottom: 50px;
+  text-align: center;
+
+  &:after {
+    //background-color: $primary;
+    background-image: linear-gradient(135deg, $primary 0%, #4CB8C4 100%);
+    height: 5px;
+    border-radius: 10px;
+    position: absolute;
+    bottom: -20px;
+    left: 40%;
+    content: '';
+    right: 40%;
+  }
+}
+
+.helpTextColor {
+  color: #0099E0;
+  opacity: 0.8;
+}
+
+
+.text-danger {
+  color: $red;
+}
+.text-info {
+  color: $blue;
+}
+.text-warning {
+  color: $orange;
+}
+.text-success {
+  color: $green;
+}
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.ellipsis-fade, .ellipsis-fade_indigo{
+  display: block;
+  position: relative;
+  height: 3.4em; /* exactly three lines */
+  overflow: hidden;
+}
+.ellipsis-fade:after {
+  content: "";
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 70%;
+  height: 1.2em;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}

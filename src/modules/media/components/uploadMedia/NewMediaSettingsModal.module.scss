@@ -1,0 +1,16 @@
+@import "../../../../sass/variables";
+
+.active {
+  //border-color: $grey-light !important;
+  border-color:  #e8ecee !important;
+}
+.sizeSelect {
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 10px 5px;
+}
+
+.canvas {
+
+}

@@ -1,0 +1,26 @@
+@import "../../../../sass/variables";
+
+.thumbnail {
+  width: 350px;
+  border-radius: 10px;
+}
+
+.loading {
+  width: 350px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid $grey;
+}
+
+
+.replaceButton {
+  float: inherit !important;
+  display: inline-block;
+
+  h3 {
+    margin: 0;
+  }
+}

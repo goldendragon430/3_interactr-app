@@ -1,0 +1,23 @@
+@import "../../../sass/variables";
+@import "../../../sass/clearfix";
+
+
+.settingsForm_wrapper{
+
+}
+
+.form {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+
+  .form_left {
+    flex: 1 0 500px;
+    margin-right: 50px;
+  }
+
+  .form_right {
+    flex: 1 1 500px;
+  }
+  
+}

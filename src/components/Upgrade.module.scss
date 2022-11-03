@@ -1,0 +1,24 @@
+@import "../sass/variables";
+
+.wrapper {
+  background: $grey-darkest;
+  color: white;
+  height: 100%;
+  width: 100%;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  div {
+    text-align: center;
+
+    p a {
+      color: white;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

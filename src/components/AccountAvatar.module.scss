@@ -1,0 +1,131 @@
+@import '../sass/variables';
+.email {
+  text-align: center;
+  width: 100%;
+  display: block;
+   small {
+     color:white;
+     opacity: 0.8;
+     margin-top: 5px;
+   }
+}
+
+.my_account_dropdown {
+  position: relative;
+  display: block;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  opacity: 0;
+
+  //border-bottom: 1px solid white;
+  //margin-top: 30px;
+
+  .user_info {
+    position: relative;
+    //display: flex;
+    //align-items: center;
+    //justify-content: flex-start;
+    padding: 0 10px;
+    color: white;
+    font-size: 1em;
+    font-weight: 500;
+
+    .name {
+      display: block;
+      /*flex: 1;*/
+      margin-left: 10px;
+      margin-right: 10px;
+      text-align: center;
+      margin-top: 10px;
+      text-transform: capitalize;
+
+      @media(max-width: 1588px){
+        display: none;
+      }
+    }
+
+
+    .avatar {
+      width: 100%;
+      text-align: center;
+      position: relative;
+
+      img {
+        border-radius: 100%;
+        width: 100px;
+      }
+
+      .uploadAvatarIcon {
+        width: 21px;
+        height: 22px;
+        text-align: center;
+        border-radius: 50% !important;
+        padding: 5px;
+        position: absolute;
+        bottom: 7px;
+        right: 45px;
+      }
+    }
+
+    .avatarHover:hover {
+      // Shows the dropdown only on hover over avatar
+      .my_account_dropdown_menu {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .search {
+      @media(max-width: 1588px){
+        display: none;
+      }
+    }
+  }
+}
+
+.my_account_dropdown_menu {
+  position: absolute;
+  top: calc(100% + 20px);
+  left: 10px;
+  width: 250px;
+  padding: 0px;
+  background: white;
+  color: $grey_dark;
+  font-size: 0.9em;
+  font-weight: normal;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 5px;
+  opacity: 0;
+  transform: translateX(-300px);
+  transition: opacity ease-in .2s 0.3s, transform ease-out .2s  0.2s;
+  z-index: 2000;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 8px;
+    width: 30px;
+    height: 30px;
+    background: white;
+    transform: rotateZ(45deg);
+    z-index: -1;
+  }
+  .sub_list {
+    list-style: none;
+    padding-left: 10px;
+    margin-bottom: 0;
+    margin-bottom: 20px;
+
+    .sub_list_header {
+      font-weight: 500;
+      padding-left: 5px;
+      margin-bottom: 5px;
+    }
+
+    .sub_list_item {
+      text-align: left;
+      padding: 0 0 5px 20px;
+    }
+  }
+}

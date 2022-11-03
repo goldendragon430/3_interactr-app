@@ -1,0 +1,18 @@
+.wrapper_menu{
+  padding: 10px 0 5px
+}
+.menu_item_wrapper{
+  // ⚠ Do not use margin on the item wrapper
+  padding: 0 10px;
+  user-select: none;
+  // cursor: pointer;
+  border: none;
+}
+// .menu_item_wrapper.active {
+//   border: 1px blue solid;
+// }
+ 
+.scroll_menu_arrow {
+  padding: 20px;
+  cursor: pointer;
+}

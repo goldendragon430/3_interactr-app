@@ -1,0 +1,173 @@
+@import "../../../components/Card.module.scss";
+@import "../../../sass/variables";
+@import "../../../sass/clearfix";
+
+.statItemHolder {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.statItem {
+ @extend .Card;
+  cursor: pointer;
+  transition: 0.2s ease all;
+
+  &:hover {
+    box-shadow: 0 3px 8px 0 rgba(0,0,0,0.4), 0 0 0 1px rgba(0,0,0,0.16)
+  }
+}
+
+.statItemText {
+  color: white;
+  padding: 10px 20px;
+  position: relative;
+  margin-top: 20px;
+  padding-top: 20px;
+
+  h4 {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  &:before {
+    width: 0;
+    height: 0;
+    //border-left: 20px solid transparent;
+    //border-right: 20px solid transparent;
+    //border-bottom: 20px solid $secondary;
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-top: 14px solid white;
+    position: absolute;
+    top: 0px;
+    content: "";
+    left: 50%;
+    margin-left: -14px;
+  }
+}
+
+.statItemLowerLine {
+  padding-left: 15px;
+  padding-right: 15px;
+  color: $muted;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.statItemTopLine {
+  padding: 15px;
+
+  div {
+    font-size: 40px;
+  }
+}
+
+.statItemMetric {
+  font-size: 30px;
+}
+
+.projectCharts {
+  margin: 20px;
+}
+
+.chartWrapper {
+  padding: 20px;
+  @extend .Card;
+}
+
+.tableHolder {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.tableHolder table {
+  widtH: 100%;
+}
+
+.tableHolder table th {
+  text-align: left;
+}
+
+.headline {
+  text-align: center;
+  margin-bottom: 50px;
+  margin-top: 50px;
+
+  h2 {
+    position: relative;
+
+    &:before {
+      content: "";
+      height: 3px;
+      position: absolute;
+      bottom: -15px;
+      width: 80px;
+      background-color: $primary;
+      left: 50%;
+      margin-left: -40px;
+    }
+  }
+
+  p {
+    margin-top:  30px;
+    opacity: 0.8;
+    width: 700px;
+    margin-right: auto;
+    margin-left: auto;
+
+    a {
+      color: $secondary;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.currencySelector {
+  border-left: 1px solid $grey-darkest;
+  padding-left: 15px;
+  height: 100%;
+
+  h4 {
+    color: $muted;
+    opacity: 0.6;
+    text-transform: uppercase;
+    margin: 0;
+  }
+}
+
+.interactionTableInteractions {
+}
+
+.interactionTableRow {
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  @extend .clearfix;
+}
+
+.interactionTableInteraction {
+  float: left;
+  width: 15%;
+  text-align: right;
+  padding-top: 5px;
+  padding-right: 10px;
+
+  p {
+    margin: 0;
+  }
+}
+
+.interactionTableBarHolder {
+  float: right;
+  width: 84.5%;
+  color: white;
+  padding-right: 10px;
+}

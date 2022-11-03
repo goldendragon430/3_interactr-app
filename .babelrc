@@ -1,0 +1,36 @@
+{
+  "presets": [
+    "@babel/react",
+      [
+        "@babel/env",
+        {
+          "useBuiltIns": "usage",
+        }
+      ],
+  ],
+  "plugins": [
+    [
+      "@babel/plugin-proposal-decorators",
+      { "legacy" : true}
+    ],
+    // class properties plugin must come after decorators one
+    ["@babel/plugin-proposal-class-properties", { "loose": true }],
+    ["@babel/plugin-proposal-private-property-in-object", { "loose": true }],
+    ["@babel/plugin-proposal-private-methods", { "loose": true }],
+    "@babel/plugin-proposal-optional-chaining",
+    "@babel/plugin-syntax-dynamic-import"
+  ],
+  "env": {
+    "production": {
+      "plugins": [
+        "@babel/plugin-transform-react-constant-elements"
+      ]
+    },
+    "development": {
+      "plugins": [
+        "react-hot-loader/babel",
+        "babel-plugin-redux-saga"
+      ]
+    }
+  }
+}

@@ -1,0 +1,56 @@
+@import "../sass/variables";
+
+.pagination {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  li {
+    display: inline;
+    position: relative;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+}
+
+.paginationContainer {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding: 5px;
+}
+
+.paginationIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  //box-shadow: 0 0 10px -7px rgba(255, 0, 0, 1);
+  //margin-top: 4px;
+  outline: none;
+  background: $secondary;
+  color: white;
+}
+
+.paginationIconContainer {
+  width: 20px;
+  height: 20px;
+  outline: none;
+}
+
+.active {
+  a {
+    color: $secondary !important;
+    font-weight: 600 !important;
+    font-size: 25px !important;
+  }
+}

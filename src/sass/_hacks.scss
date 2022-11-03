@@ -1,0 +1,6 @@
+// Strange Hacky stuff just needed to make things works
+
+/* This removes the margin from the p in the WSIWIG editor */
+.react-draggable p {
+  margin: 0;
+}

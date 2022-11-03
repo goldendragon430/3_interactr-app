@@ -1,0 +1,42 @@
+@import '../../../../sass/variables';
+
+.upload_type_select_list {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+
+  li {
+    float: left;
+    width: 25%;
+    padding: 15px 10px;
+    display: block;
+    list-style: none;
+    text-align: center;
+    //border-right: 1px solid #d7d7d7;
+    cursor: pointer;
+    transition: 0.1s linear all;
+
+    img {
+      height: 100px;
+      width: 100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    &:last-of-type {
+      border-right: none;
+    }
+
+    &:hover {
+      //background-color: #f3f3f3;
+      color: $secondary;
+    }
+
+    p {
+      //text-transform: uppercase;
+      //font-weight: 800;
+      font-size: 14px;
+    }
+  }
+}

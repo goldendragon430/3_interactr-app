@@ -1,0 +1,42 @@
+@import '../../../../sass/variables';
+
+.header {
+	height: 350px;
+	//  border-bottom: 1px solid #d7d7d7;
+	margin-bottom: 30px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
+	padding: 30px 30px 0;
+	//background: linear-gradient(45deg, $indigo-lighter, $indigo);
+	//background: linear-gradient(45deg, $blue-lighter, $blue);
+	//background: #ecf0fc;
+	//background: linear-gradient(45deg, lighten(#435b71, 15%), #435b71);
+	//background: linear-gradient(45deg, lighten($background, 10%), $background);
+	background: $grey-light;
+}
+.container {
+	// display: flex;
+	height: 350px;
+}
+.left {
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+	padding-bottom: 20px;
+	h1 {
+		margin: 0;
+	}
+}
+
+.right {
+	display: flex;
+	// aligns from right side
+	justify-content: flex-end;
+	text-align: right;
+}
+.meta_wrapper {
+	margin-top: 15px;
+}
+.meta {
+	// flex:1;
+	padding-bottom: 15px;
+}

@@ -1,0 +1,305 @@
+@import '../../../sass/variables';
+@import '../../../sass/clearfix';
+
+$AddMediaHeight: 200px;
+.MediaLibrary {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: calc(100% - 70px);
+  padding: 20px 0 25px 20px;
+  // overflow: visible;
+  text-align: left;
+  background: #F3F6FD;
+  border-bottom-left-radius: 50px;
+
+  // Hide scrollbar if possible
+  // ::-webkit-scrollbar {
+  //   display: none;
+  // }
+}
+.listWrapper {
+  height: 100%;
+  flex: 1;
+  overflow-y: auto;
+  /* overflow: hidden; */
+}
+.top_row{
+  display: flex;
+  // overflow: hidden;
+}
+
+.uploading {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  color: rgba(43, 51, 63, 0.95);
+  padding-bottom: 15px;
+  padding-top: 40px;
+
+  span {
+    font-size: 36px;
+  }
+}
+
+//  =========== UploadVideoButton ====================
+.mediaZoneToggle {
+  cursor: pointer;
+  transition: transform 0.2s ease-out;
+  button {
+    // display: block;
+    // width: 100%;
+    text-align: center;
+  }
+
+  &.hidden {
+    transform: rotateZ(180deg);
+  }
+}
+
+.uploadVideoButton {
+  //display: inline-block;
+  // padding-top: 15px;
+  //padding-bottom: 20px;
+  // margin-top: 30px;
+  // background: white;
+  //position: absolute;
+  //bottom: 10px;
+  //left: 0;
+  // width: 100%;
+  // transition: position 0.3s ease;
+
+
+}
+
+.addMediaWrapper {
+  // height: 100px;
+  // transform: translateY(50%);
+  overflow: hidden;
+  //position: absolute;
+  //bottom: -70px;
+  right: 1px;
+  padding: 15px 10px;
+  transition: ease-in-out transform 0.2s;
+}
+
+.addMediaWrapper_open {
+  transform: translateY(0);
+}
+
+.mediaSelect_wrapper {
+  width: 100%;
+  margin: 0;
+  padding: 5px 0px;
+  list-style: none;
+  display: flex;
+  // transform: translateX(2000px);
+  transition: transform ease-in-out .3s;
+
+  .addMediaWrapper_open & {
+    transform: translateX(0);
+  }
+
+  li {
+    display: block;
+    flex: 2;
+    border-right: 1px solid #d7d7d7;
+    text-align: center;
+    padding: 10px 10px;
+    opacity: 0.8;
+    font-size: 22px;
+    transition: background-color ease-in-out 0.2s;
+    cursor: pointer;
+
+    &:last-of-type {
+      border-right: none;
+    }
+
+    &:hover {
+      background-color: #f3f3f3;
+      color: $primary;
+    }
+  }
+}
+
+.new_media_select_wrapper {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+
+  li {
+    float: left;
+    width: 25%;
+    display: block;
+    list-style: none;
+    text-align: center;
+    border-right: 1px solid #d7d7d7;
+    padding: 10px;
+    cursor: pointer;
+  transition: 0.1s linear all;
+
+    &:last-of-type {
+      border-right: none;
+    }
+
+    &:hover {
+      //background-color: #f3f3f3;
+      color: $primary;
+    }
+
+    p {
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+  }
+}
+
+
+.closeButton {
+  font-size: 16px;
+  opacity: 0.8;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out, color 0.2s ease-in-out;
+  float: right;
+
+  &:hover {
+    opacity: 1;
+    color: #008cba;
+  }
+}
+
+// =========== Add MediaZone ============
+
+.modalsList {
+  margin-left: 20px;
+  margin-top: 0;
+  padding: 0;
+
+  li {
+    list-style: none;
+    margin-bottom: 7px;
+
+    &:first-of-type:before {
+      display: none;
+    }
+
+    &:first-of-type {
+      margin-bottom: 20px;
+    }
+
+    &:before {
+      content: '\f105';
+      font-family: fontawesome;
+      padding-right: 5px;
+    }
+  }
+}
+
+.noMarginBottom {
+  margin-bottom: 20px;
+}
+
+.alert {
+  position: relative;
+  border: 1px $grey dashed;
+  padding: 5px 10px;
+  background-color: #f1f1f1;
+  width: 100%;
+  margin-bottom: 15px;
+
+  p {
+    margin: 0;
+  }
+
+  small {
+    padding-left: 10px;
+  }
+
+  span {
+    position: absolute;
+    top: 4px;
+    left: 10px;
+  }
+}
+
+.heading {
+  color: $grey-dark;
+  margin : 0 20px 10px 0;
+  small{font-weight: normal}
+}
+
+.tabHeadings {
+  //  background-color: $primary;
+  background-image: linear-gradient(135deg, $primary 0%, #4cb8c4 100%);
+  @extend .clearfix;
+
+  h3 {
+    float: left;
+    cursor: pointer;
+    padding: 10px;
+    //color: white;
+    width: 33%;
+    margin-bottom: 0;
+    transition: all 0.2s ease;
+    text-align: center;
+    //background-color: #f3f3f3;
+    background: transparent;
+    color: white;
+    opacity: 0.7;
+    font-weight: 800;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  padding-bottom: 0;
+  //margin-bottom: 10px;
+}
+
+.selected {
+  opacity: 1 !important;
+  position: relative;
+
+  &:after {
+    height: 3px;
+    background-color: white;
+    border-radius: 50px;
+    width: 80%;
+    margin-left: 10%;
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 0;
+  }
+}
+
+.supportedText {
+  color: $grey-dark;
+  text-align: left;
+  font-size: 12px;
+  display: inline-block;
+  width: 100%;
+}
+.addButton {
+  position: absolute;
+  bottom: -2px;
+  right: -10px;
+}
+
+.compressVideo {
+  text-align: center;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.compressVideo input {
+  margin: 0;
+  padding: 0;
+  width: auto;
+  height: 12px;
+  margin-left: 5px;
+}

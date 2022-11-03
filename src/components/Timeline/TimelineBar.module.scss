@@ -1,0 +1,119 @@
+@import '../../sass/variables';
+
+.TimelineBar {
+  position: relative;
+  padding: 6px 0;
+  margin-right: 0;
+  margin-left: 0;
+  height: 42px;
+  // border-bottom: 1px solid rgb(209, 209, 209);
+
+
+  &:nth-of-type(even){
+    background-color: #F3F6FD;
+  }
+}
+
+.bar {
+  position: relative;
+  //background: $blue;
+  // background-image: linear-gradient(135deg, #00c7c5 0%, #0088d7 100%);
+  background-image: linear-gradient(135deg, $secondary 0%, lighten($secondary, 2%) 10%);
+  color: white;
+  padding: 5px 0;
+  text-align: center;
+  font-weight: 800;
+  border-radius: 5px;
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  &:before {
+    display: block;
+    left: 0;
+    top: 0;
+    content: "";
+    height: 30px;
+    cursor: col-resize;
+    background: rgba(0,0,0,0.2);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    position: absolute;
+    width: 10px;
+  }
+  &:after {
+    display: block;
+    background: rgba(0,0,0,0.2);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    right: 0;
+    top: 0;
+    content: "";
+    height: 30px;
+    width: 10px;
+    position: absolute;
+    cursor: col-resize;
+  }
+
+
+}
+
+
+.selected {
+  //background: $green;
+  background-image: linear-gradient(135deg, $primary 0%, lighten($primary, 2%) 10%);
+
+  //outline: 1px dashed rgba(0, 0, 0, 0.4);
+}
+
+.from {
+  position: absolute;
+  left: 3px;
+  top: 3px;
+
+  &:before {
+    bottom: -7px;
+    position: absolute;
+    content: 'SHOW';
+    left: 0px;
+    right: 0;
+    opacity: 0.8;
+    font-size: 8px;
+  }
+}
+
+.to {
+  position: absolute;
+  right: 3px;
+  top: 3px;
+
+  &:before {
+    bottom: -7px;
+    position: absolute;
+    content: 'HIDE';
+    left: 0;
+    right: 3px;
+    opacity: 0.8;
+    font-size: 8px;
+    letter-spacing: 1.2px;
+  }
+}
+
+.disabled {
+  width: 100%;
+  height: 30px;
+  padding-top: 5px;
+  border-radius: 5px;
+  background-color: #183055;
+
+  font-weight: 800;
+  text-transform: uppercase;
+  text-align: center;
+
+  small {
+    color: white;
+    opacity: 0.9;
+  }
+}

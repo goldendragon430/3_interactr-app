@@ -1,0 +1,83 @@
+@import '../../../../sass/variables';
+
+.elementList {
+	text-transform: capitalize;
+	margin-bottom: 0;
+	//font-weight: 800;
+}
+
+.elementListItem {
+	//margin-top: 15px !important;
+	//margin-bottom: 15px !important;
+	border-bottom: 1px solid #ccc;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	position: relative;
+	max-width: 800px;
+}
+
+.elementListItemActive {
+	background: $grey-light;
+}
+
+.elementIcon {
+	height: 35px;
+	width: 35px;
+	position: absolute;
+	top: -8px;
+	left: -17px;
+}
+
+.heading {
+	margin-bottom: 0;
+	margin-top: 0px;
+	color: #366fe0;
+	font-weight: 500;
+	cursor: pointer;
+}
+
+.subHead {
+	margin-top: 10px;
+	opacity: 0.8;
+}
+
+.icon {
+	cursor: pointer;
+	margin-right: 15px;
+
+	&:hover {
+		color: $secondary;
+	}
+}
+
+.iconCol {
+	text-align: center;
+	padding-top: 12px;
+}
+
+.stat {
+	width: 60px;
+	float: left;
+}
+
+.statWrapper {
+	padding-top: 5px;
+	text-align: center;
+	padding-left: 0 !important;
+}
+
+.statViews {
+	opacity: 0.8;
+}
+
+.dragHandle {
+	position: absolute;
+	left: -10px;
+	top: 18px;
+	cursor: grab;
+	padding: 10px;
+
+	* {
+		cursor: grab;
+	}
+}

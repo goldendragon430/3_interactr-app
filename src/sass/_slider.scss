@@ -1,0 +1,20 @@
+@import "variables";
+
+.rc-slider-step {
+  background: $primary;
+}
+.rc-slider-handle {
+  border-color: $primary;
+  //background-color: $grey-darkest;
+  height: 20px;
+  width: 20px;
+  margin-top: -8px;
+}
+
+.rc-slider-handle:hover {
+  border-color: $primary;
+}
+.rc-slider {
+  height: 30px;
+  margin-top: 5px;
+}

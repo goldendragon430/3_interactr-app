@@ -1,0 +1,70 @@
+@import '../sass/variables';
+
+.wrapper {
+  height: 100%;
+}
+
+.top {
+  background: $grey-dark;
+  padding: 30px;
+  border-bottom: 1px solid black;
+}
+
+.bottom {
+  background: $grey-darkest;
+  color: $grey;
+  text-align: center;
+  padding: 25px;
+
+  small {
+    color: $grey;
+  }
+
+  h6, p {
+    margin: 0;
+  }
+}
+
+.menu {
+  margin : 0;
+  padding: 0;
+
+  li {
+    padding-bottom: 5px;
+
+    &:last-of-type {
+      padding-bottom: 0;
+    }
+
+    a {
+      color: $grey;
+
+      &:hover {
+        color: $secondary;
+      }
+
+      &:before {
+        content: '\f105';
+        font-family: fontawesome;
+        margin-right: 5px;
+      }
+    }
+  }
+}
+
+.heading {
+  color: white;
+  text-transform: uppercase;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.logo {
+  max-width: 300px;
+}
+.logoWrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}

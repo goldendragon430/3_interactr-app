@@ -1,0 +1,113 @@
+@import "../../../sass/variables";
+@import "../../../sass/grid";
+
+.wrapper {
+  // height: 100%;
+  display:'inline-block';
+  margin-top: -175px;
+  padding-left: 15px;
+}
+
+.topOptions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px !important;
+}
+
+.filterRow_sortBy {
+  position: relative;
+  display : flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  .sortOptions {
+    width: 250px;
+    margin-left: 20px;
+    margin-bottom: 0!important;
+    // > div:first-of-type {
+    //   border-radius: 5px 20px 5px 0px;
+    //   padding: 6px 0px 0px 6px;
+    //   line-height: 1.5;
+    //   border-color: none;
+    // }
+  }
+
+}
+
+
+.addFolderButton {
+  //background-color: #00b382;
+  background-color: white;
+  border-color: #113348;
+  color: #113348;
+  opacity: 0.6;
+  border-radius: 15px;
+  //border: none;
+  padding: 7px 16px;
+  cursor: pointer;
+  outline: none;
+  font-weight: 600;
+  transition: 0.2s linear opacity;
+  display: inline;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+
+.dropdownRow {
+  float: right;
+}
+
+// .projects_grid{
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: flex-start;
+// }
+
+// .projectCard {
+//   flex: 1 0 400px;
+//   max-width: 450px;
+//   padding: 0 20px;
+//   margin-bottom: 30px;
+
+//   // @media #{$lgDesktop}{
+//   //   // @extend .col3;
+//   // }
+// }
+
+
+.noProjectWrapper {
+  text-align: center;
+  width: 100%;
+  padding-top: 175px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 span {
+    font-size: 72px !important;
+    color: $primary !important;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+}
+
+.noProjectWrapperSearch {
+  @extend .noProjectWrapper;
+  //padding-top: 50px;
+}
+
+.createButton {
+  max-width: 300px;
+}
+
+
+.paginationStyles {
+  width: 100%;
+  height: 50px;
+  // margin-top: 10px;
+}

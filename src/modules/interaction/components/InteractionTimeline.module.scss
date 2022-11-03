@@ -1,0 +1,15 @@
+@import "../../../sass/variables";
+
+.TriggerElement {
+  background: none;
+  color: $grey-dark;
+  :after {
+    content: '\f135';
+    display: inline-block;
+    transform: rotate(10deg);
+    font-family: fontawesome;
+    border: 1px $grey-dark solid;
+    border-radius: 100%;
+    padding: 3px;
+  }
+}

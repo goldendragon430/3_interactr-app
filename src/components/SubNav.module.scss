@@ -1,0 +1,68 @@
+@import '../sass/variables';
+@import '../sass/clearfix';
+
+.wrapper {
+  padding: 0;
+  margin: 0;
+  margin-right: 15px;
+  @extend .clearfix;
+  font-size: 1.2em;
+  font-weight: normal
+}
+
+.verticalFoldersScroll {
+  height: 60px;
+  overflow-y: hidden;
+  overflow-x: auto;
+  width: 100%;
+  display: flex
+}
+
+.item {
+  display: inline-block;
+  line-height: 40px;
+
+  a {
+    position: relative;
+    padding: 10px;
+    margin-right: 5px;
+    padding-top: 0;
+    //padding-bottom: 15px;
+    transition: 0.2s ease background;
+    cursor: pointer;
+    //opacity: 0.9;
+    font-size: 15px;
+    //color: white;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.active {
+  opacity: 1;
+  border-bottom: 2px solid $secondary;
+  color: $secondary !important;
+}
+
+.noWrap {
+  white-space: nowrap;
+}
+
+
+.text {
+  float: left;
+  width: 100%;
+  padding-bottom: 10px;
+  border-bottom: 2px solid transparent;
+
+  p {
+    margin: 0;
+  }
+
+  h4 {
+    margin-top: 2px;
+    margin-bottom: 0px;
+  }
+}

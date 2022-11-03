@@ -1,0 +1,95 @@
+@import "../../../sass/variables";
+@import "../../../sass/clearfix";
+
+.card {
+  width: 500px;
+  // Reverse the margin equivalent to the logo height so the card
+  // is in the center of the page
+  margin-top: -75px;
+}
+.wrapper {
+  min-height: 100vh;
+  background-color: $grey-darkest;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form {
+  @extend .clearfix;
+
+  button {
+    float: right;
+  }
+}
+
+.img {
+  margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 350px;
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+}
+
+.forgotPasswordButton {
+  line-height: 40px;
+  color: white;
+
+  &:hover {
+    color: white;
+  }
+}
+
+.heading {
+  color: $grey-dark;
+  margin-bottom: 15px;
+  margin-top: 0;
+  font-size: 25px;
+}
+.error {
+  background-color: $red;
+  color: white;
+  padding: 2px 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.info {
+  background-color: $grey-light;
+  padding-left:20px;
+  padding-right:20px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+
+  h4 {
+    margin-bottom: 5px;
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+}
+
+.footer {
+  margin-top: 15px;
+}
+
+.passwordField {
+  position: relative;
+
+  small {
+    position: absolute;
+    top: 33px;
+    color: $blue;
+    right: 15px;
+    cursor: pointer;
+    line-height: 1.5;
+    font-weight: 600;
+  }
+}

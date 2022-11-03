@@ -1,0 +1,37 @@
+@import '../../../../sass/variables';
+
+.wrapper {
+	float: left;
+	width: 100%;
+	padding: 15px;
+
+	&:nth-of-type(even) {
+		background: $grey-light;
+	}
+}
+
+.preview {
+	float: left;
+	width: 250px;
+}
+
+.stats {
+	float: left;
+	text-align: center;
+	width: 150px;
+	padding-top: 30px;
+}
+
+.heading {
+	float: left;
+	width: 400px;
+	padding-top: 15px;
+}
+
+.button {
+	float: right;
+	width: 150px;
+	padding-top: 58px;
+	text-align: right;
+	padding-right: 10px;
+}

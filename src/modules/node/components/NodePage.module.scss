@@ -1,0 +1,265 @@
+
+
+// Wraps around the player and positions it in the correct position
+// on the page
+.playerWrapper {
+  position: relative;
+  margin-top: -70px;
+  width: 720px;
+  height: 405px;
+  background: rgba(250, 81, 81, 0.8);
+  margin-left: 15px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.4);
+}
+
+.canvasWrapper {
+  border-radius: 10px;
+  //height: 405px;
+  width: 100%;
+  float: left;
+  //box-shadow: 0 2px 5px 0 black;
+  overflow: hidden;
+  position: relative;
+}
+
+// Positioning of the html that shows the elements list and new
+// element button
+.elementsTabs {
+  position: absolute;
+  left: 775px;
+  top: -65px;
+  //background: red;
+  width: calc(100% - 775px);
+
+  ul {
+    margin: 0;
+    padding-left: 0px;
+
+    li {
+      list-style: none;
+      //color: white;
+      display: block;
+      float: left;
+
+      h3 {
+        margin: 0;
+        margin-right: 30px;
+        margin-top: 4px;
+      }
+    }
+  }
+}
+
+.elementsList {
+  //margin-left: 15px;
+  margin-top: 10px;
+  height: 425px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+
+.elementsListNoTimeline {
+  height: calc(100vh - 150px);
+}
+
+.videoControls {
+  float: left;
+  width: 720px;
+  margin-left: 15px;
+  margin-top: 10px;
+
+  h4 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+// Position the timeline on the node page
+.timeline {
+  position: absolute;
+  top: 430px;
+  //background: red;
+  left: 25px;
+  height: calc(100% - 431px);
+  //width: calc(100% - 50px);
+  width: calc( 100% - 25px);
+  overflow: hidden;
+  //box-shadow: 0px -5px 5px 0px rgba(0,0,0,0.19);
+  //border-top: 1px solid #5e5e5e;
+}
+
+// Old Stuff
+
+
+$SidebarWidth: 310px;
+
+.NodePage {
+}
+.editor {
+}
+//.timeline {
+//  flex: 1;
+//  position: relative;
+//  padding: 0;
+//}
+.player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: black;
+  border-radius: 10px;
+}
+
+
+
+.stacked {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  //box-shadow : (10px 0 10px -5px rgba(0,0,0,0.5), -10px 0 10px -5px rgba(0,0,0,0.5));
+  //box-shadow: 0px 5px 5px 4px rgba(0,0,0,0.34);
+
+  //border-top-left-radius: 5px;
+  //border-top-right-radius: 5px;
+  overflow: hidden;
+}
+
+
+.modalClose {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 9999;
+
+  span {
+    margin-right: 0;
+  }
+}
+
+.pageBody {
+  padding-top: 110px;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.logo {
+  img {
+    max-height: 42px;
+    padding-left: 30px;
+    display: block;
+  }
+}
+
+.buttons {
+  float: right;
+  text-align: right;
+}
+
+
+
+
+.nodeToolbar {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+
+  & > div {
+    padding: 0;
+    padding-left: 15px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: white;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+.elementsBoard {
+  z-index: 2;
+  transform: translateX(-100%);
+  transition: transform .2s ease-in-out;
+
+  &.showElements {
+    transform: translateX(0);
+
+
+    @media(max-width: 1588px){
+      padding-right: 0;
+    }
+  }
+}
+.nodeEditor {
+  z-index: 10;
+}
+// ============
+.header_wrapper, .meta_wrapper {
+  h2 {
+    font-weight: 400;
+    max-width: 450px;
+    margin: 0;
+  }
+  small {
+    color: white !important;
+  }
+}
+
+.header_wrapper {
+  margin-top: 0px;
+  margin-bottom: 40px;
+}
+
+.header {
+  font-size: 24px;
+  //padding-top: 10px;
+  //padding-bottom: 5px;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+.header_info {
+  a {
+    color: white;
+  }
+}
+
+.gridOverlay {
+  position: absolute;
+  z-index: 20;
+  top: 0;
+  left: 0;
+}
+
+.meta_title {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  // .meta_preview_btn{
+  // }
+}
+.meta_description {
+  height: 4.5em;
+  // change ellipsis background color to match bg
+  &:after {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), #6d7fff);
+  }
+}
+
+.elementsWrapper {
+  height: 100%;
+  width: 100%;
+  z-index: 15;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}

@@ -1,0 +1,65 @@
+.progress {
+  $diameter: 35px;
+  $stroke: 5px;
+  $rotationSteps: 100;
+  $rotationIncrement: calc( calc(360 / $rotationSteps) / 2);
+  //background: #ccc;
+  border-radius: 50%;
+  height: $diameter;
+  width: $diameter;
+  margin: 0px auto;
+  &_mask,
+  &_fill {
+    -moz-backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 50%;
+    clip: rect(0, $diameter, $diameter, calc($diameter / 2) );
+    height: $diameter;
+    overflow: hidden;
+    position: absolute;
+    width: $diameter;
+  }
+  &_fill {
+    background: #41c519;
+    clip: rect(0, calc($diameter / 2) , $diameter, 0);
+  }
+  &:after {
+    content: attr(data-progress);
+    $diameter: $diameter - $stroke * 2;
+    background: #fff;
+    border-radius: 50%;
+    height: $diameter;
+    line-height: $diameter;
+    margin: $stroke;
+    position: absolute;
+    text-align: center;
+    width: $diameter;
+  }
+  @for $step from 1 through $rotationSteps {
+    &[data-progress="#{$step}"] {
+      .progress_mask.isFull,
+      .progress_fill {
+        -webkit-transform: rotate($step * $rotationIncrement#{deg});
+        -moz-transform: rotate($step * $rotationIncrement#{deg});
+        -ms-transform: rotate($step * $rotationIncrement#{deg});
+        -o-transform: rotate($step * $rotationIncrement#{deg});
+        transform: rotate($step * $rotationIncrement#{deg});
+      }
+    }
+  }
+}
+
+.failed {
+  text-align: center;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.heading {
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 10px;
+  margin-top: 5px;
+}

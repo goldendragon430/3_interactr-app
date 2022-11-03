@@ -1,0 +1,43 @@
+@import '../sass/variables';
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+
+  div {
+    flex-grow: 1;
+  }
+}
+
+.left {
+  height: 100%;
+  width: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: initial !important;
+
+  h1 {
+    margin-bottom: 5px;
+  }
+}
+
+.middle {
+  height: 100%;
+}
+
+.right {
+  height: 100%;
+}
+
+.divider {
+  border-right: 1px solid $grey-light;
+  height: 20px;
+  margin-top: 20px;
+  width: 1px;
+  float: left;
+  margin-right: 14px;
+  margin-left: 15px;
+}

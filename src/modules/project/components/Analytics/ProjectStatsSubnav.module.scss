@@ -1,0 +1,65 @@
+@import "../../../../sass/variables";
+
+.wrapper {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  background: white;
+  margin-left: 20px;
+  height: 71px;
+  border-bottom: 2px solid $grey-light;
+  opacity: 0;
+}
+
+.item {
+  list-style: none;
+  margin-bottom: 15px;
+  opacity: 0.9;
+  display: block;
+  float: left;
+  width: 300px;
+  margin-right: 10px;
+
+
+  a {
+    display: block;
+    padding: 15px 15px;
+    padding-top: 0;
+    border-bottom: 2px transparent solid;
+    transition: 0.2s linear all;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+
+    &:hover {
+      color: inherit;
+   //   background: $grey-light;
+    }
+  }
+}
+
+.active {
+  border-bottom-color: $secondary !important;
+  //background: $grey-light;
+}
+
+.wrapper:after
+{
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 15px;
+  right: 10px;
+  left: auto;
+  width: 50%;
+  top: 80%;
+  max-width:300px;
+  background: #777;
+  -webkit-box-shadow: 0 15px 10px #777;
+  -moz-box-shadow: 0 15px 10px #777;
+  box-shadow: 0 15px 10px #777;
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -o-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  transform: rotate(3deg);
+}

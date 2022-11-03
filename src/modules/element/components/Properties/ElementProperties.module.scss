@@ -1,0 +1,75 @@
+@import "../../../../sass/variables";
+
+.element_type {
+  padding: 10px;
+  background: #002033;
+  color: white;
+  text-align: left;
+  cursor: pointer;
+}
+
+// The styles for the element properties flyout menu
+.menu {
+  // padding-left: 15px;
+  overflow: hidden;
+  // //overflow-y: scroll;
+  // height: 100vh;
+  // box-shadow: -4px 2px 13px 1px rgba(0,0,0,0.3);
+  // background: white;
+  // padding-top: 0px;
+  // position: relative;
+  position: absolute;
+  background: white;
+  top: 0px;
+  right: -600px;
+  height: 100%;
+  width: 600px;
+  transition: all ease-out 0.55s;
+  z-index: 500;
+  opacity: 1;
+  box-shadow: -4px 2px 13px 1px rgba(0, 0, 0, 0.3);
+  padding-left: 15px;
+  padding-top: 15px;
+}
+
+.slideIn {
+  right: 0px;
+  opacity: 1;
+}
+
+// Position the copy and delete icons for the element in the menu
+.actionsIcons {
+  text-align: right;
+  float: right;
+  width: 100px;
+}
+
+// Position each individual icon
+.icon {
+  margin-right: 15px;
+  margin-top: 8px;
+  float: right;
+}
+
+.close {
+  position: absolute;
+  right: 5px;
+  top: 10px;
+}
+
+.header {
+  //background: #F3F6FD;
+  //left: -15px;
+  position: relative;
+  width: 100%;
+  margin-left: -15px;
+  padding-left: 15px;
+  height: 50px;
+  //background: white;
+  z-index: 10;
+  padding-top: 10px;
+
+  h2 {
+    margin-top: 10px;
+  }
+}

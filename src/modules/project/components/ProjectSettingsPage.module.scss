@@ -1,0 +1,28 @@
+@import "../../../sass/variables";
+
+.content {
+  //margin-right: 780px;
+  padding: 30px;
+}
+
+
+.settings_wrapper {
+  padding: 30px;
+  padding-top: 0;
+}
+
+.formWrapper {
+  padding-right: 75px;
+  width: 100%;
+}
+
+.custom_domain_help_text {
+  width: 100%;
+  background: $grey-light;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.divider {
+
+}

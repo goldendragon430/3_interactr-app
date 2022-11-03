@@ -1,0 +1,20 @@
+.wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateX(500px);
+  background-color: white;
+  height: 100%;
+  width: 350px;
+  box-shadow: 0 3px 30px rgba(0, 0, 0, 0.1), 0 3px 20px rgba(0, 0, 0, 0.1);
+  padding-top: 110px;
+  padding-left: 20px;
+  padding-right: 13px;
+  z-index: 100;
+  transition: ease-in-out all 0.4s;
+}
+
+.open {
+  transform: translateX(0);
+ 
+}

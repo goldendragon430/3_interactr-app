@@ -1,0 +1,89 @@
+@import '../../../sass/variables';
+@import '../../../sass/typography';
+
+.thumbnail {
+  ul {
+    padding-left: 0px;
+    list-style: none;
+
+    li {
+      display: inline-block;
+    }
+  }
+}
+
+.videoLibraryListWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: auto;
+}
+
+.heading {
+  width: 125px;
+  text-align: center;
+  text-transform: uppercase;
+  border: 3px solid transparent;
+  margin-right: 20px;
+  @extend .faded-text
+}
+.list {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.item {
+  padding: 0px 0;
+  width: 120px;
+  height: 70.4px;
+  border: 3px solid #e6e7e8;
+  box-sizing: border-box;
+  overflow: hidden;
+  color: #acb1b4;
+  font-size: 13px;
+  text-align: center;
+  margin-right: 20px;
+  position: relative;
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+
+
+  &.current {
+    border-color: $primary;
+    cursor: default;
+
+    &:hover {
+      border-color: $primary;
+    }
+  }
+
+  &.upload {
+    padding: 0;
+  }
+  &:hover {
+    border-color: $secondary;
+  }
+
+  svg {
+    font-size: 40px;
+    margin-top: 15px;
+  }
+
+  img {
+    max-width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+.generatingThumb {
+  text-align: center;
+  height: 40.438px;
+
+  p {
+    margin: 0;
+    font-size: 11px;
+  }
+}

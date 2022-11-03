@@ -1,0 +1,26 @@
+@import "../../../../sass/variables";
+
+.wrapper {
+  ul {
+    border-right: 2px $grey-light solid;
+    margin-top: 0;
+    padding-left: 25px;
+
+    li {
+      list-style: none;
+
+      a {
+        font-size: 17px;
+        display: block;
+        padding: 12px 0px;
+        width: 100%;
+        border-right: 2px solid transparent;
+      }
+    }
+  }
+}
+
+.active {
+  color: $secondary !important;
+  border-right-color: $secondary !important;
+}

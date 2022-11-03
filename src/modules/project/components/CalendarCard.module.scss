@@ -1,0 +1,83 @@
+@import "../../../sass/variables";
+.wrapper {
+  float: left;
+  overflow: hidden;
+  width: 250px;
+  height: 225px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+
+.card {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #f3f6fd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
+  padding-bottom: 10px;
+}
+
+.comingsoon {
+  width: 100%;
+  margin-top: -15px;
+}
+
+.header {
+  background: $grey-light;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+
+  h2 {
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+}
+
+.links {
+  margin-bottom: 5px;
+  margin-top: 0;
+}
+
+.date {
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.niche {
+  text-transform: uppercase;
+}
+
+.img {
+  width: 100px;
+  border-radius: 5px;
+  float: left;
+  box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.4);
+}
+
+.text {
+  width: 268px;
+  float: left;
+  padding-left: 15px;
+  padding-top: 5px;
+
+  h3 {
+    margin: 0;
+  }
+}
+
+.buttons {
+  width: 268px;
+  float: left;
+  padding-left: 10px;
+}
+
+.template_row {
+  width: 100%;
+  float:left;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 20px;
+
+}

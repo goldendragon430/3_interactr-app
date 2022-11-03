@@ -1,0 +1,389 @@
+@import "../../../sass/variables";
+@import "../../../sass/clearfix";
+
+
+.top {
+}
+
+.thumbnail {
+  width: 1000px;
+  height: 562px;
+  border-radius: 10px;
+}
+
+.header {
+  padding: 50px 0px;
+  text-align: center;
+
+  @media #{$phone} {
+    padding: 10px 0px;
+  }
+
+  img {
+    max-width: 250px;
+
+    @media #{$phone} {
+      max-width: 200px;
+    }
+  }
+}
+.headline {
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 25px;
+  //color: white;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+
+  h1 {margin:  0}
+}
+
+.bottom, .container {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.bottomWrapper {
+  width: 100%;
+}
+
+.bottom {
+  padding-bottom: 200px;
+  @extend .clearfix;
+}
+
+
+.stats {
+  //border-bottom: 1px solid $grey;
+  //padding: 20px;
+
+  @extend .clearfix;
+}
+
+.share {
+  margin: 0;
+  padding: 0;
+  float:left;
+
+
+  @media #{$smTablet} {
+    width: 100%;
+    float:left;
+    margin-top: 20px;
+  }
+
+  @media #{$phone} {
+    width: 100%;
+    float:left;
+    margin-top: 20px;
+  }
+
+  li {
+    display: inline-block;
+    list-style: none;
+    vertical-align: bottom;
+    margin-right: 25px;
+
+
+    i {
+      color: $grey-dark;
+      font-size: 17px;
+    }
+  }
+}
+
+.social {
+  margin: 0;
+  padding: 0;
+
+  li {
+    margin-right: 15px;
+    display: inline-block;
+    list-style: none;
+    vertical-align: bottom;
+
+    svg, circle {
+      cursor: pointer;
+    }
+  }
+}
+
+
+.brand {
+  max-width: 30px;
+  position: absolute;
+  top: 0;
+  left: -35px;
+}
+
+.brandText {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+  opacity: 1 !important;
+  padding-top: 3px;
+  margin-top: 0;
+}
+
+.brandTextContainer {
+  position: relative;
+}
+
+.meta {
+  //border-bottom: 1px solid $grey;
+  //box-shadow: 0 1em 1em -1em rgba(0, 0, 0, .25);
+  padding: 30px 0px;
+  @extend .clearfix;
+  margin-bottom: -30px;
+
+  h3 {
+    font-size: 26px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    //color: white;
+    font-weight: 300;
+    text-align: center;
+  }
+
+   p{
+     margin-top: 5px;
+     margin-bottom: 20px;
+     color: white;
+     opacity: 0.7;
+
+     &:last-of-type{
+       margin-bottom: 0px;
+     }
+   }
+}
+
+.left {
+  float: left;
+  width: 100%;
+  padding: 0 20px 30px;
+  
+  @media #{$desktop} {
+    //width: 70%;
+    //border-right: 1px solid $grey;
+  }
+}
+
+.moreVideos {
+  padding: 20px;
+  width: 100%;
+  float: left;
+
+  @media #{$desktop} {
+    width: 100%;
+  }
+
+  h3 {
+    margin-bottom: 20px;
+  }
+}
+
+.videoCard {
+  max-width: 290px;
+  width: calc(100% / 3);
+  padding-left: 15px;
+  padding-right: 15px;
+
+  @media #{$lgTablet} {
+    width: 30%;
+    margin-right: 3%;
+  }
+
+  @media #{$smTablet} {
+    width: 45%;
+    margin-right: 4.5%;
+  }
+
+  @media #{$phone} {
+    width: 100%;
+  }
+
+  .otherVideo {
+    //box-shadow:0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    box-shadow: 0 3px 30px rgba(0,0,0,.1), 0 3px 20px rgba(0,0,0,.1);
+    overflow: hidden;
+    background-color: white;
+    margin-bottom: 30px;
+
+    @extend .clearfix;
+  }
+}
+.otherVideoMeta {
+  padding: 10px 20px;
+  @extend .clearfix;
+  position: relative;
+
+  h4 {
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+    opacity: 0.7;
+  }
+}
+
+.otherVideoLogo {
+  position: absolute;
+  right: 10px;
+  bottom: 12px;
+  background-color: white;
+
+  img {
+    width: 30px;
+  }
+}
+
+.otherVideoThumb {
+  position: relative;
+
+  &:hover {
+    div {
+      opacity: 1;
+    }
+  }
+  img {
+    display: block;
+    max-width: 100%;
+  }
+}
+
+.overlay {
+  opacity: 0;
+  transition: 0.2s linear all;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.newCommentBtn {
+  float: none;
+}
+
+.paginator {
+  margin-top: 20px;
+}
+
+.newComment {
+  max-width: 500px;
+  padding-left: 20px;
+  padding-top: 50px;
+}
+
+.comment {
+  //box-shadow:0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+  overflow: visible;
+  border-radius: 10px;
+  //border-bottom-right-radius: 25px;
+
+
+  @extend .clearfix;
+}
+
+
+.commentImage {
+  float: left;
+  width: 50px;
+
+  img{
+    width: 50px;
+  }
+}
+
+.commentText{
+  float: right;
+  width: calc(100% - 50px);
+  padding-left: 20px;
+  position: relative;
+  //padding-right: 100px;
+}
+
+.commentDate {
+  position: absolute;
+  top: 4px;
+  right: 0px;
+  opacity: 0.7;
+}
+
+.commentName {
+  font-size: 21px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.commentBody {
+
+}
+
+.shareIcon {
+  display: inline-block;
+  line-height: 25px;
+  vertical-align:middle;
+  margin-right: 5px;
+}
+
+.shareCounter {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+
+
+.playerWrapper {
+  border-radius: 10px;
+  overflow: hidden;
+  //box-shadow: rgba(22, 51, 127, 0.2) 0px 40px 50px;
+  box-shadow: 0 12px 15px -5px rgba(0, 0, 0, 0.25);
+  background: black;
+}
+
+.pageWrapper {
+  background: white;
+  overflow: hidden;
+  overflow-y: scroll;
+  height: 100%;
+}
+
+.topWrapper {
+  //background: $background;
+  position: relative;
+}
+
+.top {
+  z-index: 2;
+  position: relative;
+}
+
+.separator {
+  position: absolute;
+  top: 0;
+}
+
+.divider {
+  width: 100%;
+  position: absolute;
+  bottom: -35px;
+  left: 0;
+  z-index: 1;
+}
+
+.videoImage {
+  width: 290px;
+  height: 170px;
+}

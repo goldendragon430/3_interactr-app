@@ -1,0 +1,23 @@
+@import '../sass/variables';
+.announcement {
+  position: relative;
+  height: AnnouncementHeight;
+  padding: 10px 15px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  background: $grey-light;
+  .close_btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+  }
+  .hideforever {
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+    font-size: .8em;
+    cursor: pointer;
+  }
+}

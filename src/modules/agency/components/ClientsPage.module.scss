@@ -1,0 +1,41 @@
+.header {
+  width: 1280px;
+  position: relative;
+}
+
+.avatar {
+  position: absolute;
+  left: 30px;
+  bottom: -80px;
+  height: 160px;
+  width: 160px;
+  background: white;
+  padding: 4px;
+  border-radius: 100%;
+  box-shadow: 0 2px 5px rgba(0,0,0,.1), 0 1px 2px rgba(0,0,0,.05);
+  overflow: hidden;
+
+  img {
+    border-radius: 100%;
+  }
+}
+
+.logo {
+  position: absolute;
+  top: -50px;
+  right: -30px;
+  background: #183055;
+  width: 350px;
+  height: 100px;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,.1), 0 1px 2px rgba(0,0,0,.05);
+  overflow: hidden;
+  img {
+    width: max-content;
+    margin: 0 auto;
+    height: max-content;
+    max-height: max-content;
+  }
+}

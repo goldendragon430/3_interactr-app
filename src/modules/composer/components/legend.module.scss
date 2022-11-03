@@ -1,0 +1,72 @@
+@import "../../../sass/variables";
+
+.wrapper {
+  position: absolute;
+  left: 20px;
+  bottom: -15px;
+  background-color: white;
+  border-radius: 15px;
+  padding: 0;
+  margin:0;
+  //box-shadow:0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  //box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1), 3px 3px 10px rgba(0, 0, 0, 0.1);
+  //box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.4);
+  //box-shadow: 0 2px 5px rgba(0,0,0,.1), 0 1px 2px rgba(0,0,0,.05);
+  list-style: none;
+  overflow: hidden;
+  cursor: default;
+  z-index: 10;
+  width: 650px;
+
+  li:first-of-type {
+    padding-left: 15px;
+  }
+
+  li:last-of-type {
+    padding-right: 15px;
+  }
+
+  li {
+    width: 25%;
+    float: left;
+    padding: 10px 0px;
+    font-size: 14px;
+  }
+}
+
+.startPosition {
+  border-radius: 100%;
+  background-color: $primary;
+  color: white;
+  height: 20px;
+  width: 20px;
+
+  p {
+    padding-left: 6px;
+    padding-top: 4px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 600;
+  }
+}
+
+.image {
+  float: left;
+  width: 25px;
+
+  img {
+    display: block;
+    max-width: 100%;
+    padding-right: 5px;
+    padding-top: 2px;
+  }
+}
+
+.text {
+  float: left;
+
+  p {
+    line-height: 20px;
+    margin: 0;
+  }
+}

@@ -1,0 +1,55 @@
+@import "../../../../sass/variables";
+
+.MediaItemWrapper {
+  border-radius: 5px;
+  float: left;
+  width: 33.3%;
+  padding-right: 15px;
+  margin-bottom: 7px;
+  position: relative;
+
+}
+
+.MediaItem {
+  position: relative;
+  background-color: white;
+  cursor: move;
+  //height: 72px;
+  overflow: hidden;
+  margin-bottom: 3px;
+  //width: 128px;
+  border-radius: 5px;
+  //box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.4);
+  height: 80.97px;
+  width: 136.84px;
+}
+
+.mediaTitle {
+  text-align: left;
+  font-size: 0.7em;
+  line-height: 1.5;
+  padding: 3px 0px;
+  font-weight: 500;
+  text-transform: capitalize;
+  color: $grey-darkest !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 18px;
+  padding-left: 5px;
+  cursor: pointer;
+  position: relative;
+  width: 100%;
+}
+
+.editIcon {
+  font-size: 14px;
+  position: absolute;
+  right: 5px;
+  top: 1px;
+}
+
+.image {
+  max-height: 100%;
+  max-width: 100%;
+}

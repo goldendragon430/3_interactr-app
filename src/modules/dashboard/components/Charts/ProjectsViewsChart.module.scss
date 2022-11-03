@@ -1,0 +1,20 @@
+
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1280px;
+  height: 500px;
+  text-align: center;
+  border-radius: 20px;
+
+  h3 {
+    margin: 0
+  }
+
+  p {
+    font-size: 28px;
+    margin: 0;
+  }
+}

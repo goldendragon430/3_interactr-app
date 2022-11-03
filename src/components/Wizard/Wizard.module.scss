@@ -1,0 +1,25 @@
+@import '../../sass/variables';
+
+.wizard_wrapper {
+  // display: flex;
+  // position: relative;
+  height: calc(100% - 200px);
+  // flex-direction: column-reverse;
+  // justify-content: space-between;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.actions_wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 15px;
+  width: 100%;
+  height: 80px;
+  border-top: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+  background: white;
+}

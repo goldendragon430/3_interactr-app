@@ -1,0 +1,16 @@
+.wrapper {
+  position: relative;
+  textarea {
+    resize:  vertical;
+    min-height: 41px;
+    padding: 15px;
+  }
+}
+
+.icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  opacity: 1.5em;
+  cursor: pointer;
+}

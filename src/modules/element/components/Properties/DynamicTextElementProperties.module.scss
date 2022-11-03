@@ -1,0 +1,39 @@
+@import '../../../../sass/variables';
+
+.defaultValue {
+  &Item {
+    margin: 0 auto;
+    margin-bottom: 15px !important;
+    align-items: center;
+  }
+
+  &Input {
+    padding: 0.05rem .75rem .35rem;
+    margin-bottom: 0 !important;
+  }
+}
+
+.dynamicIcon {
+  &Plus {
+    float: right;
+  }
+
+  &Save {
+    color: $green;
+    padding-left: 1px;
+  }
+
+  &Plus {
+    padding-right: 5px;
+  }
+
+  &Save, &Delete, &Plus {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &Plus {
+    float: right;
+  }
+}

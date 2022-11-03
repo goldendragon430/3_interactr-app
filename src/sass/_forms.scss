@@ -1,0 +1,137 @@
+@import "variables";
+@import "clearfix";
+
+input, textarea {
+  background: #fff;
+  //background: $grey-light;
+  border: 1px solid rgb(210, 214, 220);
+  //box-shadow: none!important;
+  //border: none;
+  //box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.4);
+  //box-shadow: 0 2px 5px rgba(0,0,0,.1), 0 1px 2px rgba(0,0,0,.05);
+  //border-radius: 10px;
+  color: #303030;
+  font-size: 14px;
+  line-height: 1.5;
+  outline: initial!important;
+  //padding: .7rem .75rem .65rem;
+  padding: 7px 14px;
+  width: 100%;
+  //margin-bottom: 15px;
+  transition: all 0.2s ease;
+  border-radius: 10px;
+
+  &:focus {
+    //border-color: $grey-dark;
+    //box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.6);
+    //transform: translateY(2px);
+    //box-shadow: 0 2px 5px rgba(0,0,0,.1), 0 1px 2px rgba(0,0,0,.05);
+    outline:0;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    //background: #d3d3d3;
+    box-shadow: none;
+    opacity: 0.8;
+  }
+}
+
+.form-option {
+  margin-bottom: 25px;
+}
+
+.form-control {
+  margin-bottom: 15px;
+}
+
+.Select-control {
+  border-radius : 10px !important;
+  //box-shadow: 0 2px 5px rgba(0,0,0,.1), 0 1px 2px rgba(0,0,0,.05);
+  border: 1px solid rgb(210, 214, 220) !important;
+  transition: all 0.18s ease !important;
+  height: 38px !important;
+  background: white !important;
+  &:hover {
+    //transform: translateY(2px);
+    //box-shadow: 0 2px 5px rgba(0,0,0,.1), 0 1px 2px rgba(0,0,0,.05);
+  }
+}
+.Select-placeholder, .Select--single > .Select-control .Select-value {
+  line-height: 38px !important;
+}
+.Select.is-open .Select-control {
+  border-radius: 5px 5px 0 0  !important;
+}
+.Select.is-disabled .Select-control {
+  cursor: not-allowed;
+}
+textarea {
+  height: auto;
+}
+
+input[type="checkbox"] {
+  box-shadow: none;
+}
+
+
+label {
+  display: block;
+  margin-bottom: 2px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  text-transform: capitalize;
+}
+
+input[size] {
+  width: auto;
+}
+textarea[cols] {
+  width: auto;
+}
+
+.form-control {
+
+
+  @extend .clearfix;
+}
+
+.form-helptext  {
+
+}
+
+.form-control-inline {
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 15px;
+  vertical-align:top;
+
+  @extend .clearfix;
+}
+
+.form-heading {
+  position: relative;
+  margin-bottom: 15px;
+  margin-top: 35px;
+  margin-left: -15px;
+  text-transform: capitalize;
+
+  &:first-of-type {
+    margin-top: 0px;
+  }
+  //
+  //&:before {
+  //  content: "";
+  //  height: 3px;
+  //  position: absolute;
+  //  bottom: -10px;
+  //  width: 80px;
+  //  //background-color: $secondary;
+  //  background-image: linear-gradient(135deg, #00c7c5 0%, #0088d7 100%);
+  //}
+}
+
+.sketch-picker {
+  box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.4) !important;
+  border-radius: 10px !important;
+}

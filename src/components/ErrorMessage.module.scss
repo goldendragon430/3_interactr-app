@@ -1,0 +1,23 @@
+@import "../sass/variables";
+
+.errorBox {
+  background: $red;
+  color: White;
+  border-radius: 20px;
+  margin: 15px;
+}
+
+
+.errorText {
+  text-align: left;
+  padding: 15px;
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+
+  p {
+    margin: 0;
+  }
+}

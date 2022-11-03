@@ -1,0 +1,14 @@
+@import "../../../sass/variables";
+
+.generatorHolder {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.heading {
+  color: $muted;
+  opacity: 0.6;
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 5px;
+}

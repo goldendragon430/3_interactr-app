@@ -1,0 +1,26 @@
+@import "../sass/variables";
+
+.menu {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: white;
+  text-align: center;
+
+  a {
+    color: $grey;
+    line-height: 55px;
+    font-weight: 500;
+    font-size: 16px;
+    margin-right: calc(35px / 2);
+    margin-left: calc(35px / 2);
+    border-top: 4px solid transparent;
+    transition: 0.3s ease all;
+
+    &:hover {
+      color: white;
+    }
+
+  }
+}
+

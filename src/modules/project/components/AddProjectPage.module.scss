@@ -1,0 +1,48 @@
+@import "../../../sass/variables";
+
+.active {
+  border-bottom-color: $primary ;
+}
+
+.heading {
+  border-bottom: 2px solid transparent;
+  //border-bottom-left-radius: 2px;
+  //border-bottom-right-radius: 2px;
+  &.active {
+    border-bottom-color: $secondary ;
+    color: $secondary;
+  }
+}
+
+.tabHeadings {
+  padding-left: 0;
+  padding-bottom: 50px;
+  padding-top: 20px;
+  margin-left: 15px;
+
+  li {
+    list-style: none;
+    float: left;
+    font-size: 20px;
+    font-weight: 500;
+    margin-right: 50px;
+    padding-bottom: 10px;
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+.languageFilterWrapper {
+  position: absolute;
+  bottom: 15%;
+  width: 100%;
+}
+
+.mainHeading {
+  margin-top: 40px;
+}
+
+.addProjectButton {
+  font-size: 14px;
+}

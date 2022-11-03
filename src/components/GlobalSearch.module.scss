@@ -1,0 +1,64 @@
+@import '../sass/variables';
+
+.wrapper {
+	width: 75%;
+	border-radius: 20px;
+	background-color: #113348;
+	display: block;
+	float: left;
+	position: relative;
+
+	.searchIcon {
+		position: absolute;
+		right: 12px;
+		top: 12px;
+		color: white;
+		opacity: 0.7;
+	}
+
+	.searchInput {
+		background: transparent !important;
+		border: none;
+		margin-bottom: 0;
+		padding-right: 50px;
+		color: white;
+
+		&:focus {
+			outline: 0;
+		}
+	}
+
+	.list {
+		color: white;
+		list-style: none;
+		padding: 0 0 20px;
+		margin: 0;
+		overflow: hidden;
+		overflow-y: auto;
+		max-height: 500px;
+
+		&::-webkit-scrollbar-thumb {
+			background-color: #717171;
+			border-radius: 20px;
+		}
+	}
+	.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid #484848;
+    cursor: default;
+
+    .itemInfo{
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      color: inherit;
+      small { color : lighten($green, 10%) }
+    }
+    .itemIcon { color : lighten($green, 10%)}
+    
+
+	}
+}

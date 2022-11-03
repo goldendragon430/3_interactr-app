@@ -1,0 +1,26 @@
+@import '../sass/variables';
+
+@value height: 60px;
+
+.subNav {
+  height: height;
+  background: $grey-dark;
+  padding: 0px 15px;
+  width: 100%;
+  // min-width: 1450px;
+  z-index: 200;
+  //border-top: 1px solid #2F363E;
+  border-top: 1px solid black;
+  border-bottom: 1px solid $grey-darkest;
+  //overflow: hidden;
+
+  h1 {
+    color: $grey-light;
+    margin: 0;
+    //line-height: height;
+    font-weight: 600;
+    font-size: 17px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+  }
+}

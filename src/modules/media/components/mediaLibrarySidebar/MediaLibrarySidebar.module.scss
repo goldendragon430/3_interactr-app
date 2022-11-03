@@ -1,0 +1,61 @@
+@import '../../../../sass/variables';
+@import '../../../../sass/clearfix';
+
+.mediaLibraryTabIcon {
+  border-bottom: 3px solid #F3F6FD;
+  cursor: pointer;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  text-align: center;
+
+}
+
+.activeTab {
+  border-bottom-color: $primary;
+}
+
+.tabText {
+  text-transform: uppercase;
+  margin-bottom: 3px;
+  margin-top: 0;
+}
+
+.mediaLibraryWrapper {
+  height: calc(100vh - 20px);
+  margin-top: 40px;
+}
+
+.heading {
+  color: $grey-dark;
+  margin-top : 15px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+
+  small {
+    font-weight: normal
+  }
+}
+
+.mediaLibraryInner {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: calc(100% - 55px);
+  padding-bottom: 15px;
+  //background: #F3F6FD;
+  border-bottom-left-radius: 50px;
+}
+
+.listWrapper {
+  height: 100%;
+  flex: 1;
+  overflow-y: auto;
+  padding-left: 5px;
+  padding-top: 15px;
+  padding-bottom: 50px;
+  /* overflow: hidden; */
+}
+
+.buttons {
+  margin-bottom: 5px;
+}

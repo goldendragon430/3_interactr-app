@@ -1,0 +1,97 @@
+.facebook_wrapper {
+  border-radius: 10px;
+  background: rgb(36, 37, 38);
+  padding: 15px 20px;
+  color: rgb(228, 230, 235);
+  position: relative;
+  width: 455px;
+  margin-left: 75px;
+}
+.facebook_description {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: rgb(176, 179, 184)
+}
+.facebook_header {
+}
+.facebook_avatar {
+  border-radius: 50%;
+  position: relative;
+  height: 40px;
+  width: 40px;
+  float: left;
+
+  img {
+    height: 100%;
+    width: 100%;
+    border-radius: 100%;
+  }
+}
+.online_indicator {
+  //background: rgb(36, 37, 38);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
+  &:after {
+    position: absolute;
+    top: 8px;
+    left: -7px;
+    height: 9px;
+    width: 9px;
+    border-radius: 50%;
+    content: "";
+    background: rgb(49, 162, 76)
+  }
+}
+
+.url {
+  display: block;
+  width: 100%;
+  padding-top: 12px;
+  padding-bottom:12px;
+
+  a {
+    color: rgb(69, 153, 255) !important;
+  }
+}
+
+.ellipsis {
+  position: absolute;
+  right: 15px;
+  top: 25px;
+}
+
+.details {
+  background: #3A3B3C;
+  margin-left: -20px;
+  margin-right: -20px;
+  border-bottom: 1px solid #3F4042;
+  padding: 12px 20px;
+
+   p {
+     margin: 0;
+   }
+}
+
+.meta {
+  padding: 15px 20px;
+}
+
+.comment {
+  background: #3A3B3C;
+  border-radius: 50px;
+  float: right;
+  width: calc(100% - 50px);
+  color: rgb(176, 179, 184);
+  padding: 10px;
+  margin-top: 1px;
+  position: relative;
+}
+
+.comment_icons {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+}
