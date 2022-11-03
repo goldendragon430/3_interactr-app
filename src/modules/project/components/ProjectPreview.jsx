@@ -123,7 +123,7 @@ const PreviewUsersProject = ({cacheBuster, projectId, startNodeId, ...props }) =
 
 const Preview = React.forwardRef(({project, startNodeId, player, cacheBuster ,frameRef, bigPlayColor}, ref) => {
   useEffect(() => {
-    const wrapperUrl = import.meta.env.VITE_WRAPPER_PATH_PREFIX + "/" + import.meta.env.VITE_API_CONTEXT + "/" + player.version_id + "/player-wrapper.js";
+    const wrapperUrl = import.meta.env.VITE_WRAPPER_URL;    
     runPlayerWrapper(wrapperUrl);
     return () => {
       window.__ictr_wrpr_check__ = false;

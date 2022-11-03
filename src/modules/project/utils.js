@@ -9,10 +9,10 @@ import { PROJECT_FRAGMENT } from '@/graphql/Project/fragments';
 export function generateEmbedCode(project, player, storagePath) {
   if (!project) return null;
 
-  const wrapperUrl = import.meta.env.VITE_WRAPPER_PATH_PREFIX + "/" + import.meta.env.VITE_API_CONTEXT + "/" + player.version_id + "/player-wrapper.js";
+  const wrapperUrl = import.meta.env.VITE_WRAPPER_URL;
 
   if(project.published_path && !project.published_path.startsWith("https://swiftcdn6.global.ssl.fastly.net")) {
-    return `<script type="text/javascript" src="https://p-fast.b-cdn.net/player/production/${player.version_id}/player-wrapper.js" async></script>
+    return `<script type="text/javascript" src=${wrapperUrl} async></script>
             <div class="iv-player_responsive_padding" style="padding:56.25% 0 0 0;position:relative; width:${project.embed_width}px; height:${project.embed_height}px" data-projectid="${project.id}" data-hash="${project.storage_path?.split('/')[1]}" data-version="${player.version_id}" data-context="play">
                 <div class="iv-player_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
                     <div class="iv-player_embed iv-player_async_p2z7746nud videoFoam=true" style="height:100%;position:relative;width:100%">
@@ -33,14 +33,33 @@ export function generateEmbedCode(project, player, storagePath) {
 
 
 export function generateEmbedCodeForPreviewing(project, player) {
-  return `<div class="iv-player_responsive_padding" style="padding:56.25% 0 0 0;position:relative;width:${project.embed_width}px; height:${project.embed_height}px;" data-projectid="${project.id}" data-hash="" data-version="${player.version_id}" data-context="preview" api-context="${import.meta.env.VITE_API_CONTEXT}" ${import.meta.env.VITE_API_CONTEXT == 'staging' ? "api-url="+import.meta.env.VITE_STAGING_API+"&analytics-api-url="+import.meta.env.VITE_STAGING_ANALYTICS_API : ''} ${import.meta.env.VITE_API_CONTEXT == 'local' ? "api-url="+import.meta.env.VITE_LOCAL_API+" analytics-api-url="+import.meta.env.VITE_LOCAL_ANALYTICS_API : ''}>
-                <div class="iv-player_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
-                    <div class="iv-player_embed iv-player_async_p2z7746nud videoFoam=true" style="height:100%;position:relative;width:100%">
-                        <div class="iv-player_swatch" style="height:100%;left:0;overflow:hidden;position:absolute;top:0;width:100%;">
-                        </div>
-                    </div>
+  let apiUrl = import.meta.env.VITE_PROD_API;
+  let analyticsUrl = import.meta.env.VITE_PROD_ANALYTICS_API;
+  const apiContext = import.meta.env.VITE_API_CONTEXT;
+  if(apiContext == "local") {
+    apiUrl = import.meta.env.VITE_LOCAL_API;
+    analyticsUrl = import.meta.env.VITE_LOCAL_ANALYTICS_API;
+  }
+  if(apiContext == "staging") {
+    apiUrl = import.meta.env.VITE_STAGING_API;
+    analyticsUrl = import.meta.env.VITE_STAGING_ANALYTICS_API;
+  }  
+  return `<div 
+            class="iv-player_responsive_padding" 
+            style="padding:56.25% 0 0 0;position:relative;width:${project.embed_width}px; height:${project.embed_height}px;" 
+            project-id="${project.id}" 
+            data-hash="" 
+            data-context="preview"
+            api-url=${apiUrl}
+            analytics-url=${analyticsUrl}
+          >
+            <div class="iv-player_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+              <div class="iv-player_embed iv-player_async_p2z7746nud videoFoam=true" style="height:100%;position:relative;width:100%">
+                <div class="iv-player_swatch" style="height:100%;left:0;overflow:hidden;position:absolute;top:0;width:100%;">
                 </div>
-            </div>`;
+              </div>
+            </div>
+          </div>`;
 }
 
 export function getPreviewEndpoint(projectId, startNodeId) {
