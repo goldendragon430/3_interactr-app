@@ -23,8 +23,7 @@ export async function login({email, password, redirectUrl}) {
     const request = await axios.post(import.meta.env.VITE_API_URL + '/auth/interactr/authenticate', {
       email, password
     })
-   setToken(request.data.data.token);
-
+    setToken(request.data.data.token);
     window.location.href = redirectUrl;
 }
 

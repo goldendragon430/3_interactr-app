@@ -61,7 +61,7 @@ const SelectInteractionModal = () => {
 					input: {
 						element_type: type,
 						element_id: parseInt(element.id),
-						timeIn: playedSeconds - 0.1, // This ensures the element shows on the video straight away
+						timeIn: playedSeconds - (playedSeconds ? 0.01 : 0), // This ensures the element shows on the video straight away
 						// If the media has no duration we default this to 1 so should the user change
 						// the media to one that does have a duration the timeline bar doesn't mess up
 						timeOut: duration ? duration : 1,
@@ -73,6 +73,7 @@ const SelectInteractionModal = () => {
 					},
 				},
 			});
+			console.log('TIGER', request);
 			setElementId(request.data.result.id);
 		} catch (err) {
 			console.error(err);

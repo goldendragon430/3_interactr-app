@@ -26,7 +26,7 @@ export const AddProjectModalBody = ({
 			show={show}
 			onClose={onClose}
 			height={650}
-			width={1100}
+			width={1300}
 			heading={
 				<>
 					<Icon name='plus' /> Create New Project

@@ -13,7 +13,7 @@ export const AddProjectButton = ({ children }) => {
       right
     >
       {children || "Create New Project"}
-      </LinkButton>
+    </LinkButton>
   );
 }
 

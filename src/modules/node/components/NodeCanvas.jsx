@@ -138,32 +138,34 @@ const Player = ({ media }) => {
   }, 100);
 
   return (
-    <EventListener name={VIDEO_SCRUB} func={seekToEvent}>
-      <ReactPlayer
-        key={media.id}
-        controls={false}
-        onReady={() => updatePlayer('ready', true)}
-        className={styles.player}
-        ref={(player) => {
-          // Strange bug with null getting passed in here and overriding the player
-          // object. Checking the passed in value is ! null before we override the
-          // player object seems to fix this.
-          if (player) mediaPlayer = player;
-        }}
-        width="100%"
-        height="100%"
-        playing={playing}
-        onPlay={() => updatePlayer('playing', true)}
-        onPause={() => updatePlayer('playing', false)}
-        onDuration={(duration) => updatePlayer('duration', duration)}
-        onProgress={({ playedSeconds }) => updatePlayer('playedSeconds', playedSeconds)}
-        url={getVideoUrl(media)}
-        muted={muted}
-        // Set the 100ms as that's the same as the animation time on the playhead so this makes
-        // the playhead move nice and smooth
-        progressInterval={100}
-      />
-    </EventListener>
+    <div className={styles.player}>
+      <EventListener name={VIDEO_SCRUB} func={seekToEvent}>
+        <ReactPlayer
+          key={media.id}
+          controls={false}
+          className={styles.player}
+          onReady={() => updatePlayer('ready', true)}
+          ref={(player) => {
+            // Strange bug with null getting passed in here and overriding the player
+            // object. Checking the passed in value is ! null before we override the
+            // player object seems to fix this.
+            if (player) mediaPlayer = player;
+          }}
+          width="100%"
+          height="100%"
+          playing={playing}
+          onPlay={() => updatePlayer('playing', true)}
+          onPause={() => updatePlayer('playing', false)}
+          onDuration={(duration) => updatePlayer('duration', duration)}
+          onProgress={({ playedSeconds }) => updatePlayer('playedSeconds', playedSeconds)}
+          url={getVideoUrl(media)}
+          muted={muted}
+          // Set the 100ms as that's the same as the animation time on the playhead so this makes
+          // the playhead move nice and smooth
+          progressInterval={100}
+        />
+      </EventListener>
+    </div>
   );
 };
 

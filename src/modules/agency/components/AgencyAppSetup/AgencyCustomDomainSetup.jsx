@@ -86,13 +86,22 @@ const CustomDomain = ({id}) => {
     setLoading(true);
 
     try {
-      await saveAgency({
-        variables: {
-          input: {
-            id, domain_verified: 0, domain: ""
-          }
-        }
-      })
+      // await saveAgency({
+      //   variables: {
+      //     input: {
+      //       id, domain_verified: 0, domain: ""
+      //     }
+      //   }
+      // })
+      const response = await phpApi('domains/remove', {
+        method: 'POST'
+      });
+
+      const data = await response.json();
+      if(data.success) {
+        updateAgency('domain_verified', data.agency.domain_verified);
+        updateAgency('domain', data.agency.domain);
+      }
     }
     catch(e){
       console.error(e)

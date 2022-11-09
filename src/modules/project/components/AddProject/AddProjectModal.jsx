@@ -27,8 +27,7 @@ export const AddProjectModal = () => {
 	const [loading, setLoading] = useState(false);
 	const { templateId } = useReactiveVar(getAddProject);
 	const [state, setState] = useSetState(INITIAL_STATE);
-	const { createBlankProject, createProjectFromTemplate } =
-		useProjectCommands();
+	const { createBlankProject, createProjectFromTemplate } = useProjectCommands();
 
 	// Func to run when the modal is closed by clicking the back button or
 	// the X at the top of the modal
@@ -41,6 +40,7 @@ export const AddProjectModal = () => {
 	};
 
 	const handleSubmit = async () => {
+		console.log('TIGER', state, templateId);
 		try {
 			let createdProject = {};
 
@@ -52,7 +52,9 @@ export const AddProjectModal = () => {
 				} = await createProjectFromTemplate({
 					variables: {
 						input: {
-							...state,
+							title: state.title,
+							description: state.description,
+							project_group_id: state.project_group_id,
 							templateId: parseInt(templateId),
 						},
 					},
@@ -67,10 +69,7 @@ export const AddProjectModal = () => {
 						input: {
 							...state,
 							embed_width: state.base_width,
-							project_group_id:
-								state.project_group_id === 'noFolder'
-									? null
-									: state.project_group_id,
+							project_group_id: state.project_group_id === 'noFolder' ? null : state.project_group_id,
 						},
 					},
 				});

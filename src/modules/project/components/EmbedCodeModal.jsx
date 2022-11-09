@@ -95,6 +95,7 @@ const TEMPLATE_QUERY = gql`
             embed_width
             embed_height
             published_path
+            image_url
         }
     }
 `

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { generateEmbedCodeForPreviewing, getPreviewEndpoint } from 'modules/project/utils';
 import styles from './ProjectPreview.module.scss';
 import Spinner from 'components/Spinner';
@@ -9,7 +9,6 @@ import {useSetState} from "../../../utils/hooks";
 import gql from "graphql-tag";
 import {useQuery} from "@apollo/client";
 import ErrorMessage from "../../../components/ErrorMessage";
-import { useEffect } from 'react';
 import { importScript } from 'utils/domUtils';
 
 const ProjectPreview = ({projectId, startNodeId, templateId,  ...props}) => {
@@ -50,6 +49,7 @@ const TEMPLATE_QUERY = gql`
             embed_width
             embed_height
             start_node_id
+            image_url
         }
     }
 `;
@@ -82,6 +82,7 @@ const PROJECT_QUERY = gql`
             embed_width
             embed_height
             start_node_id
+            image_url
         }
     }
 `;
@@ -119,8 +120,6 @@ const PreviewUsersProject = ({cacheBuster, projectId, startNodeId, ...props }) =
   />
 }
 
-
-
 const Preview = React.forwardRef(({project, startNodeId, player, cacheBuster ,frameRef, bigPlayColor}, ref) => {
   useEffect(() => {
     const wrapperUrl = import.meta.env.VITE_WRAPPER_URL;    
@@ -128,11 +127,11 @@ const Preview = React.forwardRef(({project, startNodeId, player, cacheBuster ,fr
     return () => {
       window.__ictr_wrpr_check__ = false;
     }
-  }, []);
+  }, []);  
 
   if(! project) return null;
   const html = generateEmbedCodeForPreviewing(project, player);
-  
+
   return (
     <div className={styles.wrapper}>
       {project.start_node_id === 0 && (
@@ -154,10 +153,9 @@ const Preview = React.forwardRef(({project, startNodeId, player, cacheBuster ,fr
             </div>
           ) :  (
             <div>
-               <div dangerouslySetInnerHTML={{__html: html}}/>
+              <div dangerouslySetInnerHTML={{__html: html}}/>
             </div>
-          )
-          }
+          )}
         </div>
       )}
     </div>

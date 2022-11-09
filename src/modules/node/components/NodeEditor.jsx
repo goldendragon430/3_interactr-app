@@ -42,6 +42,7 @@ const PROJECT_QUERY = gql`
 			base_height
 			embed_width
 			embed_height
+			image_url
 		}
 	}
 `;

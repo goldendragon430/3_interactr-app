@@ -2,17 +2,22 @@ import React from 'react';
 import Script from 'react-load-script';
 import styles from './sharePage.module.scss';
 
+function randomString(){
+  return  Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+}
+
 export default function SharePagePlayer({project, player}) {
  // const wrapperUrl = config.WRAPPER_PATH_PREFIX + "/production/" + player.version_id + "/player-wrapper.js";
- const wrapperUrl =  "/player-wrapper.js";
+ const wrapperUrl =  import.meta.env.VITE_WRAPPER_URL;
 
   if(project.published_path && !project.published_path.startsWith("https://swiftcdn6.global.ssl.fastly.net")) {
     return (
       <div className={styles.playerWrapper}>
-        <div class="iv-player_responsive_padding" style={{padding:"56.25% 0 0 0", position:"relative", width: project.embed_width, height: project.embed_height}} data-projectid={project.id} data-hash={project.storage_path?.split('/')[1]} data-version={player.version_id} data-context="play">
+        <div class="iv-player_responsive_padding" style={{padding:"56.25% 0 0 0", position:"relative", width: project.embed_width, height: project.embed_height}} data-hash={project.storage_path?.split('/')[1]}>
             <div class="iv-player_responsive_wrapper" style={{height:"100%", left:0, position: "absolute", top:0, width:"100%"}}>
                 <div class="iv-player_embed iv-player_async_p2z7746nud videoFoam=true" style={{height:"100%", position:"relative", width:"100%"}}>
-                    <div class="iv-player_swatch" style={{height:"100%", left:0, opacity:1, overflow:"hidden", position:"absolute", top:0, width:"100%"}}>
+                    <div class="iv-player_swatch" style={{height:"100%", left:0, opacity:0, overflow:"hidden", position:"absolute", top:0, width:"100%"}}>
+                      <img src={project.image_url} style={{filter:'blur(5px)', height:'100%', objectFit:'contain', width:'100%'}} alt="" aria-hidden="true" />
                     </div>
                 </div>
             </div>

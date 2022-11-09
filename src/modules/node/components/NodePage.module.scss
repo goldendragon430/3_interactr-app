@@ -11,6 +11,7 @@
   margin-left: 15px;
   border-radius: 10px;
   box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.4);
+  // overflow: hidden;
 }
 
 .canvasWrapper {
@@ -109,8 +110,10 @@ $SidebarWidth: 310px;
   top: 0;
   left: 0;
   width: 100%;
+  height: 100%;
   background: black;
   border-radius: 10px;
+  overflow: hidden;
 }
 
 

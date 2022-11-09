@@ -83,14 +83,13 @@ const LoggedInPage = () => {
 		console.error(error);
 		return <ErrorMessage error={error} />;
 	}
-
+	
 	if (error || !data.result) {
 		let redirectUrl = location.pathname;
 
 		if (location.search) {
 			redirectUrl += location.search;
 		}
-
 		return (
 			<Navigate
 				to={{

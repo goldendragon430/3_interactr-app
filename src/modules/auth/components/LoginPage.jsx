@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom'
 import Button from 'components/Buttons/Button';
 import LinkButton from 'components/Buttons/LinkButton'
@@ -12,9 +12,19 @@ import {useSetState} from "../../../utils/hooks";
 import {login} from "../utils";
 import {useReactiveVar} from "@apollo/client";
 import {getWhitelabel} from "../../../graphql/LocalState/whitelabel";
+import {setToken}  from '@/modules/auth/utils';
 
 const LoginPage = () => {
   const location = useLocation();
+  const searchQuery = new URLSearchParams(location.search);
+
+  useEffect(() => { 
+    const token = searchQuery.get('token');
+    if(token) {
+      setToken(token);
+      window.location.href = '/';
+    }
+  }, []);
 
   const [state, setState] = useSetState({
     email: '',
@@ -24,7 +34,6 @@ const LoginPage = () => {
     loading: false
   });
 
-  const searchQuery = new URLSearchParams(location.search);
   const redirectUrl = searchQuery.get('redirect') || '/';
 
   const whitelabel = useReactiveVar(getWhitelabel);
