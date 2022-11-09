@@ -8,7 +8,7 @@ import TuiChart from "tui-chart";
  * @param {Object} data the request payload , ie query details or data to insert etc...
  */
 function service(endpoint, method = 'post', data) {
-  return axios[method](`${import.meta.env.VITE_ANALYTICS_URL}/${import.meta.env.VITE_ANALYTICS_PROJECT_KEY}/${endpoint}`, data);
+  return axios[method](`${import.meta.env.VITE_ANALYTICS_URL}/api/${import.meta.env.VITE_ANALYTICS_PROJECT_KEY}/${endpoint}`, data);
 }
 
 /** Hits analytics service with queries object like so 
