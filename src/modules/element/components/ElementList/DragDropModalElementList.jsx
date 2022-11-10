@@ -152,7 +152,7 @@ export const DragDropModalElementList = ({ tabAnimation, elements }) => {
 			<Droppable 
 				droppableId='droppable'
 				type='droppableGroupItem'
-				renderClone={renderItem}
+				// renderClone={renderItem} // commented out by MagicPalm
 			>
 				{(provided, snapshot) => (
 					<div

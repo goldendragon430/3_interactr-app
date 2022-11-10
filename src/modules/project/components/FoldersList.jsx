@@ -62,17 +62,17 @@ export const FoldersList = ({ folders }) => {
         const [removed] = folders.splice(startIndex, 1);
         folders.splice(endIndex, 0, removed);
         
-        // const sortedFoldersData = sortBySortOrderNumber();
+        const sortedFoldersData = sortBySortOrderNumber();
 
-        // saveProjectGroupsSorting({
-        //     lists: sortedFoldersData
-        // });
-        // setFolders(sortedFoldersData);
+        saveProjectGroupsSorting({
+            lists: sortedFoldersData
+        });
+        setFolders(sortedFoldersData);
 
         // Add little delay to for updating 'projectGroups' smoothly without breaking drag&drop list
-        // setTimeout(() => {
-        //     setDragging(false);
-        // }, 2000);
+        setTimeout(() => {
+            setDragging(false);
+        }, 2000);
     };
 
     const onDragEnd = (result) => {
@@ -88,7 +88,7 @@ export const FoldersList = ({ folders }) => {
     return (
         <DragDropContext onDragEnd={onDragEnd}>
             <Droppable droppableId="droppable"
-                renderClone={renderItem}
+                // renderClone={renderItem} // commented out by MagicPalm
             >
                 {(provided, snapshot) => (
                     <DraggableContent

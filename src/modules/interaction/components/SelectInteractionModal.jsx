@@ -72,8 +72,7 @@ const SelectInteractionModal = () => {
 							element_group_id === 0 ? null : parseInt(element_group_id),
 					},
 				},
-			});
-			console.log('TIGER', request);
+			});			
 			setElementId(request.data.result.id);
 		} catch (err) {
 			console.error(err);

@@ -4,7 +4,7 @@ import cx from "classnames";
 
 export default class Label extends React.Component{
     render(){
-        const {primary, danger, children, secondary, tooltip, flash, small, style = {}, purple} = this.props;
+        const {primary, danger, children, secondary, tooltip, flash, small, style = {}, purple, onClick=null} = this.props;
 
         const classList = cx(styles.label, {
             [styles.primary]: primary,
@@ -15,6 +15,6 @@ export default class Label extends React.Component{
             [styles.purple] : purple
         });
 
-       return  <span style={style} className={classList} data-tip={tooltip}>{children}</span>
+       return  <span style={style} className={classList} data-tip={tooltip} onClick={onClick}>{children}</span>
     }
 }

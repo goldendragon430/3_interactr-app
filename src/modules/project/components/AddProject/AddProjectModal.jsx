@@ -40,7 +40,6 @@ export const AddProjectModal = () => {
 	};
 
 	const handleSubmit = async () => {
-		console.log('TIGER', state, templateId);
 		try {
 			let createdProject = {};
 
