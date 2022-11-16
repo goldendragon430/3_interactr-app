@@ -13,7 +13,7 @@ export default function SharePagePlayer({project, player}) {
   if(project.published_path && !project.published_path.startsWith("https://swiftcdn6.global.ssl.fastly.net")) {
     return (
       <div className={styles.playerWrapper}>
-        <div class="iv-player_responsive_padding" style={{padding:"56.25% 0 0 0", position:"relative", width: project.embed_width, height: project.embed_height}} data-hash={project.storage_path?.split('/')[1]}>
+        <div class="iv-player_responsive_padding" style={{padding:"56.25% 0 0 0", position:"relative"}} data-hash={project.storage_path?.split('/')[1]}>
             <div class="iv-player_responsive_wrapper" style={{height:"100%", left:0, position: "absolute", top:0, width:"100%"}}>
                 <div class="iv-player_embed iv-player_async_p2z7746nud videoFoam=true" style={{height:"100%", position:"relative", width:"100%"}}>
                     <div class="iv-player_swatch" style={{height:"100%", left:0, opacity:0, overflow:"hidden", position:"absolute", top:0, width:"100%"}}>

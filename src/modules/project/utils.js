@@ -10,14 +10,14 @@ export function generateEmbedCode(project, player, storagePath) {
   if (!project) return null;
 
   const wrapperUrl = import.meta.env.VITE_WRAPPER_URL;
-
+  
   if(project.published_path && !project.published_path.startsWith("https://swiftcdn6.global.ssl.fastly.net")) {
     return `<script type="text/javascript" src="${wrapperUrl}" async></script>
-            <div class="iv-player_responsive_padding" style="padding:56.25% 0 0 0;position:relative; width:${project.embed_width}px; height:${project.embed_height}px" data-hash="${project.storage_path?.split('/')[1]}"">
+            <div class="iv-player_responsive_padding" style="padding:56.25% 0 0 0;position:relative;" data-hash="${project.storage_path?.split('/')[1]}"">
               <div class="iv-player_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
                 <div class="iv-player_embed iv-player_async_p2z7746nud videoFoam=true" style="height:100%;position:relative;width:100%">
                   <div class="iv-player_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;width:100%;">
-                    <img src="${project.image_url}" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" />
+                    ${project.image_url ? `<img src="${project.image_url}" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" />` : ''}
                   </div>
                 </div>
               </div>
@@ -56,17 +56,7 @@ export function generateEmbedCodeForPreviewing(project, player) {
             <div class="iv-player_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
               <div class="iv-player_embed iv-player_async_p2z7746nud videoFoam=true" style="height:100%;position:relative;width:100%">
                 <div class="iv-player_swatch" style="height:100%;left:0;overflow:hidden;position:absolute;top:0;width:100%;">
-                  <img
-                    src="${project.image_url}"
-                    style="
-                      filter: blur(5px);
-                      height: 100%;
-                      object-fit: contain;
-                      width: 100%;
-                    "
-                    alt=""
-                    aria-hidden="true"
-                  />
+                  ${project.image_url ? `<img src="${project.image_url}" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" />` : ''}
                 </div>
               </div>
             </div>

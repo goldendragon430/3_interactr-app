@@ -14,16 +14,10 @@ const MediaEncodingUpdater = ({ media }) => {
   });
 
   if (loading) return <LoadingLabel />;
-
   if (error) return <Error error={error} />;
-
   if (!data.result) return <Error error={"No result for bunny cdn video"} />;
 
-  const { status } = data.result;
-
-  if (status === 5 || data.status === 6) return <Error />;
-
-  return <ShowLabelAndPollForUpdates item={data.result} />;
+  return <ShowLabelAndPollForUpdates item={data.result} media={media} />;
 };
 
 export default MediaEncodingUpdater;
@@ -47,28 +41,18 @@ const LoadingLabel = () => {
 };
 
 const Error = ({ error = null }) => {
-  // TODO need to implement retry functionality MagicPalm
-  const handleRetry = () => {
-    console.log("TIGER handleRetry");
-  };
-
   useEffect(() => {
     console.error(error);
   }, []);
 
   return (
-    <Label
-      onClick={handleRetry}
-      danger
-      style={{ marginTop: 2, cursor: "pointer" }}
-      small
-    >
-      Error! Click to Retry
+    <Label danger style={{ marginTop: 2 }} small>
+      Error!
     </Label>
   );
 };
 
-const ShowLabelAndPollForUpdates = ({ item }) => {
+const ShowLabelAndPollForUpdates = ({ item, media }) => {
   // _ the setter here so it doesn't override the window.setInterval method
   const [timeout, _setTimout] = useState(null);
 
@@ -113,6 +97,23 @@ const ShowLabelAndPollForUpdates = ({ item }) => {
     return () => clearTimeout(timeout);
   }, []);
 
+  // TODO need to implement retry functionality MagicPalm
+  const handleRetry = async () => {
+    if (media) {
+      const response = await apis.phpApi("bunnycdn/encode/" + media.id, {
+        method: "post",
+      });
+
+      const json = await response.json();
+      cache.modify({
+        id: cache.identify({ id: json.id, __typename: "BunnyCdnVideo" }),
+        fields: {
+          status: () => json.status,
+        },
+      });
+    }
+  };
+
   if (error) return <Error error={error} />;
 
   const { status } = item;
@@ -152,5 +153,30 @@ const ShowLabelAndPollForUpdates = ({ item }) => {
       </Label>
     );
 
+  if (status === 5) {
+    return (
+      <Label
+        onClick={handleRetry}
+        danger
+        style={{ marginTop: 2, cursor: "pointer" }}
+        small
+      >
+        Encoding Error! Click to Retry
+      </Label>
+    );
+  }
+
+  if (status == 6) {
+    return (
+      <Label
+        onClick={handleRetry}
+        danger
+        style={{ marginTop: 2, cursor: "pointer" }}
+        small
+      >
+        Upload Failed! Click to Retry
+      </Label>
+    );
+  }
   return <Error error={"Unknown bunny cdn status"} />;
 };

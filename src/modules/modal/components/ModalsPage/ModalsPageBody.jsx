@@ -44,7 +44,7 @@ export const ModalsPageBody = ({ data }) => {
 			projectId: parseInt(projectId),
 		});
 	};
-
+	
 	return (
 		<section style={{ width: '1200px' }}>
 			<div className={'grid'}>

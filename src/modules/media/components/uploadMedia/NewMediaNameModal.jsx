@@ -59,7 +59,7 @@ const NewMediaNameModal = ({ onClose, onBack }) => {
 
 		setLoading(true);
 
-		const { project_id, thumbnail_url } = newMediaObject;
+		const { project_id, thumbnail_url, is_image, temp_storage_url, url } = newMediaObject;
 		// const url = thumbnail_url ? thumbnail_url : '';
 		const projectId = project_id ? project_id : 0;
 		
@@ -73,9 +73,9 @@ const NewMediaNameModal = ({ onClose, onBack }) => {
 			const req = await createMedia({
 				variables: {
 					input: {
-						...newMediaObject,
 						...{ name },
-						// temp_storage_url: url,
+						thumbnail_url: thumbnail_url,
+						...newMediaObject,
 						project_id: projectId,
 						media_size: mediaRatio
 					},

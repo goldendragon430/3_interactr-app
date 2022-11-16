@@ -82,10 +82,10 @@ const MediaLibraryModal = ({ onError, onClose, onNext, onBack }) => {
 				manifest_url: media.manifest_url
 			},
 		});
-
-		const nextModal = media.is_image
-			? SHOW_MEDIA_NAME_MODAL
-			: SHOW_THUMBNAIL_SELECT_MODAL;
+		// const nextModal = media.is_image
+		// 	? SHOW_MEDIA_NAME_MODAL
+		// 	: SHOW_THUMBNAIL_SELECT_MODAL;
+		const nextModal = SHOW_MEDIA_NAME_MODAL;
 
 		onNext(nextModal, SHOW_UPLOAD_FROM_LIBRARY_MODAL);
 	};
