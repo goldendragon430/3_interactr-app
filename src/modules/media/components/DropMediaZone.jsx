@@ -138,7 +138,7 @@ export default class DropMediaZone extends React.Component {
         parts: uploadPartsArray,
         uploadId
       });
-
+      
       if (completeUploadResp.hasOwnProperty('Key')) {
         const filePath = completeUploadResp.Key;
         this.completeDropzoneUploading(filePath);
@@ -186,7 +186,6 @@ export default class DropMediaZone extends React.Component {
          * As we successfully get s3 bucket uploadId, we can start uploading file by chunks
          */
         await this.uploadMultipartFile(file, filePath, uploadId);
-
         return {};
       }
       // make simple uploading by presigned url
@@ -217,7 +216,7 @@ export default class DropMediaZone extends React.Component {
           success: true
         }, file
       );
-      remove();
+      remove && remove();
     }
     else {
       apis.phpApi(uploadSuccessEndpoint, {
@@ -290,7 +289,7 @@ export default class DropMediaZone extends React.Component {
         }}
         PreviewComponent={multipartUploading ? (({fileWithMeta}) => {
           const { file, meta } = fileWithMeta;
-
+          
           const duration = this.formatDuration(meta.duration);
           const size = this.formatBytes(file.size);
           const sizeAndDuration = `${duration}, ${size}`;

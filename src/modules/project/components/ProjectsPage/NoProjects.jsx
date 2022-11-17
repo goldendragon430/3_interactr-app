@@ -17,9 +17,9 @@ export const NoProjects = () => {
 				<Icon name='exclamation-triangle' size={'lg'} />
 			</h1>
 			<h2>No Projects Here...</h2>
-			<LinkButton to={addProjectPath()} primary large>
+			{/* <LinkButton to={addProjectPath()} primary large>
 				<Icon name={'plus'} /> Create A New Project
-			</LinkButton>
+			</LinkButton> */}
 		</div>
 	);
 };

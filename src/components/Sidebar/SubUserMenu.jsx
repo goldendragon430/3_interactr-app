@@ -15,13 +15,13 @@ const SubUserMenu = ({setClasses, list, item}) => {
             </motion.li>
 
             <motion.li  variants={item} >
-                <MenuItem icon="photo-video" className={setClasses('videos')} to={'/videos'}>
+                <MenuItem icon="photo-video" className={setClasses('videos')} to={'/media?filterBy=all&page=1&q=&orderBy=created_at&sortOrder=DESC&project_id=0&activeTab=all'}>
                     <span className={styles.menu_item_text}>Media Library</span>
                 </MenuItem>
             </motion.li>
 
             <motion.li  variants={item} >
-                <MenuItem icon="user" className={setClasses('account')} to={'/account/preferences'}>
+                <MenuItem icon="user" className={setClasses('account')} to={'/account'}>
                     <span className={styles.menu_item_text}>My Account</span>
                 </MenuItem>
             </motion.li>

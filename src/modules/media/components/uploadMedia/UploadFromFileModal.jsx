@@ -37,8 +37,7 @@ function UploadFromFileModal({onClose, onBack, onNext}) {
           initialFiles={droppedFiles}
           onError={()=>errorAlert({text: 'Unable to upload media'})}
           onSuccess={({src}, file) => {
-
-            const isImage = file.type !== 'video/mp4' ? 1 : 0;
+            const isImage = file && file.type !== 'video/mp4' ? 1 : 0;
             
             setAddMedia({
               newMediaObject: {

@@ -199,6 +199,7 @@ const Client = ({client, data}) => {
     })
   };
   const navigate = useNavigate();
+  
   return (
     <div className={cardStyles.Card} style={{padding: '15px'}}>
       <div style={{position:'absolute', top: '10px', right: '10px'}}>
