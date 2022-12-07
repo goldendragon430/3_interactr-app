@@ -109,7 +109,7 @@ const AddNodeNameModal = ({onClose, project}) => {
       />
       {(staticNode &&  <NodeDuration duration={duration} setDuration={setDuration} /> )}
       <label>Preview</label>
-      <div style={{width: 449}}>
+      <div style={{width: '100%', margin: '0 auto'}}>
         <SourceMediaPreview
           mediaId={media_id}
           name={name}

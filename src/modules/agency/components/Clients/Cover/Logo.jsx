@@ -52,7 +52,6 @@ const ShowLogoOrDropZone = ({subUser, saveLogo}) => {
     return <DropImageZone
         directory="companyLogos"
         onSuccess={image => {saveLogo(image.src)}}
-        src={subUser.logo}
     />;
 };
 

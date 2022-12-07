@@ -68,7 +68,7 @@ const AgencyUserForm = ({
 		}
 	}, [selectedUser]);
 
-	const changeHandler = (key) => (value) => {		
+	const changeHandler = (key) => (value) => {				
 		setState({ [key]: value });
 	};
 
@@ -269,10 +269,9 @@ const ClientDetails = ({
 }) => {
 	const { company_name, logo } = user;
 
-	const handleUpload =
-		({ src }) =>
-		(src) =>
-			changeHandler('company_logo');
+	const handleUpload = ({ src }) => {
+		changeHandler('logo')(src);
+	};
 
 	const handleError = (error) => {
 		return errorAlert({
@@ -295,8 +294,8 @@ const ClientDetails = ({
 					<div className='form-control'>
 						<label>Company Logo</label>
 						<div className={'grid'}>
-							<div className={'col12'}>
-								<img src={user.logo} className={'img-fluid'} />
+							<div className='vertical-center' style={{ width: '600px', height: '170px', marginTop: '10px', marginBottom: '10px', marginRight: 'auto', marginLeft: 'auto', overflow: 'hidden', borderRadius: '10px'}}>
+								<img src={user.logo} className={'img-fluid'} style={{width: '100%', margin: '0 auto', height: 'max-content', maxHeight: 'max-content'}} />
 							</div>
 							<div className={'col12'}>
 								<DropImageZone

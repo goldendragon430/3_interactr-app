@@ -56,7 +56,7 @@ const UserDetails = ({id, name, email, avatar_url, company_name, logo, onSelect,
       </TableColumn>
       <TableColumn span={2}>
         <p>
-          {(logo) ? <img src={logo} className={'img-fluid'}/> : '-'}
+          {(logo) ? <img src={logo} className={'img-fluid'} style={{width: '110px', height: '45px', borderRadius: '5px'}}/> : '-'}
         </p>
       </TableColumn>
       <TableColumn span={2}>
