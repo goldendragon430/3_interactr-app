@@ -1,6 +1,6 @@
 import React from 'react';
 import Swal from 'sweetalert2';
-import Dropzone from 'react-dropzone-uploader';
+import Dropzone from 'react-dropzone-uploader/dist/react-dropzone-uploader.js';
 import { getToken } from '@/modules/auth/utils';
 
 const ACCEPT = ['image/jpeg', 'image/png', 'image/gif'];
