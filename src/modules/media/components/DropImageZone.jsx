@@ -1,6 +1,6 @@
 import React from 'react';
 import Swal from 'sweetalert2';
-// import Dropzone from 'react-dropzone-uploader';
+import Dropzone from 'react-dropzone-uploader';
 import { getToken } from '@/modules/auth/utils';
 
 const ACCEPT = ['image/jpeg', 'image/png', 'image/gif'];
@@ -79,44 +79,57 @@ export default function DropImageZone({
 		};
 	};
 
-	return (
-		<div>
-			{src && (
-				<div style={imageStyles} className='transparentBackground'>
-					<img src={src} style={{ maxWidth: '100%', maxHeight: '150px' }} />
-				</div>
-			)}
+	// return (
+	// 	<div>
+	// 		{src && (
+	// 			<div style={imageStyles} className='transparentBackground'>
+	// 				<img src={src} style={{ maxWidth: '100%', maxHeight: '150px' }} />
+	// 			</div>
+	// 		)}
 
-			{/* <Dropzone
-				getUploadParams={getUploadParams}
-				onChangeStatus={handleChangeStatus}
-				accept={'image/*'}
-				maxFiles={1}
-				multiple={false}
-				canCancel={false}
-				inputContent={
-					heading ? (
-						<h4
-							style={{
-								textAlign: 'center',
-								textTransform: 'uppercase',
-								fontWeight: 800,
-							}}
-						>
-							{heading} <br />
-							<small style={{ textTransform: 'uppercase', fontWeight: 300 }}>
-								or click here to browse your computer
-							</small>
-						</h4>
-					) : (
-						'Select from picker or drop files here to upload'
-					)
-				}
-				styles={{
-					dropzone: { overflow: 'auto', height: 100, borderStyle: 'dashed' },
-					inputLabel: { color: '#8c8e90' },
-				}}
-			/> */}
-		</div>
-	);
+	// 		<Dropzone
+	// 			getUploadParams={getUploadParams}
+	// 			onChangeStatus={handleChangeStatus}
+	// 			accept={'image/*'}
+	// 			maxFiles={1}
+	// 			multiple={false}
+	// 			canCancel={false}
+	// 			inputContent={
+	// 				heading ? (
+	// 					<h4
+	// 						style={{
+	// 							textAlign: 'center',
+	// 							textTransform: 'uppercase',
+	// 							fontWeight: 800,
+	// 						}}
+	// 					>
+	// 						{heading} <br />
+	// 						<small style={{ textTransform: 'uppercase', fontWeight: 300 }}>
+	// 							or click here to browse your computer
+	// 						</small>
+	// 					</h4>
+	// 				) : (
+	// 					'Select from picker or drop files here to upload'
+	// 				)
+	// 			}
+	// 			styles={{
+	// 				dropzone: { overflow: 'auto', height: 100, borderStyle: 'dashed' },
+	// 				inputLabel: { color: '#8c8e90' },
+	// 			}}
+	// 		/>
+	// 	</div>
+	// );
+	
+  
+  // receives array of files that are done uploading when submit button is clicked
+  const handleSubmit = (files) => { console.log(files.map(f => f.meta)) }
+ 
+  return (
+    <Dropzone
+      getUploadParams={getUploadParams}
+      onChangeStatus={handleChangeStatus}
+      onSubmit={handleSubmit}
+      accept="image/*,audio/*,video/*"
+    />
+  )
 }
