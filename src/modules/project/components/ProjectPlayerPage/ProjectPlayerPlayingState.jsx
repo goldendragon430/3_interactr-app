@@ -4,7 +4,7 @@ import { animationState, preAnimationState, transition } from "../../../../compo
 import Button from "../../../../components/Buttons/Button";
 import { BooleanInput, Option } from "../../../../components/PropertyEditor";
 import ColorPicker from "../../../../components/ColorPicker";
-// import DropImageZone from "../../../media/components/DropImageZone";
+import DropImageZone from "../../../media/components/DropImageZone";
 
 const ProjectPlayerPlayingState = ({project, update, updateSkin , updateEditingStatus}) => {
 
@@ -42,15 +42,15 @@ const ProjectPlayerPlayingState = ({project, update, updateSkin , updateEditingS
               stackOrder={2}
               onChange={updateSkin('background', {controls: true})}
             />
-            {/* <div className="form-control">
+            <div className="form-control">
               <label>Branding Image</label>
               <DropImageZone
-                onSuccess={({src}) => updateProject('branding_image_src', src)}
+                onSuccess={({src}) => update('branding_image_src')(src)}
                 src={project.branding_image_src}
                 directory="brandingImages"
               />
-              {!!project.branding_image_src && <Button onClick={() => update('branding_image_src', null)} style={{marginTop: '10px'}}>Clear Image</Button>}
-            </div> */}
+              {!!project.branding_image_src && <Button onClick={() => update('branding_image_src')(null)} style={{marginTop: '10px'}}>Clear Image</Button>}
+            </div>
         </div>
       </motion.div>
     </AnimatePresence>

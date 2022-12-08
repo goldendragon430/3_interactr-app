@@ -2,18 +2,11 @@ import React, {useEffect, useState} from 'react';
 import {
   Section,
   Option,
-  SizeInput,
-  PositionInput,
   BooleanInput,
-  TextInput,
-  SelectInput,
   IntegerInput,
   InlineBooleanInput
 } from 'components/PropertyEditor';
-import DropMediaImageZone from 'modules/media/components/DropMediaImageZone';
 import DropImageZone from 'modules/media/components/DropImageZone';
-import DropFileZone from 'modules/media/components/DropFileZone';
-import {useSetState} from "../../../utils/hooks";
 import {useProjectCommands} from "../../../graphql/Project/hooks";
 import Button from "../../../components/Buttons/Button";
 import {errorAlert} from "../../../utils/alert";

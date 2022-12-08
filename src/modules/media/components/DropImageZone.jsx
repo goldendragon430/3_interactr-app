@@ -29,7 +29,7 @@ const handleSuccess = () => {
 
 export default function DropImageZone({
 	onSuccess,
-	onError,
+	onError = null,
 	src,
 	directory,
 	children,
@@ -39,10 +39,14 @@ export default function DropImageZone({
 	height = null,
 	heading = 'Drag and drop here',
 }) {
+	
 	let imageStyles = {
 		height: height ?? height,
 		marginBottom: '15px',
+		padding: '10px',
+		textAlign: 'center',
 		width: width ?? width,
+		overflow: 'hidden'
 	};
 
 	const handleChangeStatus = (
@@ -53,16 +57,17 @@ export default function DropImageZone({
 			case 'preparing':
 				break;
 			case 'error_upload':
-				onError('There was a problem trying to upload this file.');
+				onError ? onError('There was a problem trying to upload this file.') : handleError('There was a problem trying to upload this file.');
 				break;
 			case 'rejected_file_type':
-				onError('Invalid extension');
+				onError ? onError('Invalid extension') : handleError('Invalid extension');
 				break;
 			case 'aborted':
 				break;
 			case 'header_received':
 				break;
 			case 'done':
+				handleSuccess();
 				onSuccess({ src: xhr.response }, remove, file);
 				remove();
 				break;
@@ -85,7 +90,7 @@ export default function DropImageZone({
 		<div>
 			{src && (
 				<div style={imageStyles} className='transparentBackground'>
-					<img src={src} style={{ maxWidth: '100%', maxHeight: 250 }} />
+					<img src={src} style={{ maxWidth: '100%', maxHeight: '150px' }} />
 				</div>
 			)}
 
