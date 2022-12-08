@@ -21,7 +21,6 @@ const _propTypes = {
 };
 
 const HeaderRow = ({heading, right, meta, headerStyles , className, subnav}) => {
-  const whitelabel = useReactiveVar(getWhitelabel);;
 
   let customHeaderStyles = {};
 
@@ -30,10 +29,6 @@ const HeaderRow = ({heading, right, meta, headerStyles , className, subnav}) => 
       ...headerStyles
     }
   }
-
-  // if (whitelabel) {
-  //   customHeaderStyles.background = whitelabel.background_colour;
-  // }
 
   return (
     <motion.div className={cx(styles.header, className)} style={customHeaderStyles} animate={{opacity: 1}}>

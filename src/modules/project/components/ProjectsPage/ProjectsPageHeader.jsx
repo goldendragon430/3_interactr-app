@@ -26,7 +26,6 @@ export const ProjectsPageHeader = ({
 	headerStyles,
 	className,
 }) => {
-	const whitelabel = useReactiveVar(getWhitelabel);
 
 	let customHeaderStyles = {};
 
@@ -34,10 +33,6 @@ export const ProjectsPageHeader = ({
 		customHeaderStyles = {
 			...headerStyles,
 		};
-	}
-
-	if (whitelabel) {
-		customHeaderStyles.background = whitelabel.background_colour;
 	}
 
 	return (
