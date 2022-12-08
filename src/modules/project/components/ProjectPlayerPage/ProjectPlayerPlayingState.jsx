@@ -1,11 +1,9 @@
 import React, { useEffect } from 'react';
-import {AnimatePresence, motion} from "framer-motion";
-import {animationState, preAnimationState, transition} from "../../../../components/PageBody";
-import styles from "../PlayerSettingsPage.module.scss";
+import { AnimatePresence, motion } from "framer-motion";
+import { animationState, preAnimationState, transition } from "../../../../components/PageBody";
 import Button from "../../../../components/Buttons/Button";
-import {BooleanInput, Option} from "../../../../components/PropertyEditor";
-import ColorPicker from "../../../../components/ColorPicker";
-import ProjectPreview from "../ProjectPreview";
+import { BooleanInput, Option } from "../../../../components/PropertyEditor";
+// import ColorPicker from "../../../../components/ColorPicker";
 import DropImageZone from "../../../media/components/DropImageZone";
 
 const ProjectPlayerPlayingState = ({project, update, updateSkin , updateEditingStatus}) => {
@@ -30,7 +28,7 @@ const ProjectPlayerPlayingState = ({project, update, updateSkin , updateEditingS
               value={show_controls}
               onChange={update('show_controls')}
             />
-            <Option
+            {/* <Option
               label="Controls Icon Color"
               value={player_skin.controls.color}
               Component={ColorPicker}
@@ -43,7 +41,7 @@ const ProjectPlayerPlayingState = ({project, update, updateSkin , updateEditingS
               Component={ColorPicker}
               stackOrder={2}
               onChange={updateSkin('background', {controls: true})}
-            />
+            /> */}
             <div className="form-control">
               <label>Branding Image</label>
               <DropImageZone
