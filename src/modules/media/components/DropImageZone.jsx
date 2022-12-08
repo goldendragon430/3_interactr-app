@@ -1,6 +1,6 @@
 import React from 'react';
 import Swal from 'sweetalert2';
-import Dropzone from 'react-dropzone-uploader';
+// import Dropzone from 'react-dropzone-uploader';
 import { getToken } from '@/modules/auth/utils';
 
 const ACCEPT = ['image/jpeg', 'image/png', 'image/gif'];
@@ -87,7 +87,7 @@ export default function DropImageZone({
 				</div>
 			)}
 
-			<Dropzone
+			{/* <Dropzone
 				getUploadParams={getUploadParams}
 				onChangeStatus={handleChangeStatus}
 				accept={'image/*'}
@@ -116,7 +116,7 @@ export default function DropImageZone({
 					dropzone: { overflow: 'auto', height: 100, borderStyle: 'dashed' },
 					inputLabel: { color: '#8c8e90' },
 				}}
-			/>
+			/> */}
 		</div>
 	);
 }
