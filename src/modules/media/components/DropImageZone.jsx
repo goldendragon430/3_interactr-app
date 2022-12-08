@@ -1,10 +1,7 @@
 import React from 'react';
 import Swal from 'sweetalert2';
 import Dropzone from 'react-dropzone-uploader';
-// import DropMediaZone from 'modules/media/components/DropMediaZone';
-
 import { getToken } from '@/modules/auth/utils';
-import { errorAlert } from 'utils';
 
 const ACCEPT = ['image/jpeg', 'image/png', 'image/gif'];
 const EXTENSIONS = ['jpeg', 'jpg', 'png', 'gif'];
@@ -31,10 +28,6 @@ export default function DropImageZone({
 	onSuccess,
 	onError = null,
 	src,
-	directory,
-	children,
-	style,
-	multipartUploading = false,
 	width = null,
 	height = null,
 	heading = 'Drag and drop here',
