@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { generateEmbedCodeForPreviewing, getPreviewEndpoint } from 'modules/project/utils';
+import { generateEmbedCodeForPreviewing } from 'modules/project/utils';
 import styles from './ProjectPreview.module.scss';
 import Spinner from 'components/Spinner';
 import VideoPlayer from '../../../components/VideoPlayer';

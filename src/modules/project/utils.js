@@ -33,17 +33,10 @@ export function generateEmbedCode(project, player, storagePath) {
 
 
 export function generateEmbedCodeForPreviewing(project, player) {
-  let apiUrl = import.meta.env.VITE_PROD_API;
-  let analyticsUrl = import.meta.env.VITE_PROD_ANALYTICS_API;
-  const apiContext = import.meta.env.VITE_API_CONTEXT;
-  if(apiContext == "local") {
-    apiUrl = import.meta.env.VITE_LOCAL_API;
-    analyticsUrl = import.meta.env.VITE_LOCAL_ANALYTICS_API;
-  }
-  if(apiContext == "staging") {
-    apiUrl = import.meta.env.VITE_STAGING_API;
-    analyticsUrl = import.meta.env.VITE_STAGING_ANALYTICS_API;
-  }
+
+  let apiUrl = import.meta.env.VITE_API_URL;
+  let analyticsUrl = import.meta.env.VITE_ANALYTICS_URL;
+  
   return `<div 
             class="iv-player_responsive_padding" 
             style="padding:56.25% 0 0 0;position:relative;width:${project.embed_width}px; height:${project.embed_height}px;" 
@@ -61,18 +54,6 @@ export function generateEmbedCodeForPreviewing(project, player) {
               </div>
             </div>
           </div>`;
-}
-
-export function getPreviewEndpoint(projectId, startNodeId) {
-  let previewEndpoint = import.meta.env.VITE_API_URL + `/api/preview/${projectId}` + '?';
-
-  if (import.meta.env.NODE_ENV === 'development' && import.meta.env.VITE_PLAYER_PREVIEW_ENV) {
-    previewEndpoint += `env=${import.meta.env.VITE_PLAYER_PREVIEW_ENV}`;
-  }
-  if (startNodeId) {
-    previewEndpoint = `${previewEndpoint}&startNodeId=${startNodeId}`;
-  }
-  return previewEndpoint;
 }
 
 export function publishedProjectUrl(hash) {

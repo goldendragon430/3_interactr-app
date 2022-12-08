@@ -85,9 +85,8 @@ const RootPage = () => {
 
       const req = await phpApi(`get-whitelabel-for-domain`);
       const body = await req.json();
-
+      
       setWhitelabel(body);
-
       setCheckingWhitelabel(false);
     };
 
