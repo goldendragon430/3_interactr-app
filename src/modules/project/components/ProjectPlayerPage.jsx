@@ -106,7 +106,6 @@ const PageBody = ({ project, updateProject }) => {
 
   const changeHandler = (name) => (val) => {
     if (typeof val === 'boolean') val = val ? 1 : 0;
-    console.log('TIGER', name, val);
     updateProject(name, val);
   };
 

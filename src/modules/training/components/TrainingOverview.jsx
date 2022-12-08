@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PageBody from "../../../components/PageBody";
 import {Route, Routes, useNavigate} from "react-router-dom";
 import TrainingPage from "./TrainingPage";
@@ -15,10 +15,11 @@ const TrainingOverview = () => {
   const acl = useReactiveVar(getAcl);
   const whitelabel = useReactiveVar(getWhitelabel);
 
-  if(acl.isSubUser || whitelabel) {
-    navigate(projectsPath());
-    return null;
-  }
+  useEffect(() => {
+    if(acl.isSubUser || whitelabel) {
+      navigate(projectsPath());
+    }
+  }, [acl, whitelabel]);
 
   return (
     <PageBody  subnav={<TrainingSubNav />}>

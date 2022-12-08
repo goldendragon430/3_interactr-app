@@ -31,9 +31,9 @@ const HeaderRow = ({heading, right, meta, headerStyles , className, subnav}) => 
     }
   }
 
-  if (whitelabel) {
-    customHeaderStyles.background = whitelabel.background_colour;
-  }
+  // if (whitelabel) {
+  //   customHeaderStyles.background = whitelabel.background_colour;
+  // }
 
   return (
     <motion.div className={cx(styles.header, className)} style={customHeaderStyles} animate={{opacity: 1}}>
