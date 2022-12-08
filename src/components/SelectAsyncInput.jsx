@@ -17,6 +17,18 @@ import Select from 'react-select';
  * @constructor
  */
 const SelectAsyncInput = ({value, options, onChange, onLazyLoad, valueKey = 'value',  ...props}) => {
+    const customStyles = {
+		menu: (provided, state) => ({
+			...provided,
+			zIndex: 500
+		}),
+
+		control: (provided, state) => ({
+			...provided,
+			borderRadius : 10
+		}),
+	}
+    
     return (
         <Select
             {...props}
@@ -24,8 +36,9 @@ const SelectAsyncInput = ({value, options, onChange, onLazyLoad, valueKey = 'val
             options={options}
             onOpen={() => { return null; }}
             onChange={({[valueKey]: value}) => onChange(value)}
-            defaultValue={value}
-            // onMenuScrollToBottom={onLazyLoad}
+            defaultValue={options.filter(item => item.value == value)}
+            onMenuScrollToBottom={onLazyLoad}
+            styles={customStyles}
             // clearable={false}
             // searchable={false}
         />

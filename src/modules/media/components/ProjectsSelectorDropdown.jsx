@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { SelectInput } from 'components/PropertyEditor';
+import SelectAsyncInput from "components/SelectAsyncInput";
 import { useMediaLibraryProjects } from '../utils';
 
 import styles from 'modules/project/components/ProjectsPage.module.scss';
@@ -40,10 +41,11 @@ export const ProjectsSelectorDropdown = ({ projectId, onChange }) => {
 				<label style={{ paddingTop: '5px' }}>Filter By Project</label>
 			</div>
 			<div className={styles.sortOptions}>
-				<SelectInput
+				<SelectAsyncInput
 					options={projectsSelectList()}
 					value={parseInt(projectId)}
 					onChange={onChange}
+					onLazyLoad={handleProjectsLazyLoad}
 				/>
 			</div>
 		</>

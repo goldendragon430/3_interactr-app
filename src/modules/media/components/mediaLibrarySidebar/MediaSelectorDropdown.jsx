@@ -38,14 +38,13 @@ const MediaSelectorDropdown = ({ projectId, mediaId, onChange }) => {
     const mediaPaginator = data.result.paginatorInfo || {};
 
     const mediasSelectList = () => {
-        const defaultOption = [{ name: 'No Media', id: "0", clearableValue: false }];
+        const defaultOption = [{ label: 'No Media', value: "0"}];
 
         const mediaOptions = map(medias, media => ({
-            id: media.id,
-            name: media.name,
-            clearable: false
+            value: media.id,
+            label: media.name,
         }));
-
+        
         return  [...defaultOption, ...mediaOptions];
     };
 
@@ -73,14 +72,10 @@ const MediaSelectorDropdown = ({ projectId, mediaId, onChange }) => {
 
     return (
         <SelectAsyncInput
-            labelKey="name"
-            valueKey="id"
             options={mediasSelectList()}
             value={parseInt(mediaId)}
             onChange={onChange}
             onLazyLoad={handleProjectsLazyLoad}
-            clearable={false}
-            searchable={false}
         />
     )
 };
