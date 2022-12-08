@@ -79,7 +79,7 @@ const Screenshot = ({project}) => {
   }
 
   if(! project.share_page_screenshot) {
-    return 'test';
+    return 'Please publish project';
   }
 
   return <img alt={'Share Page Screenshot'} src={project.share_page_screenshot} width="500px" height="600px"  style={{borderRadius: '10px', boxShadow: 'rgb(0 0 0 / 6%) 0px 2px 20px'}} />
