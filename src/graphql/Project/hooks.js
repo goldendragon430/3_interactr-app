@@ -75,6 +75,8 @@ export const useProjectCommands = (id = null) => {
         // if brand new project added in folder, update folder totals
         updateProjectGroupTotals(cache, copyProject);
       }
+
+      updateProjectList(cache, copyProject);
     }
   });
 

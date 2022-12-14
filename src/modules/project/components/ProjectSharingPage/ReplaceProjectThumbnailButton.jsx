@@ -31,12 +31,10 @@ const ReplaceProjectThumbnailButton = () => {
           }
         }
       })
-
       success("Project Thumbnail Updated")
 
       setType(null)
-
-    }catch(err){
+    } catch(err) {
       console.error(err);
       errorAlert({text: 'Unable to save thumbnail'})
     }

@@ -127,11 +127,11 @@ const Preview = React.forwardRef(({project, startNodeId, player, cacheBuster ,fr
     return () => {
       window.__ictr_wrpr_check__ = false;
     }
-  }, []);  
+  }, [project]);  
 
   if(! project) return null;
   const html = generateEmbedCodeForPreviewing(project, player);
-
+  
   return (
     <div className={styles.wrapper}>
       {project.start_node_id === 0 && (
