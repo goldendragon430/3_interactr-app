@@ -36,6 +36,13 @@
   border-bottom: 3px solid $primary;
 }
 
+.react-tabs__tab--selected::after {
+  // color: $grey-dark;
+  // border: 1px solid #ddd;
+  // border-bottom: 1px solid #fff;
+  border-bottom: 3px solid $primary;
+}
+
 .react-tabs__tab-panel {
   color: $grey-dark;
   width: 100%;

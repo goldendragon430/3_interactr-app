@@ -30,7 +30,7 @@ export default function SharingDataTabs({
   }
 
   return (
-    <Tabs defaultTab="facebook">
+    <Tabs defaultTab="facebook" defaultFocus={false} focusTabOnClick={false}>
       <TabList>
         <Tab>
           <h4 className="faded-heading">
