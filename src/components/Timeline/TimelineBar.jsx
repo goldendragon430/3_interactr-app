@@ -18,6 +18,12 @@ import {useInteractionCommands} from "../../graphql/Interaction/hooks";
 import {toast} from "react-toastify";
 import {errorAlert} from "../../utils/alert";
 import Emitter, {NODE_PAGE_SAVE_COMPLETE, NODE_PAGE_SAVE_START} from "../../utils/EventEmitter";
+import { AnimatePresence, motion } from "framer-motion";
+import ContentLoader from "react-content-loader";
+
+const preAnimationState = {opacity: 0, x: '50px'};
+const animationState = {opacity: 1, x: 0};
+const transition = { type: "spring", duration: 0.3, bounce: 0.2, damping: 15};
 
 
 /**
@@ -236,82 +242,99 @@ const PLAYER_QUERY = gql`
 `;
 const Bar = ({name, onNameClick, show_at_video_end, onBarClick, timeIn, timeOut, id, selected, children, isInteractionLayer, onChange}) => {
   const {data, loading, error} = useQuery(PLAYER_QUERY);
-  const [state, setState] = useState({x: 0, y: 0, w: 10, h: 30, gotDimensions: false});
+  // const [state, setState] = useState(null);
+  const [x, setX] = useState(null);
+  const [y, setY] = useState(null);
+  const [w, setW] = useState(null);
 
   if(loading || error) return null;
 
   const {duration} = data.player;
 
-
-  /**
-   * Messy hack because the timeline bar doesn't work if it can't find the wrapper
-   * in the dom
-   * @type {number}
-   */
-  const interval = setInterval(()=>{
-    if(state.gotDimensions) clearInterval(interval);
-
+  useEffect(() => {
     const dimensions = getDimensions(duration, timeIn, timeOut);
-
     if(dimensions) {
-      clearInterval(interval)
-      setState(dimensions);
+      setX(dimensions.x);
+      setY(dimensions.y);
+      setW(dimensions.w);
     }
+  }, [duration])
 
-  }, 1000);
+  const random = Math.random() * (1 - 0.7) + 0.7
 
-
-  const {x, y, w, h} = state;
-  
   return(
-    <>
+   <div>
       <ReactTooltip />
       <div className={parentStyles.elementName} onClick={()=>onNameClick(id)}>
         <small>
           <Icon name={'edit'}/>&nbsp;{name}
         </small>
       </div>
-      <div className={parentStyles.bars}>
-        { !!duration && (
-          (! show_at_video_end) ?
-            <TimelineDragResize
-              key={id}
-              pos={{x, y}}
-              itemWidth={w}
-              className={cx(styles.bar, {[styles.selected] : selected })}
-              onClick={()=>onBarClick(id)}
-              onChange={(from, to)=>onChange({ timeIn: parseFloat(from), timeOut: parseFloat(to) })}
-              timelineDuration={duration}
-            >
-             <span style={{position: 'absolute', top: '7px', left : '1px', cursor: 'col-resize'}}><Icon name="grip-lines-vertical" /></span>
-                {children}
-             <span style={{position: 'absolute', top: '7px', right :'-4px', zIndex: 5, cursor: 'col-resize'}}><Icon name="grip-lines-vertical" /></span>
-            </TimelineDragResize>
-            :
-            // Don't render a timeline bar if the show_at_Video_end toggle is set to true
-            <TimelineDisabled isInteractionLayer={isInteractionLayer} />
-        )}
-      </div>
-      <div className={parentStyles.startEndTime}>
-        <div className={parentStyles.startEndTimeForm}>
-          {
-            (show_at_video_end) ?
-              <small>-</small> :
-              <small>{ timeFromSeconds(timeIn) }</small>
-          }
-        </div>
-        <div className={parentStyles.startEndTimeForm}>
-          {
-            (show_at_video_end) ?
-              <small>-</small> :
-              <small>{ timeFromSeconds(timeOut) }</small>
-          }
-        </div>
-        <div className={parentStyles.startEndTimeCheckbox}  style={{paddingLeft: '3px'}} data-tip={'Show When Video Ends'}>
-          {!isInteractionLayer && <Checkbox value={show_at_video_end} onChange={val => onChange({"show_at_video_end": val})}/>}
-        </div>
-      </div>
-    </>
+      {
+        x != null ?
+        <AnimatePresence>
+          <motion.section
+              exit={preAnimationState}
+              initial={preAnimationState}
+              animate={animationState}
+              transition={transition}
+          >
+            <div className={parentStyles.bars}>
+              { !!duration && (
+                (! show_at_video_end) ?
+                  <TimelineDragResize
+                    key={id}
+                    pos={{x, y}}
+                    itemWidth={w}
+                    className={cx(styles.bar, {[styles.selected] : selected })}
+                    onClick={()=>onBarClick(id)}
+                    onChange={(from, to)=>onChange({ timeIn: parseFloat(from), timeOut: parseFloat(to) })}
+                    timelineDuration={duration}
+                  >
+                  <span style={{position: 'absolute', top: '7px', left : '1px', cursor: 'col-resize'}}><Icon name="grip-lines-vertical" /></span>
+                      {children}
+                  <span style={{position: 'absolute', top: '7px', right :'-4px', zIndex: 5, cursor: 'col-resize'}}><Icon name="grip-lines-vertical" /></span>
+                  </TimelineDragResize>
+                  :
+                  // Don't render a timeline bar if the show_at_Video_end toggle is set to true
+                  <TimelineDisabled isInteractionLayer={isInteractionLayer} />
+              )}
+            </div>
+            <div className={parentStyles.startEndTime}>
+              <div className={parentStyles.startEndTimeForm}>
+                {
+                  (show_at_video_end) ?
+                    <small>-</small> :
+                    <small>{ timeFromSeconds(timeIn) }</small>
+                }
+              </div>
+              <div className={parentStyles.startEndTimeForm}>
+                {
+                  (show_at_video_end) ?
+                    <small>-</small> :
+                    <small>{ timeFromSeconds(timeOut) }</small>
+                }
+              </div>
+              <div className={parentStyles.startEndTimeCheckbox}  style={{paddingLeft: '3px'}} data-tip={'Show When Video Ends'}>
+                {!isInteractionLayer && <Checkbox value={show_at_video_end} onChange={val => onChange({"show_at_video_end": val})}/>}
+              </div>
+            </div>
+          </motion.section>
+        </AnimatePresence>
+        : (
+          <ContentLoader viewBox="0 0 900 40" height={40} width={1060}>
+            <rect x="0" y="15" rx="4" ry="4" width="6" height="6.4" />
+            <rect x="34" y="13" rx="6" ry="6" width={200 * random} height="12" />
+            <rect x="633" y="13" rx="6" ry="6" width={23 * random} height="12" />
+            <rect x="653" y="13" rx="6" ry="6" width={78 * random} height="12" />
+            <rect x="755" y="13" rx="6" ry="6" width={117 * random} height="12" />
+            <rect x="938" y="13" rx="6" ry="6" width={83 * random} height="12" />
+
+            <rect x="0" y="39" rx="6" ry="6" width="900" height=".3" />
+          </ContentLoader>
+        )
+      }
+    </div>
   );
 };
 

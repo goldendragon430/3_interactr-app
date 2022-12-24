@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import { AnimatePresence, motion } from "framer-motion";
 import {DragDropContext, Draggable, Droppable} from "react-beautiful-dnd";
 import styles from './ProjectsPage.module.scss';
 import FilterInput from 'components/FilterInput';
@@ -13,6 +14,10 @@ import {useSetState} from "../../../utils/hooks";
 import NodeChapterCard from "../../node/components/NodeChapterCard";
 import {useSortingNodes} from "../../../graphql/Node/hooks";
 import Icon from "../../../components/Icon";
+
+const preAnimationState = {opacity: 0, x: '50px'};
+const animationState = {opacity: 1, x: 0};
+const transition = { type: "spring", duration: 0.3, bounce: 0.2, damping: 15};
 
 const pushUseAsChapterToNodes = (project, nodes) => {
     const nodesCollection = _map(nodes, node => {
@@ -264,13 +269,23 @@ function DraggableContent({project, filtering, nodes, provided, portal, updateCh
                                         provided.draggableProps.style
                                     )}
                                 >
-                                    <NodeChapterCard
-                                        key={'node_card_'+node.id}
-                                        nodeItem={node}
-                                        nodeChapterItem={nodeChapterItem}
-                                        updateChapterTitle={updateChapterTitle}
-                                        updateUseAsChapter={updateUseAsChapter}
-                                    />
+                                    <AnimatePresence>
+                                        <motion.section
+                                            exit={preAnimationState}
+                                            initial={preAnimationState}
+                                            animate={animationState}
+                                            transition={transition}
+                                        >
+                                            <NodeChapterCard
+                                                key={'node_card_'+node.id}
+                                                nodeItem={node}
+                                                nodeChapterItem={nodeChapterItem}
+                                                updateChapterTitle={updateChapterTitle}
+                                                updateUseAsChapter={updateUseAsChapter}
+                                            />
+
+                                        </motion.section>
+                                    </AnimatePresence>
                                 </div>
                             );
 

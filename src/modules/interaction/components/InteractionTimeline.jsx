@@ -1,5 +1,4 @@
 import React, {useContext} from 'react';
-import { motion } from 'framer-motion';
 import {Timeline, TimelineBar} from 'components/Timeline';
 import filter from 'lodash/filter';
 import {useParams} from 'react-router-dom';
@@ -68,22 +67,20 @@ const InteractionTimeline = ({duration})=>{
 	};
 
   return (
-    // <motion.div initial='hidden' animate='show' variants={list}>
-      <Timeline>
-        {
-          (! filteredInteractions.length && ! element_groups.length) ?
-            <div><p style={{textAlign:'center'}}>To get started click "New Element" and drag a new element onto the canvas.</p></div> :
-            <>
-              {/* First show all interactions that have no element group */}
-              {map(filteredInteractions, interaction => 
-                <TimelineBar key={'timeline_bar_i_key_'+interaction.id} interaction={interaction}  />
-              )}
-              {/* Then we show the element group on the timeline instead of all the elements */}
-              {map(element_groups, elementGroup => <TimelineBar key={'timeline_bar_e_key' + elementGroup.id} elementGroup={elementGroup} elementGroupInteractions={elementGroupInteraction(elementGroup.id)} /> )}
-            </>
-        }
-      </Timeline>
-    // </motion.div>
+    <Timeline>
+      {
+        (! filteredInteractions.length && ! element_groups.length) ?
+          <div><p style={{textAlign:'center'}}>To get started click "New Element" and drag a new element onto the canvas.</p></div> :
+          <>
+            {/* First show all interactions that have no element group */}
+            {map(filteredInteractions, interaction => 
+              <TimelineBar key={'timeline_bar_i_key_'+interaction.id} interaction={interaction}  />
+            )}
+            {/* Then we show the element group on the timeline instead of all the elements */}
+            {map(element_groups, elementGroup => <TimelineBar key={'timeline_bar_e_key' + elementGroup.id} elementGroup={elementGroup} elementGroupInteractions={elementGroupInteraction(elementGroup.id)} /> )}
+          </>
+      }
+    </Timeline>
   );
 };
 export default InteractionTimeline;
