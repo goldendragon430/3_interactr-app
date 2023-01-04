@@ -9,7 +9,7 @@ import { PROJECT_FRAGMENT } from '@/graphql/Project/fragments';
 export function generateEmbedCode(project, player, storagePath) {
   if (!project) return null;
 
-  const wrapperUrl = import.meta.env.VITE_WRAPPER_URL;
+  let wrapperUrl = import.meta.env.VITE_WRAPPER_URL;
   
   if(project.published_path && !project.published_path.startsWith("https://swiftcdn6.global.ssl.fastly.net")) {
     return `<script type="text/javascript" src="${wrapperUrl}" async></script>
@@ -26,7 +26,8 @@ export function generateEmbedCode(project, player, storagePath) {
 
   if(project.storage_path) {
     // !!!!!!!! *******  Remember any changes here should be done in the share page too ******** !!!!!!!!!
-    return `<iframe class="_vs_ictr_player" src="${storagePath}${project.storage_path}/index.html?cb=${randomString()}" width=${project.embed_width} height=${project.embed_height} frameborder="0" allow="autoplay *" scrolling="no" ></iframe><script src="${wrapperUrl}"></script>`;
+    wrapperUrl = import.meta.env.VITE_OLD_WRAPPER_URL;
+    return `<iframe class="_vs_ictr_player" src="https://swiftcdn6.global.ssl.fastly.net/${project.storage_path}/index.html?cb=${randomString()}" width=${project.embed_width} height=${project.embed_height} frameborder="0" allow="autoplay *" scrolling="no" ></iframe><script src="${wrapperUrl}"></script>`;
   }
   return "Not published yet";
 }

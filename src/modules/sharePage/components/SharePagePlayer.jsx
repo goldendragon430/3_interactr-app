@@ -7,8 +7,7 @@ function randomString(){
 }
 
 export default function SharePagePlayer({project, player}) {
- // const wrapperUrl = config.WRAPPER_PATH_PREFIX + "/production/" + player.version_id + "/player-wrapper.js";
- const wrapperUrl =  import.meta.env.VITE_WRAPPER_URL;
+ let wrapperUrl =  import.meta.env.VITE_WRAPPER_URL;
 
   if(project.published_path && !project.published_path.startsWith("https://swiftcdn6.global.ssl.fastly.net")) {
     return (
@@ -34,9 +33,10 @@ export default function SharePagePlayer({project, player}) {
 
   if(project.storage_path) {
     // !!!!!!!! *******  Remember any changes here should be done in the share page too ******** !!!!!!!!!
+    wrapperUrl = import.meta.env.VITE_OLD_WRAPPER_URL;
     return (
       <div className={styles.playerWrapper}>
-        <iframe class="_vs_ictr_player" src={project.storage_path +`/index.html?cb=${randomString()}`} width={project.embed_width} height={project.embed_height} frameborder="0" allow="autoplay *" scrolling="no" ></iframe>
+        <iframe class="_vs_ictr_player" src={`https://swiftcdn6.global.ssl.fastly.net/` + project.storage_path +`/index.html?cb=${randomString()}`} width={project.embed_width} height={project.embed_height} frameborder="0" allow="autoplay *" scrolling="no" ></iframe>
         <Script
             url={wrapperUrl}
             onError={(err) => console.error('Wrapper Script loader error => ', err)}
