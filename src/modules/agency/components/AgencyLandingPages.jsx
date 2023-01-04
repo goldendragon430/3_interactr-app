@@ -95,15 +95,23 @@ const LandingPagesList = () => {
     show: { opacity: 1, x:0, scale: 1, transition: {type: 'ease-in'} }
   }
 
-  // console.log(data.result);
   return (
     <motion.div className="grid clearfix"  initial="hidden" animate="show"  variants={list}>
       {
-        map(data.result, (landingPage) => (
-          <motion.div className="col3"  key={landingPage.id} variants={item} style={{float: 'left'}}>
-            <LandingPage landingPage={landingPage} />
-          </motion.div>
-        ))
+        data.result.length > 0 ? 
+          map(data.result, (landingPage) => (
+            <motion.div className="col3"  key={landingPage.id} variants={item} style={{float: 'left'}}>
+              <LandingPage landingPage={landingPage} />
+            </motion.div>
+          ))
+        : (
+          <div style={{textAlign: 'center', marginTop: 60, display: 'flex', flexDirection: 'column',  alignItems: 'center'}}>
+            <h1 style={{ marginBottom: 0 }}>
+              <Icon name='exclamation-triangle' size={'lg'} />
+            </h1>
+            <h2>No Landing Pages ...</h2>
+          </div>
+        )
       }
     </motion.div>
   )

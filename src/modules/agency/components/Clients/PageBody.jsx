@@ -114,7 +114,7 @@ const PageBody = () => {
 
                     <ProfileCover />
 
-                    <div className={'grid'} style={{paddingTop: '10px'}}>
+                    <div className={'grid'} style={{paddingTop: '50px'}}>
                         <div className={'col12'}>
                             <h2>Client Projects</h2>
                             <ProjectsList projectIds={selectedUser?.projects} userId={selectedUser.id}/>
