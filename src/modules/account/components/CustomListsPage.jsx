@@ -108,6 +108,7 @@ const CustomListsPage = () => {
     };
 
     const renderCustomListSection = () => {
+        console.log('TIGER', customLists);
         return(
             <>
                 <div className={'grid'} style={{maxWidth: '1460px'}}>
@@ -136,38 +137,50 @@ const CustomListsPage = () => {
                         </div>
                     </div>
                 </div>
-                <div style={{marginLeft: '-15px'}}>
-                    <div className={cx('col12')} style={{ marginTop: '10px', maxWidth: '1280px' }}>
-                        <Table>
-                            <TableHeading>
-                                <TableColumn span={4}>List Name</TableColumn>
-                                <TableColumn span={4}>Email Count</TableColumn>
-                                <TableColumn span={3}>Download</TableColumn>
-                            </TableHeading>
-                            {_map(customLists, list => (
-                                <TableRow key={list.id}>
-                                    <TableColumn span={4}>{list.custom_list_name}</TableColumn>
-                                    <TableColumn span={4}>{_size(list.emails)}</TableColumn>
-                                    <TableColumn span={3}>
-                                        <Button
-                                            red
-                                            small
-                                            icon="trash-alt"
-                                            loading={deleting && list.id === deletingId}
-                                            onClick={onDeleteList(list.id)}
-                                        />
-                                        <CSVLink
-                                            data={filterEmails(list.emails)}
-                                            filename={'user-email-lists.csv'}
-                                        >
-                                            <Button primary small> Download List</Button>
-                                        </CSVLink>
-                                    </TableColumn>
-                                </TableRow>
-                            ))}
-                        </Table>
+                {
+                    customLists.length > 0 ?
+                    <div style={{marginLeft: '-15px'}}>
+                        <div className={cx('col12')} style={{ marginTop: '10px', maxWidth: '1280px' }}>
+                            <Table>
+                                <TableHeading>
+                                    <TableColumn span={4}>List Name</TableColumn>
+                                    <TableColumn span={4}>Email Count</TableColumn>
+                                    <TableColumn span={3}>Download</TableColumn>
+                                </TableHeading>
+                                {_map(customLists, list => (
+                                    <TableRow key={list.id}>
+                                        <TableColumn span={4}>{list.custom_list_name}</TableColumn>
+                                        <TableColumn span={4}>{_size(list.emails)}</TableColumn>
+                                        <TableColumn span={3}>
+                                            <Button
+                                                red
+                                                small
+                                                icon="trash-alt"
+                                                loading={deleting && list.id === deletingId}
+                                                onClick={onDeleteList(list.id)}
+                                            />
+                                            <CSVLink
+                                                data={filterEmails(list.emails)}
+                                                filename={'user-email-lists.csv'}
+                                            >
+                                                <Button primary small> Download List</Button>
+                                            </CSVLink>
+                                        </TableColumn>
+                                    </TableRow>
+                                ))}
+                            </Table>
+                        </div>
                     </div>
-                </div>
+                    :
+                    <div style={{ width: '35%'}}>
+                        <div style={{textAlign: 'center', marginTop: 20, display: 'flex', flexDirection: 'column',  alignItems: 'center'}}>
+                            <h1 style={{ marginBottom: 0 }}>
+                            <Icon name='exclamation-triangle' size={'lg'} />
+                            </h1>
+                            <h2>No Custom Lists ...</h2>
+                        </div>
+                    </div>
+                }
             </>
         )
     };
