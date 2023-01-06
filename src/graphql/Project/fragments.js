@@ -140,6 +140,7 @@ export const SHARE_PAGE_FRAGMENT = gql`
             title
             created_at
             image_url
+            storage_path
             published_path
         }
     }

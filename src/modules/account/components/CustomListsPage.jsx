@@ -108,7 +108,6 @@ const CustomListsPage = () => {
     };
 
     const renderCustomListSection = () => {
-        console.log('TIGER', customLists);
         return(
             <>
                 <div className={'grid'} style={{maxWidth: '1460px'}}>

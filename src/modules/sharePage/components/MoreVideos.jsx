@@ -30,38 +30,42 @@ const MoreVideos = ({project}) => {
 export default MoreVideos;
 
 const VideosList  = ({videos, logo}) => {
-  const navigate = useNavigate();
+    const navigate = useNavigate();
+    
+    const handleViewClicked = (storagePath) => {
+        const hash = storagePath.split("/")[1];        
+        navigate( '/share/' + hash );
+    }
+    return videos.length ? (
+        videos.map(video => {
 
-  return videos.length ? (
-      videos.map(video => {
-
-          return (
-              <div className={styles.videoCard}>
-                  <a className={styles.otherVideo} href={videos.published_path} key={video.id}>
-                      <div className={styles.otherVideoThumb}>
-                          <div className={styles.overlay}>
-                              <Button
-                                  secondary
-                                  icon="eye"
-                                  onClick={() => navigate( videos.published_path )}
-                              >
-                                  View
-                              </Button>
-                          </div>
-                          <img src={video.image_url} className={styles.videoImage} />
-                      </div>
-                      <div className={styles.otherVideoMeta}>
-                          <h4>{video.title}</h4>
-                          <p>
-                              <RelativeDate date={video.created_at} />
-                          </p>
-                          <div className={styles.otherVideoLogo}>{logo && <img src={logo} />}</div>
-                      </div>
-                  </a>
-              </div>
-          );
-    })
-  ) : (
-    <p>No Videos</p>
-  )
+            return (
+                <div className={styles.videoCard}>
+                    <a className={styles.otherVideo} href={videos.published_path} key={video.id}>
+                        <div className={styles.otherVideoThumb}>
+                            <div className={styles.overlay}>
+                                <Button
+                                    secondary
+                                    icon="eye"
+                                    onClick={() => handleViewClicked(video.storage_path)}
+                                >
+                                    View
+                                </Button>
+                            </div>
+                            <img src={video.image_url} className={styles.videoImage} />
+                        </div>
+                        <div className={styles.otherVideoMeta}>
+                            <h4>{video.title}</h4>
+                            <p>
+                                <RelativeDate date={video.created_at} />
+                            </p>
+                            <div className={styles.otherVideoLogo}>{logo && <img src={logo} />}</div>
+                        </div>
+                    </a>
+                </div>
+            );
+        })
+    ) : (
+        <p>No Videos</p>
+    )
 };
