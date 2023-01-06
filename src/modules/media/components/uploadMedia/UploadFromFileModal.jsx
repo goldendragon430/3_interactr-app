@@ -33,7 +33,7 @@ function UploadFromFileModal({onClose, onBack, onNext}) {
     >
       <div style={{ padding: 10 }}>
         {/* We add this here to ensure the dropzone delete's when this modal isn't active. This is so any errors are cleared when the user clicks back */}
-        {/* {(activeModal===SHOW_UPLOAD_FROM_FILE_MODAL &&  <DropMediaZone
+        {(activeModal===SHOW_UPLOAD_FROM_FILE_MODAL &&  <DropMediaZone
           initialFiles={droppedFiles}
           onError={()=>errorAlert({text: 'Unable to upload media'})}
           onSuccess={({src}, file) => {
@@ -53,9 +53,9 @@ function UploadFromFileModal({onClose, onBack, onNext}) {
           }}
           tempUpload={true}
           // uploadSuccessEndpoint={'file/upload'}
-          params={dropzoneParams}
+          // params={dropzoneParams}
           accept={AcceptedMedia}
-        />)} */}
+        />)}
         <p>
           <strong>Videos</strong><br/>
           All uploaded videos should be aspect ratio 16:9, 4:3 and 9:16
