@@ -18,7 +18,7 @@ function UploadFromFileModal({onClose, onBack, onNext}) {
   let dropzoneParams = {
    // projectId: newMediaObject.project_id
   };
-  
+
   return (
     <Modal
       onBack={onBack}
@@ -34,7 +34,7 @@ function UploadFromFileModal({onClose, onBack, onNext}) {
       <div style={{ padding: 10 }}>
         {/* We add this here to ensure the dropzone delete's when this modal isn't active. This is so any errors are cleared when the user clicks back */}
         {(activeModal===SHOW_UPLOAD_FROM_FILE_MODAL &&  <DropMediaZone
-          // initialFiles={droppedFiles}
+          initialFiles={droppedFiles}
           onError={()=>errorAlert({text: 'Unable to upload media'})}
           onSuccess={({src}, file) => {
             const isImage = file && file.type !== 'video/mp4' ? 1 : 0;
@@ -52,7 +52,7 @@ function UploadFromFileModal({onClose, onBack, onNext}) {
             onNext(nextModal, SHOW_UPLOAD_FROM_FILE_MODAL)
           }}
           tempUpload={true}
-          uploadSuccessEndpoint={'file/upload'}
+          // uploadSuccessEndpoint={'file/upload'}
           params={dropzoneParams}
           accept={AcceptedMedia}
         />)}

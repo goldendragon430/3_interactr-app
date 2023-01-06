@@ -1,7 +1,9 @@
 import React from 'react';
-import Dropzone from 'react-dropzone-uploader';
+import D from 'react-dropzone-uploader';
 import PropTypes from 'prop-types';
 import apis from 'utils/apis';
+
+const Dropzone = D.default? D.default: D;
 
 const _proptypes = {
   /** aceepted types */
