@@ -7,17 +7,49 @@ import apis from "../../../utils/apis";
 import { cache } from "../../../graphql/client";
 
 const MediaEncodingUpdater = ({ media }) => {
-  const { loading, error, data } = useQuery(GET_BUNNY_CDN_VIDEO, {
-    variables: {
-      media_id: media.id,
-    },
-  });
+  const [loading, setLoading] = useState(true);
+  const [item, setItem] = useState(null);
+  const [error, setError] = useState(null);
+  const [timeout, _setTimout] = useState(null);
+
+  useEffect(() => {
+    const getBunnyVideo = async () => {
+      try {
+        setLoading(true);
+        const response = await apis.phpApi("bunnycdn/get", {
+          method: "post",
+          body: {
+            media_id: media.id
+          }
+        });
+        const item = await response.json();
+  
+        if(!item) {
+          console.log('TIGER getting it again');
+          _setTimout(setTimeout(getBunnyVideo, 3000));
+        } else {
+          setItem(item);
+          setLoading(false);
+        }
+      } catch(e) {
+        console.log(e);
+        setError(e);
+      }
+    }
+    getBunnyVideo();
+
+    return () => clearTimeout(timeout);
+  }, [media]);
+  // const { loading, error, data } = useQuery(GET_BUNNY_CDN_VIDEO, {
+  //   variables: {
+  //     media_id: media.id,
+  //   },
+  // });
 
   if (loading) return <LoadingLabel />;
   if (error) return <Error error={error} />;
-  if (!data.result) return <Error error={"No result for bunny cdn video"} />;
-
-  return <ShowLabelAndPollForUpdates item={data.result} media={media} />;
+  
+  return <ShowLabelAndPollForUpdates item={item} media={media} />;
 };
 
 export default MediaEncodingUpdater;
