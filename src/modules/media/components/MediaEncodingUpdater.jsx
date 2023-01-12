@@ -22,20 +22,17 @@ const MediaEncodingUpdater = ({ media }) => {
             media_id: media.id
           }
         });
-        console.log('TIGER response', response);
-        const item = await response.json();
-  
-        if(!item) {
-          console.log('TIGER getting it again');
-          _setTimout(setTimeout(getBunnyVideo, 3000));
-        } else {
+        
+        try {
+          const item = await response.json();
           setItem(item);
           setLoading(false);
+        } catch(ee) {
+          _setTimout(setTimeout(getBunnyVideo, 3000));
         }
       } catch(e) {
         console.log(e);
         setError(e);
-        _setTimout(setTimeout(getBunnyVideo, 3000));
       }
     }
     getBunnyVideo();
