@@ -22,6 +22,7 @@ const MediaEncodingUpdater = ({ media }) => {
             media_id: media.id
           }
         });
+        console.log('TIGER response', response);
         const item = await response.json();
   
         if(!item) {
@@ -34,6 +35,7 @@ const MediaEncodingUpdater = ({ media }) => {
       } catch(e) {
         console.log(e);
         setError(e);
+        _setTimout(setTimeout(getBunnyVideo, 3000));
       }
     }
     getBunnyVideo();
