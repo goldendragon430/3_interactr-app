@@ -38,7 +38,7 @@ const MediaEncodingUpdater = ({ media }) => {
     getBunnyVideo();
 
     return () => clearTimeout(timeout);
-  }, [media]);
+  }, []);
   // const { loading, error, data } = useQuery(GET_BUNNY_CDN_VIDEO, {
   //   variables: {
   //     media_id: media.id,
