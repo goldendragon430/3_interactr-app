@@ -28,7 +28,7 @@ const MediaEncodingUpdater = ({ media }) => {
           setItem(item);
           setLoading(false);
         } catch(ee) {
-          _setTimout(setTimeout(getBunnyVideo, 3000));
+          _setTimout(setTimeout(getBunnyVideo, 10000));
         }
       } catch(e) {
         console.log(e);
