@@ -97,20 +97,20 @@ export default class ProjectsViewsByAll extends React.Component {
     render(){
         const {data, labels, title} = this.props;
 
-        if( isEmpty(data) ) {
+        if( isEmpty(data) || labels.length == 0) {
             return this.noData();
         }
 
         // analytics.registerTheme();
         const colors = analytics.getThemeColors();
         const borderColors = analytics.getBorderColors();
-
+        
         let d = {
             // categories: reduce(projects, (result, project)=>{
             //     return result.concat(project.title)
             // }, []),
 
-            labels: analytics.getCategoriesFromQuery(data[labels[0].id], this.state.groupBy),
+            labels: labels.length > 0 ? analytics.getCategoriesFromQuery(data[labels[0].id], this.state.groupBy) : [],
 
             datasets: reduce(labels, (result, label, index) => {
                 return result.concat({
