@@ -76,7 +76,7 @@ const ProjectPerformanceList = ({loading, data, project}) => {
       </div>
       <div className={'grid'}>
         <div className={cx(styles.column, 'col2')}>
-          <img src={projectImageUrl} className={'img-fluid'} style={{borderRadius: '5px'}}/>
+          <img src={projectImageUrl} className={'img-fluid'} style={{borderRadius: '5px', maxHeight: '50px'}}/>
           <a style={{fontSize: '10px', textAlign: 'center', marginTop: '5px'}} onClick={()=>previewProject(project.id)}><Icon name={'play'} /> Preview</a>
         </div>
         <div className={cx(styles.column, 'col3')} style={{paddingLeft: 0}}>
