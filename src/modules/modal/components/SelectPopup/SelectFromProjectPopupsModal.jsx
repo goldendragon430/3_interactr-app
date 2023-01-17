@@ -73,12 +73,16 @@ const ModalBody = ({
 	const { data, loading, error } = useQuery(GET_MODALS, {
 		variables: {
 			project_id: projectId,
+			fetchPolicy: 'network-only'
 		},
 	});
 
 	if (data && !size(data.result)) {
 		setHeight(300);
 		setWidth(500);
+	} else {
+		setHeight(742);
+		setWidth(1122);
 	}
 
 	if (error) {
