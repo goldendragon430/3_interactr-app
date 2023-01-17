@@ -11,9 +11,13 @@ export function generateEmbedCode(project, player, storagePath) {
 
   let wrapperUrl = import.meta.env.VITE_WRAPPER_URL;
   
+  let paddingTop = "56.25%";
+  if(project.embed_width == "540") paddingTop = "75%";
+  else if(project.embed_width == "228") paddingTop = "177.778%";
+
   if(project.published_path && !project.published_path.startsWith("https://swiftcdn6.global.ssl.fastly.net")) {
     return `<script type="text/javascript" src="${wrapperUrl}" async></script>
-            <div class="iv-player_responsive_padding" style="padding:56.25% 0 0 0;position:relative;" data-hash="${project.storage_path?.split('/')[1]}"">
+            <div class="iv-player_responsive_padding" style="padding:${paddingTop} 0 0 0;position:relative;" data-hash="${project.storage_path?.split('/')[1]}"">
               <div class="iv-player_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
                 <div class="iv-player_embed iv-player_async_p2z7746nud videoFoam=true" style="height:100%;position:relative;width:100%">
                   <div class="iv-player_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;width:100%;">
@@ -38,9 +42,13 @@ export function generateEmbedCodeForPreviewing(project, player) {
   let apiUrl = import.meta.env.VITE_API_URL;
   let analyticsUrl = import.meta.env.VITE_ANALYTICS_URL;
   
+  let paddingTop = "56.25%";
+  if(project.embed_width == "540") paddingTop = "75%";
+  else if(project.embed_width == "228") paddingTop = "177.778%";
+
   return `<div 
             class="iv-player_responsive_padding" 
-            style="padding:56.25% 0 0 0;position:relative;width:${project.embed_width}px; height:${project.embed_height}px;" 
+            style="padding:${paddingTop} 0 0 0;position:relative;width:${project.embed_width}px; height:${project.embed_height}px;" 
             project-id="${project.id}" 
             data-hash="" 
             data-context="preview"
