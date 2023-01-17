@@ -64,8 +64,6 @@ const SharePage = ()=>{
     background: `linear-gradient(${background},${background}), url("${getAsset('/img/home-office.jpg')}") no-repeat center`
   };
 
-  console.log('TIGER screenshot', screenshot);
-
   return (
     <div className={styles.pageWrapper}>
       <ShareMeta
