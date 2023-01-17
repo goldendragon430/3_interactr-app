@@ -73,11 +73,6 @@ const RootPage = () => {
         return (i === window.location.hostname);
       });
 
-      // if(config.ENV == "production") {
-      //   const version = await getLatestVersion() + 1;
-      //   window.nextVersion = version;
-      // }
-      
       if(isOurDomain > 0) {
         setCheckingWhitelabel(false)
         return;

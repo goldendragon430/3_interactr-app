@@ -14,7 +14,6 @@ const TrainingOverview = () => {
   const navigate = useNavigate();
   const acl = useReactiveVar(getAcl);
   const whitelabel = useReactiveVar(getWhitelabel);
-
   useEffect(() => {
     if(acl.isSubUser || whitelabel) {
       navigate(projectsPath());
