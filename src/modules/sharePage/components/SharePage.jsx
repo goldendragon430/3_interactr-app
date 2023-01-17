@@ -50,7 +50,7 @@ const SharePage = ()=>{
   if(error) return <ErrorMessage error={error} />;
   if(player.error) return <ErrorMessage error={player.error} />;
   
-  const {title, description, google_image_url, facebook_image_url, twitter_image_url, allow_comments, hide_logo, show_more_videos_on_share_page, image_url} = project;
+  const {title, description, google_image_url, facebook_image_url, twitter_image_url, allow_comments, hide_logo, show_more_videos_on_share_page, image_url, embed_width} = project;
 
   const projectImageUrl = image_url || getAsset('/img/no-thumb.jpg');
 
@@ -63,7 +63,9 @@ const SharePage = ()=>{
   let customStyles = {
     background: `linear-gradient(${background},${background}), url("${getAsset('/img/home-office.jpg')}") no-repeat center`
   };
-  
+
+  console.log('TIGER screenshot', screenshot);
+
   return (
     <div className={styles.pageWrapper}>
       <ShareMeta
@@ -97,7 +99,7 @@ const SharePage = ()=>{
 
         {screenshot ? (
           <div className={styles.top}>
-          <div className={styles.container} style={{ textAlign: 'center' }}>
+          <div className={embed_width == "720" ? styles.container : embed_width == "540" ? styles.container43 : styles.container916} style={{ textAlign: 'center', maxHeight: width}}>
             <img src={projectImageUrl} className={styles.thumbnail} />
           </div>
         </div>
@@ -135,10 +137,11 @@ const EmbedCode = ({project, player})=>{
   //   // remove the https when local or this wont work
   //   url = url.replace('https', 'http');
   // }
+  const { embed_width } = project;
 
   return (
     <div className={styles.top}>
-      <div className={styles.container}>
+      <div className={embed_width == "720" ? styles.container : embed_width == "540" ? styles.container43 : styles.container916 }>
         <SharePagePlayer project={project} player={player}/>
       </div>
     </div>
