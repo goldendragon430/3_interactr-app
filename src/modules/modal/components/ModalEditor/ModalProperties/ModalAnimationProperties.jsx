@@ -9,12 +9,19 @@ import Icon from "components/Icon";
 import { useQuery } from '@apollo/client';
 import { GET_MODAL } from '@/graphql/Modal/queries';
 import {useParams} from 'react-router-dom'
+import { getEditPopup } from '@/graphql/LocalState/editPopup';
+import { useReactiveVar } from '@apollo/client';
 
 export const ModalAnimationProperties = () => {
-	// const { modal } = useReactiveVar(getEditPopup);
+	const { modal } = useReactiveVar(getEditPopup);
 
 	// if (!modal) return null;
-	const { modalId } = useParams();
+	let { modalId } = useParams();
+
+	if(!modalId && modal) {
+		modalId = modal.id;
+	}
+
 	const { updateModal } = useModalCommands(modalId);
 
 	const { loading, error, data} = useQuery(GET_MODAL, {

@@ -18,12 +18,18 @@ import Icon from "components/Icon";
 import { useQuery } from '@apollo/client';
 import { GET_MODAL } from '@/graphql/Modal/queries';
 import {useParams} from 'react-router-dom'
+import { getEditPopup } from '@/graphql/LocalState/editPopup';
 
 
 export const ModalCloseIconSection = () => {
-	// const { modal } = useReactiveVar(getEditPopup);
+	const { modal } = useReactiveVar(getEditPopup);
 
-	const { modalId } = useParams();
+	let { modalId } = useParams();
+
+	if(!modalId && modal) {
+		modalId = modal.id;
+	}
+
 	const { updateModal } = useModalCommands(modalId);
 
 	const { loading, error, data} = useQuery(GET_MODAL, {

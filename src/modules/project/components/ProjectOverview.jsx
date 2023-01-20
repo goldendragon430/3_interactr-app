@@ -88,6 +88,10 @@ const NodePages = () => {
 	return (
 		<Routes>
 			<Route
+				path='/interaction/:interactionId/element/:modalElementId'
+				element={<NodePage />}
+			/>
+			<Route
 				path='/interaction/:interactionId/element'
 				element={<NodePage />}
 			/>

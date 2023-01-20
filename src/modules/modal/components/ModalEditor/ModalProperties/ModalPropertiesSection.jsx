@@ -20,9 +20,10 @@ import { useQuery } from '@apollo/client';
 import { GET_MODAL } from '@/graphql/Modal/queries';
 import { useModalCommands } from '@/graphql/Modal/hooks';
 import {SAVE_MODAL_PAGE} from "../../../../../utils/EventEmitter";
+import { getEditPopup } from '@/graphql/LocalState/editPopup';
 
 export const ModalPropertiesSection = () => {
-	// const { modal } = useReactiveVar(getEditPopup);
+	const { modal } = useReactiveVar(getEditPopup);
 
 	// const updateModal = (key, val) => {
 	// 	setEditPopup({
@@ -34,7 +35,12 @@ export const ModalPropertiesSection = () => {
 
 	// if (!modal) return null;
 
-	const { modalId } = useParams();
+	let { modalId } = useParams();
+
+	if(!modalId && modal) {
+		modalId = modal.id;
+	}
+
 	const { updateModal } = useModalCommands(modalId);
 
 	const { loading, error, data} = useQuery(GET_MODAL, {

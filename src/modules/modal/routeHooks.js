@@ -3,6 +3,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import {modalElementPath, modalPath, modalsPath} from "./routes";
 import {nodePath} from "../node/routes";
 import {projectPath} from "../project/routes";
+import { elementModalEditPath, elementPath } from "../element/routes";
 
 const STORAGE_KEY = 'modalBackPath';
 
@@ -42,20 +43,24 @@ export const useModalRoute = () => {
   return {goToModalPage, goBack}
 };
 
-
-
 export const useModalElementRoute = () => {
-  const {modalElementId, projectId, modalId} = useParams();
+  const {modalElementId, projectId, modalId, interactionId, nodeId} = useParams();
 
   const navigate = useNavigate();
 
   const setModalElementId = modalElementId => {
-    navigate( modalElementPath({modalElementId, projectId, modalId}) );
+    if(modalId)
+      navigate( modalElementPath({modalElementId, projectId, modalId}) );
+    else 
+      navigate( elementModalEditPath({projectId, nodeId, interactionId, modalElementId}) );
   };
 
   // Navigates back to the modal  element page
   const back = () => {
-    navigate(modalPath( {projectId, modalId} ));
+    if(modalId)
+      navigate(modalPath( {projectId, modalId} ));
+    else
+      navigate(elementPath( {projectId, nodeId, interactionId} ));
   };
 
   return [modalElementId, setModalElementId, back]

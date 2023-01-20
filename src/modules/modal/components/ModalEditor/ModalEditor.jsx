@@ -23,7 +23,7 @@ const PLAYER_QUERY = gql`
 export const ModalEditor = ({modalId}) => {
 	const { updatePlayer } = usePlayer();
 	const { loading, error, data } = useQuery(PLAYER_QUERY);
-
+	
 	const { loading: modalLoading, error: modalError, data:modalData} = useQuery(GET_MODAL, {
 		variables: {
 			id: modalId

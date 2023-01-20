@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import { useReactiveVar } from '@apollo/client';
 
 import {
+	setEditPopup,
+	SHOW_EDIT_POPUP_MODAL,
+} from '@/graphql/LocalState/editPopup';
+
+import {
 	getAddModal,
 	setAddModal,
 	ADD_MODAL_VAR_INITAL_DATA,
@@ -14,6 +19,7 @@ import { useModalCommands } from '@/graphql/Modal/hooks';
 import client from '@/graphql/client';
 import { GET_MODALS } from '@/graphql/Modal/queries';
 import ModalPreview from '../ModalPreview';
+import {useLocation} from "react-router-dom";
 
 const AddPopupNameModal = ({ onClose }) => {
 	const { showPopupNameModal, newModalObject, currentModalId, projectId } =
@@ -24,6 +30,8 @@ const AddPopupNameModal = ({ onClose }) => {
 	const [loading, setLoading] = useState(false);
 
 	const [name, setName] = useState('');
+
+	const location = useLocation();
 
 	const goBack = () => {
 		setName('');
@@ -100,12 +108,33 @@ const AddPopupNameModal = ({ onClose }) => {
 				});
 			}
 
-			setAddModal({
-				...ADD_MODAL_VAR_INITAL_DATA,
-				// newModalObject: newModal,
-				// currentModalId: modalId,
-				// isPopupSelected: true,
-			});
+			if(location.pathname.includes('/popups')) {
+				setAddModal({
+					...ADD_MODAL_VAR_INITAL_DATA,
+					// newModalObject: newModal,
+					// currentModalId: modalId,
+					// isPopupSelected: true,
+				});
+			} else {
+				// setAddModal({
+				// 	...ADD_MODAL_VAR_INITAL_DATA,
+				// 	showSelectFromProjectPopupsModal: true,
+				// 	projectId: parseInt(projectId)
+				// });
+
+				setAddModal({
+					...ADD_MODAL_VAR_INITAL_DATA,
+					newModalObject: { ...newModal },
+					isPopupSelected: true,
+					projectId: parseInt(projectId)
+				});
+
+				setEditPopup({
+					activeModal: SHOW_EDIT_POPUP_MODAL,
+					modal: { ...newModal },
+				});
+
+			}
 			
 			setLoading(false);
 			setName('');

@@ -33,36 +33,13 @@ const SelectPopupTypeModal = ({ onClose }) => {
 export default SelectPopupTypeModal;
 
 const ModalBody = ({SelectType}) => {
-  const location = useLocation()
+  
+  const location = useLocation();
 
-
-    if(location.pathname.includes('/popups')){
-
-      return(
-        <div className={'grid'}>
-          <div className={'col6'}>
-            <ItemSelect
-              heading="Create Blank"
-              description="Create a new blank popup with no preset elements"
-              onClick={(()=>SelectType("showPopupNameModal"))}
-              image={getAsset('/img/img-popup-create-blank.png')}
-            />
-          </div>
-          <div className={'col6'}>
-            <ItemSelect
-              heading="Templates"
-              description="Choose one of our pre made popup templates"
-              onClick={(()=>SelectType("showSelectFromPopupTemplatesModal"))}
-              image={getAsset('/img/img-popup-templates.png')}
-            />
-          </div>
-        </div>
-      )
-    }
-
+  if(location.pathname.includes('/popups')){
     return(
       <div className={'grid'}>
-        <div className={'col4'}>
+        <div className={'col6'}>
           <ItemSelect
             heading="Create Blank"
             description="Create a new blank popup with no preset elements"
@@ -70,15 +47,7 @@ const ModalBody = ({SelectType}) => {
             image={getAsset('/img/img-popup-create-blank.png')}
           />
         </div>
-        <div className={'col4'}>
-          <ItemSelect
-            heading="My Popups"
-            description="Select from one of the popups already created"
-            onClick={(()=>SelectType("showSelectFromProjectPopupsModal"))}
-            image={getAsset('/img/img-my-popups.png')}
-          />
-        </div>
-        <div className={'col4'}>
+        <div className={'col6'}>
           <ItemSelect
             heading="Templates"
             description="Choose one of our pre made popup templates"
@@ -88,4 +57,34 @@ const ModalBody = ({SelectType}) => {
         </div>
       </div>
     )
+  }
+
+  return(
+    <div className={'grid'}>
+      <div className={'col4'}>
+        <ItemSelect
+          heading="Create Blank"
+          description="Create a new blank popup with no preset elements"
+          onClick={(()=>SelectType("showPopupNameModal"))}
+          image={getAsset('/img/img-popup-create-blank.png')}
+        />
+      </div>
+      <div className={'col4'}>
+        <ItemSelect
+          heading="My Popups"
+          description="Select from one of the popups already created"
+          onClick={(()=>SelectType("showSelectFromProjectPopupsModal"))}
+          image={getAsset('/img/img-my-popups.png')}
+        />
+      </div>
+      <div className={'col4'}>
+        <ItemSelect
+          heading="Templates"
+          description="Choose one of our pre made popup templates"
+          onClick={(()=>SelectType("showSelectFromPopupTemplatesModal"))}
+          image={getAsset('/img/img-popup-templates.png')}
+        />
+      </div>
+    </div>
+  )
 }

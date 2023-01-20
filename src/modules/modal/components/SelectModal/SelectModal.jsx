@@ -6,6 +6,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ContentLoader from 'react-content-loader';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
+import { useNavigate } from "react-router-dom";
+import { modalPath } from '../../routes';
 
 import {
 	setEditPopup,
@@ -99,6 +101,8 @@ const GetModalWithBody = ({ id, openPopupSelectModal, update }) => {
 
 const Preview = ({ modal, openPopupSelectModal, update }) => {
 	const [showRemoveIcon, setShowRemoveIcon] = React.useState(false);
+	const navigate = useNavigate();
+	const { projectId } = useParams();
 
 	const removeModal = async () => {
 		console.log('clicked');
@@ -110,6 +114,16 @@ const Preview = ({ modal, openPopupSelectModal, update }) => {
 			console.log(error.message);
 		}
 	};
+
+	const handleEditPopup = () => {
+		// TO-DO need to check control flow for edit popup in node page
+		const modalId = modal.id;
+		// navigate( modalPath({modalId, projectId}) );
+		setEditPopup({
+			activeModal: SHOW_EDIT_POPUP_MODAL,
+			modal,
+		})
+	}
 
 	return (
 		<motion.div
@@ -151,12 +165,7 @@ const Preview = ({ modal, openPopupSelectModal, update }) => {
 				)}
 			</AnimatePresence>
 			<Button
-				onClick={() =>
-					setEditPopup({
-						activeModal: SHOW_EDIT_POPUP_MODAL,
-						modal,
-					})
-				}
+				onClick={() => handleEditPopup()}
 				primary
 				icon='edit'
 				small

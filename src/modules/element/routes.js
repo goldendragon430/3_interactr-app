@@ -9,3 +9,8 @@ export function elementGroupPath({elementGroupId}) {
 export function elementPath({interactionId}) {
   return interactionPath(...arguments) + `/element`;
 }
+
+export function elementModalEditPath({modalElementId}) {
+  return interactionPath(...arguments) + `/element/${modalElementId}`;
+}
+

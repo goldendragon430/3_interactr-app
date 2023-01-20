@@ -24,14 +24,18 @@ import Emitter, {
 export const EditPopupModal = () => {
 	const [saving, setSaving] = useState(false);
 	const { activeModal, modal } = useReactiveVar(getEditPopup);
-	const { projectId, modalId } = useParams();
+	let { projectId, modalId } = useParams();
 	const navigate = useNavigate();
-	const { saveModal } = useModalCommands(modalId);
-	
-	useSaveModalEditorListener(modalId);
-	
+
+	const { saveModal } = useModalCommands(modal?.id);
+	useSaveModalEditorListener(modal?.id);
+
+	if(!modal) return;
+
 	const onClose = () => {
-		navigate(modalsPath({projectId}));
+		if(modalId) 
+			navigate(modalsPath({projectId}));
+
 		setEditPopup({
 			activeModal: '',
 			modal: null,
@@ -43,7 +47,7 @@ export const EditPopupModal = () => {
 		try {
 			await saveModal({
 				variables: {
-          input: getModalForSaving(modalId, payload.detail),
+          input: getModalForSaving(modal.id, payload.detail),
         },
 			});
 		} catch (err) {
@@ -83,7 +87,7 @@ export const EditPopupModal = () => {
 		>
 			<DynamicText />
 			{
-				modalId ? <ModalEditor modalId = {modalId}/> : null
+				modal.id ? <ModalEditor modalId = {modal.id}/> : null
 			}
 			<NameElementModal />
 		</Modal>
