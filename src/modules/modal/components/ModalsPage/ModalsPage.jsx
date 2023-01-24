@@ -15,7 +15,7 @@ import { projectsPath } from 'modules/project/routes';
 import { GET_MODALS } from '@/graphql/Modal/queries';
 import { ModalsPageBody } from './ModalsPageBody';
 import { EditPopupModal } from 'modules/modal/components/EditPopupModal';
-
+import SelectImageElementModal from 'modules/element/components/Properties/SelectImageElementModal';
 
 export const ModalsPage = () => {
 	const { projectId } = useParams();
@@ -49,6 +49,7 @@ export const ModalsPage = () => {
 				className={'clearfix'}
 			>
 				<EditPopupModal />
+				<SelectImageElementModal />
 				<ModalsPageBody data={data} />
 			</motion.div>
 		</AnimatePresence>

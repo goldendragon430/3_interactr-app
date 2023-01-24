@@ -102,7 +102,17 @@ const ImageableElementProperties = ({tabAnimation, element, update, save}) => {
         {/*  onSuccess={handleSuccess}*/}
         {/*  src={src}*/}
         {/*/>*/}
-        {(src) ? <img className={'img-fluid'} src={src} style={{opacity}}/> : null}
+        {
+          (src) ? 
+          <div style={{ width: '100%', height:'300px', position: 'relative', display: 'flex'}}>
+            <img className={'img-fluid'} src={src} style={{opacity, height: '100%', marginLeft: 'auto', marginRight: 'auto', zIndex: 2}}/> 
+            <img
+              src={'/img/modal-page-bg.jpg'}
+              style={{ position: 'absolute', height: '100%', width: '100%', top: 0, left: 0, zIndex: 1 }}
+            />
+          </div>
+          :null
+        }
 
         <Option
           style={{marginTop: '20px'}}
