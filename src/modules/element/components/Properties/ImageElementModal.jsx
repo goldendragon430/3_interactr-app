@@ -158,7 +158,7 @@ export default class ImageElementModal extends React.Component {
   render() {
     const isMore = this.state.amountToShow < this.getStockListsFilteredBySearchTerm().length;
     const {close, onBack, showStockList, user} = this.props;
-
+    
     return (
       <Modal
         show={showStockList}

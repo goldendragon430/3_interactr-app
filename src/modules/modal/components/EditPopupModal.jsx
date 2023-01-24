@@ -58,7 +58,7 @@ export const EditPopupModal = () => {
 			onClose();
 		}
 	};
-
+	
 	return (
 		<Modal
 			height={750}

@@ -51,17 +51,22 @@ const SelectImageElementModalBody = ({ interactionId }) => {
 
   return (
     <>
-      <RenderImageElementModal
-        showStockList={showImageElementModal}
-        element={element}
-        close={onClose}
-      />
-
-      <UploadImageFromComputerModal
-        show={showUploadImageFromComputerModal}
-        element={element}
-        close={onClose}
-      />
+      {
+        showImageElementModal && 
+        <RenderImageElementModal
+          showStockList={showImageElementModal}
+          element={element}
+          close={onClose}
+        />
+      }
+      {
+        showUploadImageFromComputerModal && 
+        <UploadImageFromComputerModal
+          show={showUploadImageFromComputerModal}
+          element={element}
+          close={onClose}
+        />
+      }
     </>
   );
 }

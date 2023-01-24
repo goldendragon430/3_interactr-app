@@ -68,34 +68,37 @@ const ElementGroupModal = () => {
   return (
     <>
       <EventListener name={TOGGLE_ELEMENT_GROUP_MODAL} func={()=>setState({show: ! show})}>
-        <Modal
-          show={show}
-          height={265}
-          onClose={closeModal}
-          heading={
-            <><Icon name="plus" /> Add New Element Group</>
-          }
-          submitButton={
-            <Button
-              icon={'plus'}
-              loading={loading}
-              onClick={formSubmit}
-              primary
-            >Create</Button>
-          }
-        >
-          <div className="form-control">
-            <Option
-              label="Element Group Name"
-              value={name}
-              Component={TextInput}
-              onChange={val=>setState({name: val})}
-              disabled={loading}
-              onEnter={formSubmit}
-              autofocus
-            />
-          </div>
-        </Modal>
+        {
+          show && 
+          <Modal
+            show={show}
+            height={265}
+            onClose={closeModal}
+            heading={
+              <><Icon name="plus" /> Add New Element Group</>
+            }
+            submitButton={
+              <Button
+                icon={'plus'}
+                loading={loading}
+                onClick={formSubmit}
+                primary
+              >Create</Button>
+            }
+          >
+            <div className="form-control">
+              <Option
+                label="Element Group Name"
+                value={name}
+                Component={TextInput}
+                onChange={val=>setState({name: val})}
+                disabled={loading}
+                onEnter={formSubmit}
+                autofocus
+              />
+            </div>
+          </Modal>
+        }
       </EventListener>
     </>
   )

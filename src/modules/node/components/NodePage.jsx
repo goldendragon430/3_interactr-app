@@ -72,9 +72,9 @@ export const NodePage = () => {
 					</section>
 				</NodePageLayout>
 			{/* </MenuProvider> */}
-			<EditPopupModal />
-			<ElementGroupModal />
+			<EditPopupModal />				
 			<SelectImageElementModal />
+			<ElementGroupModal />
 			<SelectInteractionModal />
 			{/* <SelectPopupModals /> */}
 			<ElementPropertiesMenu />
