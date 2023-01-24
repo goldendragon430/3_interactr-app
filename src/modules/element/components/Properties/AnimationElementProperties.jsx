@@ -1,5 +1,5 @@
 import React from 'react';
-import { Section, Option, MultiSelect, RangeInput } from 'components/PropertyEditor';
+import { Section, Option, MultiSelect, RangeInput, SelectInput } from 'components/PropertyEditor';
 import {easings} from '../../../../utils/animations';
 import Button from 'components/Buttons/Button';
 import map from "lodash/map";
@@ -12,14 +12,17 @@ import {useParams} from 'react-router-dom'
 import {useReactiveVar} from "@apollo/client";
 import {getAcl} from "../../../../graphql/LocalState/acl";
 import Link from "../../../../components/Link";
-
+import { getEditPopup } from '@/graphql/LocalState/editPopup';
 
 
 const AnimationElementProperties = ({ element, update, tabAnimation }) => {
-
-  const {modalId, nodeId} = useParams();
-
+  let { modalId, nodeId } = useParams();
+  const { modal } = useReactiveVar(getEditPopup);
   const acl = useReactiveVar(getAcl)
+
+  if(!modalId && modal) {
+		modalId = modal.id;
+	}
 
   if(! element) return null;
 
@@ -44,7 +47,7 @@ const AnimationElementProperties = ({ element, update, tabAnimation }) => {
                         name="background-animation-select"
                         value={getAnimationProperty('name')}
                         options={map(element_animations, (b,i)=>( {label: b.label, value:i} ) )}
-                        Component={MultiSelect}
+                        Component={SelectInput}
                         onChange={changeHandler('name')}
                     />
                     <Option
@@ -52,7 +55,7 @@ const AnimationElementProperties = ({ element, update, tabAnimation }) => {
                         name="background-easing-select"
                         value={getAnimationProperty('easing')}
                         options={easings}
-                        Component={MultiSelect}
+                        Component={SelectInput}
                         onChange={changeHandler('easing')}
                     />
                 </div>
