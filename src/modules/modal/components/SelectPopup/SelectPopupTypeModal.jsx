@@ -17,16 +17,21 @@ const SelectPopupTypeModal = ({ onClose }) => {
   };
 
   return (
-    <Modal
-      height={485}
-      width={885}
-      show={showSelectPopupTypeModal}
-      closeMaskOnClick={false}
-      onClose={onClose}
-      heading={'Select a Popup'}
-    >
-      <ModalBody SelectType={SelectType}/>
-    </Modal>
+    <>
+      {
+        showSelectPopupTypeModal && 
+        <Modal
+          height={485}
+          width={885}
+          show={showSelectPopupTypeModal}
+          closeMaskOnClick={false}
+          onClose={onClose}
+          heading={'Select a Popup'}
+        >
+          <ModalBody SelectType={SelectType}/>
+        </Modal>
+      }
+    </>
   )
 
 };

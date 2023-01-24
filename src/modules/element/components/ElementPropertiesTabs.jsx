@@ -64,7 +64,7 @@ const Header = ({active, setActive, meta}) => {
 };
 
 const ActiveTabSwitch = ({active, update, element, save}) => {
-  const {modalId} = useParams();
+  const {modalElementId} = useParams();
 
   const tabAnimation = {
     animate: {y: 0, opacity: 1},
@@ -79,13 +79,13 @@ const ActiveTabSwitch = ({active, update, element, save}) => {
     skipToTime: 'Skip To Time',
   };
 
-  if(modalId) {
+  if(modalElementId) {
     options.closeModal = "Close Popup"
   }
   else {
     options.openModal = 'Open Popup'
   }
-
+  
   switch(active) {
     case('clickable') :
       return <ClickableElementProperties

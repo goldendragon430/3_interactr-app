@@ -52,23 +52,28 @@ const SelectFromPopupTemplatesModal = ({ onClose }) => {
   }
 
   return(
-    <Modal
-      height={742}
-      width={1122}
-      show={showSelectFromPopupTemplatesModal}
-      onClose={onClose}
-      onBack={goBack}
-      heading={<><Icon name="list" /> Select a Popup</>}
-    >
-      <div className={'grid'} style={{height:'575px', overflow:'hidden',overflowY:'scroll'}}>
-       {showSelectFromPopupTemplatesModal && (
-          <ModalBody
-            saving={saving}
-            clickHandler={clickHandler}
-          />
-       )}
-      </div>
-    </Modal>
+    <>
+      {
+        showSelectFromPopupTemplatesModal && 
+        <Modal
+          height={742}
+          width={1122}
+          show={showSelectFromPopupTemplatesModal}
+          onClose={onClose}
+          onBack={goBack}
+          heading={<><Icon name="list" /> Select a Popup</>}
+        >
+          <div className={'grid'} style={{height:'575px', overflow:'hidden',overflowY:'scroll'}}>
+          {showSelectFromPopupTemplatesModal && (
+              <ModalBody
+                saving={saving}
+                clickHandler={clickHandler}
+              />
+          )}
+          </div>
+        </Modal>
+      }
+    </>
   )
 }
 

@@ -30,8 +30,6 @@ export const EditPopupModal = () => {
 	const { saveModal } = useModalCommands(modal?.id);
 	useSaveModalEditorListener(modal?.id);
 
-	if(!modal) return;
-
 	const onClose = () => {
 		if(modalId) 
 			navigate(modalsPath({projectId}));
@@ -47,7 +45,7 @@ export const EditPopupModal = () => {
 		try {
 			await saveModal({
 				variables: {
-          input: getModalForSaving(modal.id, payload.detail),
+          input: getModalForSaving(modal?.id, payload.detail),
         },
 			});
 		} catch (err) {
@@ -87,7 +85,7 @@ export const EditPopupModal = () => {
 		>
 			<DynamicText />
 			{
-				modal.id ? <ModalEditor modalId = {modal.id}/> : null
+				modal?.id ? <ModalEditor modalId = {modal?.id}/> : null
 			}
 			<NameElementModal />
 		</Modal>

@@ -40,24 +40,29 @@ const SelectFromProjectPopupsModal = ({ onClose }) => {
 	};
 
 	return (
-		<Modal
-			height={height}
-			width={width}
-			show={showSelectFromProjectPopupsModal}
-			onClose={onClose}
-			onBack={goBack}
-			heading={'Select a Popup'}
-		>
-			{showSelectFromProjectPopupsModal && (
-				<ModalBody
-					saving={saving}
-					setHeight={setHeight}
-					setWidth={setWidth}
-					clickHandler={clickHandler}
-					projectId={projectId}
-				/>
-			)}
-		</Modal>
+		<>
+			{
+				showSelectFromProjectPopupsModal && 
+				<Modal
+					height={height}
+					width={width}
+					show={showSelectFromProjectPopupsModal}
+					onClose={onClose}
+					onBack={goBack}
+					heading={'Select a Popup'}
+				>
+					{showSelectFromProjectPopupsModal && (
+						<ModalBody
+							saving={saving}
+							setHeight={setHeight}
+							setWidth={setWidth}
+							clickHandler={clickHandler}
+							projectId={projectId}
+						/>
+					)}
+				</Modal>
+			}
+		</>
 	);
 };
 

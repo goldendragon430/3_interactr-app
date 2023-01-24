@@ -146,45 +146,50 @@ const AddPopupNameModal = ({ onClose }) => {
 	};
 
 	return (
-		<Modal
-			height={610}
-			width={1122}
-			show={showPopupNameModal}
-			onClose={onClose}
-			onBack={goBack}
-			heading={'Select a Popup'}
-		>
-			{showPopupNameModal && (
-				<div className={'grid'}>
-					<div className={'col6'}>
-						{newModalObject ? (
-							<ModalTemplatePreview modal={newModalObject} />
-						) : (
-							<NoTemplatePreview />
-						)}
+		<>
+		 {
+			showPopupNameModal && 
+			<Modal
+				height={610}
+				width={1122}
+				show={showPopupNameModal}
+				onClose={onClose}
+				onBack={goBack}
+				heading={'Select a Popup'}
+			>
+				{showPopupNameModal && (
+					<div className={'grid'}>
+						<div className={'col6'}>
+							{newModalObject ? (
+								<ModalTemplatePreview modal={newModalObject} />
+							) : (
+								<NoTemplatePreview />
+							)}
+						</div>
+						<div className={'col6'} style={{ paddingTop: '160px' }}>
+							<Option
+								label='Enter a name for the popup'
+								value={name}
+								Component={TextInput}
+								onChange={(val) => setName(val)}
+								onEnter={handleSubmit}
+							/>
+							<Button
+								primary
+								onClick={handleSubmit}
+								loading={loading}
+								right
+								icon={'arrow-right'}
+								rightIcon
+							>
+								Create Popup
+							</Button>
+						</div>
 					</div>
-					<div className={'col6'} style={{ paddingTop: '160px' }}>
-						<Option
-							label='Enter a name for the popup'
-							value={name}
-							Component={TextInput}
-							onChange={(val) => setName(val)}
-							onEnter={handleSubmit}
-						/>
-						<Button
-							primary
-							onClick={handleSubmit}
-							loading={loading}
-							right
-							icon={'arrow-right'}
-							rightIcon
-						>
-							Create Popup
-						</Button>
-					</div>
-				</div>
-			)}
-		</Modal>
+				)}
+			</Modal>
+		 }
+		</>
 	);
 };
 
