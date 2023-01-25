@@ -78,7 +78,7 @@ export const ModalPropertiesSection = () => {
 					<div style={{ position: 'relative', zIndex: 200 }}>
 						<Option
 							label='Background Color'
-							value={backgroundColour}
+							value={backgroundColour == '' ? 'rgba(255, 255, 255, 1)' : backgroundColour}
 							Component={ColorInput}
 							onChange={(val) => handleUpdateModal('backgroundColour', val)}
 						/>

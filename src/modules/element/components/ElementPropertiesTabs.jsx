@@ -46,7 +46,7 @@ const ElementPropertiesTabs = ({element, meta,  update, save, startTab = 'positi
 export default ElementPropertiesTabs
 
 const Header = ({active, setActive, meta}) => {
-  const {modalId} = useParams()
+  const {modalElementId} = useParams()
 
   if(!meta.properties) {
     console.error("Element has no properties defined in the utils/elements.js file");
@@ -58,7 +58,7 @@ const Header = ({active, setActive, meta}) => {
       {_map(meta.properties, (property, index) => <PropertyHeader key={'property_header_'+index} property={property} active={active===property} onClick={setActive} />)}
 
       {/* We need to hide the interaction properties when on the modal route as modal elements don't have an interaction */}
-      {!modalId && <PropertyHeader property={'interaction'} active={active==='interaction'} onClick={setActive} />}
+      {!modalElementId && <PropertyHeader property={'interaction'} active={active==='interaction'} onClick={setActive} />}
     </ul>
   )
 };

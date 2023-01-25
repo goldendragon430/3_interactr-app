@@ -50,10 +50,14 @@ export const ModalTimerPropertiesSection = () => {
 
 	const changeHandler = (key, value) => {
 		const fields = typeof key === 'object' ? key : { [key]: value };
-
+		
 		fields.timer_duration || timer_duration
 			? (fields.use_timer = true)
 			: (fields.use_timer = false);
+
+		if(key == "use_timer") {
+			fields.timer_duration = ( value ? fields.timer_duration : 0)
+		}
 
 		// setEditPopup({
 		// 	modal: {
