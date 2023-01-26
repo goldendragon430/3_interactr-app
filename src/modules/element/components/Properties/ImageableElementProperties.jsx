@@ -34,7 +34,7 @@ const ImageableElementProperties = ({tabAnimation, element, update, save}) => {
   useEffect(() => {
     update('opacity', opacity)
   }, [opacity, update])
-
+  
   const [addImageModal, setAddImageModal] = useState(false);
   const [addFromComputer, setAddFromComputer] = useState(false);
   const user = useAuthUser();
@@ -57,7 +57,8 @@ const ImageableElementProperties = ({tabAnimation, element, update, save}) => {
   const showImageModal = (type) => {
     setAddImage({
       ...ADD_IMAGE_VAR_INITIAL_DATA,
-      [type]: true
+      [type]: true,
+      imageElement: element
     })
   }
 

@@ -3,7 +3,8 @@ import {makeVar} from "@apollo/client";
 export const ADD_IMAGE_VAR_INITIAL_DATA = {
   showImageElementModal: false,
   showUploadImageFromComputerModal: false,
-  newImageElement: null
+  newImageElement: null,
+  imageElement: null
 }
 
 export const getAddImage = makeVar(ADD_IMAGE_VAR_INITIAL_DATA);
