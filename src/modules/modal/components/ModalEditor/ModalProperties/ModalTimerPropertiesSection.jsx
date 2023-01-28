@@ -54,15 +54,6 @@ export const ModalTimerPropertiesSection = () => {
 			fields.timer_duration = timer_duration ? timer_duration : 1;
 		}
 
-		// setEditPopup({
-		// 	modal: {
-		// 		background_animation: {
-		// 			...background_animation,
-		// 			...fields,
-		// 		},
-		// 	},
-		// });
-
 		updateModal('background_animation', {
 			...background_animation,
 			...fields,
