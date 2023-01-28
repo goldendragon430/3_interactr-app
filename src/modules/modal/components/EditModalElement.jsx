@@ -48,7 +48,8 @@ const ElementEditBody = ({id}) => {
   if(error) return <ErrorMessage error={error} />;
 
   const {modalElement} = data;
-
+  if(!modalElement) return null;
+  
   return <section>
     <ElementSwitch
       element={modalElement.element}
