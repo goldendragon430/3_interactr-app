@@ -30,7 +30,7 @@ const ModalBackground = ({ modal, children }) => {
 		zIndex: 20,
 		overflow: 'hidden',
 	};
-
+	
 	useEffect(() => {
 		window.addEventListener('preview_animation', (e) => {
 			if (e.detail === 'Modal:' + modal.id && canPreview) {
@@ -55,9 +55,11 @@ const ModalBackground = ({ modal, children }) => {
 					// overflow: 'hidden',
 				}}
 			>
-				{background_animation && background_animation.use_timer && (
-					<ModalTimer modal={modal} canPreview={canPreview} />
-				)}
+				{
+					background_animation && background_animation?.use_timer  
+					? <ModalTimer modal={modal} canPreview={canPreview} /> 
+					: null
+				}
 				{children}
 			</div>
 			{modalId === modal.id && <Grid />}

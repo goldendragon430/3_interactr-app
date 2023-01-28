@@ -35,7 +35,7 @@ const ElementGroupModal = () => {
 
   const {data: playerData} = useQuery(PLAYER_QUERY);
 
-  const closeModal = ()=>setState(INITIAL_STATE)
+  const closeModal = () => setState(INITIAL_STATE)
 
   const formSubmit = async () => {
     setState({loading: true});

@@ -26,7 +26,7 @@ export const NameElementModal = () => {
 	const { modal } = useReactiveVar(getEditPopup);
 	const { showAddElementModal, newElement } = useReactiveVar(getAddModalElement);
 	const { createModalElement, createLoading } = useModalElementCommands();
-
+	
 	const [createElement, { loading }] =  useCreateElement(
 		newElement.type
 	);

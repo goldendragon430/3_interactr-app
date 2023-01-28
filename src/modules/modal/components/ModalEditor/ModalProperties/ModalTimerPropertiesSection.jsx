@@ -45,18 +45,13 @@ export const ModalTimerPropertiesSection = () => {
 	// gotta handle it not being set , like in a blank modal etc...
 	const { background_animation } = data.result;
 
-	const { use_timer, timer_duration, playSound, endAction, endActionArg } =
-		background_animation;
-
+	const { use_timer, timer_duration, playSound, endAction, endActionArg } = background_animation;
+	
 	const changeHandler = (key, value) => {
 		const fields = typeof key === 'object' ? key : { [key]: value };
-		
-		fields.timer_duration || timer_duration
-			? (fields.use_timer = true)
-			: (fields.use_timer = false);
 
 		if(key == "use_timer") {
-			fields.timer_duration = ( value ? fields.timer_duration : 0)
+			fields.timer_duration = timer_duration ? timer_duration : 1;
 		}
 
 		// setEditPopup({
@@ -90,15 +85,12 @@ export const ModalTimerPropertiesSection = () => {
 			>
 				<Section>
 					<Option
-						label='Timer Duration'
-						value={timer_duration}
-						Component={RangeInput}
-						min={0}
-						max={20}
-						step={1}
-						onChange={(val) => changeHandler('timer_duration', val)}
+						label='Use Timer'
+						value={use_timer}
+						Component={BooleanInput}
+						onChange={(val) => changeHandler('use_timer', val)}
 					/>
-					{timer_duration ? (
+					{use_timer ? (
 						<AnimatePresence>
 							<motion.div
 								exit={preAnimationState}
@@ -108,10 +100,13 @@ export const ModalTimerPropertiesSection = () => {
 							>
 								<>
 									<Option
-										label='Show Timer Animation'
-										value={use_timer}
-										Component={BooleanInput}
-										onChange={(val) => changeHandler('use_timer', val)}
+										label='Timer Duration'
+										value={timer_duration}
+										Component={RangeInput}
+										min={0}
+										max={20}
+										step={1}
+										onChange={(val) => changeHandler('timer_duration', val)}
 									/>
 									<Option
 										label='Play Timer Sound'
