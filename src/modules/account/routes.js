@@ -20,4 +20,4 @@ export const accountCustomListsPath = () => accountPath() +  accountCustomLists;
 export const accountCustomListsRoute = () => accountCustomLists;
 
 // Link to our affiliates page
-export const accountAffiliatePath = () => 'https://interactrevolution.com/advocates'
+export const accountAffiliatePath = () => 'https://interactrspecial.com/advocates'
