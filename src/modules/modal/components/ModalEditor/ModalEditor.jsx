@@ -77,7 +77,7 @@ export const ModalEditor = ({modalId}) => {
 				</div>
 			</div>
 			<div className={styles.rightSide}>
-				<EditModalElement />
+				{/* <EditModalElement /> */}
 				<ModalTabs elements={modalData.result.elements} />
 			</div>
 		</>

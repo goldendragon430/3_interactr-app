@@ -2,7 +2,7 @@
   background: white;
   position: absolute;
   top: 0;
-  left: 650px;
+  left: 1400px;
   height: 100%;
   width: 615px;
   transition: all ease-out 0.55s;
@@ -10,17 +10,17 @@
   opacity: 0.7;
   box-shadow: -4px 2px 13px 1px rgba(0, 0, 0, 0.3);
   padding-left: 15px;
-  padding-top: 15px;
+  padding-top: 15px;  
 
   > section {
     overflow: hidden;
-    //overflow-y: scroll;
-    //height: 545px;
+    // overflow-y: scroll;
+    height: 700px;
   }
 }
 
 .in {
-  left: 20px;
+  left: 785px;
   opacity: 1;
 }
 

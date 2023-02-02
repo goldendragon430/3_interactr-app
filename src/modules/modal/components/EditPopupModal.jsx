@@ -20,6 +20,7 @@ import Emitter, {
   MODAL_PAGE_SAVE_COMPLETE,
 	MODAL_PAGE_SAVE_START
 } from '../../../utils/EventEmitter';
+import EditModalElement from './EditModalElement';
 
 export const EditPopupModal = () => {
 	const [saving, setSaving] = useState(false);
@@ -88,6 +89,7 @@ export const EditPopupModal = () => {
 				modal?.id ? <ModalEditor modalId = {modal?.id}/> : null
 			}
 			<NameElementModal />
+			<EditModalElement />
 		</Modal>
 	);
 };
