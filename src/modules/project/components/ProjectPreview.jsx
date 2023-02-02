@@ -103,24 +103,18 @@ const PreviewUsersProject = ({cacheBuster, projectId, startNodeId, ...props }) =
     }
   });
 
-  const player = useQuery(PLAYER_QUERY);
   
-  if(loading || player.loading) return <Icon loading />;
-
+  if(loading) return <Icon loading />;
   if(error) return <ErrorMessage error={error} />;
-  if(player.error) return <ErrorMessage error={player.error} />
 
   return <Preview
     project={data.result}
-    player={player.data.result}
     startNodeId={startNodeId}
-    cacheBuster={cacheBuster}
-    ref={props.frameRef}
     {...props}
   />
 }
 
-const Preview = React.forwardRef(({project, startNodeId, player, cacheBuster ,frameRef, bigPlayColor}, ref) => {
+const Preview = React.forwardRef(({ project, startNodeId }) => {
   useEffect(() => {
     const wrapperUrl = import.meta.env.VITE_WRAPPER_URL;    
     runPlayerWrapper(wrapperUrl);
@@ -130,7 +124,7 @@ const Preview = React.forwardRef(({project, startNodeId, player, cacheBuster ,fr
   }, [project]);  
 
   if(! project) return null;
-  const html = generateEmbedCodeForPreviewing(project, player);
+  const html = generateEmbedCodeForPreviewing(project, startNodeId);
   
   return (
     <div className={styles.wrapper}>

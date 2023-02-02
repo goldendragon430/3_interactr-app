@@ -37,7 +37,7 @@ export function generateEmbedCode(project, player, storagePath) {
 }
 
 
-export function generateEmbedCodeForPreviewing(project, player) {
+export function generateEmbedCodeForPreviewing(project, startNodeId) {
 
   let apiUrl = import.meta.env.VITE_API_URL;
   let analyticsUrl = import.meta.env.VITE_ANALYTICS_URL;
@@ -54,6 +54,7 @@ export function generateEmbedCodeForPreviewing(project, player) {
             data-context="preview"
             api-url=${apiUrl}
             analytics-url=${analyticsUrl}
+            preview-node-id=${startNodeId}
           >
             <div class="iv-player_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
               <div class="iv-player_embed iv-player_async_p2z7746nud videoFoam=true" style="height:100%;position:relative;width:100%">
