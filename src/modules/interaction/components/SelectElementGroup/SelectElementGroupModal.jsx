@@ -16,26 +16,18 @@ import {
 import { SelectElementGroup } from './SelectElementGroup';
 
 export const SelectElementGroupModal = ({ close, handleCreate, loading }) => {
-	const { showSelectElementGroupModal, newElement } =
-		useReactiveVar(getAddInteraction);
+	const { showSelectElementGroupModal, newElement } = useReactiveVar(getAddInteraction);
 
 	const { name, type, element_group_id } = newElement;
 
 	const handleNext = () => {
 		setAddInteraction({
-			// ...ADD_INTERACTION_VAR_INITIAL_DATA,
 			showSelectElementGroupModal: false,
 			showSelectImageElementTypeModal: type === IMAGE_ELEMENT ? true : false,
 			showAddFromImageLibraryModal: false,
 			showAddImageFromComputerModal: false,
 			showAddHtmlElementModal: type === CUSTOM_HTML_ELEMENT ? true : false,
-			showAddElementModal:
-				type !== CUSTOM_HTML_ELEMENT && type !== IMAGE_ELEMENT ? true : false,
-			// newElement: {
-			//   ...newElement,
-			//   name: state.name,
-			//   element_group_id: state.element_group_id
-			// }
+			showAddElementModal: type !== CUSTOM_HTML_ELEMENT && type !== IMAGE_ELEMENT ? true : false,
 		});
 	};
 

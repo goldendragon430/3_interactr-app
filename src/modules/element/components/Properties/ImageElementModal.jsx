@@ -66,12 +66,13 @@ export default class ImageElementModal extends React.Component {
     const {submit, close} = this.props;
     const {src, key} = options;
     const size = this.getSize(key);
-
+    
     submit({
       src,
       height: size.height,
       width: size.width
     });
+
     // close();
   };
 

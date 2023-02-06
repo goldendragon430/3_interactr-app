@@ -2,6 +2,10 @@ import {makeVar} from "@apollo/client";
 
 export const ADD_MODAL_ELEMENT_VAR_INITIAL_DATA = {
   showAddElementModal: false,
+  showSelectImageElementTypeModal: false,
+  showAddFromImageLibraryModal: false,
+  showAddImageFromComputerModal: false,
+  showAddHtmlElementModal: false,
   newElement: {
     name: 'My New Element',
     element_group_id: 0,

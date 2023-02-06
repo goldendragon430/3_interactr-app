@@ -7,88 +7,46 @@ import { useParams } from 'react-router-dom';
 import { errorAlert } from '../../../utils/alert';
 import { useElementRoute } from '../../element/routeHooks';
 import {
-	ADD_INTERACTION_VAR_INITIAL_DATA,
-	getAddInteraction,
-	setAddInteraction,
-} from '../../../graphql/LocalState/addInteraction';
-import AddImageFromComputerModal from './AddImageFromComputerModal';
-import SelectImageElementTypeModal from './SelectImageElementTypeModal';
-import { SelectElementGroupModal } from './SelectElementGroup/SelectElementGroupModal';
-import AddFromImageLibraryModal from './AddFromImageLibraryModal';
-import AddHtmlElementModal from './AddHtmlElementModal';
-import { useInteractionCommands } from '../../../graphql/Interaction/hooks';
+	getAddModalElement,
+	setAddModalElement,
+	ADD_MODAL_ELEMENT_VAR_INITIAL_DATA
+} from '@/graphql/LocalState/addModalElement';
+import AddImageFromComputerModal from '../../interaction/components/AddImageFromComputerModal';
+import SelectImageElementTypeModal from '../../interaction/components/SelectImageElementTypeModal';
+import AddFromImageLibraryModal from '../../interaction/components/AddFromImageLibraryModal';
+import AddHtmlElementModal from '../../interaction/components/AddHtmlElementModal';
 import { useCreateElement } from '../../../graphql/Element/hooks';
+import { useModalElementCommands } from '@/graphql/Modal/hooks';
+import { NameElementModal } from './NameElementModal';
+import { getEditPopup } from '@/graphql/LocalState/editPopup';
 
-const PLAYER_QUERY = gql`
-	query player {
-		player @client {
-			duration
-			playedSeconds
-		}
-	}
-`;
-
-const SelectInteractionModal = () => {
-	const { 
+const SelectPopupModal = () => {
+	const {
 		showAddFromImageLibraryModal,
 		showAddImageFromComputerModal,
 		showAddHtmlElementModal,
 		showSelectImageElementTypeModal,
-		newElement 
-	} = useReactiveVar(getAddInteraction);
+		newElement
+	} = useReactiveVar(getAddModalElement);
+	
 
-	const [createElement, { loading: creating }] = useCreateElement(
+	const { modal } = useReactiveVar(getEditPopup);
+	const { createModalElement, createLoading } = useModalElementCommands();
+	
+	const [createElement, { loading }] =  useCreateElement(
 		newElement.type
 	);
-
-	const { nodeId } = useParams();
-	const { data, loading, error } = useQuery(PLAYER_QUERY);
-	const { createInteraction } = useInteractionCommands();
-	const [_, setElementId] = useElementRoute();
-
-	if (loading || error) return null;
+	const { name, type } = newElement;
 
 	const onClose = () => {
-		setAddInteraction({
-			...ADD_INTERACTION_VAR_INITIAL_DATA,
-			showSelectElementGroupModal: false,
-			showSelectImageElementTypeModal: false,
-			showAddFromImageLibraryModal: false,
-			showAddImageFromComputerModal: false,
-			showAddHtmlElementModal: false,
-			showAddElementModal: false,
+		setAddModalElement({
+			...ADD_MODAL_ELEMENT_VAR_INITIAL_DATA,
+			// showSelectImageElementTypeModal: false,
+			// showAddFromImageLibraryModal: false,
+			// showAddImageFromComputerModal: false,
+			// showAddHtmlElementModal: false,
+			// showAddElementModal: false,
 		});
-	};
-
-	const handleInteractionCreate = async (element, type, element_group_id) => {
-		try {
-			const { duration, playedSeconds } = data.player;
-
-			const request = await createInteraction({
-				variables: {
-					input: {
-						element_type: type,
-						element_id: parseInt(element.id),
-						timeIn: playedSeconds - (playedSeconds ? 0.01 : 0), // This ensures the element shows on the video straight away
-						// If the media has no duration we default this to 1 so should the user change
-						// the media to one that does have a duration the timeline bar doesn't mess up
-						timeOut: duration ? duration : 1,
-						node_id: parseInt(nodeId),
-						// IF we pass 0 back it fails on insert in MYSQL as there's a foreign key
-						// between element groups and interactions so we need to change to null
-						element_group_id:
-							element_group_id === 0 ? null : parseInt(element_group_id),
-					},
-				},
-			});			
-			setElementId(request.data.result.id);
-		} catch (err) {
-			console.error(err);
-			errorAlert({
-				title: 'Error creating element',
-				text: 'We was unable to create the new element, please try again. If the problem persits please contact support',
-			});
-		}
 	};
 
 	const handleCreate = async () => {
@@ -96,7 +54,7 @@ const SelectInteractionModal = () => {
 		// elements are the same as this level. Once the element is created we pass that
 		// to the onSelect function that with either create a interaction or modal element
 		// parent as needed
-		const { type, src, html, posObject, name, element_group_id } = newElement;
+		const { type, src, html, posObject, name } = newElement;
 
 		if (type === 'App\\ImageElement' && !src) {
 			return errorAlert({
@@ -120,9 +78,9 @@ const SelectInteractionModal = () => {
 
 			let result = request.data.result;
 			result.id = Number(result.id);
-
+			
+			await addModalElement(result.id, type);
 			onClose();
-			await handleInteractionCreate(result, type, element_group_id);
 		} catch (e) {
 			console.log(e);
 			errorAlert({
@@ -132,19 +90,35 @@ const SelectInteractionModal = () => {
 		}
 	};
 
-	const handleSelectImageElementTypeModalBack = () => setAddInteraction({
-		// ...ADD_INTERACTION_VAR_INITIAL_DATA,
+	const addModalElement = async (elementId, elementType) => {
+		try {
+			const req = await createModalElement({
+				variables: {
+					input: {
+						element_type: elementType,
+						element_id: elementId,
+						modal_id: parseInt(modal.id),
+					},
+				},
+			});
+
+		} catch (err) {
+			console.error(err);
+			errorAlert({ text: 'Unable to add element' });
+		}
+	};
+
+	const handleSelectImageElementTypeModalBack = () => setAddModalElement({
 		showSelectElementGroupModal: true,
 		showSelectImageElementTypeModal: false
 	});
 
-	const setTypeFromLibrary = () => setAddInteraction({
-		// ...ADD_INTERACTION_VAR_INITIAL_DATA,
+	const setTypeFromLibrary = () => setAddModalElement({
 		showSelectImageElementTypeModal: false,
 		showAddFromImageLibraryModal: true,
 	});
 
-	const setTypeFromComputer = () => setAddInteraction({
+	const setTypeFromComputer = () => setAddModalElement({
 		// ...ADD_INTERACTION_VAR_INITIAL_DATA,
 		showSelectImageElementTypeModal: false,
 		showAddImageFromComputerModal: true,
@@ -152,7 +126,7 @@ const SelectInteractionModal = () => {
 
 	const handleAddFromImageLibraryModalSubmit = (options) => {
     const { src, width, height } = options;
-    setAddInteraction({
+    setAddModalElement({
       newElement: {
         ...newElement,
         src,
@@ -162,18 +136,18 @@ const SelectInteractionModal = () => {
     });
   }
 
-	const handleAddFromImageLibraryModalBack = () => setAddInteraction({
+	const handleAddFromImageLibraryModalBack = () => setAddModalElement({
 		showAddFromImageLibraryModal: false,
 		showSelectImageElementTypeModal: true
 	});
 
-	const handleAddImageFromComputerModalBack = () => setAddInteraction({
+	const handleAddImageFromComputerModalBack = () => setAddModalElement({
 		showAddImageFromComputerModal: false,
 		showSelectImageElementTypeModal: true
 	});
 
 	const handleDropzoneUploadSuccess = ({src}) => {
-		setAddInteraction({
+		setAddModalElement({
 			newElement: {
 				...newElement,
 				src,
@@ -181,12 +155,12 @@ const SelectInteractionModal = () => {
 		});
 	};
 
-	const handleAddHtmlElementModalBack = () => setAddInteraction({
+	const handleAddHtmlElementModalBack = () => setAddModalElement({
 		showAddHtmlElementModal: false,
 		showSelectElementGroupModal: true,
 	});
 
-	const handleAddHtmlElementModalChange = val => setAddInteraction({
+	const handleAddHtmlElementModalChange = val => setAddModalElement({
 		newElement: {
 			...newElement,
 			html: val
@@ -195,12 +169,11 @@ const SelectInteractionModal = () => {
 
 	return (
 		<>
-			<SelectElementGroupModal
-				close={onClose}
-				handleCreate={handleCreate}
-				loading={creating}
+			<NameElementModal
+				onCreate={handleCreate}
+				onClose={onClose}
+				loading={loading | createLoading}
 			/>
-
 			<SelectImageElementTypeModal 
 				close={onClose}
 				show={showSelectImageElementTypeModal}
@@ -221,7 +194,7 @@ const SelectInteractionModal = () => {
 			<AddImageFromComputerModal
 				close={onClose}
 				handleCreate={handleCreate}
-				loading={creating}
+				loading={loading | createLoading}
 				newElement={newElement}
 				show={showAddImageFromComputerModal}
 				onBack={handleAddImageFromComputerModalBack}
@@ -231,7 +204,7 @@ const SelectInteractionModal = () => {
 			<AddHtmlElementModal
 				close={onClose}
 				handleCreate={handleCreate}
-				loading={creating}
+				loading={loading | createLoading}
 				newElement={newElement}
 				show={showAddHtmlElementModal}
 				onBack={handleAddHtmlElementModalBack}
@@ -241,4 +214,4 @@ const SelectInteractionModal = () => {
 	);
 };
 
-export default SelectInteractionModal;
+export default SelectPopupModal;

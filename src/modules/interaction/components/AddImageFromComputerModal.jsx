@@ -1,14 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import Modal from "../../../components/Modal";
-import {useReactiveVar} from "@apollo/client";
-import { getAddInteraction, setAddInteraction } from "../../../graphql/LocalState/addInteraction";
 import Icon from "../../../components/Icon";
 import Button from "../../../components/Buttons/Button";
 import DropImageZone from '../../../modules/media/components/DropImageZone';
 
+const AddImageFromComputerModal = ({ close, handleCreate, loading, newElement, show, onBack, onSuccess }) => {
 
-const AddImageFromComputerModal = ({ close, handleCreate, loading }) => {
-  const {showAddImageFromComputerModal, newElement} = useReactiveVar(getAddInteraction);
   const [height, setHeight] = useState(360)
 
   useEffect(() => {
@@ -19,12 +16,9 @@ const AddImageFromComputerModal = ({ close, handleCreate, loading }) => {
     <Modal
       height={height}
       width={600}
-      show={showAddImageFromComputerModal}
+      show={show}
       onClose={close}
-      onBack={() => setAddInteraction({
-        showAddImageFromComputerModal: false,
-        showSelectImageElementTypeModal: true
-      })}
+      onBack={onBack}
       closeMaskOnClick={false}
       heading={
         <><Icon name={'plus'} />Upload Image From Your Computer</>
@@ -40,15 +34,7 @@ const AddImageFromComputerModal = ({ close, handleCreate, loading }) => {
       <label style={{paddingBottom: 10}}>Upload your Image</label>
       <DropImageZone
         directory="imageElements"
-        onSuccess={({src}) => {
-          setHeight(630);
-          setAddInteraction({
-            newElement: {
-              ...newElement,
-              src,
-            }
-          });
-        }}
+        onSuccess={onSuccess}
         src={newElement?.src}
         width={385}
         height={250}

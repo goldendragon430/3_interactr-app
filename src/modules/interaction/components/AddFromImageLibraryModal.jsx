@@ -1,10 +1,7 @@
 import React, { useEffect } from 'react';
-import {useReactiveVar} from "@apollo/client";
-import { getAddInteraction, setAddInteraction } from "../../../graphql/LocalState/addInteraction";
 import ImageElementModal from "../../element/components/Properties/ImageElementModal";
 
-const AddFromImageLibraryModal = ({ close, handleCreate }) => {
-  const {showAddFromImageLibraryModal, newElement} = useReactiveVar(getAddInteraction);
+const AddFromImageLibraryModal = ({ close, handleCreate, newElement, show, handleSubmit, onBack }) => {
 
   useEffect(() => {
     if(newElement.src) {
@@ -12,26 +9,11 @@ const AddFromImageLibraryModal = ({ close, handleCreate }) => {
     }
   }, [newElement])
 
-  const handleSubmit = (options) => {
-    const { src, width, height } = options;
-    setAddInteraction({
-      newElement: {
-        ...newElement,
-        src,
-        height,
-        width
-      }
-    });
-  }
-
   return (
     <ImageElementModal
-      showStockList={showAddFromImageLibraryModal}
+      showStockList={show}
       close={close} 
-      onBack={() => setAddInteraction({
-        showAddFromImageLibraryModal: false,
-        showSelectImageElementTypeModal: true
-      })}
+      onBack={onBack}
       submit={handleSubmit}
     />
   );

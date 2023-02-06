@@ -12,7 +12,6 @@ import { DynamicText, Icon, Modal } from 'components';
 import { useModalCommands } from '@/graphql/Modal/hooks';
 import { getModalForSaving } from '@/graphql/Modal/utils';
 import { ModalEditor } from './ModalEditor';
-import { NameElementModal } from './NameElementModal';
 import { useNavigate, useParams } from "react-router-dom";
 import { modalsPath } from 'modules/modal/routes';
 import Emitter, {
@@ -21,6 +20,7 @@ import Emitter, {
 	MODAL_PAGE_SAVE_START
 } from '../../../utils/EventEmitter';
 import EditModalElement from './EditModalElement';
+import SelectPopupModal from './SelectPopupModal';
 
 export const EditPopupModal = () => {
 	const [saving, setSaving] = useState(false);
@@ -88,7 +88,7 @@ export const EditPopupModal = () => {
 			{
 				modal?.id ? <ModalEditor modalId = {modal?.id}/> : null
 			}
-			<NameElementModal />
+			<SelectPopupModal />
 			<EditModalElement />
 		</Modal>
 	);
