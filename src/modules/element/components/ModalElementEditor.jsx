@@ -30,7 +30,7 @@ const _props = {
  * @constructor
  */
 const ModalElementEditor = ({ modalElement, preview }) => {
-	const [activeModalElement, setActiveModalElement] = useModalElementRoute();
+	const [activeModalElement, setActiveModalElement, back] = useModalElementRoute();
 	//const [activeModalElement, setActiveModalElement] = useState();
 
 	const { goToModalPage } = useModalRoute();
@@ -57,6 +57,7 @@ const ModalElementEditor = ({ modalElement, preview }) => {
 					},
 				});
 				// goToModalPage(modal.id);
+				back();
 			}
 		});
 	};
