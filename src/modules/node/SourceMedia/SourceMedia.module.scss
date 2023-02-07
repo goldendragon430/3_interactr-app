@@ -8,10 +8,10 @@
 }
 
 .mediaCard {
-  width: 390px;
-  // width: auto !important;
-  max-height: 330px;
+  // width: 390px;
+  // display: flex;
   overflow: hidden;
+  margin: auto;
 }
 
 .emptyMediaCard {

@@ -85,12 +85,14 @@ const CurrentMedia = ({media}) => {
 
   const {name, thumbnail_url} = media;
 
-  return(
+  return (
     <>
       <p style={{marginTop: '5px', marginBottom: '5px'}} className={'ellipsis'}>
         <small>{name}</small>
       </p>
-      <img src={thumbnail_url}  className="img-fluid" />
+      <div style={{position: 'relative', maxHeight: '380px', paddingBottom: '56.25%', display: 'flex', justifyContent: 'center', backgroundColor: '#eee'}}>
+        <img src={thumbnail_url}  className="img-fluid" style={{position: 'absolute', top: 0, height: '100%'}}/>
+      </div>
     </>
   )
 };
