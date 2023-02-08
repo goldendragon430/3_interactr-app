@@ -52,7 +52,7 @@ export const MediaCard = ({ media, onUpdate, replaceMediaSource, refetch }) => {
 			}}
 		>
 			<ReactTooltip className='tooltip' />
-			<div className='col2'>
+			<div className='col2' style={{display:'flex', justifyContent: 'center'}}>
 				<img
 					src={media.thumbnail_url || getAsset('/img/no-thumbnail.png')}
 					className='img-fluid '
