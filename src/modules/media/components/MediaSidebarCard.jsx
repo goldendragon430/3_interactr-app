@@ -111,7 +111,9 @@ function Thumbnail({item, project}){
         onStop={handleDragStop}
         offset={{ x: 5, y: 0 }}
       >
-        <img className={styles.image} src={item.thumbnail_url || item.url}  style={style} />
+        <div style={{ display: 'flex', justifyContent: 'center'}}>
+          <img className={styles.image} src={item.thumbnail_url || item.url}  style={style} />
+        </div>
       </CloneOnDrag>
     )
 }
