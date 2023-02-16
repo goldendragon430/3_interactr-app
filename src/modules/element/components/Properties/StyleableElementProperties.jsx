@@ -214,14 +214,14 @@ const ButtonStyles =  ({element, update}) => {
           onChange={val => update('button_background', val)}
         />
       </div>
-      <div style={{ position: 'relative', zIndex: 90 }}>
+      {/* <div style={{ position: 'relative', zIndex: 90 }}>
         <Option
           label="Text Color"
           value={button_text_color}
           Component={ColorInput}
           onChange={val => update('button_text_color', val)}
         />
-      </div>
+      </div> */}
 
       <RangeInputAfterChange
         label="Roundness (px)"

@@ -1,6 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Upgrade.module.scss';
-import {Link} from 'react-router-dom';
 
 export default function ({text, url}) {
     const btnText = 'Click Here To Upgrade';

@@ -1,6 +1,5 @@
-import React from 'react';
-import {useReactiveVar} from "@apollo/client";
-import {getAcl} from "../graphql/LocalState/acl";
+import { useReactiveVar } from "@apollo/client";
+import { getAcl } from "../graphql/LocalState/acl";
 
 const AccessControl = ({action, children, cant = null}) => {
   const acl = useReactiveVar(getAcl);

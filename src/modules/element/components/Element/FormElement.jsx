@@ -47,9 +47,12 @@ export default function FormElement({elementId, selected, onSelect, onDelete, pr
     button_paddingSides,
     name_placeholder_text,
     email_placeholder_text,
-    button_text_color
+    button_text_color,
+    border_color,
+    border_width,
+    border_type
   } = element;
-
+  
   const toggleEditState = state => () => {
     setEditing(state);
   };
@@ -70,9 +73,8 @@ export default function FormElement({elementId, selected, onSelect, onDelete, pr
   };
 
   function renderInput({ placeholder, className }) {
-    const { on_one_line, input_color } = element;
+    const { on_one_line, input_color, input_borderType, input_borderWidth } = element;
     let styles = { ...getElementMeta(FORM_ELEMENT).inputStyles, ...getPrefixedProps(element, 'input_') };
-
     // appendPlaceholderColorToDom(input_color, className);
 
     if (on_one_line) {
@@ -84,6 +86,8 @@ export default function FormElement({elementId, selected, onSelect, onDelete, pr
       styles.flexGrow = 0;
     }
     styles.height = '40px';
+    styles.borderStyle = input_borderType;
+    styles.borderWidth = input_borderWidth + 'px';
 
     return <input type="text" style={styles} placeholder={placeholder} className={className} onKeyDown={(e) => {e.stopPropagation();}}/>;
   }
@@ -97,7 +101,10 @@ export default function FormElement({elementId, selected, onSelect, onDelete, pr
     paddingLeft: padding + 'px',
     paddingRight: padding + 'px',
     backgroundColor: backgroundColour,
-    borderRadius: borderRadius
+    borderRadius: borderRadius,
+    borderStyle: border_type,
+    borderWidth: border_width + 'px',
+    borderColor: border_color
   };
   
   const renderForm = () => (

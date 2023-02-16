@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { useReactiveVar } from "@apollo/client";
 import getAsset from 'utils/getAsset';
-import {useReactiveVar} from "@apollo/client";
-import {getWhitelabel} from "../graphql/LocalState/whitelabel";
+import { getWhitelabel } from "../graphql/LocalState/whitelabel";
 
 const AppLogo = () => {
   const whitelabel = useReactiveVar(getWhitelabel);

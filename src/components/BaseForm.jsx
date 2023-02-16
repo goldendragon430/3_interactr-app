@@ -1,8 +1,5 @@
-import React from 'react'
+import React from 'react';
 import Button from "./Buttons/Button";
-import {LargeTextInput, Option, TextInput} from "./PropertyEditor";
-import SelectFont from "../modules/project/components/SelectFont";
-import Icon from "./Icon";
 
 const BaseForm = ({left, right, buttonText, buttonAction, loading}) => {
   return(
