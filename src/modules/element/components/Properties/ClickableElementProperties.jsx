@@ -271,7 +271,9 @@ const PreviewNode = ({ id }) => {
 		<>
 			<label>Node Thumbnail</label>
 			{node.media ? (
-				<img src={node.media.thumbnail_url} className={'img-fluid'} />
+				<div style={{position: 'relative', maxHeight: '380px', paddingBottom: '56.25%', display: 'flex', justifyContent: 'center', backgroundColor: '#eee'}}>
+					<img src={node.media.thumbnail_url} className={'img-fluid'} style={{position: 'absolute', top: 0, height: '100%'}} />
+				</div>
 			) : (
 				<div
 					style={{

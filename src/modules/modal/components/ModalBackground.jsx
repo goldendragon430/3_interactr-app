@@ -45,14 +45,15 @@ const ModalBackground = ({ modal, children }) => {
 	}, [border_radius, backgroundColour, background_animation, size]);
 
 	return (
-		<>
-			<div style={modalStyles} ref={refContainer} />
+		<div ref={refContainer} style={modalStyles}>
 			<div
 				style={{
-					...modalPosition,
+					top: 0,
+					bottom: 0,
+					left: 0,
+					right: 0,
 					position: 'absolute',
 					zIndex: 20,
-					// overflow: 'hidden',
 				}}
 			>
 				{
@@ -63,7 +64,7 @@ const ModalBackground = ({ modal, children }) => {
 				{children}
 			</div>
 			{modalId === modal.id && <Grid />}
-		</>
+		</div>
 	);
 };
 export default ModalBackground;

@@ -47,17 +47,15 @@ const ModalCanvas = ({ modal, preview, canPreview }) => {
 					{/* Need to make the background colour editable here */}
 					<PreviewContext.Provider value={canPreview}>
 						<ModalBackground modal={modal} canPreview={canPreview}>
-							<>
-								{show_close_icon ? (
-									<div className={styles.modalClose} style={closeIconStyle}>
-										<Icon name='times' />
-									</div>
-								) : null}
-								<Elements elements={elements} preview={preview} />
-								<div onClick={() => { back() } } style={{ height: '100%', width: '100%' }}>
-									&nbsp;
+							{show_close_icon ? (
+								<div className={styles.modalClose} style={closeIconStyle}>
+									<Icon name='times' />
 								</div>
-							</>
+							) : null}
+							<Elements elements={elements} preview={preview} />
+							<div onClick={() => { back() } } style={{ height: '100%', width: '100%' }}>
+								&nbsp;
+							</div>
 						</ModalBackground>
 						<BackgroundImage preview={preview} />
 					</PreviewContext.Provider>

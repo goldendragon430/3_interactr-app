@@ -29,7 +29,7 @@ export const useButtonElementCommands = (id = null) => {
       console.error("No id passed to updateButtonElement")
       return;
     }
-
+    
     const fields = (typeof key === 'object') ?
       mapValues(key, (k)=>{
         return ()=>{ return k }

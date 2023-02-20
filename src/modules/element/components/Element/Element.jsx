@@ -63,21 +63,29 @@ const Element = ({
 export default Element;
 
 const animate = (refContainer, animation) => {
+	const basicTimeline = anime.timeline();
 	if (animation) {
-		const a = window.element_animations[animation.name];
+		const a = window.element_animations[animation?.name];
 		const animationObj = a
 			? a.anime
 			: window.element_animations['FadeIn'].anime;
-		const basicTimeline = anime.timeline();
 
 		const { delay, easing, duration } = animation;
-
 		const obj = {
 			targets: refContainer.current,
 			...animationObj,
 			delay: delay ? delay * 1000 : 0,
 			easing,
-			duration: duration * 1000,
+			duration: duration ? duration * 1000 : 1000,
+		};
+		basicTimeline.add(obj);
+	} else {
+		const obj = {
+			targets: refContainer.current,
+			...window.element_animations['FadeIn'].anime,
+			delay: 0,
+			easing: 'easeInExpo',
+			duration: 1000,
 		};
 		basicTimeline.add(obj);
 	}

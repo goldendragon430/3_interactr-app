@@ -1,6 +1,7 @@
 import {useElement} from "../Element/hooks";
 import {TRIGGER_ELEMENT} from "../../modules/element/elements";
 import {cache} from "../client";
+import mapValues from 'lodash/mapValues';
 
 /**
  * Custom hook for the trigger element
@@ -16,13 +17,16 @@ export const useTriggerElementCommands = (id= null) => {
       console.error("No id passed to updateTriggerElement")
       return;
     }
-
+    const fields = (typeof key === 'object') ?
+    mapValues(key, (k)=>{
+      return ()=>{ return k }
+    })
+    : {[key]: ()=>{return value}}
+    
     const cacheKey = cache.identify({id: elementId, __typename: 'TriggerElement'});
     cache.modify({
       id: cacheKey,
-      fields: {
-        [key](){ return value }
-      }
+      fields
     });
   }
 

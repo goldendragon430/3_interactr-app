@@ -15,14 +15,14 @@ const ModalTimer = ({ modal, canPreview }) => {
 			targets: wrapper.current,
 			opacity: [0, 1],
 			easing: 'linear',
-			delay: animation.duration * 2000,
+			delay: animation.duration * 1000,
 			duration: 1000,
 			autoplay: false,
 			complete: function(anim) {
 				setPlaying(true);
 			}
 		});
-		anim.seek(animation.duration * 2000 + 999);
+		anim.seek(animation.duration * 1000 + 999);
 
 		const listener = (e) => {
 			if (e.detail === 'Modal:' + modal.id && canPreview && wrapper.current) {
