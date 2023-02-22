@@ -78,7 +78,19 @@ const NodeCanvas = () => {
       <ProjectBranding />
 
       <Elements  />
-      <Grid />
+      <div
+				style={{
+					top: 0,
+					bottom: 0,
+					left: 0,
+					right: 0,
+					position: 'absolute',
+					zIndex: 10,
+					overflow:'hidden'
+				}}
+			>
+        <Grid />
+      </div>
 
       {!!media && !media.is_image && (
         <>
