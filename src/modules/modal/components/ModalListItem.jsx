@@ -4,8 +4,6 @@ import ModalPreview from "./ModalPreview";
 import cx from "classnames";
 import moment from "moment";
 import styles from "./SelectModal/SelectModal.module.scss";
-import {getAcl} from "../../../graphql/LocalState/acl";
-import {useReactiveVar} from "@apollo/client";
 import LinkButton from "../../../components/Buttons/LinkButton";
 
 
@@ -22,7 +20,7 @@ const ModalListItem = ({ modal, clickHandler, loading, canAccess = true }) => {
     <div className={cx('col3')}>
       <div className={styles.modalListItem}>
         <div className={cx('grid')}>
-          <div style={{padding: 0}}>
+          <div style={{padding: 0, width: '100%'}}>
             <ModalPreview  modal={modal} width={249} height={135} scale={0.33} disabled={true} />
           </div>
           <div style={{padding: '0 10px ' , width: '100%'}}>
@@ -33,14 +31,16 @@ const ModalListItem = ({ modal, clickHandler, loading, canAccess = true }) => {
             { !! modal.background_animation ? (<Button icon={'play'} small onClick={handlePreview}>Play</Button>) : null}
             {
               (canAccess) ?
-                <Button primary small
-                        right
-                        rightIcon={true}
-                        icon={"arrow-right"}
-                        loading={loading}
-                        onClick={()=>{
-                          clickHandler(modal)
-                        }}
+                <Button 
+                  primary 
+                  small
+                  right
+                  rightIcon={true}
+                  icon={"arrow-right"}
+                  loading={loading}
+                  onClick={()=>{
+                    clickHandler(modal)
+                  }}
                 >Select</Button> :
                 <LinkButton primary icon={'arrow-up'} to={'/upgrade'} small right>
                   Upgrade

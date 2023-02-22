@@ -1,7 +1,6 @@
 import React from 'react';
 
 import ModalCanvas from './ModalCanvas';
-import { MODAL_EDITOR_DOM_ID } from '../utils';
 import styles from './ModalPreview.module.scss';
 
 /**
@@ -15,11 +14,13 @@ import styles from './ModalPreview.module.scss';
 const ModalPreview = ({ width, height, scale, modal, disabled=false }) => {
 	return (
 		<div
-			id={MODAL_EDITOR_DOM_ID}
 			style={{
 				maxHeight: height + 'px',
 				// overflow: 'hidden',
 				position: 'relative',
+				display: 'flex',
+				justifyContent: 'center',
+				background: '#eee'
 			}}
 		>
 			{/* We overlay a html element so nothing in the modal can be edited */}
@@ -39,7 +40,7 @@ const ModalPreview = ({ width, height, scale, modal, disabled=false }) => {
 				style={{
 					position: 'relative',
 					transform: `scale(${scale})`,
-					transformOrigin: 'top left',
+					transformOrigin: 'top center',
 				}}
 			>
 				<ModalCanvas modal={modal} preview={disabled} canPreview={true} />

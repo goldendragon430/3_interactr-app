@@ -55,7 +55,7 @@ const SelectPopupModal = () => {
 		// to the onSelect function that with either create a interaction or modal element
 		// parent as needed
 		const { type, src, html, posObject, name } = newElement;
-
+		
 		if (type === 'App\\ImageElement' && !src) {
 			return errorAlert({
 				title: 'Error creating image element',

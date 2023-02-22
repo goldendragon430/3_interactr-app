@@ -60,7 +60,7 @@ export const EditPopupModal = () => {
 	
 	return (
 		<Modal
-			height={750}
+			height={700}
 			width={1400}
 			show={activeModal === SHOW_EDIT_POPUP_MODAL}
 			onClose={onClose}

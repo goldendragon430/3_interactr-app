@@ -28,7 +28,7 @@ const ModalBackground = ({ modal, children }) => {
 		backgroundColor: backgroundColour ? backgroundColour : 'white',
 		position: 'absolute',
 		zIndex: 20,
-		overflow: 'hidden',
+		// overflow: 'hidden',
 	};
 	
 	useEffect(() => {
@@ -63,7 +63,19 @@ const ModalBackground = ({ modal, children }) => {
 				}
 				{children}
 			</div>
-			{modalId === modal.id && <Grid />}
+			<div
+				style={{
+					top: 0,
+					bottom: 0,
+					left: 0,
+					right: 0,
+					position: 'absolute',
+					zIndex: 10,
+					overflow:'hidden'
+				}}
+			>
+				{modalId === modal.id && <Grid />}
+			</div>
 		</div>
 	);
 };

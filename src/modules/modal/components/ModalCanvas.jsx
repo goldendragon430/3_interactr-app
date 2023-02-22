@@ -5,7 +5,7 @@ import { useQuery } from '@apollo/client';
 
 import { Icon } from 'components';
 import ModalElementEditor from 'modules/element/components/ModalElementEditor';
-// import { MODAL_EDITOR_DOM_ID } from '../utils';
+import { MODAL_EDITOR_DOM_ID } from '../utils';
 import ModalBackground from './ModalBackground';
 import {useModalElementRoute} from "modules/modal/routeHooks";
 import styles from './ModalPage.module.scss';
@@ -31,11 +31,10 @@ const ModalCanvas = ({ modal, preview, canPreview }) => {
 	const closeIconStyle = {
 		color: close_icon_color,
 	};
-	
 	return (
 		<>
 			<div
-				// id={MODAL_EDITOR_DOM_ID}
+				id={MODAL_EDITOR_DOM_ID}
 				style={{
 					height: base_height + 'px',
 					width: base_width + 'px',
@@ -57,7 +56,7 @@ const ModalCanvas = ({ modal, preview, canPreview }) => {
 								&nbsp;
 							</div>
 						</ModalBackground>
-						<BackgroundImage preview={preview} />
+						<BackgroundImage preview={preview} baseWidth={modal.project.base_width}/>
 					</PreviewContext.Provider>
 				</div>
 			</div>
@@ -77,7 +76,7 @@ const Elements = ({ elements, preview }) => {
 	));
 };
 
-const BackgroundImage = ({ preview }) => {
+const BackgroundImage = ({ preview, baseWidth }) => {
 	const { data, error, loading } = useQuery(PLAYER_QUERY);
 	// const { modalId } = useParams();
 
@@ -90,7 +89,7 @@ const BackgroundImage = ({ preview }) => {
 	// if (clickThruMode && !modalId && !preview) return null;
 	if (clickThruMode && !preview) return null;
 
-	const url = '/img/modal-page-bg.jpg';
+	const url = '/img/modal-page-bg-' + baseWidth + '.jpg';
 
 	return (
 		<img
