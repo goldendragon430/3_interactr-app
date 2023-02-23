@@ -46,7 +46,7 @@ export const SourceMedia = ({label = 'Node Source Media', node}) => {
   return(
     <>
       <div className={styles.mediaWrapper}>
-        {(label) && <label>Node Background </label>}
+        {(label) && <label>Node Background</label>}
         {
           (media_id) ?
             (

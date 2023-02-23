@@ -32,7 +32,7 @@ const ElementPropertiesTabs = ({element, meta,  update, save, startTab = 'positi
       <div style={{width: '100%', float: 'left'}}>
         <Header active={active} setActive={setActive} meta={meta} />
       </div>
-      <div style={{width: '100%', float:'left', height: 'calc(100vh - 280px)', overflow: 'hidden', overflowY: 'scroll'}}>
+      <div style={{width: '100%', float:'left', height: 'calc(100vh - 350px)', overflow: 'hidden', overflowY: 'scroll'}}>
         <ActiveTabSwitch
           active={active}
           element={element}

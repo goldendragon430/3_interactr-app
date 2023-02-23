@@ -57,14 +57,11 @@ const AnimationPreview = ({completeAnimation}) => {
   return (
     <>
       <label>Preview</label>
-      <div style={{
-        height: '264px', width: '470px', overflow: 'hidden'
-      }}>
-        <div
-          ref={ref}
-          style={{height: '264px', width: '470px'}}
-        >
-          <Thumbnail media={data.node.media} background_color={data.node.background_color} />
+      <div
+        style={{position: 'relative', maxHeight: '250px', paddingBottom: '56.25%', display: 'flex', justifyContent: 'center', backgroundColor: '#eee', overflow: 'hidden'}}
+      >
+        <div ref={ref} style={{position: 'absolute', top: 0, height: '100%', width: '100%', display: 'flex', justifyContent: 'center'}}>
+          <Thumbnail media={data.node.media} background_color={data.node.background_color}/>
         </div>
       </div>
       <Button small secondary icon={'play'} loading={previewing} onClick={preview} style={{marginTop: '15px'}}>Preview</Button>
@@ -74,9 +71,9 @@ const AnimationPreview = ({completeAnimation}) => {
 export default AnimationPreview;
 
 const Thumbnail = ({media, background_color}) => {
-  if(media) return <img src={media.thumbnail_url}  className={'img-fluid'}/>
+  if(media) return <img src={media.thumbnail_url}  className={'img-fluid'} style={{position: 'absolute', top: 0, height: '100%'}}/>
 
-  return <div style={{background: background_color, height: '100%' }}>&nbsp;</div>
+  return <div style={{background: background_color, height: '100%', position: 'absolute', top: 0 }}>&nbsp;</div>
 };
 
 const animate = (ref, animation) => {
@@ -98,6 +95,10 @@ const animate = (ref, animation) => {
 
 const unAnimate = (ref) => {
   ref.current.removeAttribute('style');
-  ref.current.style['height'] = '264px';
-  ref.current.style['width'] = '470px';
+  ref.current.style['position'] = 'absolute';
+  ref.current.style['top'] = 0;
+  ref.current.style['height'] = '100%';
+  ref.current.style['width'] = '100%';
+  ref.current.style['display'] = 'flex';
+  ref.current.style['justifyContent'] = 'center';
 };

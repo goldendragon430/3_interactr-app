@@ -90,7 +90,6 @@ const animate = (refContainer, animation) => {
 		const basicTimeline = anime.timeline();
 
 		const { delay, easing, duration } = animation;
-
 		const obj = {
 			targets: refContainer.current,
 			...animationObj,
