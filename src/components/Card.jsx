@@ -75,11 +75,19 @@ function Thumbnails({ images, className }) {
   }
 
   return (images.length) ? (
-    images.map( (url, index) => <img
-      src={(url.length) ? url : getAsset('/img/no-thumb.jpg')}
-      key={index}
-      className={className} alt="thumbnail"
-    />)
+    images.map( (url, index) => { 
+      return (
+        <div className={className} alt="thumbnail">
+          <div style={{position: 'relative', height: '100%', paddingBottom: '56.25%', display: 'flex', justifyContent: 'center', backgroundColor: '#eee', borderRadius: '7px'}}>
+            <img
+              src={(url.length) ? url : getAsset('/img/no-thumb.jpg')}
+              key={index}
+              style={{position: 'absolute', top: 0, height: '100%', borderRadius: '7px'}}
+            />
+          </div>
+        </div>
+      )
+    })
   ) :
     times(4, (index)=> <img src={getAsset('/img/no-thumb.jpg')} className={className} alt="thumbnail"  key={index} /> );
 }

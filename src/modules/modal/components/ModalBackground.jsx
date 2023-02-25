@@ -2,18 +2,23 @@ import React, { useEffect, useRef, useContext } from 'react';
 import anime from 'animejs';
 import forEach from 'lodash/forEach';
 import { useParams } from 'react-router-dom';
-
+import { Icon } from 'components';
 import { Grid } from 'modules/node/components/NodeCanvas';
 import ModalTimer from 'modules/interaction/components/ModalTimer';
 import { PreviewContext } from './ModalCanvas';
+import styles from './ModalPage.module.scss';
 
 const ModalBackground = ({ modal, children }) => {
 	const canPreview = useContext(PreviewContext);
 	const refContainer = useRef(null);
+	const refCloseIcon = useRef(null);
 	const { modalId } = useParams();
 
-	const { border_radius, backgroundColour, background_animation, size } = modal;
+	const { border_radius, backgroundColour, show_close_icon, close_icon_color, background_animation, size } = modal;
 
+	const closeIconStyle = {
+		color: close_icon_color,
+	};
 	// Custom Modal styles
 	let padding = (100 - size) / 2 + '%';
 	const modalPosition = {
@@ -23,35 +28,56 @@ const ModalBackground = ({ modal, children }) => {
 		right: padding,
 	};
 	const modalStyles = {
-		...modalPosition,
+		top: 0,
+		bottom: 0,
+		left: 0,
+		right: 0,
 		borderRadius: border_radius + 'px',
 		backgroundColor: backgroundColour ? backgroundColour : 'white',
 		position: 'absolute',
 		zIndex: 20,
-		// overflow: 'hidden',
 	};
 	
 	useEffect(() => {
+		const animCloseIcon = {
+			delay: 1,
+			duration: 1,
+			easing: "linear",
+			name: "FadeIn",
+			playSound: true,
+			timer_duration: 10,
+			use_timer: true
+		}
 		window.addEventListener('preview_animation', (e) => {
 			if (e.detail === 'Modal:' + modal.id && canPreview) {
 				preview(refContainer, modalStyles, background_animation);
+				preview(refCloseIcon, closeIconStyle, animCloseIcon);
 			}
 		});
 		return () => {
-			window.removeEventListener('preview_animation', () =>
-				preview(refContainer, modalStyles, background_animation)
-			);
+			window.removeEventListener('preview_animation', () => {
+				preview(refContainer, modalStyles, background_animation);
+				preview(refCloseIcon, closeIconStyle, animCloseIcon);
+			});
 		};
 	}, [border_radius, backgroundColour, background_animation, size]);
 
 	return (
-		<div ref={refContainer} style={modalStyles}>
+		<>
+			<div 
+				style={{
+					...modalPosition,
+					borderRadius: border_radius + 'px',
+					position: 'absolute',
+					zIndex: 20,
+					overflow: 'hidden'
+				}}
+			>
+				<div style={modalStyles} ref={refContainer} />
+			</div>
 			<div
 				style={{
-					top: 0,
-					bottom: 0,
-					left: 0,
-					right: 0,
+					...modalPosition,
 					position: 'absolute',
 					zIndex: 20,
 				}}
@@ -61,6 +87,15 @@ const ModalBackground = ({ modal, children }) => {
 					? <ModalTimer modal={modal} canPreview={canPreview} /> 
 					: null
 				}
+				{show_close_icon ? (
+					<div 
+						ref={refCloseIcon}
+						className={styles.modalClose} 
+						style={closeIconStyle}
+					>
+						<Icon name='times' />
+					</div>
+				) : null}
 				{children}
 			</div>
 			<div
@@ -76,7 +111,7 @@ const ModalBackground = ({ modal, children }) => {
 			>
 				{modalId === modal.id && <Grid />}
 			</div>
-		</div>
+		</>
 	);
 };
 export default ModalBackground;

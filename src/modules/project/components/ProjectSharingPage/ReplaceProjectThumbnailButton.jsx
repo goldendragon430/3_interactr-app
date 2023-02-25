@@ -44,14 +44,14 @@ const ReplaceProjectThumbnailButton = () => {
 
     return (
         <>
-            <Button
-                secondary
-                className={styles.replaceButton}
-                onClick={() => setType('selectType')}
-                icon="images"
-            >
-                Change Thumbnail
-            </Button>
+          <Button
+            secondary
+            className={styles.replaceButton}
+            onClick={() => setType('selectType')}
+            icon="images"
+          >
+            Change Thumbnail
+          </Button>
 
           <ReplaceProjectThumbnailModal
             show={type==='selectType'}

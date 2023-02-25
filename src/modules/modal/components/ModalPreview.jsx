@@ -16,7 +16,6 @@ const ModalPreview = ({ width, height, scale, modal, disabled=false }) => {
 		<div
 			style={{
 				maxHeight: height + 'px',
-				// overflow: 'hidden',
 				position: 'relative',
 				display: 'flex',
 				justifyContent: 'center',

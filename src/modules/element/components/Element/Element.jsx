@@ -44,7 +44,7 @@ const Element = ({
 	if (!vResizeDisabled && !preview && !editing && ((deleteKeyPressed || backspaceKeyPressed) && selected && onDelete)) {
 		onDelete();
 	}
-
+	
 	return (
 		<AnimatedElement
 			id={id}
@@ -93,7 +93,6 @@ const animate = (refContainer, animation) => {
 
 const preview = (refContainer, style, animation) => {
 	if (!refContainer.current) return null;
-
 	refContainer.current.removeAttribute('style');
 	forEach(style, (value, key) => {
 		if (key === 'borderRadius' && !value.toString().includes('px')) {

@@ -28,7 +28,7 @@ const _props = {
 
 
 
-export default function FormElement({elementId, selected, onSelect, onDelete, preview}) {
+export default function FormElement({animationKey, elementId, selected, onSelect, onDelete, preview}) {
   const [editing, setEditing] = useState(false);
   const {updateFormElement} = useFormElementCommands(elementId)
 
@@ -146,6 +146,7 @@ export default function FormElement({elementId, selected, onSelect, onDelete, pr
       selected={selected} 
       onDelete={onDelete}
       vResizeDisabled={true}
+      animationKey={animationKey}
     >
       {renderForm()}
     </PositionableElement>

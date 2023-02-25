@@ -49,7 +49,7 @@ const ProjectSettings = () => {
         <MessageBox>
           <h3>Project Settings</h3>
           <p>
-          Give your project a title and a description. This information will be used in the app and also when you share the project on social media. 
+            Give your project a title and a description. This information will be used in the app and also when you share the project on social media. 
           </p>
         </MessageBox>
       </div>
@@ -116,25 +116,27 @@ const Form = ({ project }) => {
         onChange={val => setState({ description: val })}
         onEnter={handleSave}
       />
+      <div className="mt-1 clearfix mb-2">
+        <Button 
+          primary 
+          loading={saving} 
+          icon={'save'} 
+          onClick={handleSave}
+        >
+          Save Changes
+        </Button>
+      </div>
 
       <div className="mt-1 clearfix mb-2">
         <label>Thumbnail</label>
-        <div style={{float: 'left'}}>
-          <img src={project.image_url} className={styles.thumbnail} />
+        <div style={{position: 'relative', paddingBottom: '56.25%', display: 'flex', justifyContent: 'center', backgroundColor: '#eee'}}>
+          <img src={project.image_url} className="img-fluid" style={{position: 'absolute', top: 0, height: '100%'}}/>
         </div>
-        <div style={{float: 'left', marginLeft: 15}}>
+        <div style={{float: 'left', marginTop: '15px'}}>
           <ReplaceProjectThumbnailButton />
         </div>
       </div>
 
-      <Button 
-        primary 
-        loading={saving} 
-        icon={'save'} 
-        onClick={handleSave}
-      >
-        Save Changes
-      </Button>
     </>
   )
 }

@@ -3,7 +3,6 @@ import gql from 'graphql-tag';
 import map from 'lodash/map';
 import { useQuery } from '@apollo/client';
 
-import { Icon } from 'components';
 import ModalElementEditor from 'modules/element/components/ModalElementEditor';
 import { MODAL_EDITOR_DOM_ID } from '../utils';
 import ModalBackground from './ModalBackground';
@@ -23,14 +22,12 @@ export const PreviewContext = React.createContext();
 
 const ModalCanvas = ({ modal, preview, canPreview }) => {
 	const [, , back] = useModalElementRoute();
+	
 	if (!modal) return null;
 	
-	const { close_icon_color, show_close_icon, elements } = modal;
+	const { elements } = modal;
 	const { base_width, base_height } = modal.project;
 
-	const closeIconStyle = {
-		color: close_icon_color,
-	};
 	return (
 		<>
 			<div
@@ -46,11 +43,6 @@ const ModalCanvas = ({ modal, preview, canPreview }) => {
 					{/* Need to make the background colour editable here */}
 					<PreviewContext.Provider value={canPreview}>
 						<ModalBackground modal={modal} canPreview={canPreview}>
-							{show_close_icon ? (
-								<div className={styles.modalClose} style={closeIconStyle}>
-									<Icon name='times' />
-								</div>
-							) : null}
 							<Elements elements={elements} preview={preview} />
 							<div onClick={() => { back() } } style={{ height: '100%', width: '100%' }}>
 								&nbsp;

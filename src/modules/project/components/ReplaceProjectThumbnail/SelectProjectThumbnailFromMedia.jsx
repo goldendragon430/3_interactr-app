@@ -66,6 +66,10 @@ export default SelectProjectThumbnailFromMedia;
 const MediaThumbnail = ({data})=>{
   if(! data || ! data.media) return null;
 
-  return <img src={data.media.thumbnail_url} className={'img-fluid'} style={{maxHeight: '250px'}}/>
+  return (
+    <div style={{position: 'relative', paddingBottom: '56.25%', display: 'flex', justifyContent: 'center', backgroundColor: '#eee'}}>
+      <img src={data.media.thumbnail_url} className={'img-fluid'} style={{position: 'absolute', top: 0, height: '100%'}}/>
+    </div>
+  )
 };
 
