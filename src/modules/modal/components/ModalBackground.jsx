@@ -69,7 +69,7 @@ const ModalBackground = ({ modal, children }) => {
 					...modalPosition,
 					borderRadius: border_radius + 'px',
 					position: 'absolute',
-					zIndex: 20,
+					zIndex: 10,
 					overflow: 'hidden'
 				}}
 			>
