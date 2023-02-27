@@ -41,7 +41,7 @@ const PLAYER_QUERY = gql`
 `;
 const ButtonElement = ({elementId, zIndex, selected, onDelete, onSelect, animationKey, preview}) => {
   const {updateButtonElement} = useButtonElementCommands(elementId);
-
+  
   const element = cache.readFragment({
     id: `ButtonElement:${elementId}`,
     fragment: BUTTON_ELEMENT_FRAGMENT

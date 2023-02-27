@@ -92,7 +92,6 @@ function Thumbnail({item, project}){
 
       if (!acceptedDrop) return;
       // Make sure it's a drop on the composer
-
       setAddNode({
         newNodeObject: {
           project_id: parseInt(projectId),
@@ -107,14 +106,14 @@ function Thumbnail({item, project}){
 
 
     return(
-      <CloneOnDrag
-        onStop={handleDragStop}
-        offset={{ x: 5, y: 0 }}
-      >
-        <div style={{ display: 'flex', justifyContent: 'center'}}>
+      <div style={{ display: 'flex', justifyContent: 'center'}}>
+        <CloneOnDrag
+          onStop={handleDragStop}
+          offset={{ x: 5, y: 0 }}
+        >
           <img className={styles.image} src={item.thumbnail_url || item.url}  style={style} />
-        </div>
-      </CloneOnDrag>
+        </CloneOnDrag>
+      </div>
     )
 }
 
