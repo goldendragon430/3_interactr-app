@@ -80,6 +80,8 @@ const MediaPreview = ({mediaId, name, setName}) => {
     if(error) return <ErrorMessage text={'Unable to load media preview' }/>
 
     return(
-      <img src={data.result.thumbnail_url} className="img-fluid"/>
+        <div style={{position: 'relative', height: '100%', paddingBottom: '56.25%', display: 'flex', justifyContent: 'center', backgroundColor: '#eee'}}>
+            <img src={data.result.thumbnail_url} className="img-fluid" style={{position: 'absolute', top: 0, height: '100%'}}/>
+        </div>
     )
 }

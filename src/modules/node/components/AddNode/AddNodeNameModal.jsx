@@ -80,7 +80,7 @@ const AddNodeNameModal = ({onClose, project}) => {
 
   return(
     <Modal
-      height={730}
+      height={670}
       width={700}
       show={showNameSelectModal}
       closeMaskOnClick={false}
