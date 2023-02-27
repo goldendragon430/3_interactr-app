@@ -51,7 +51,7 @@ const ButtonElement = ({elementId, zIndex, selected, onDelete, onSelect, animati
 
   let styles = getStyles(BUTTON_ELEMENT, element);
 
-  const {clickThruMode} = player;
+  const { clickThruMode } = player;
 
   const handleUpdate = (key, value) => {    
     updateButtonElement(key, value);

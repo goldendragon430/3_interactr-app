@@ -88,12 +88,18 @@ export const ModalPropertiesSection = () => {
 						value={size}
 						Component={RangeInput}
 						onChange={(val) => handleUpdateModal('size', val)}
+						min={0}
+						max={100}
+						step={1}
 					/>
 					<Option
 						label='Roundness (px)'
 						value={border_radius}
 						Component={RangeInput}
 						onChange={(val) => handleUpdateModal('border_radius', val)}
+						min={0}
+						max={100}
+						step={1}
 					/>
 				</Section>
 			</motion.div>

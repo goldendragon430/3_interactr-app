@@ -54,7 +54,7 @@ const InteractionEditor = ({ interaction }) => {
 	const player = useReactiveVar(playerVar);
 
 	const { playedSeconds, duration } = player;
-
+	
 	const {
 		element,
 		element_type,

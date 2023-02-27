@@ -15,7 +15,7 @@ const StaticElement = ({children, element, animationKey, style = {}}) => {
     top: element.posY + 'px',
     position: 'absolute',
   }, ...style}
-
+  
   return (
     <Element
       style={_style}
