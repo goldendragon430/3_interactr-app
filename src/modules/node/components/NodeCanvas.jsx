@@ -86,7 +86,8 @@ const NodeCanvas = () => {
 					right: 0,
 					position: 'absolute',
 					zIndex: 10,
-					overflow:'hidden'
+					overflow:'hidden',
+          borderRadius: '10px'
 				}}
 			>
         <Grid />

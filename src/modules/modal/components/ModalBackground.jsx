@@ -62,6 +62,10 @@ const ModalBackground = ({ modal, children }) => {
 		};
 	}, [border_radius, backgroundColour, background_animation, size]);
 
+	const handleCloseModal = (e) => {
+		console.log('TIGER', canPreview);
+	}
+
 	return (
 		<>
 			<div 
@@ -92,6 +96,7 @@ const ModalBackground = ({ modal, children }) => {
 						ref={refCloseIcon}
 						className={styles.modalClose} 
 						style={closeIconStyle}
+						onClick={handleCloseModal}
 					>
 						<Icon name='times' />
 					</div>

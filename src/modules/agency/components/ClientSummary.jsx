@@ -1,32 +1,31 @@
-import React, {useEffect, useState} from 'react';
-import map from 'lodash/map';
+import { useReactiveVar } from "@apollo/client";
+import { Menu, MenuButton, MenuItem } from "@szhsin/react-menu";
+import '@szhsin/react-menu/dist/index.css';
+import '@szhsin/react-menu/dist/transitions/slide.css';
+import cx from 'classnames';
 import Modal from 'components/Modal';
-import cardStyles from "../../../components/Card.module.scss";
-import styles from './ClientSummary.module.scss';
-import cx from 'classnames'
-import ClientSummaryStat from "./ClientSummaryStat";
-import {Menu, MenuButton, MenuItem, SubMenu} from "@szhsin/react-menu";
-import Icon from "../../../components/Icon";
-import {motion} from "framer-motion";
-import {useSetState} from "../../../utils/hooks";
+import { motion } from "framer-motion";
+import map from 'lodash/map';
 import reduce from "lodash/reduce";
-import DashboardLoader from "../../dashboard/components/DashboardLoader";
-import ErrorMessage from "../../../components/ErrorMessage";
 import moment from "moment";
+import React, { useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
+import { delay } from "utils/timeUtils";
+import cardStyles from "../../../components/Card.module.scss";
+import ErrorMessage from "../../../components/ErrorMessage";
+import Icon from "../../../components/Icon";
+import { getClientModal, setClientModal } from "../../../graphql/LocalState/clientModal";
+import { useAuthUser, useCreateUser, useDeleteUser, useSaveUser, useUser } from "../../../graphql/User/hooks";
+import { deleteConfirmed } from "../../../graphql/utils";
+import { errorAlert } from "../../../utils/alert";
 import analytics from "../../../utils/analytics";
-import {isValidNumber, percentage} from "../../../utils/numberUtils";
-import {useNavigate} from "react-router-dom";
-import {useAuthUser, useCreateUser, useDeleteUser, useSaveUser, useUser} from "../../../graphql/User/hooks";
-import {AgencyClientsPagePath} from "../routes";
-import {getClientModal, setClientModal} from "../../../graphql/LocalState/clientModal";
-import Button from "../../../components/Buttons/Button";
+import { useSetState } from "../../../utils/hooks";
+import { percentage } from "../../../utils/numberUtils";
+import { useLoginAsUser } from "../../auth/utils";
 import AgencyUserForm from "../../user/components/AgencyUserForm";
-import {deleteConfirmed} from "../../../graphql/utils";
-import {errorAlert} from "../../../utils/alert";
-import {gql, useReactiveVar} from "@apollo/client";
-import {cache} from "../../../graphql/client";
-import {useLoginAsUser} from "../../auth/utils";
-import {delay} from "utils/timeUtils";
+import { AgencyClientsPagePath } from "../routes";
+import styles from './ClientSummary.module.scss';
+import ClientSummaryStat from "./ClientSummaryStat";
 
 const ClientSummary = () => {
   const [state, setState] = useSetState({
@@ -203,7 +202,10 @@ const Client = ({client, data}) => {
   return (
     <div className={cardStyles.Card} style={{padding: '15px'}}>
       <div style={{position:'absolute', top: '10px', right: '10px'}}>
-        <Menu menuButton={<MenuButton><Icon name={'ellipsis-v'} style={{marginRight: 0}} /></MenuButton>}>
+        <Menu 
+          menuButton={<MenuButton><Icon name={'ellipsis-v'} style={{marginRight: 0}} /></MenuButton>}
+          align={'end'}
+        >
           <MenuItem onClick={() => {navigate(AgencyClientsPagePath({clientId: client.id}));}}>View Client</MenuItem>
           <MenuItem onClick={() => {setClientModal({showModal: true, clientId: client.id})}}>Edit Client</MenuItem>
           <MenuItem onClick={() => {onLoginAsUser(client.id)}}>Login as Client</MenuItem>
