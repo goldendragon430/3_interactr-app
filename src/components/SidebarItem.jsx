@@ -1,6 +1,6 @@
-import React from 'react';
 import Icon from 'components/Icon';
-import {NavLink} from 'react-router-dom';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 export default function SidebarItem({
   children,

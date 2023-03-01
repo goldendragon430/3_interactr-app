@@ -1,8 +1,5 @@
-import React from 'react';
 import debounce from 'lodash/debounce';
-
-
-
+import React from 'react';
 
 export default class TimeInput extends React.Component {
   constructor(props) {

@@ -1,36 +1,36 @@
-import isUndefined from 'lodash/isUndefined';
-import React, { useEffect, useRef, useState, useCallback } from 'react';
-import { useParams } from 'react-router-dom';
-import reduce from 'lodash/reduce';
-import styles from './PropertyEditor.module.scss';
 import ColorPicker from 'components/ColorPicker';
-import ScalarInput from './ScalarInput';
 import Icon from 'components/Icon';
-import Toggle from 'react-toggle';
+import isUndefined from 'lodash/isUndefined';
+import reduce from 'lodash/reduce';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Select from 'react-select';
+import Toggle from 'react-toggle';
+import styles from './PropertyEditor.module.scss';
+import ScalarInput from './ScalarInput';
 //import 'react-select/dist/react-select.css';
 // import ReactTimeInput from 'components/TimeInput';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
-import { timeFromSeconds, secondsFromTime } from 'utils/timeUtils';
+import { secondsFromTime, timeFromSeconds } from 'utils/timeUtils';
 //import AsyncPaginate from 'react-select-async-paginate';
 // import HelpText from 'components/HelpText';
 import cx from 'classnames';
 // import { randomString } from 'utils/domUtils';
 // import { handleStateChange } from '../../utils/hooks';
+import uniqueId from 'lodash/uniqueId';
 import Routes from 'react-switch';
 import ReactTooltip from 'react-tooltip';
-import uniqueId from 'lodash/uniqueId';
 // import debounce from 'lodash/debounce';
 import AceEditor from 'react-ace';
 
+import { useReactiveVar } from '@apollo/client';
 import 'ace-builds/src-noconflict/mode-html';
 import 'ace-builds/src-noconflict/theme-monokai';
-import { useReactiveVar } from '@apollo/client';
 import { getWhitelabel } from '../../graphql/LocalState/whitelabel';
 
-import { useQuery } from '@apollo/client';
 import { GET_ELEMENT_GROUPS } from '@/graphql/ElementGroup/queries';
+import { useQuery } from '@apollo/client';
 import { REFETCH_GROUPS } from 'utils/EventEmitter';
 
 const SMALL_STYLES = {

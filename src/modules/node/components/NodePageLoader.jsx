@@ -1,10 +1,10 @@
 import React from 'react';
 import ContentLoader from "react-content-loader";
 
-import NodePageLayout from "./NodePageLayout";
+import { ELEMENT_EDITOR_DOM_ID } from "../../interaction/utils";
 import { NodeActions } from "../NodeActions";
 import styles from "./NodePage.module.scss";
-import {ELEMENT_EDITOR_DOM_ID} from "../../interaction/utils";
+import NodePageLayout from "./NodePageLayout";
 
 
 const NodePageLoader = () => {

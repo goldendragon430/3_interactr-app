@@ -79,7 +79,7 @@ const VideoControls = ()=>{
         <InlineBooleanInput
           value={clickThruMode}
           onChange={()=>updatePlayer('clickThruMode', ! clickThruMode)}
-          label="Preview Mode"
+          label="Click Thru Mode"
         />
       </div>
       <div className="col2" style={{display:'flex', alignItems: 'center', paddingRight: '0', justifyContent:'flex-end'}}>

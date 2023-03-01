@@ -1,9 +1,9 @@
-import React from 'react';
 import Icon from 'components/Icon';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { nodePath } from "../modules/node/routes";
+import { projectPath } from "../modules/project/routes";
 import styles from './GlobalSearch.module.scss';
-import {projectPath} from "../modules/project/routes";
-import {nodePath} from "../modules/node/routes";
 
 @connect(globalSearchSelector,{})
 export default class GlobalSearch extends React.Component {

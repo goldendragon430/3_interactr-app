@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react';
-import map from 'lodash/map';
 import Button from 'components/Buttons/Button';
-import {useSetState} from "../utils/hooks";
+import map from 'lodash/map';
+import React, { useEffect } from 'react';
+import { useSetState } from "../utils/hooks";
 
 /**
  * Show the form for a user to set the given integration params

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './SidebarPage.module.scss'
+import styles from './SidebarPage.module.scss';
 
 export default class SidebarPage extends React.Component {
   render(){

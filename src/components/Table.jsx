@@ -1,7 +1,6 @@
 import React from 'react';
-import map from 'lodash/map';
 import cx from 'classnames';
-import styles from './Table.module.scss'
+import styles from './Table.module.scss';
 
 export const Table = ({children}) => {
   return (

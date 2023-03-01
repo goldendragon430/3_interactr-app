@@ -1,8 +1,8 @@
-import React from 'react';
-import {NavLink, Link} from 'react-router-dom';
-import styles from './SidebarNav.module.scss';
 import cx from 'classnames';
 import Icon from 'components/Icon';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styles from './SidebarNav.module.scss';
 
 export default class SidebarNav extends React.Component {
   renderItem(item){

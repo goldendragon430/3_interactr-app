@@ -1,13 +1,11 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+import { useReactiveVar } from "@apollo/client";
 import cx from 'classnames';
-import styles from './HeaderRow.module.scss';
+import { motion } from 'framer-motion';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { getPageHeader } from "../graphql/LocalState/pageHeading";
 import Breadcrumb from './Breadcrumb';
-import {motion} from 'framer-motion'
-import {useReactiveVar} from "@apollo/client";
-import {getBreadcrumbs} from "../graphql/LocalState/breadcrumb";
-import {getPageHeader} from "../graphql/LocalState/pageHeading";
-import {getWhitelabel} from "../graphql/LocalState/whitelabel";
+import styles from './HeaderRow.module.scss';
 
 const _propTypes = {
   /** Heading specific to the route we're on */

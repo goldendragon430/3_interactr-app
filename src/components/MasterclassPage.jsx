@@ -1,8 +1,8 @@
-import React from 'react';
+import Icon from 'components/Icon';
 import PageBody from 'components/PageBody';
 import TrainingVideo from 'modules/training/components/TrainingVideo';
+import React from 'react';
 import videos from 'utils/masterclassVideos';
-import Icon from 'components/Icon';
 import LinkButton from "./Buttons/LinkButton";
 
 

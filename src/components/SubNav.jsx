@@ -1,11 +1,8 @@
 import React from 'react';
-import styles from './SubNav.module.scss';
-import cx from 'classnames';
 import { injectStyles } from 'utils/domUtils';
-import {useNavigate} from "react-router-dom";
 import Icon from "./Icon";
-import {useProjectGroupRoute} from "../modules/project/routeHooks";
-import {MenuLink} from "./Link";
+import { MenuLink } from "./Link";
+import styles from './SubNav.module.scss';
 
 const SubNav = ({items}) => {
 

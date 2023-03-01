@@ -1,32 +1,15 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import PositionableElement from './PositionableElement';
 import {
-  getStyles,
-  getElementMeta,
-  FORM_ELEMENT,
-  getPrefixedProps,
-  prefixProps,
-  BUTTON_ELEMENT
+  BUTTON_ELEMENT, FORM_ELEMENT, getElementMeta, getPrefixedProps, getStyles
 } from 'modules/element/elements';
-import { appendPlaceholderColorToDom } from 'utils/domUtils';
-import EditableTextContainer from "./EditableTextContainer";
-import {useFormElementCommands} from "../../../../graphql/FormElement/hooks";
+import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import { SAVE_NODE_PAGE } from 'utils/EventEmitter';
 import { randomString } from 'utils/textUtils';
-import {cache} from "../../../../graphql/client";
-import {BUTTON_ELEMENT_FRAGMENT} from "../../../../graphql/ButtonElement/fragments";
-import {FORM_ELEMENT_FRAGMENTS} from "../../../../graphql/FormElement/fragments";
-import { SAVE_NODE_PAGE} from 'utils/EventEmitter';
-
-const _props = {
-  name_placeholder_text: PropTypes.string,
-  show_name_field: PropTypes.bool,
-  on_one_line: PropTypes.bool,
-  input_color: PropTypes.string,
-  onUpdate: PropTypes.func.isRequired
-};
-
-
+import { cache } from "../../../../graphql/client";
+import { FORM_ELEMENT_FRAGMENTS } from "../../../../graphql/FormElement/fragments";
+import { useFormElementCommands } from "../../../../graphql/FormElement/hooks";
+import EditableTextContainer from "./EditableTextContainer";
+import PositionableElement from './PositionableElement';
 
 export default function FormElement({animationKey, elementId, selected, onSelect, onDelete, preview}) {
   const [editing, setEditing] = useState(false);

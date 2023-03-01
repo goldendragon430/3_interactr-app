@@ -1,7 +1,7 @@
-import React from 'react';
-import styles from './PageLoader.module.scss';
 import cx from 'classnames';
 import Icon from 'components/Icon';
+import React from 'react';
+import styles from './PageLoader.module.scss';
 
 
 const PageLoader = ()=>{

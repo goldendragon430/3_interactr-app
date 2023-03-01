@@ -1,11 +1,10 @@
-import React from 'react';
-import Button from 'components/Buttons/Button';
-import Modal from 'components/Modal';
-import Icon from 'components/Icon';
-import styles from 'modules/media/components/uploadMedia/StockListModalStyles.module.scss';
 import axios from 'axios';
-import FilterInput from 'components/FilterInput'
-
+import Button from 'components/Buttons/Button';
+import FilterInput from 'components/FilterInput';
+import Icon from 'components/Icon';
+import Modal from 'components/Modal';
+import styles from 'modules/media/components/uploadMedia/StockListModalStyles.module.scss';
+import React from 'react';
 
 export default class YouzignModal extends React.Component {
   state = {

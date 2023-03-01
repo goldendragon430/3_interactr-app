@@ -1,10 +1,6 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
-import styles from './TopNavAnnouncement.module.scss';
-import IconButton from 'components/Buttons/IconButton'
 import LinkButton from './Buttons/LinkButton';
-
-
+import styles from './TopNavAnnouncement.module.scss';
 
 const TopNavAnnouncemnt = ({ text, url, linkText, noButton, onClose, name, className }) => {
   return (
@@ -25,6 +21,5 @@ const TopNavAnnouncemnt = ({ text, url, linkText, noButton, onClose, name, class
     </div>
   );
 };
-
 
 export default TopNavAnnouncemnt;

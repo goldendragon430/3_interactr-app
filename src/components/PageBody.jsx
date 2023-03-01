@@ -1,13 +1,12 @@
 import React from 'react';
-import { Navigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import DashboardSidebar from 'components/Sidebar/DashboardSidebar';
+import { Navigate } from 'react-router-dom';
 
 // import TopNav from 'components/TopNav';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useParams } from 'react-router-dom';
 import HeaderRow from './HeaderRow';
 import styles from './PageBody.module.scss';
-import {motion, AnimatePresence} from 'framer-motion';
-import {useParams} from 'react-router-dom'
 
 
 const _propTypes = {

@@ -1,8 +1,8 @@
-import React from 'react'
 import cx from "classnames";
-import styles from "./ItemSelect.module.scss"
-import Button from "./Buttons/Button";
+import React from 'react';
 import getAsset from "../utils/getAsset";
+import Button from "./Buttons/Button";
+import styles from "./ItemSelect.module.scss";
 
 const ItemSelect = ({heading, description, onClick, image = false})=>{
 

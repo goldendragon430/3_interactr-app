@@ -1,6 +1,6 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import Player from 'react-player';
-import PropTypes from 'prop-types';
 
 const props = {
 	url: PropTypes.string,
