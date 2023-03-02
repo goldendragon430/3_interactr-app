@@ -1,20 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import TextElement from './TextElement';
-import {getStyles, BUTTON_ELEMENT} from'modules/element/elements';
-import Icon from "../../../../components/Icon";
-import EditableTextContainer from "./EditableTextContainer";
-import {useButtonElement, useButtonElementCommands} from "../../../../graphql/ButtonElement/hooks";
-import ErrorMessage from "../../../../components/ErrorMessage";
+import { useReactiveVar } from "@apollo/client";
 import gql from "graphql-tag";
-import {useQuery, useReactiveVar} from "@apollo/client";
-import Element from "./Element";
-import StaticElement from "../StaticElement";
-import {playerVar} from "../../../../graphql/LocalState/player";
+import { BUTTON_ELEMENT, getStyles } from 'modules/element/elements';
+import PropTypes from 'prop-types';
+import { SAVE_NODE_PAGE } from 'utils/EventEmitter';
+import { BUTTON_ELEMENT_FRAGMENT } from "../../../../graphql/ButtonElement/fragments";
+import { useButtonElementCommands } from "../../../../graphql/ButtonElement/hooks";
+import { cache } from "../../../../graphql/client";
+import { playerVar } from "../../../../graphql/LocalState/player";
 import ClickThrough from "../ClickThrough";
-import {cache} from "../../../../graphql/client";
-import {BUTTON_ELEMENT_FRAGMENT} from "../../../../graphql/ButtonElement/fragments";
-import { SAVE_NODE_PAGE} from 'utils/EventEmitter';
+import StaticElement from "../StaticElement";
+import EditableTextContainer from "./EditableTextContainer";
 
 /**
  * Required props for the component
@@ -70,7 +66,7 @@ const ButtonElement = ({elementId, zIndex, selected, onDelete, onSelect, animati
   if(zIndex){
     styles.zIndex = zIndex;
   }
-  
+
   if(clickThruMode) {
     return (
       <ClickThrough 

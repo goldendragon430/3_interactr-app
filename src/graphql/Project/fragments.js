@@ -1,5 +1,5 @@
-import {gql} from "@apollo/client";
-import {NODE_FRAGMENT} from "../Node/fragments";
+import { gql } from "@apollo/client";
+import { NODE_FRAGMENT } from "../Node/fragments";
 
 /**
  * Fields required for the list projects page (we don't need all the node -> elements stuff here)
@@ -103,6 +103,7 @@ export const UPDATE_PROJECT_FRAGMENT = gql`
         allow_share
         video_encoding_resolution
         enable_surveys
+        font
     }
 `;
 

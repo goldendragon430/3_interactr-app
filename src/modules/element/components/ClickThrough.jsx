@@ -1,19 +1,19 @@
-import React, {useEffect, useState} from 'react';
-import {useNavigate, useParams} from 'react-router-dom'
-import ReactTooltip from "react-tooltip";
-import {useLazyQuery, useQuery} from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import gql from "graphql-tag";
+import React, { useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import ReactTooltip from "react-tooltip";
 import Icon from "../../../components/Icon";
 import client from '../../../graphql/client';
-import {nodePath} from "../../node/routes";
-import {usePlayer} from "../../../graphql/LocalState/player";
+import { usePlayer } from "../../../graphql/LocalState/player";
+import { nodePath } from "../../node/routes";
 
 
 const ClickThrough = ({children, element, action, arg}) => {
-  const {nodeId, projectId} = useParams();
+  const { nodeId, projectId } = useParams();
   const navigate = useNavigate();
   const { updatePlayer } = usePlayer();
-
+  
   const clickHandler = () => {
     updatePlayer('playing', false)
 
@@ -45,7 +45,7 @@ const ClickThrough = ({children, element, action, arg}) => {
       clickHandler();
     }
   }, [element])
-
+  
   return (
     <>
       <WrapWithTooltip action={action} arg={arg}>
@@ -135,23 +135,25 @@ const NodeTooltip = ({id, children}) => {
   
   return (
     <>
-    <ReactTooltip />
-    <span data-tip={tooltip}>{children}</span>
+      <ReactTooltip />
+      <span data-tip={tooltip}>{children}</span>
     </>
   )
 }
 
 const ModalTooltip = ({id, children}) => {
   const name = getModalName(id);
+
   useEffect(() => {
     ReactTooltip.rebuild()
-  }, [name])
+  }, [name]);
+
   const tooltip = "Open Popup: " + name;
   
   return (
     <>
-    <ReactTooltip />
-    <span data-tip={tooltip}>{children}</span>
+      <ReactTooltip />
+      <span data-tip={tooltip}>{children}</span>
     </>
   )
 }
@@ -204,6 +206,9 @@ const getModalName = (id) => {
         }
     `
   })
+  
+  if(!query)
+    return query;
 
   return query.name;
 }

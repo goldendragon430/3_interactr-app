@@ -1,13 +1,12 @@
 import React from 'react';
-import {Option} from "components/PropertyEditor";
-import SelectFont from "../../../modules/project/components/SelectFont";
 import Button from "components/Buttons/Button";
-import MessageBox from "components/MessageBox";
-import {useProjectCommands} from "../../../graphql/Project/hooks";
-import {errorAlert} from "../../../utils/alert";
-import {useSetState} from "../../../utils/hooks";
 import ErrorMessage from "components/ErrorMessage";
-import {useProject} from "../../../graphql/Project/hooks";
+import MessageBox from "components/MessageBox";
+import { Option } from "components/PropertyEditor";
+import { useProject, useProjectCommands } from "../../../graphql/Project/hooks";
+import SelectFont from "../../../modules/project/components/SelectFont";
+import { errorAlert } from "../../../utils/alert";
+import { useSetState } from "../../../utils/hooks";
 
 
 
@@ -27,7 +26,7 @@ const ProjectFont = () => {
         <MessageBox>
           <h3>Project Font</h3>
           <p>
-          Define the font that will be used across the whole project. All buttons and text fields in this project will used this font on the interactr player.          
+            Define the font that will be used across the whole project. All buttons and text fields in this project will use this font on the interactr player.          
           </p>
         </MessageBox>
       </div>

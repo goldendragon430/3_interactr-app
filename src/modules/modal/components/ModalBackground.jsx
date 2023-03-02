@@ -63,7 +63,7 @@ const ModalBackground = ({ modal, children }) => {
 	}, [border_radius, backgroundColour, background_animation, size]);
 
 	const handleCloseModal = (e) => {
-		console.log('TIGER', canPreview);
+		// need to implemente this if needed TO-DO
 	}
 
 	return (

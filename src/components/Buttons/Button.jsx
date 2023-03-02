@@ -1,41 +1,40 @@
-import React, { useEffect } from 'react';
-import styles from './Button.module.scss';
-import Icon from 'components/Icon';
+import { useReactiveVar } from "@apollo/client";
 import cx from 'classnames';
+import Icon from 'components/Icon';
 import uniqueId from 'lodash/uniqueId';
+import React from 'react';
 import ReactTooltip from "react-tooltip";
-import {useReactiveVar} from "@apollo/client";
-import {getWhitelabel} from "../../graphql/LocalState/whitelabel";
+import { getWhitelabel } from "../../graphql/LocalState/whitelabel";
+import styles from './Button.module.scss';
 
 const Button = ({
-                  className,
-                  primary,
-                  secondary,
-                  color,
-                  large,
-                  red,
-                  right,
-                  left,
-                  grouped,
-                  white,
-                  loading,
-                  noFloat,
-                  noMarginRight,
-                  greyDark,
-                  icon,
-                  rightIcon = false,
-                  children,
-                  text,
-                  xxs,
-                  small,
-                  disabled,
-                  style,
-                  tooltip,
-                  ...myProps
-                }) => {
+  className,
+  primary,
+  secondary,
+  color,
+  large,
+  red,
+  right,
+  left,
+  grouped,
+  white,
+  loading,
+  noFloat,
+  noMarginRight,
+  greyDark,
+  icon,
+  rightIcon = false,
+  children,
+  text,
+  xxs,
+  small,
+  disabled,
+  style,
+  tooltip,
+  ...myProps
+}) => {
+  
   const whitelabel = useReactiveVar(getWhitelabel);
-
-
   const classes = cx(className, styles.Button, {
     [styles.primary]: primary,
     [styles.secondary]: secondary,
@@ -83,4 +82,5 @@ const Button = ({
     </button>
   );
 };
+
 export default Button;
