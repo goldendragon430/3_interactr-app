@@ -1,5 +1,5 @@
-import React, {cloneElement} from "react";
-import {Draggable, Droppable} from "react-beautiful-dnd";
+import React, { cloneElement } from "react";
+import { Draggable, Droppable } from "react-beautiful-dnd";
 
 /**
  * The elements inside element groups that can be drag and reordered inside another groups

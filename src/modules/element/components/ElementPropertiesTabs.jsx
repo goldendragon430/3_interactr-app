@@ -1,27 +1,18 @@
-import React, {useContext, useEffect} from 'react';
-import PositionableElementProperties from "./Properties/PositionableElementProperties";
-import ClickableElementProperties from "./Properties/ClickableElementProperties";
-import StyleableElementProperties from "./Properties/StyleableElementProperties";
-import InteractionProperties from "../../interaction/components/InteractionProperties";
-import {useState} from "react";
-import Icon from "../../../components/Icon";
-import AnimationElementProperties from "./Properties/AnimationElementProperties";
-import styles from './ElementPropertiesTabs.module.scss';
+import React, { useState } from 'react';
 import cx from 'classnames';
-import uniqueId from 'lodash/uniqueId';
-import ReactTooltip from "react-tooltip";
-import {useModalRoute} from "modules/modal/routeHooks";
-import Button from "../../../components/Buttons/Button";
-import ContentLoader from "react-content-loader";
-import {useElementRoute} from "../routeHooks";
-import {NodeContext} from "../../node/context";
-import {motion} from 'framer-motion'
-import FormableElementProperties from "./Properties/FormableElementProperties";
 import _map from 'lodash/map';
-import ImageableElementProperties from "./Properties/ImageableElementProperties";
-import {useInteractionCommands} from "../../../graphql/Interaction/hooks";
+import uniqueId from 'lodash/uniqueId';
+import { useParams } from 'react-router-dom';
+import Icon from "../../../components/Icon";
+import InteractionProperties from "../../interaction/components/InteractionProperties";
+import styles from './ElementPropertiesTabs.module.scss';
+import AnimationElementProperties from "./Properties/AnimationElementProperties";
+import ClickableElementProperties from "./Properties/ClickableElementProperties";
 import CustomHtmlableProperties from "./Properties/CustomHtmlableProperties";
-import {useParams} from 'react-router-dom';
+import FormableElementProperties from "./Properties/FormableElementProperties";
+import ImageableElementProperties from "./Properties/ImageableElementProperties";
+import PositionableElementProperties from "./Properties/PositionableElementProperties";
+import StyleableElementProperties from "./Properties/StyleableElementProperties";
 
 
 const ElementPropertiesTabs = ({element, meta,  update, save, startTab = 'positionable'}) => {

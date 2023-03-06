@@ -84,6 +84,7 @@ const ModalBackground = ({ modal, children }) => {
 					...modalPosition,
 					position: 'absolute',
 					zIndex: 20,
+					overflow:'hidden'
 				}}
 			>
 				{

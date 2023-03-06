@@ -1,21 +1,19 @@
 import React from 'react';
-import SelectUploadTypeModal from './uploadMedia/SelectUploadTypeModal';
-import UploadFromFileModal from './uploadMedia/UploadFromFileModal';
-import { errorAlert } from '../../../utils/alert';
-import UploadFromUrlModal from './uploadMedia/UploadFromUrlModal';
+import { useReactiveVar } from '@apollo/client';
+import dropRight from 'lodash/dropRight';
+import last from 'lodash/last';
 import {
 	ADD_MEDIA_VAR_INITIAL_DATA,
 	getAddMedia,
-	setAddMedia,
+	setAddMedia
 } from '../../../graphql/LocalState/addMedia';
-import StockListModal from './uploadMedia/StockListModal';
 import MediaLibraryModal from './uploadMedia/MediaLibraryModal';
 import NewMediaNameModal from './uploadMedia/NewMediaNameModal';
-import { useParams } from 'react-router-dom';
+import SelectUploadTypeModal from './uploadMedia/SelectUploadTypeModal';
 import { SelectVideoThumbnailModal } from './uploadMedia/SelectVideoThumbnailModal';
-import { useReactiveVar } from '@apollo/client';
-import last from 'lodash/last';
-import dropRight from 'lodash/dropRight';
+import StockListModal from './uploadMedia/StockListModal';
+import UploadFromFileModal from './uploadMedia/UploadFromFileModal';
+import UploadFromUrlModal from './uploadMedia/UploadFromUrlModal';
 
 const AddMediaModals = () => {
 	const { previousModals } = useReactiveVar(getAddMedia);

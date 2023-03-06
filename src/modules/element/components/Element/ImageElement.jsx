@@ -1,17 +1,14 @@
 import React from 'react';
-import PositionableElement from './PositionableElement';
-import PropTypes from "prop-types";
-import Icon from "../../../../components/Icon";
-import {useImageElement, useImageElementCommands} from "../../../../graphql/ImageElement/hooks";
+import { useReactiveVar } from "@apollo/client";
 import gql from "graphql-tag";
-import {useQuery, useReactiveVar} from "@apollo/client";
-import Element from "./Element";
-import StaticElement from "../StaticElement";
+import PropTypes from "prop-types";
+import { cache } from "../../../../graphql/client";
+import { IMAGE_ELEMENT_FRAGMENT } from "../../../../graphql/ImageElement/fragments";
+import { useImageElementCommands } from "../../../../graphql/ImageElement/hooks";
+import { playerVar } from "../../../../graphql/LocalState/player";
 import ClickThrough from "../ClickThrough";
-import {playerVar} from "../../../../graphql/LocalState/player";
-import {cache} from "../../../../graphql/client";
-import {BUTTON_ELEMENT_FRAGMENT} from "../../../../graphql/ButtonElement/fragments";
-import {IMAGE_ELEMENT_FRAGMENT} from "../../../../graphql/ImageElement/fragments";
+import StaticElement from "../StaticElement";
+import PositionableElement from './PositionableElement';
 
 /**
  * Required props for the component

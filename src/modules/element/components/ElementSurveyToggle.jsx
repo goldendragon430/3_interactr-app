@@ -1,13 +1,11 @@
-import {BooleanInput, Option} from "../../../components/PropertyEditor";
-import React, {useState} from "react";
-import {useProject, useSaveProject} from "../../../graphql/Project/hooks";
-import Icon from "../../../components/Icon";
-import Swal from "sweetalert2";
-import {errorAlert} from "../../../utils/alert";
-import {enableSurveysAlerts} from "../../project/utils";
-import {useReactiveVar} from "@apollo/client";
-import {getAcl} from "../../../graphql/LocalState/acl";
+import { useReactiveVar } from "@apollo/client";
+import React, { useState } from "react";
 import LinkButton from "../../../components/Buttons/LinkButton";
+import Icon from "../../../components/Icon";
+import { BooleanInput, Option } from "../../../components/PropertyEditor";
+import { getAcl } from "../../../graphql/LocalState/acl";
+import { useProject, useSaveProject } from "../../../graphql/Project/hooks";
+import { enableSurveysAlerts } from "../../project/utils";
 
 const ElementSurveyToggle = ({value, onChange}) => {
   const [project, _, {loading, error}] = useProject();

@@ -1,18 +1,11 @@
 import React from 'react';
+import { getStyles, TEXT_ELEMENT } from 'modules/element/elements';
 import PropTypes from "prop-types";
-import Icon from "../../../../components/Icon";
+import { SAVE_NODE_PAGE } from 'utils/EventEmitter';
+import { cache } from "../../../../graphql/client";
+import { TEXT_ELEMENT_FRAGMENT } from "../../../../graphql/TextElement/fragments";
+import { useTextElementCommands } from "../../../../graphql/TextElement/hooks";
 import EditableTextContainer from "./EditableTextContainer";
-import {useTextElement, useTextElementCommands} from "../../../../graphql/TextElement/hooks";
-import ErrorMessage from "../../../../components/ErrorMessage";
-import {getStyles, TEXT_ELEMENT} from 'modules/element/elements';
-import gql from "graphql-tag";
-import {useQuery} from "@apollo/client";
-import Element from "./Element";
-import StaticElement from "../StaticElement";
-import {cache} from "../../../../graphql/client";
-import {BUTTON_ELEMENT_FRAGMENT} from "../../../../graphql/ButtonElement/fragments";
-import {TEXT_ELEMENT_FRAGMENT} from "../../../../graphql/TextElement/fragments";
-import { SAVE_NODE_PAGE} from 'utils/EventEmitter';
 
 /**
  * Required props for the component

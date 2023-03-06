@@ -1,5 +1,5 @@
-import Element from "./Element/Element";
 import React from "react";
+import Element from "./Element/Element";
 
 /**
  * Static elements are used for previewing and have

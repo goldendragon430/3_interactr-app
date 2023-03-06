@@ -1,7 +1,7 @@
 import React from 'react';
-import keyDown from 'react-keydown';
 import anime from 'animejs';
 import forEach from "lodash/forEach";
+import keyDown from 'react-keydown';
 
 export default class Element extends React.Component {
   handleClick = () => {

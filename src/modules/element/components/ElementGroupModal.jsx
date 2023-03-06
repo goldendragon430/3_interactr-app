@@ -1,16 +1,16 @@
-import React, {useContext, useEffect, useRef, useState} from 'react';
-import {Option, TextInput} from "../../../components/PropertyEditor";
-import Icon from "../../../components/Icon";
-import {useParams} from 'react-router-dom';
-import { useElementGroupCommands} from "../../../graphql/ElementGroup/hooks";
+import React from 'react';
+import { useQuery } from "@apollo/client";
 import gql from "graphql-tag";
-import {useQuery} from "@apollo/client";
-import {EventListener} from "../../../components/EventListener";
-import Emitter, {REFETCH_GROUPS, TOGGLE_ELEMENT_GROUP_MODAL} from "../../../utils/EventEmitter";
-import {errorAlert} from "../../../utils/alert";
-import {useSetState} from "../../../utils/hooks";
-import Modal from "../../../components/Modal";
+import { useParams } from 'react-router-dom';
 import Button from "../../../components/Buttons/Button";
+import { EventListener } from "../../../components/EventListener";
+import Icon from "../../../components/Icon";
+import Modal from "../../../components/Modal";
+import { Option, TextInput } from "../../../components/PropertyEditor";
+import { useElementGroupCommands } from "../../../graphql/ElementGroup/hooks";
+import { errorAlert } from "../../../utils/alert";
+import { REFETCH_GROUPS, TOGGLE_ELEMENT_GROUP_MODAL } from "../../../utils/EventEmitter";
+import { useSetState } from "../../../utils/hooks";
 
 
 const PLAYER_QUERY = gql`

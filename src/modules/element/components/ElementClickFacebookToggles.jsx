@@ -1,9 +1,9 @@
 import React from 'react';
-import {useSaveButtonElement} from "../../../graphql/ButtonElement/hooks";
+import { useSaveButtonElement } from "../../../graphql/ButtonElement/hooks";
+import { useSaveFormElement } from "../../../graphql/FormElement/hooks";
+import { useSaveHotspotElement } from "../../../graphql/HotspotElement/hooks";
+import { useSaveImageElement } from "../../../graphql/ImageElement/hooks";
 import ElementFacebookToggle from "./ElementFacebookToggle";
-import {useSaveImageElement} from "../../../graphql/ImageElement/hooks";
-import {useSaveHotspotElement} from "../../../graphql/HotspotElement/hooks";
-import {useSaveFormElement} from "../../../graphql/FormElement/hooks";
 
 /**
  * Wraps around the element click facebook toggle so we can

@@ -1,12 +1,11 @@
-import {motion} from "framer-motion";
-import InteractionTime from "../../interaction/components/InteractionTime";
-import {BooleanInput, Option, TimeRangeInput} from "../../../components/PropertyEditor";
+import React from "react";
+import { useQuery } from "@apollo/client";
+import { motion } from "framer-motion";
+import gql from "graphql-tag";
 import Button from "../../../components/Buttons/Button";
 import Icon from "../../../components/Icon";
-import React from "react";
-import {usePlayer} from "../../../graphql/LocalState/player";
-import gql from "graphql-tag";
-import {useQuery} from "@apollo/client";
+import { BooleanInput, Option, TimeRangeInput } from "../../../components/PropertyEditor";
+import InteractionTime from "../../interaction/components/InteractionTime";
 
 const PLAYER_QUERY = gql`
     query player {

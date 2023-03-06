@@ -1,12 +1,12 @@
-import React, {useContext, useState} from "react";
-import {motion} from "framer-motion";
-import TimelineProperties from "./TimelineProperties";
-import {Option, Section, TextInput} from "../../../components/PropertyEditor";
+import { useQuery } from "@apollo/client";
+import { motion } from "framer-motion";
 import gql from "graphql-tag";
-import {ELEMENT_GROUP_FRAGMENT} from "../../../graphql/ElementGroup/fragments";
-import {useQuery} from "@apollo/client";
+import React, { useState } from "react";
 import ErrorMessage from "../../../components/ErrorMessage";
-import {useElementGroupCommands} from "../../../graphql/ElementGroup/hooks";
+import { Option, Section, TextInput } from "../../../components/PropertyEditor";
+import { ELEMENT_GROUP_FRAGMENT } from "../../../graphql/ElementGroup/fragments";
+import { useElementGroupCommands } from "../../../graphql/ElementGroup/hooks";
+import TimelineProperties from "./TimelineProperties";
 
 const QUERY = gql`
     query elementGroup($id: ID!) {

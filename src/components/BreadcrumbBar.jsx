@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './BreadcrumbBar.module.scss';
 import Breadcrumb from './Breadcrumb';
+import styles from './BreadcrumbBar.module.scss';
 
 export default class BreadcrumbBar extends React.Component {
   render() {
