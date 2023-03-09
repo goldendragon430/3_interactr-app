@@ -8,6 +8,7 @@ import ElementContainer from './Element/ElementContainer';
 import { useModalElementRoute, useModalRoute } from 'modules/modal/routeHooks';
 import { useModalElementCommands } from '@/graphql/Modal/hooks';
 import { getEditPopup } from '@/graphql/LocalState/editPopup';
+import { createPortal } from 'react-dom';
 
 /**
  * Props needed for this component
@@ -29,7 +30,7 @@ const _props = {
  * @returns {*}
  * @constructor
  */
-const ModalElementEditor = ({ modalElement, preview }) => {
+const ModalElementEditor = ({ modalElement, preview, projectFont }) => {
 	const [activeModalElement, setActiveModalElement, back] = useModalElementRoute();
 	//const [activeModalElement, setActiveModalElement] = useState();
 
@@ -63,6 +64,26 @@ const ModalElementEditor = ({ modalElement, preview }) => {
 	};
 
 	const { element_type } = modalElement;
+
+	// const el = document.querySelector('#edit-popup #editor-portal');
+	// if(activeModalElement === modalElement.id && !preview) {
+	// 	console.log('TIGER', el);
+	// 	el.style.zIndex = 1000000000;
+	// 	return createPortal(
+	// 		<ElementContainer
+	// 			key={key}
+	// 			element={modalElement.element}
+	// 			element_type={element_type}
+	// 			onSelect={() => setActiveModalElement(modalElement.id)}
+	// 			selected={activeModalElement === modalElement.id}
+	// 			onDelete={handleDelete}
+	// 			// This is used so when we fire the global animation event the
+	// 			// right elements actually animate
+	// 			animationKey={'Modal:' + modalElement.modal_id}
+	// 			preview={preview}
+	// 		/>, document.querySelector('#edit-popup #editor-portal')
+	// 	)
+	// }
 	
 	return (
 		<ElementContainer
@@ -76,6 +97,7 @@ const ModalElementEditor = ({ modalElement, preview }) => {
 			// right elements actually animate
 			animationKey={'Modal:' + modalElement.modal_id}
 			preview={preview}
+			projectFont={projectFont}
 		/>
 	);
 };

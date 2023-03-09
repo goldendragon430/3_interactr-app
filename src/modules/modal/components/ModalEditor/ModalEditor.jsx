@@ -40,7 +40,7 @@ export const ModalEditor = ({modalId}) => {
 	
 	return (
 		<>
-			<div className={styles.leftSide}>
+			<div className={styles.leftSide} id="edit-popup">
 				<ModalPreview modal={modalData.result} width={base_width} height={base_height} />
 				<div className={'grid'}>
 					<div className='col6'>

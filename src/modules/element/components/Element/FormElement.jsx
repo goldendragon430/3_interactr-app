@@ -11,7 +11,7 @@ import { useFormElementCommands } from "../../../../graphql/FormElement/hooks";
 import EditableTextContainer from "./EditableTextContainer";
 import PositionableElement from './PositionableElement';
 
-export default function FormElement({animationKey, elementId, selected, onSelect, onDelete, preview}) {
+export default function FormElement({animationKey, elementId, selected, onSelect, onDelete, preview, projectFont}) {
   const [editing, setEditing] = useState(false);
   const {updateFormElement} = useFormElementCommands(elementId)
 
@@ -71,6 +71,7 @@ export default function FormElement({animationKey, elementId, selected, onSelect
     styles.height = '40px';
     styles.borderStyle = input_borderType;
     styles.borderWidth = input_borderWidth + 'px';
+    styles.fontFamily = projectFont;
 
     return <input type="text" style={styles} placeholder={placeholder} className={className} onKeyDown={(e) => {e.stopPropagation();}}/>;
   }
@@ -115,6 +116,7 @@ export default function FormElement({animationKey, elementId, selected, onSelect
           onDelete={onDelete}
           element={getPrefixedProps(element, 'button_')}
           preview={preview}
+          projectFont={projectFont}
         />
       </div>
     </div>

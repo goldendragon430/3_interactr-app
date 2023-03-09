@@ -1,9 +1,9 @@
-import React from 'react';
-import DropOffChartProject from './DropOffChartProject';
-import DropOffChartNode from './DropOffChartNode';
-import InteractionsChart from './InteractionsChart';
-import analytics from 'utils/analytics';
 import Icon from 'components/Icon';
+import React from 'react';
+import analytics from 'utils/analytics';
+import DropOffChartNode from './DropOffChartNode';
+import DropOffChartProject from './DropOffChartProject';
+import InteractionsChart from './InteractionsChart';
 
 export default class EngagementChart extends React.Component {
     constructor(props) {

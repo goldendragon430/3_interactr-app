@@ -26,8 +26,8 @@ const ModalCanvas = ({ modal, preview, canPreview }) => {
 	if (!modal) return null;
 	
 	const { elements } = modal;
-	const { base_width, base_height } = modal.project;
-
+	const { base_width, base_height, font } = modal.project;
+	
 	return (
 		<>
 			<div
@@ -43,7 +43,7 @@ const ModalCanvas = ({ modal, preview, canPreview }) => {
 					{/* Need to make the background colour editable here */}
 					<PreviewContext.Provider value={canPreview}>
 						<ModalBackground modal={modal} canPreview={canPreview}>
-							<Elements elements={elements} preview={preview} />
+							<Elements elements={elements} preview={preview} projectFont={font}/>
 							<div onClick={() => { back() } } style={{ height: '100%', width: '100%' }}>
 								&nbsp;
 							</div>
@@ -57,13 +57,14 @@ const ModalCanvas = ({ modal, preview, canPreview }) => {
 };
 export default ModalCanvas;
 
-const Elements = ({ elements, preview }) => {
+const Elements = ({ elements, preview, projectFont }) => {
 	return map(elements, (modalElement) => (
 		<ModalElementEditor
 			key={modalElement.id}
 			className={styles.stacked}
 			modalElement={modalElement}
 			preview={preview}
+			projectFont={projectFont}
 		/>
 	));
 };

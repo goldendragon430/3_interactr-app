@@ -21,7 +21,7 @@ const _props = {
  * Render the editable text element
  * @constructor
  */
-const TextElement = ({elementId, selected, onSelect, onDelete, animationKey, preview}) => {
+const TextElement = ({elementId, selected, onSelect, onDelete, animationKey, preview, projectFont}) => {
   const {updateTextElement, saveTextElement} = useTextElementCommands(elementId);
 
   const element = cache.readFragment({
@@ -67,6 +67,7 @@ const TextElement = ({elementId, selected, onSelect, onDelete, animationKey, pre
       onDelete={onDelete}
       animationKey={animationKey}
       preview={preview}
+      projectFont={projectFont}
     />
   );
 };

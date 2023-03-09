@@ -71,10 +71,18 @@ const ModalBackground = ({ modal, children }) => {
 			<div 
 				style={{
 					...modalPosition,
+					position: 'absolute',
+					zIndex: 15,
+				}}
+				id="editor-portal"
+			></div>
+			<div 
+				style={{
+					...modalPosition,
 					borderRadius: border_radius + 'px',
 					position: 'absolute',
 					zIndex: 10,
-					overflow: 'hidden'
+					overflow: 'hidden',
 				}}
 			>
 				<div style={modalStyles} ref={refContainer} />
@@ -84,7 +92,8 @@ const ModalBackground = ({ modal, children }) => {
 					...modalPosition,
 					position: 'absolute',
 					zIndex: 20,
-					overflow:'hidden'
+					overflow:'hidden',
+					borderRadius: border_radius + 'px',
 				}}
 			>
 				{

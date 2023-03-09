@@ -164,7 +164,7 @@ const toolbarOptions = {
  * @constructor
  */
 
-const EditableText = ({editing, onStartEdit, onStopEdit, update, value, selected, className, style, vResizeDisabled=false, preview=false, onDelete}) => {
+const EditableText = ({editing, onStartEdit, onStopEdit, update, value, selected, className, projectFont, vResizeDisabled=false, preview=false, onDelete}) => {
     const editableTextRef = useRef(null);
     const [editorState, setEditorState] = useState();
     const [previousValue, setPreviousValue] = useState(value || 'click to add text ');
@@ -202,6 +202,16 @@ const EditableText = ({editing, onStartEdit, onStopEdit, update, value, selected
       setPreviousValue(htmlContent);
     }
     
+    const handleRef = (ref) => {
+      if (ref && projectFont) {
+        const spanElements = ref.querySelectorAll('span');
+        if(spanElements.length > 0)
+          spanElements.forEach(element => {
+            element.style.fontFamily = projectFont;
+          });
+      }
+    };
+
     return (
       <div ref={editableTextRef} style={!vResizeDisabled ? {cursor: 'pointer', width: '100%', height: '100%'}: {}}>
         {selected ? (
@@ -223,17 +233,19 @@ const EditableText = ({editing, onStartEdit, onStopEdit, update, value, selected
           </div>
            ) : (
              <div
-               style={ !vResizeDisabled?{
-                 width: '100%',
-                 padding: 10,
-                 margin: 0,
-                 position: 'absolute',
-                 top: '50%',
-                 transform: 'translateY(-50%)',
-               }: {
-                padding: 10.5,
-               }}
-               dangerouslySetInnerHTML={{__html: previousValue}}/>
+                ref={handleRef}
+                style={ !vResizeDisabled?{
+                  width: '100%',
+                  padding: 10,
+                  margin: 0,
+                  position: 'absolute',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  fontFamily: 'Quicksand'
+                }: {
+                  padding: 10.5,
+                }}
+                dangerouslySetInnerHTML={{__html: previousValue}}/>
          )}
       </div>     
   );

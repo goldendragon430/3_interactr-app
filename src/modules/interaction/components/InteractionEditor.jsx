@@ -28,7 +28,7 @@ import { GET_ELEMENT_GROUPS } from '@/graphql/ElementGroup/queries';
  * @returns {*}
  * @constructor
  */
-const InteractionEditor = ({ interaction }) => {
+const InteractionEditor = ({ interaction, projectFont }) => {
 	const { nodeId } = useParams();
 	// const { data, error, loading } = useQuery(GET_ELEMENT_GROUPS, {
 	// 	variables: {
@@ -161,6 +161,7 @@ const InteractionEditor = ({ interaction }) => {
 			// This is used so when we fire the global animation event the
 			// right elements actually animate
 			animationKey={'Node:' + interaction.node_id}
+			projectFont={projectFont}
 		/>
 	);
 };

@@ -59,6 +59,7 @@ export const MODAL_FRAGMENT = gql`
             id
             base_width
             base_height
+            font
         }
     }
     ${MODAL_ELEMENT_FRAGMENT}

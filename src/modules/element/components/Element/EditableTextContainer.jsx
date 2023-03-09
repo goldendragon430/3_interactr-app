@@ -34,8 +34,8 @@ const _props = {
  * @returns {*}
  * @constructor
  */
-const EditableTextContainer = ({element, update, style, disableResize=false, width, height, positionable, save, onSelect, selected, onDelete, animationKey, preview=false, vResizeDisabled=false}) => {
-  const {html, projectFont,borderRadius, padding, paddingLeft, paddingRight, animation, id } = element;
+const EditableTextContainer = ({element, update, style, disableResize=false, width, height, positionable, save, onSelect, selected, onDelete, animationKey, projectFont, preview=false, vResizeDisabled=false}) => {
+  const {html, borderRadius, padding, paddingLeft, paddingRight, animation, id } = element;
   const [editing, setEditing] = useState(false);
   
   let styles = {
@@ -47,7 +47,7 @@ const EditableTextContainer = ({element, update, style, disableResize=false, wid
     paddingRight: (paddingRight) ? paddingRight : padding + '%',
   };
 
-  if(projectFont){
+  if(projectFont) {
     styles.fontFamily = `${projectFont}`
   }
 
@@ -62,12 +62,12 @@ const EditableTextContainer = ({element, update, style, disableResize=false, wid
       flexDirection: 'column',
     }; 
   }
-  
+
   const contents = (
     <EditableText
       editing={editing}
       value={html}
-      style={styles}
+      projectFont={projectFont}
       selected={selected}
       className="reset_children_font"
       onStartEdit={()=>setEditing(true)}

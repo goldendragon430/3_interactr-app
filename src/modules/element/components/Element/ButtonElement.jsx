@@ -35,7 +35,7 @@ const PLAYER_QUERY = gql`
         }
     }
 `;
-const ButtonElement = ({elementId, zIndex, selected, onDelete, onSelect, animationKey, preview}) => {
+const ButtonElement = ({elementId, zIndex, selected, onDelete, onSelect, animationKey, preview, projectFont}) => {
   const {updateButtonElement} = useButtonElementCommands(elementId);
   
   const element = cache.readFragment({
@@ -107,6 +107,7 @@ const ButtonElement = ({elementId, zIndex, selected, onDelete, onSelect, animati
       onDelete={onDelete}
       animationKey={animationKey}
       preview={preview}
+      projectFont={projectFont}
     />
   );
 };

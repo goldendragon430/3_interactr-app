@@ -5,22 +5,18 @@ import find from "lodash/find";
 
 export default class InteractionsChart extends React.Component {
     constructor(props) {
-            super(props);
+        super(props);
     }
 
     getNodeName(nodeId){
         const node = find(this.props.nodes, {id: parseInt(nodeId)});
-
         // Max out at 11 characters so the text don't overflow
         return (node) ? node.name.split('-').join(' ').substring(0, 12) : "Deleted Node";
     }
 
-    componentWillUnmount() {
-
-    }
-
     async componentDidMount() {
         const { data } = this.props;
+        
         if (data) {
             setTimeout(()=>{
                 new sunburst(data.interaction.map(interaction=>{
@@ -60,7 +56,7 @@ export default class InteractionsChart extends React.Component {
                 {
                     (! data.interaction.length) ?
                         <h4 style={{textAlign: 'center', marginTop: '150px'}}>Not Enough Data For Chart</h4>
-                        :
+                    :
                         <div>
                             <div id="main">
                                 <div id="sequence"></div>

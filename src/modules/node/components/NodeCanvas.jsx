@@ -1,29 +1,21 @@
-import React, { useRef, useEffect, useContext } from 'react';
-import ReactPlayer from 'react-player';
-import styles from './NodePage.module.scss';
-import InteractionEditor from '../../interaction/components/InteractionEditor';
-import { useProject } from '../../../graphql/Project/hooks';
-import Icon from '../../../components/Icon';
-import { useSetState } from '../../../utils/hooks';
-import { useParams } from 'react-router-dom';
-import map from 'lodash/map';
-import ElementContainer from '../../element/components/Element/ElementContainer';
-import Emitter, { VIDEO_SCRUB } from '../../../utils/EventEmitter';
-import debounce from 'lodash/debounce';
-import { EventListener } from '../../../components/EventListener';
-import { useInteractionRoute } from 'modules/interaction/routeHooks';
-import { useInteractions } from '../../../graphql/Interaction/hooks';
-import getAsset from '../../../utils/getAsset';
-import { usePlayer } from '../../../graphql/LocalState/player';
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
-import ErrorMessage from '../../../components/ErrorMessage';
+import debounce from 'lodash/debounce';
+import map from 'lodash/map';
+import React, { useRef } from 'react';
+import ReactPlayer from 'react-player';
+import { useParams } from 'react-router-dom';
+import { EventListener } from '../../../components/EventListener';
+import Icon from '../../../components/Icon';
+import { cache } from "../../../graphql/client";
 import { INTERACTION_FRAGMENT } from '../../../graphql/Interaction/fragments';
-import { motion } from 'framer-motion';
+import { usePlayer } from '../../../graphql/LocalState/player';
+import { useProject } from '../../../graphql/Project/hooks';
+import { VIDEO_SCRUB } from '../../../utils/EventEmitter';
+import getAsset from '../../../utils/getAsset';
+import InteractionEditor from '../../interaction/components/InteractionEditor';
 import { useNodeRoute } from '../routeHooks';
-import {cache} from "../../../graphql/client";
-import {GET_NODE} from "../../../graphql/Node/queries";
-import {GET_INTERACTIONS} from "../../../graphql/Interaction/queries";
+import styles from './NodePage.module.scss';
 
 
 const PLAYER_QUERY = gql`
@@ -246,6 +238,8 @@ const ReservedForPlayerControls = () => {
  */
 function Elements() {
   const [nodeId, setNodeId] = useNodeRoute();
+  const [project, _, { loading: projectLoading, error: projectError }] = useProject();
+  if (projectLoading || projectError) return null;
 
   const { loading, error, data } = useQuery(gql`query node($nodeId: ID!){
       result: node(id: $nodeId){
@@ -258,8 +252,8 @@ function Elements() {
 
   if(loading || error) return null;
 
-  const {interactions} = data.result;
-
+  const { interactions } = data.result;
+  const { font } = project;
   return (
     <div className={styles.elementsWrapper}>
       {map(interactions, (interaction) => (
@@ -267,6 +261,7 @@ function Elements() {
           key={'interaction_key_' + interaction.id}
           className={styles.stacked}
           interaction={interaction}
+          projectFont={font}
         />
       ))}
       <div onClick={() => {setNodeId(nodeId)}} style={{ height: '100%', width: '100%' }}>

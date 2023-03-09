@@ -36,20 +36,20 @@ const _props = {
  * @param interaction_id
  * @constructor
  */
-const ElementContainer = ({element, zIndex, element_type, selected, onSelect, onDelete, animationKey, preview}) => {
+const ElementContainer = ({element, zIndex, element_type, selected, onSelect, onDelete, animationKey, preview, projectFont}) => {
   switch (element_type) {
     case HOTSPOT_ELEMENT:
       return <HotspotElement elementId={element.id} selected={selected} onSelect={onSelect} onDelete={onDelete} animationKey={animationKey} preview={preview} />;
     case BUTTON_ELEMENT:
-      return <ButtonElement elementId={element.id}  zIndex={zIndex} selected={selected} onSelect={onSelect} onDelete={onDelete } animationKey={animationKey} preview={preview} />;
+      return <ButtonElement elementId={element.id}  zIndex={zIndex} selected={selected} onSelect={onSelect} onDelete={onDelete } animationKey={animationKey} preview={preview} projectFont={projectFont}/>;
     case IMAGE_ELEMENT:
       return <ImageElement elementId={element.id}  zIndex={zIndex} selected={selected} onSelect={onSelect} onDelete={onDelete} animationKey={animationKey} preview={preview} />;
     case TEXT_ELEMENT:
-      return <TextElement elementId={element.id}  zIndex={zIndex} selected={selected} onSelect={onSelect} onDelete={onDelete} animationKey={animationKey} preview={preview} />;
+      return <TextElement elementId={element.id}  zIndex={zIndex} selected={selected} onSelect={onSelect} onDelete={onDelete} animationKey={animationKey} preview={preview} projectFont={projectFont}/>;
     case CUSTOM_HTML_ELEMENT:
       return <CustomHtmlElement elementId={element.id} selected={selected} onSelect={onSelect} onDelete={onDelete} animationKey={animationKey} preview={preview} />;
     case FORM_ELEMENT:
-      return <FormElement elementId={element.id}  zIndex={zIndex} selected={selected} onSelect={onSelect} onDelete={onDelete} animationKey={animationKey} preview={preview} />;
+      return <FormElement elementId={element.id}  zIndex={zIndex} selected={selected} onSelect={onSelect} onDelete={onDelete} animationKey={animationKey} preview={preview} projectFont={projectFont}/>;
     case TRIGGER_ELEMENT :
       return <TriggerElement elementId={element.id}  />
     default :
