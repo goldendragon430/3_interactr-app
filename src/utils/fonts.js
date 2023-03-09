@@ -48,15 +48,15 @@ export const defaultFont = fonts[0];
 
 
 // @todo: use Cache api to cache fonts 
-let loadedFonts = [];
-export function loadFont(fontName) {
+// let loadedFonts = [];
+// export function loadFont(fontName) {
 
-  if (!fontName || loadedFonts.includes(fontName)) return;
-  loadedFonts.push(fontName);
-  // console.log('loading font ..............', fontName)
-  return window.WebFont.load({
-    google: {
-      families: [fontName]
-    }
-  });
-}
+//   if (!fontName || loadedFonts.includes(fontName)) return;
+//   loadedFonts.push(fontName);
+//   // console.log('loading font ..............', fontName)
+//   return window.WebFont.load({
+//     google: {
+//       families: [fontName]
+//     }
+//   });
+// }

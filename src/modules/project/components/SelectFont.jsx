@@ -1,12 +1,11 @@
-import keyBy from 'lodash/keyBy';
 import React from 'react';
-import {SelectInput} from 'components/PropertyEditor';
-import {fonts, loadFont} from 'utils/fonts';
+import { SelectInput } from 'components/PropertyEditor';
+import keyBy from 'lodash/keyBy';
+import { fonts } from 'utils/fonts';
 
 export default class SelectFont extends React.Component {
   render() {
     const {value} = this.props;
-    loadFont(value);
     return (
       <div>
         <SelectInput {...this.props} options={keyBy(fonts, val => val)} />
