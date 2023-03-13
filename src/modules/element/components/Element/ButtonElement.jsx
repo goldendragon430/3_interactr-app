@@ -68,6 +68,17 @@ const ButtonElement = ({elementId, zIndex, selected, onDelete, onSelect, animati
   }
 
   if(clickThruMode) {
+
+    const handleRef = (ref) => {
+      if (ref && projectFont) {
+        const spanElements = ref.querySelectorAll('span');
+        if(spanElements.length > 0)
+          spanElements.forEach(element => {
+            element.style.fontFamily = projectFont;
+          });
+      }
+    };
+
     return (
       <ClickThrough 
         element={element} 
@@ -79,7 +90,7 @@ const ButtonElement = ({elementId, zIndex, selected, onDelete, onSelect, animati
           animationKey={animationKey}
           style={styles}
         >
-          <div dangerouslySetInnerHTML={{__html: element.html}} />
+          <div ref={handleRef} dangerouslySetInnerHTML={{__html: element.html}} />
         </StaticElement>
       </ClickThrough>
     )
