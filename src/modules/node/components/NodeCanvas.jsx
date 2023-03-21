@@ -100,7 +100,8 @@ const NodeCanvas = () => {
             alignItems: 'center',
             justifyContent: 'center',
             background: 'black',
-            borderRadius: '10px'
+            borderRadius: '10px',
+            overflow: 'hidden'
           }}
         >
           <img src={media.thumbnail_url} className={'img-fluid'} />
