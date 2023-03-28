@@ -95,7 +95,7 @@ const AgencyPageBody = ({subusers, data}) => {
 
   return(
    <div className="grid">
-     <div className={'col12'}>
+     <div className={'col12'} style={{ marginBottom: '60px'}}>
        <ProjectsViewsByAll title="Project Performance By Client" data={data} labels={map(subusers, subuser => ({ title: subuser.name, id: subuser.id }))} />
        {/* <LatestDoneForYouContent  /> */}
      </div>

@@ -1,12 +1,9 @@
-import React, {useState} from 'react';
 import Button from 'components/Buttons/Button';
-import Icon from 'components/Icon';
-import {useProjectCommands, usePublishProject} from "../../../graphql/Project/hooks";
-import {errorAlert, success} from "../../../utils/alert";
-import {useParams} from "react-router-dom";
-import {toast} from "react-toastify";
-
-
+import React, { useState } from 'react';
+import { useParams } from "react-router-dom";
+import { useProjectCommands } from "../../../graphql/Project/hooks";
+import { errorAlert, success, info } from "../../../utils/alert";
+import first from 'lodash/first';
 
 export default function PublishButton({
   text,
@@ -14,11 +11,11 @@ export default function PublishButton({
   color,
   children,
 }) {
-  const {projectId} = useParams();
+  const { projectId } = useParams();
 
-  const {publishProject} = useProjectCommands();
+  const { publishProject } = useProjectCommands();
 
-  const [publishing, setPublishing] = useState(false);
+  const [ publishing, setPublishing ] = useState(false);
 
   const handlePublish = async (e) => {
     setPublishing(true)
@@ -30,26 +27,17 @@ export default function PublishButton({
         }
       });
 
-
       success("Project Published")
-
-
     }catch(err){
       console.error(err);
-      errorAlert({
+      info({
         title: 'Unable to Publish Project',
-        text : 'An error occurred whilst trying to publish your project. Please try again. If the problem persists please contact support'
+        text : first(err.graphQLErrors).debugMessage || err.message
       })
     }
 
     setPublishing(false)
   };
-
-  const handleDisabled = () => {
-    errorAlert({
-      text: 'Publishing is currently disabled in the early stage beta. Please use preview to test your project in the player'
-    })
-  }
 
   const primary = (color==='primary');
 

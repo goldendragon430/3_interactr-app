@@ -1,7 +1,7 @@
-export const projectsPath = (id = -1, queryParams) => {
-  if(id == -1)
+export const projectsPath = (id = -2, queryParams) => {
+  if(id == -2)
     return "/projects";
-    
+      
   if (queryParams) {
     const {page, q, orderBy, sortOrder} = queryParams;
     return `/projects/folder/${id}?page=${page}&q=${q}&orderBy=${orderBy}&sortOrder=${sortOrder}`;

@@ -1,21 +1,17 @@
-import React, {useState} from 'react';
+import React from 'react';
+import { useQuery } from "@apollo/client";
 import Button from 'components/Buttons/Button';
-import PreviewProjectButton from './PreviewProjectButton';
-import ProjectNav from './ProjectNav';
-import styles from './ProjectPage.module.scss';
-import PublishButton from 'modules/project/components/PublishButton';
-import ContentLoader from "react-content-loader";
-import EmbedCodeModal from "./EmbedCodeModal";
-import Icon from "../../../components/Icon";
-import {projectsPath} from "../routes";
-import {useNavigate, useParams} from "react-router-dom";
-import {useQuery} from "@apollo/client";
 import gql from "graphql-tag";
-import {setPreviewProject} from "../../../graphql/LocalState/previewProject";
-import {setProjectEmbedCode} from "../../../graphql/LocalState/projectEmbedCode";
-import {useProjectCommands, usePublishProject} from "../../../graphql/Project/hooks";
-import {errorAlert} from "../../../utils/alert";
 import first from 'lodash/first';
+import ContentLoader from "react-content-loader";
+import { useNavigate, useParams } from "react-router-dom";
+import Icon from "../../../components/Icon";
+import { setPreviewProject } from "../../../graphql/LocalState/previewProject";
+import { setProjectEmbedCode } from "../../../graphql/LocalState/projectEmbedCode";
+import { usePublishProject } from "../../../graphql/Project/hooks";
+import { errorAlert, info } from "../../../utils/alert";
+import { projectsPath } from "../routes";
+import styles from './ProjectPage.module.scss';
 
 
 /**
@@ -87,7 +83,8 @@ export const ProjectButtons = () => {
     const [updateProject, { error, loading: publishing  }] = usePublishProject(projectId);
 
     if (error && error.graphQLErrors.length) {
-      errorAlert({
+      info({
+        title: 'Unable to Publish Project',
         text: first(error.graphQLErrors).debugMessage || error.message
       });
     }

@@ -1,36 +1,30 @@
-import React, { useState } from 'react';
-import Icon from '../../../components/Icon';
-import { sharePageUrl } from '../utils';
+import { useQuery } from '@apollo/client';
 import {
-	useCopyProject,
-	useDeleteProject,
-	useProjectCommands,
-} from '../../../graphql/Project/hooks';
-import ErrorMessage from '../../../components/ErrorMessage';
-import {
-	copyConfirmed,
-	deleteConfirmed,
-	deleteItem,
-} from '../../../graphql/utils';
-import { error, errorAlert } from 'utils/alert';
-import {
-	FocusableItem,
 	Menu,
 	MenuButton,
 	MenuDivider,
 	MenuItem,
-	SubMenu,
+	SubMenu
 } from '@szhsin/react-menu';
+import first from 'lodash/first';
+import indexOf from 'lodash/indexOf';
+import map from 'lodash/map';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Icon from '../../../components/Icon';
 import { setPreviewProject } from '../../../graphql/LocalState/previewProject';
 import { setProjectEmbedCode } from '../../../graphql/LocalState/projectEmbedCode';
-import { openInNewTab } from '../../../utils/helpers';
-import { Link, useNavigate } from 'react-router-dom';
-import { projectPath } from '../routes';
-import map from 'lodash/map';
+import {
+	useProjectCommands
+} from '../../../graphql/Project/hooks';
 import { GET_PROJECT_GROUPS } from '../../../graphql/ProjectGroup/queries';
-import { useQuery } from '@apollo/client';
-import { useSetState } from '../../../utils/hooks';
-import indexOf from 'lodash/indexOf';
+import {
+	copyConfirmed,
+	deleteConfirmed
+} from '../../../graphql/utils';
+import { errorAlert, info, success } from "../../../utils/alert";
+import { openInNewTab } from '../../../utils/helpers';
+import { projectPath } from '../routes';
 
 /**
  * Render the single project actions list - delete/copy/move to folder
@@ -42,7 +36,7 @@ import indexOf from 'lodash/indexOf';
  */
 const ProjectActions = ({ project, refetchProjects, allowedActions }) => {
 	const [loading, setLoading] = useState(false);
-	const { getSharePageUrl, moveProject, deleteProject, copyProject } =
+	const { getSharePageUrl, moveProject, deleteProject, copyProject, publishProject } =
 		useProjectCommands();
 	const navigate = useNavigate();
 
@@ -53,6 +47,22 @@ const ProjectActions = ({ project, refetchProjects, allowedActions }) => {
 	} = useQuery(GET_PROJECT_GROUPS, {
 		fetchPolicy: 'cache-only',
 	});
+
+	const handlePublish = async (e) => {
+    try {
+      await publishProject({
+        variables: {
+          id: project.id
+        }
+      });
+    }catch(err){
+      console.error(err);
+      info({
+        title: 'Unable to Publish Project',
+        text : first(err.graphQLErrors).debugMessage || err.message
+      })
+    }
+  };
 
 	const handleMoveToFolder = async (folderId) => {
 		setLoading(true);
@@ -170,17 +180,17 @@ const ProjectActions = ({ project, refetchProjects, allowedActions }) => {
 					<Icon name={'edit'} /> Edit Project
 				</MenuItem>
 			)}
-			{checkActionIsAllowed('preview') && (
+			{project.migration_status > 1 && checkActionIsAllowed('preview') && (
 				<MenuItem onClick={() => previewProject(project.id)}>
 					<Icon name={'eye'} /> Preview Project
 				</MenuItem>
 			)}
-			{checkActionIsAllowed('copy') && (
+			{project.migration_status > 1 && checkActionIsAllowed('copy') && (
 				<MenuItem onClick={handleCopy}>
 					<Icon name={'copy'} /> Copy Project
 				</MenuItem>
 			)}
-			{checkActionIsAllowed('share') && (
+			{project.migration_status > 1 && checkActionIsAllowed('share') && (
 				<SubMenu label='Share Project'>
 					<MenuItem onClick={() => showEmbedCode(project.id)}>
 						<Icon name={'code'} /> Embed Code
@@ -194,7 +204,7 @@ const ProjectActions = ({ project, refetchProjects, allowedActions }) => {
 					}
 				</SubMenu>
 			)}
-			{checkActionIsAllowed('changeFolder') && (
+			{project.migration_status > 1 && checkActionIsAllowed('changeFolder') && (
 				<SubMenu label='Move To Folder'>
 					{map(folders?.result, (folder) => {
 						if (!folder.projectIds.includes(parseInt(project.id))) {
@@ -214,6 +224,12 @@ const ProjectActions = ({ project, refetchProjects, allowedActions }) => {
 					)}
 				</SubMenu>
 			)}
+			{project.migration_status < 2 && checkActionIsAllowed('changeFolder') && (
+				<MenuItem onClick={handlePublish}>
+					<Icon name={'publish'} /> Publish Project
+				</MenuItem>
+			)
+			}
 			<MenuDivider />
 			{checkActionIsAllowed('delete') && (
 				<MenuItem onClick={() => handleDelete()}>

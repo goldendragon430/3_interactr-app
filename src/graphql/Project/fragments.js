@@ -17,6 +17,7 @@ export const PROJECTS_FRAGMENT = gql`
         is_template
         player_skin
         created_at
+        migration_status
     }
 `;
 

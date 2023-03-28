@@ -8,7 +8,7 @@ import { Icon } from 'components';
 import { injectStyles } from 'utils';
 import { getWhitelabel } from '@/graphql/LocalState/whitelabel';
 import { ProjectsPageSubNavItem } from './ProjectsPageSubNavItem';
-
+import { useProjects } from '@/graphql/Project/hooks';
 import styles from './ProjectsPageSubNav.module.scss';
 
 export const ProjectsPageSubNav = ({
@@ -22,18 +22,26 @@ export const ProjectsPageSubNav = ({
 		[styles.verticalFoldersScroll]: verticalFoldersScroll,
 	});
 
-	return (
-		<ul className={wrapperClasses}>
-			{whitelabel ? setWhiteLabelCss(whitelabel) : null}
-			<ProjectsPageSubNavItem
-				key={`sub_nav_item_${first(items).id || Math.random()}`}
-				item={first(items)}
-				// isWhitelabel={isWhitelabel}
-				whitelabel={whitelabel}
-				verticalFoldersScroll={verticalFoldersScroll}
-				action={action}
-			/>
-			{loading ? (
+	const [
+		projects,
+		,
+		{ loading: projectsLoading, error },
+	] = useProjects({
+		project_group_id: -1,
+	});	
+
+	if(loading || projectsLoading) {
+		return (
+			<ul className={wrapperClasses}>
+				{whitelabel ? setWhiteLabelCss(whitelabel) : null}
+				<ProjectsPageSubNavItem
+					key={`sub_nav_item_${items[1].id || Math.random()}`}
+					item={items[1]}
+					// isWhitelabel={isWhitelabel}
+					whitelabel={whitelabel}
+					verticalFoldersScroll={verticalFoldersScroll}
+					action={action}
+				/>
 				<div
 					style={{
 						height: 50,
@@ -44,8 +52,34 @@ export const ProjectsPageSubNav = ({
 				>
 					<Icon loading />
 				</div>
-			) : (
-				items.slice(1).map((item) => (
+			</ul>
+		)
+	}
+
+	return (
+		<ul className={wrapperClasses}>
+			{whitelabel ? setWhiteLabelCss(whitelabel) : null}
+			{
+				projects?.data.length ?
+				<ProjectsPageSubNavItem
+					key={`sub_nav_item_${first(items).id || Math.random()}`}
+					item={first(items)}
+					// isWhitelabel={isWhitelabel}
+					whitelabel={whitelabel}
+					verticalFoldersScroll={verticalFoldersScroll}
+					action={action}
+				/>: null
+			}
+			<ProjectsPageSubNavItem
+				key={`sub_nav_item_${items[1].id || Math.random()}`}
+				item={items[1]}
+				// isWhitelabel={isWhitelabel}
+				whitelabel={whitelabel}
+				verticalFoldersScroll={verticalFoldersScroll}
+				action={action}
+			/>
+			{
+				items.slice(2).map((item) => (
 					<ProjectsPageSubNavItem
 						key={`sub_nav_item_${item.id || Math.random()}`}
 						item={item}
@@ -55,7 +89,7 @@ export const ProjectsPageSubNav = ({
 						action={action}
 					/>
 				))
-			)}
+			}
 		</ul>
 	);
 };

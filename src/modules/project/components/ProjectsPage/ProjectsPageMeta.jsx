@@ -20,6 +20,11 @@ const DEFAULT_PROJECT_CRUMBS = [
 	{ text: 'No Folder', link: projectsPath() },
 ];
 
+
+const LEGACY_PROJECT_CRUMBS = [
+	{ text: 'Projects', link: projectsPath() },
+	{ text: 'Legacy Folder', link: projectsPath() },
+];
 /**
  * List project folders list in header
  * @returns {boolean|*}
@@ -37,12 +42,25 @@ export const ProjectsPageMeta = ({
 		setBreadcrumbs(DEFAULT_PROJECT_CRUMBS);
 	}
 
+	if (folderId === -1) {
+		setBreadcrumbs(LEGACY_PROJECT_CRUMBS);
+	}
+
 	const firstNavItem = {
 		id: 0,
 		active: folderId === null,
 		text: 'No Folder',
 		action() {
 			setGroupParams(0, {});
+		},
+	};
+
+	const legacyNavItem = {
+		id: -1,
+		active: folderId === -1,
+		text: 'Legacy Folder',
+		action() {
+			setGroupParams(-1, {});
 		},
 	};
 
@@ -80,7 +98,7 @@ export const ProjectsPageMeta = ({
 				transition={transition}
 			>
 				<ProjectsPageSubNav
-					items={[firstNavItem, ...sortedFolders]}
+					items={[legacyNavItem, firstNavItem, ...sortedFolders]}
 					loading={loading}
 					verticalFoldersScroll
 				/>
