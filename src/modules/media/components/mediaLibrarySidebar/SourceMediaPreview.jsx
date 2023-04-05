@@ -18,6 +18,9 @@ import ErrorMessage from "../../../../components/ErrorMessage";
  * @constructor
  */
 const SourceMediaPreview = ({ mediaId, background_color, name, setName }) => {
+    if(! mediaId && ! background_color)
+        return null;
+
     if(! mediaId) {
         return <BackgroundColorPreview background_color={background_color} />
     }
@@ -32,7 +35,11 @@ const SourceMediaPreview = ({ mediaId, background_color, name, setName }) => {
 export default SourceMediaPreview;
 
 const BackgroundColorPreview = ({background_color}) => {
-    return <div style={{background: background_color, height: '219px', width: '390px'}}>&nbsp;</div>
+    return (
+        <div style={{position: 'relative', height: '100%', paddingBottom: '56.25%', display: 'flex', justifyContent: 'center', backgroundColor: '#eee'}}>
+            <div style={{background: background_color, position: 'absolute', width: '100%', height: '100%'}}>&nbsp;</div>
+        </div>
+    )   
 };
 
 

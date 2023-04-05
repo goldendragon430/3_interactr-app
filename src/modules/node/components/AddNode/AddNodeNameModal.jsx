@@ -64,7 +64,18 @@ const AddNodeNameModal = ({onClose, project}) => {
         await updateStartNode(newNode.project_id, newNode.id);
       }
       
-      setAddNode(ADD_NODE_VAR_INITAL_DATA);
+      setAddNode({
+        showBackgroundTypeSelectModal: false,
+        showBackgroundMediaSelectModal: false,
+        showBackgroundColorSelectModal: false,
+        showBackgroundFromProjectMediaModal: false,
+        showNameSelectModal:false,
+        newNodeObject:{
+          media_id: null,
+          background_color: null
+        },
+        staticNode: false,
+      });
       setLoading(false);
       setName("")
     }
@@ -77,10 +88,10 @@ const AddNodeNameModal = ({onClose, project}) => {
   };
 
   const {media_id, background_color} = newNodeObject;
-
+  
   return(
     <Modal
-      height={670}
+      height={820}
       width={700}
       show={showNameSelectModal}
       closeMaskOnClick={false}

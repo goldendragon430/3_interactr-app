@@ -13,6 +13,7 @@ import styles from '../ProjectsPage.module.scss';
  * @param children
  * @param paginatorInfo
  * @param projectsLoading
+ * @param foldersLoading
  * @returns {*}
  * @constructor
  */
@@ -20,6 +21,7 @@ export const ProjectsPageBody = ({
 	children,
 	paginatorInfo,
 	projectsLoading,
+	foldersLoading,
 	loading,
 	projectGroups,
 }) => {
@@ -33,6 +35,7 @@ export const ProjectsPageBody = ({
 						<ProjectsPageMeta
 							projectGroups={projectGroups}
 							projectsLoading={projectsLoading}
+							foldersLoading={foldersLoading}
 							loading={loading}
 						/>
 					}

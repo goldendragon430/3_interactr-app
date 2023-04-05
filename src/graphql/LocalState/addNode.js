@@ -31,6 +31,5 @@ export const setAddNode = (newData) => {
   }
 
   const data = {...oldData, ...newData};
-  //console.log(data);
   getAddNode(data);
 }

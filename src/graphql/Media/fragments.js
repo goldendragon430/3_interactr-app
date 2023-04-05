@@ -13,5 +13,6 @@ export const MEDIA_FRAGMENT = gql`
       encoded_size
       manifest_url
       media_size
+      storage_used
   }
 `;

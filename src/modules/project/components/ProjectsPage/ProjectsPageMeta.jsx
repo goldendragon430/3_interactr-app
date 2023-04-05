@@ -34,6 +34,7 @@ export const ProjectsPageMeta = ({
 	projectsLoading,
 	loading,
 	projectGroups,
+	foldersLoading
 }) => {
 	const user = useAuthUser();
 	const [folderId, setGroupParams] = useProjectGroupRoute();
@@ -100,6 +101,7 @@ export const ProjectsPageMeta = ({
 				<ProjectsPageSubNav
 					items={[legacyNavItem, firstNavItem, ...sortedFolders]}
 					loading={loading}
+					foldersLoading={foldersLoading}
 					verticalFoldersScroll
 				/>
 				<ProjectPageFilters
@@ -114,5 +116,6 @@ export const ProjectsPageMeta = ({
 ProjectsPageMeta.propTypes = {
 	projectsLoading: PropTypes.bool.isRequired,
 	loading: PropTypes.bool.isRequired,
+	foldersLoading: PropTypes.bool.isRequired,
 	projectGroups: PropTypes.array.isRequired,
 };

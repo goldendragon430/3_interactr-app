@@ -15,6 +15,7 @@ export const ProjectsPageSubNav = ({
 	items,
 	verticalFoldersScroll,
 	action,
+	foldersLoading,
 	loading,
 }) => {
 	const whitelabel = useReactiveVar(getWhitelabel);
@@ -30,7 +31,7 @@ export const ProjectsPageSubNav = ({
 		project_group_id: -1,
 	});	
 
-	if(loading || projectsLoading) {
+	if(foldersLoading || projectsLoading) {
 		return (
 			<ul className={wrapperClasses}>
 				{whitelabel ? setWhiteLabelCss(whitelabel) : null}
