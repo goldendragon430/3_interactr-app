@@ -32,7 +32,7 @@ export const useMediaCommands = () => {
 export const useMedias = ({
 	id = 0,
 	page = 1,
-	first = 10,
+	first = 50,
 	q = '',
 	hidden = 0,
 	orderBy = 'created_at',

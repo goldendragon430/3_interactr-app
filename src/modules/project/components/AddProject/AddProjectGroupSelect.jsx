@@ -48,9 +48,7 @@ export const AddProjectGroupSelect = ({ state, setState }) => {
 				value={project_group_id}
 				Component={SelectInput}
 				options={groupSelectOptions()}
-				onChange={(val) =>
-					setState({ project_group_id: parseInt(val) || 'noFolder' })
-				}
+				onChange={(val) => setState({ project_group_id: parseInt(val) ? parseInt(val) : null })}
 			/>
 		</div>
 	);
