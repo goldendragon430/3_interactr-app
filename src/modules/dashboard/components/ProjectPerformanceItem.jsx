@@ -1,20 +1,20 @@
 import React from 'react';
-import cardStyles from "../../../components/Card.module.scss";
-import {FocusableItem, Menu, MenuButton, MenuItem} from "@szhsin/react-menu";
-import Icon from "../../../components/Icon";
+import { FocusableItem, Menu, MenuButton, MenuItem } from "@szhsin/react-menu";
 import cx from "classnames";
+import isEmpty from "lodash/isEmpty";
+import moment from "moment";
+import { Link, useNavigate } from "react-router-dom";
+import cardStyles from "../../../components/Card.module.scss";
+import Icon from "../../../components/Icon";
+import { setPreviewProject } from "../../../graphql/LocalState/previewProject";
+import { setProjectEmbedCode } from "../../../graphql/LocalState/projectEmbedCode";
+import { useProjectCommands } from "../../../graphql/Project/hooks";
+import getAsset from "../../../utils/getAsset";
+import { openInNewTab } from "../../../utils/helpers";
+import { percentage } from "../../../utils/numberUtils";
 import styles from "../../agency/components/ClientSummary.module.scss";
 import ClientSummaryStat from "../../agency/components/ClientSummaryStat";
-import moment from "moment";
-import getAsset from "../../../utils/getAsset";
-import {Link} from "react-router-dom";
-import {projectPath} from "../../project/routes";
-import {openInNewTab} from "../../../utils/helpers";
-import {setPreviewProject} from "../../../graphql/LocalState/previewProject";
-import {setProjectEmbedCode} from "../../../graphql/LocalState/projectEmbedCode";
-import {percentage} from "../../../utils/numberUtils";
-import isEmpty from "lodash/isEmpty";
-import {useProjectCommands} from "../../../graphql/Project/hooks";
+import { projectPath } from "../../project/routes";
 
 const ProjectPerformanceList = ({loading, data, project}) => {
   const {getSharePageUrl} = useProjectCommands();
@@ -46,10 +46,15 @@ const ProjectPerformanceList = ({loading, data, project}) => {
     });
   };
 
+  const navigate = useNavigate();
+  const handleProjectCardClick = (e) => {
+    navigate(projectPath({projectId: project.id}));
+  }
+
   const projectImageUrl = project.image_url || getAsset('/img/no-thumb.jpg');
 
   return(
-    <div className={cardStyles.Card} style={{padding: '15px', height: '100px'}}>
+    <div className={cardStyles.Card} style={{padding: '15px', height: '100px', cursor: 'pointer'}} >
       <div style={{position:'absolute', top: '10px', right: '10px'}}>
         <Menu menuButton={<MenuButton><Icon name={'ellipsis-v'} style={{marginRight: 0}} /></MenuButton>}>
           <FocusableItem>
@@ -74,10 +79,10 @@ const ProjectPerformanceList = ({loading, data, project}) => {
           }
         </Menu>
       </div>
-      <div className={'grid'}>
+      <div className={'grid'} onClick={handleProjectCardClick}>
         <div className={cx(styles.column, 'col2')}>
           <img src={projectImageUrl} className={'img-fluid'} style={{borderRadius: '5px', maxHeight: '50px'}}/>
-          <a style={{fontSize: '10px', textAlign: 'center', marginTop: '5px'}} onClick={()=>previewProject(project.id)}><Icon name={'play'} /> Preview</a>
+          <a style={{fontSize: '10px', textAlign: 'center', marginTop: '5px'}} onClick={(e)=>{ previewProject(project.id); e.stopPropagation();}}><Icon name={'play'} /> Preview</a>
         </div>
         <div className={cx(styles.column, 'col3')} style={{paddingLeft: 0}}>
           <p style={{marginBottom: '5px'}} className={'ellipsis'}>{project.title}</p>
