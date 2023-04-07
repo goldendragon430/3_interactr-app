@@ -1,29 +1,31 @@
-import Icon from "../../../../components/Icon";
-import React, {useState, useEffect} from "react";
-import Button from "../../../../components/Buttons/Button";
+import React, { useEffect } from "react";
+import { useReactiveVar } from "@apollo/client";
+import { Menu, MenuButton, MenuItem } from "@szhsin/react-menu";
 import Modal from 'components/Modal';
-import {deleteConfirmed} from "../../../../graphql/utils";
-import {Menu, MenuButton, MenuItem} from "@szhsin/react-menu";
 import map from "lodash/map";
-import AgencyUserForm from "../../../user/components/AgencyUserForm";
-import ProjectsList from "./ProjectsList";
-import ProfileCover from "./ProfileCover";
-import {gql, useReactiveVar} from "@apollo/client";
-import {getClientModal, setClientModal} from "../../../../graphql/LocalState/clientModal";
-import ErrorMessage from "../../../../components/ErrorMessage";
-import {cache} from "../../../../graphql/client";
-import {useNavigate, useParams} from "react-router-dom";
-import {AgencyClientsPagePath} from "../../routes";
-import {errorAlert} from "../../../../utils/alert";
-import {useAuthUser, useCreateUser, useDeleteUser, useSaveUser, useUser} from "../../../../graphql/User/hooks";
 import reduce from "lodash/reduce";
+import { useNavigate, useParams } from "react-router-dom";
+import Button from "../../../../components/Buttons/Button";
+import Icon from "../../../../components/Icon";
+import { getClientModal, setClientModal } from "../../../../graphql/LocalState/clientModal";
+import { useAuthUser, useCreateUser, useDeleteUser, useSaveUser, useUser } from "../../../../graphql/User/hooks";
+import { deleteConfirmed } from "../../../../graphql/utils";
+import { errorAlert } from "../../../../utils/alert";
+import AgencyUserForm from "../../../user/components/AgencyUserForm";
+import { AgencyClientsPagePath } from "../../routes";
+import ProfileCover from "./ProfileCover";
+import ProjectsList from "./ProjectsList";
 
 const PageBody = () => {
     const authUser = useAuthUser();
     const navigate = useNavigate();
-    const {showModal} = useReactiveVar(getClientModal);
-
     const {clientId: selectedUserID } = useParams();
+
+    useEffect(() => {
+        if(!selectedUserID) navigate(AgencyClientsPagePath({clientId: authUser.subusers.length ? authUser.subusers[0].id : 0}));
+    }, [selectedUserID]);
+
+    const {showModal} = useReactiveVar(getClientModal);
 
     const handleClose = () => {
         setClientModal(false);

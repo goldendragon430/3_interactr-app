@@ -17,7 +17,8 @@ import {
   interactiveVideosRoute, 
   landingPagesRoute,
   leadsRoute,
-  agencyAppSetupRoute
+  agencyAppSetupRoute,
+  agencyPath
 } from "../routes";
 import ErrorMessage from "../../../components/ErrorMessage";
 import AgencyInteractiveVideosPage from "./AgencyInteractiveVideosPage";
@@ -41,7 +42,7 @@ const AgencyOverview = ()=>{
 };
 export default AgencyOverview;
 
-const AgencyPages = () => {
+const AgencyPages = () => {  
   return (
     <Routes>
       <Route path={agencyUsersRoute()} element={ <AgencyUsersPage /> } />
@@ -60,6 +61,7 @@ const AgencyPages = () => {
       <Route path={leadsRoute()}  element={ <AgencyLeadsPage />}/>
       <Route path={agencyAppSetupRoute()} element={ <AgencyAppSetupPage /> } />
       <Route path={toRoutePath(agencyClientsPageRoute, ['clientId'])} element={ <ClientsPage /> } />
+      <Route path='/clients/*' element={ <ClientsPage /> } />
       <Route index element={<AgencyPage />} />
     </Routes>
   )

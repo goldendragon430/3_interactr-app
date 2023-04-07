@@ -1,16 +1,16 @@
 import React from 'react';
 import SubNav from "../../../components/SubNav";
+import { useAuthUser } from "../../../graphql/User/hooks";
 import {
     AgencyAppSetupPath, AgencyClientsPagePath,
     agencyConsultingKitPath,
     agencyPath,
-    agencyUsersPath, interactiveVideosPath, landingPagesPath, leadsPath,
+    agencyUsersPath, interactiveVideosPath, landingPagesPath
 } from "../routes";
-import {useAuthUser} from "../../../graphql/User/hooks";
 
 const AgencySubNav = () => {
     const authUser = useAuthUser();
-
+    
     const items = [
         {
             text: 'Agency Dashboard',
@@ -20,8 +20,8 @@ const AgencySubNav = () => {
         },
         {
             text: 'Clients',
-            to: AgencyClientsPagePath({clientId: authUser.subusers.length ? authUser.subusers[0].id : 0}),
-            icon:'users'
+            to: agencyPath() + "/clients", //AgencyClientsPagePath({clientId: authUser.subusers.length ? authUser.subusers[0].id : 0}),
+            icon: 'users'
         },
         // {
         //     text: 'Leads',

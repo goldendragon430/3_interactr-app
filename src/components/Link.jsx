@@ -14,7 +14,7 @@ const BaseLink = ({ className, href, to, isNavLink, activeClassName,  ...props }
   if (href && to) console.warn('Please provide either `href` or `to` prop to the BaseLink component, not both!');
 
   const Component = to ? (isNavLink ? NavLink : Link) : 'a';
-
+  
   return (
     <Component
       href={href}

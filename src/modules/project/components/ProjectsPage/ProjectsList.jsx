@@ -83,8 +83,8 @@ export const ProjectsList = ({ projects, loading, refetchProjects }) => {
 	};
 
 	return (
-		<motion.div initial='hidden' animate='show' variants={list} style={{display: 'inline-block'}}>
-			{map(projects, (project, index) => (
+		<motion.div initial='hidden' animate='show' variants={list} style={{display: projects.length ? 'inline-block': 'inline'}}>
+			{map(projects, (project) => (
 				<motion.article
 					variants={item}
 					className={cx('cards_card', styles.projectCard)}

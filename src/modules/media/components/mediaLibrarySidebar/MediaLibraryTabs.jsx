@@ -29,7 +29,7 @@ export const MediaLibraryTabs = () => {
 		filterBy,
 		page: parseInt(page),
 	});
-
+	
 	useEffect(() => {
 		(async function () {
 			await refetch();

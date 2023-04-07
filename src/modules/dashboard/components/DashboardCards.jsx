@@ -46,7 +46,7 @@ const DashboardCards = ({
     <div className="col3" >
       <DashboardCard
         heading="Total Interactions"
-        description="Counted each time a viewers clicks on a clickable element in your project"
+        description="Counted each time a viewer clicks on a clickable element in your project"
         currentValue={ all_project_interactions_current }
         previousValue={ all_project_interactions_previous }
         style={{'borderRightColor': 'transparent'}}

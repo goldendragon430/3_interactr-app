@@ -99,6 +99,8 @@
 .noProjectWrapperSearch {
   @extend .noProjectWrapper;
   //padding-top: 50px;
+  display: flex;
+  justify-content: center;
 }
 
 .createButton {

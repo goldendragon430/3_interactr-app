@@ -125,7 +125,7 @@ const InteractionBar = ({interaction, children}) => {
   const {node} = data;
 
   const selected = ( activeInteraction === interaction.id || activeElement === interaction.id );
-
+  
   return (
     <div className={styles.TimelineBar}>
       <Bar
@@ -258,7 +258,7 @@ const Bar = ({name, onNameClick, show_at_video_end, onBarClick, timeIn, timeOut,
       setY(dimensions.y);
       setW(dimensions.w);
     }
-  }, [duration])
+  }, [duration, timeIn, timeOut])
 
   const random = Math.random() * (1 - 0.7) + 0.7
 
