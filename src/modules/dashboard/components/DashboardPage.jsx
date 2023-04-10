@@ -35,6 +35,7 @@ import WhatsNewSummaryBox from './WhatsNewSummaryBox';
 import NeedHelpBox from './NeedHelpBox';
 import { getAcl } from '../../../graphql/LocalState/acl';
 import { delay } from 'utils/timeUtils';
+import { useProjectGroups } from '@/graphql/ProjectGroup/hooks';
 
 const QUERY = gql`
 	query allProjects {
@@ -44,6 +45,7 @@ const QUERY = gql`
 			created_at
 			image_url
 			storage_path
+			project_group_id
 		}
 	}
 `;
@@ -53,6 +55,12 @@ export default function DashboardPage() {
 	const user = useAuthUser();
 
 	const { data, loading, error } = useQuery(QUERY);
+
+	const [
+		projectGroups,
+		,
+		{ loading: foldersLoading, refetch: refetchProjectGroups },
+	] = useProjectGroups();
 
 	useEffect(() => {
 		setBreadcrumbs([{ text: 'Dashboard' }]);
@@ -64,7 +72,7 @@ export default function DashboardPage() {
 	}
 
 	/** Prevents the user getting a flash of the interactr dashboard before the user is loaded in */
-	if (loading)
+	if (loading || foldersLoading)
 		return (
 			<div style={{ padding: 30 }}>
 				<Icon loading />
@@ -74,7 +82,6 @@ export default function DashboardPage() {
 	if (error) {
 		return <ErrorMessage error={error} />;
 	}
-
 	return (
 		<PageBody heading={'Your Dashboard'}>
 			<div
@@ -100,13 +107,13 @@ export default function DashboardPage() {
 						</Button>
 					</div>
 				</div>
-				<DashboardData projects={data.result} />
+				<DashboardData projects={data.result} projectGroups={projectGroups} />
 			</div>
 		</PageBody>
 	);
 }
 
-const DashboardData = ({ projects }) => {
+const DashboardData = ({ projects, projectGroups }) => {
 	const [state, setState] = useSetState({
 		loading: true,
 		error: false,
@@ -189,6 +196,7 @@ const DashboardData = ({ projects }) => {
 								project={project}
 								data={data}
 								loading={loading}
+								projectGroups={projectGroups}
 							/>
 						))}
 					</div>

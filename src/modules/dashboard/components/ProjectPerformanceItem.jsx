@@ -16,7 +16,7 @@ import styles from "../../agency/components/ClientSummary.module.scss";
 import ClientSummaryStat from "../../agency/components/ClientSummaryStat";
 import { projectPath } from "../../project/routes";
 
-const ProjectPerformanceList = ({loading, data, project}) => {
+const ProjectPerformanceList = ({loading, data, project, projectGroups}) => {
   const {getSharePageUrl} = useProjectCommands();
 
   if(loading || isEmpty(data) ) return null;
@@ -53,6 +53,12 @@ const ProjectPerformanceList = ({loading, data, project}) => {
 
   const projectImageUrl = project.image_url || getAsset('/img/no-thumb.jpg');
 
+  const getProjectGroupName = (projectId) => {
+    const projectGroup = projectGroups?.filter(group => group.id == projectId);
+    if(projectGroup.length > 0) return projectGroup[0].title;
+    return null;
+  }
+
   return(
     <div className={cardStyles.Card} style={{padding: '15px', height: '100px', cursor: 'pointer'}} >
       <div style={{position:'absolute', top: '10px', right: '10px'}}>
@@ -87,7 +93,7 @@ const ProjectPerformanceList = ({loading, data, project}) => {
         <div className={cx(styles.column, 'col3')} style={{paddingLeft: 0}}>
           <p style={{marginBottom: '5px'}} className={'ellipsis'}>{project.title}</p>
           <p style={{fontSize: '14px', opacity: 0.8}}>
-            <small className={'text-muted'}>No Folder</small>
+            <small className={'text-muted'}>{ getProjectGroupName(project.project_group_id) ? getProjectGroupName(project.project_group_id) : 'No Folder' }</small>
             <br/>
             <small className={'text-muted'}>{moment.utc(project.created_at).fromNow()}</small>
           </p>
