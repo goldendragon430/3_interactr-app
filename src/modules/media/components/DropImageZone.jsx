@@ -106,7 +106,7 @@ export default function DropImageZone({
 							}}
 						>
 							{heading} <br />
-							<small style={{ textTransform: 'uppercase', fontWeight: 300 }}>
+							<small style={{ textTransform: 'uppercase', fontWeight: 300, color: '#8c8e90'}}>
 								or click here to browse your computer
 							</small>
 						</h4>

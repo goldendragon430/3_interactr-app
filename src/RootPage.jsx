@@ -96,6 +96,7 @@ const RootPage = () => {
   // already been established.
   return (
     <ErrorBoundary>
+      <BeaconMask />
       <PageHead />
       <ToastContainer
         position="bottom-right"
@@ -153,4 +154,29 @@ const PageHead = () => {
       <link rel="icon" type="image/png" href="/interactr.png" />
     </Helmet>
   );
+};
+
+const BeaconMask = () => {
+	const [beaconMask, setBeaconMask] = useState(false);
+
+	useEffect(() => {
+		Beacon('init', 'd9187515-ab0f-4e38-8df7-118965a49b74');
+		Beacon('config', {
+			display: {
+				position: 'left',
+				style: 'manual',
+			},
+		});
+
+		Beacon('on', 'open', () => {
+			setBeaconMask(true);
+		});
+		Beacon('on', 'close', () => {
+			setBeaconMask(false);
+		});
+	}, []);
+
+	if (!beaconMask) return null;
+
+	return <div className='beaconMask'>&nbsp;</div>;
 };

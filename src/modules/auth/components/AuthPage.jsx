@@ -7,7 +7,7 @@ import Icon from 'components/Icon';
 import { error } from 'utils/alert';
 import { isBrowserSupported } from 'utils/domUtils';
 // import { updatePageLoadingState } from 'modules/pageLoader/pageLoader';
-import LinkButton from 'components/Buttons/LinkButton';
+import Button from 'components/Buttons/Button';
 import {motion} from "framer-motion";
 import {useReactiveVar} from "@apollo/client";
 import {getWhitelabel} from "../../../graphql/LocalState/whitelabel";
@@ -69,9 +69,9 @@ console.log(styles.wrapper)
         <motion.img src={getAsset('/img/worker_bg.jpg')} {...animateImageIn} />
         {whitelabel == null && (
           <motion.div style={{ position: 'absolute', top: '20px', right: '15px' }} {...animateButtonIn}>
-            <LinkButton primary large href={supportLink} target="_blank">
+            <Button primary large onClick={()=>Beacon('open')}>
               <Icon name="life-ring" /> Support
-            </LinkButton>
+            </Button>
           </motion.div>
         )}
         &nbsp;

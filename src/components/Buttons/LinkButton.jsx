@@ -19,7 +19,7 @@ const LinkButton = ({
                       style,
                       right,
                       ...myProps
-                    })=>{
+                    }) => {
 
   // Just show plain loader until we can confirm whitelabel status
   const whitelabel = useReactiveVar(getWhitelabel);;

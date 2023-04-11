@@ -113,14 +113,13 @@ const LoggedInPage = () => {
 	
 	return (
 		<div className={styles.wrapper}>
-			<BeaconMask />
 			{/* <TopNav {...this.props}/> */}
 			<DashboardSidebar />
 
 			{/*
-        All the modals here are used a lot so the show / hide status is managed
-        by a local state var
-      */}
+				All the modals here are used a lot so the show / hide status is managed
+				by a local state var
+			*/}
 			<PreviewProjectModal />
 			<EmbedCodeModal />
 			<AddProjectModal />
@@ -270,29 +269,4 @@ const plugPusher = (user) => {
 			fields: fieldsToUpdate,
 		});
 	});
-};
-
-const BeaconMask = () => {
-	const [beaconMask, setBeaconMask] = useState(false);
-
-	useEffect(() => {
-		Beacon('init', 'd9187515-ab0f-4e38-8df7-118965a49b74');
-		Beacon('config', {
-			display: {
-				position: 'left',
-				style: 'manual',
-			},
-		});
-
-		Beacon('on', 'open', () => {
-			setBeaconMask(true);
-		});
-		Beacon('on', 'close', () => {
-			setBeaconMask(false);
-		});
-	}, []);
-
-	if (!beaconMask) return null;
-
-	return <div className={styles.beaconMask}>&nbsp;</div>;
 };

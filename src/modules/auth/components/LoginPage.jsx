@@ -1,18 +1,16 @@
 import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom'
-import Button from 'components/Buttons/Button';
-import LinkButton from 'components/Buttons/LinkButton'
-import styles from './loginForm.module.scss';
-import AuthPage from './AuthPage';
-import PropTypes from 'prop-types';
 import cx from "classnames";
-import {Link} from "react-router-dom";
-import {useSetState} from "../../../utils/hooks";
+import Button from 'components/Buttons/Button';
+import PropTypes from 'prop-types';
+import { Link, useLocation } from 'react-router-dom';
+import { useSetState } from "../../../utils/hooks";
+import AuthPage from './AuthPage';
+import styles from './loginForm.module.scss';
 
-import {login} from "../utils";
-import {useReactiveVar} from "@apollo/client";
-import {getWhitelabel} from "../../../graphql/LocalState/whitelabel";
-import {setToken}  from '@/modules/auth/utils';
+import { setToken } from '@/modules/auth/utils';
+import { useReactiveVar } from "@apollo/client";
+import { getWhitelabel } from "../../../graphql/LocalState/whitelabel";
+import { login } from "../utils";
 
 const LoginPage = () => {
   const location = useLocation();

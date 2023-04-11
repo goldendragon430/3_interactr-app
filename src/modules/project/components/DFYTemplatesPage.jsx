@@ -86,9 +86,7 @@ const PageWrapper = ({children}) => {
         <div className={'col10'}>
           <h1 style={{marginTop: 0}}>Done For You Interactive Video Templates</h1>
           <p style={{maxWidth:'1000px'}}>
-            Use our premium Interactive Video Templates to jumpstart your agency today.
-            These Interactive Niche Videos Have Been Created By Our In-House Production Manager, Pro Videographers, Photographers And Hired Actors and New templates are added every month.
-            To demo these projects for potential clients click them menu icon ( <Icon name="ellipsis-v" />) then choose "Get Embed Code" or "Get Share Page".
+          Use our premium interactive video templates to jumpstart your agency today. These interactive niche videos have ben created by our in-house production manager, pro videographers, photographers and hired actors. To demo these projects for potential clients, click the menu icon ( <Icon name="ellipsis-v" />) then choose "Get Embed Code" or "Get Share Page".
           </p>
           <p style={{marginBottom: '20px'}}>
             <div className={filterInputStyles.wrapper} >

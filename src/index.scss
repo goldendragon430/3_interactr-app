@@ -44,3 +44,14 @@ body {
 .ace_editor, .ace_editor div {
     font-family:monospace;
 }
+
+.beaconMask {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background: rgba(0, 0, 0, .9) !important;
+}
