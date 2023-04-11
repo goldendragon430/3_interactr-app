@@ -117,6 +117,7 @@ const NewCommentModal = ({project_id, show, close, refetch}) => {
                         value={text}
                         rows={10}
                         onChange={e => setState({text: e.target.value})}
+                        style={{ resize: 'none'}}
                     />
                 </div>
             </div>

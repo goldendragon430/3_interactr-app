@@ -17,13 +17,15 @@ import StyleableElementProperties from "./Properties/StyleableElementProperties"
 
 const ElementPropertiesTabs = ({element, meta,  update, save, startTab = 'positionable'}) => {
   const [active, setActive] = useState(startTab);
-
+  const {modalElementId} = useParams();
+  let modalHeight = '100vh';
+  if(modalElementId) modalHeight = 'calc(100vh - 350px)';
   return(
     <div >
       <div style={{width: '100%', float: 'left'}}>
         <Header active={active} setActive={setActive} meta={meta} />
       </div>
-      <div style={{width: '100%', float:'left', height: 'calc(100vh - 350px)', overflow: 'hidden', overflowY: 'scroll'}}>
+      <div style={{width: '100%', float:'left', height: modalHeight, overflow: 'hidden', overflowY: 'scroll'}}>
         <ActiveTabSwitch
           active={active}
           element={element}

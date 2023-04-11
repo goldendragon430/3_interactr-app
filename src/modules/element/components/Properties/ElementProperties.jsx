@@ -1,56 +1,36 @@
-import React, {useContext, useState} from 'react';
-import Button from 'components/Buttons/Button';
+import React from 'react';
+import Icon from "components/Icon";
 import ButtonElementProperties from 'modules/element/components/Properties/ButtonElementProperties';
+import CustomHtmlElementProperties from 'modules/element/components/Properties/CustomHtmlElementProperties';
+import FormElementProperties from 'modules/element/components/Properties/FormElementProperties';
 import HotspotElementProperties from 'modules/element/components/Properties/HotspotElementProperties';
 import ImageElementProperties from 'modules/element/components/Properties/ImageElementProperties';
 import TextElementProperties from 'modules/element/components/Properties/TextElementProperties';
-import CustomHtmlElementProperties from 'modules/element/components/Properties/CustomHtmlElementProperties';
 import TriggerElementProperties from 'modules/element/components/Properties/TriggerElementProperties';
-import FormElementProperties from 'modules/element/components/Properties/FormElementProperties';
-import styles from './ElementProperties.module.scss'
 import {
   BUTTON_ELEMENT,
+  CUSTOM_HTML_ELEMENT,
+  FORM_ELEMENT,
   HOTSPOT_ELEMENT,
   IMAGE_ELEMENT,
   TEXT_ELEMENT,
-  CUSTOM_HTML_ELEMENT,
-  TRIGGER_ELEMENT,
-  FORM_ELEMENT,
-  elements as elementsMetaObj
+  TRIGGER_ELEMENT
 } from 'modules/element/elements';
-import {
-    Option,
-    TextInput
-} from 'components/PropertyEditor';
-import Icon from "components/Icon";
-import {useParams, useLocation} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import styles from './ElementProperties.module.scss';
 //import { MenuContext } from 'react-flexible-sliding-menu';
-import LinkButton from "../../../../components/Buttons/LinkButton";
-import { Link } from 'react-router-dom';
-import ErrorMessage from "../../../../components/ErrorMessage";
-import ElementToolbar from "../../../interaction/components/ElementToolbar";
-import InteractionProperties from "../../../interaction/components/InteractionProperties";
-import {useCreateInteraction, useInteraction, useInteractionCommands} from "../../../../graphql/Interaction/hooks";
-import {useCreateElement} from "../../../../graphql/Element/hooks";
-import {usePlayer} from "../../../../graphql/LocalState/player";
-import {useElementGroupRoute, useElementRoute} from "../../routeHooks";
-import {errorAlert} from "../../../../utils/alert";
-import ContentLoader from "react-content-loader";
-import {motion} from "framer-motion";
-import {useNavigate} from 'react-router-dom';
-import Emitter, {SAVE_NODE_PAGE} from "../../../../utils/EventEmitter";
-import {nodePath} from "../../../node/routes";
-import isUndefined from "lodash/isUndefined";
-import ElementPropertiesTabs from "../ElementPropertiesTabs";
-import ElementGroupProperties from "../ElementGroupProperties";
-import {NodeContext} from "../../../node/context";
-import filter from "lodash/filter";
-import {cache} from "../../../../graphql/client";
-import gql from "graphql-tag";
-import {INTERACTION_FRAGMENT} from "../../../../graphql/Interaction/fragments";
-import {useQuery} from "@apollo/client";
-import {GET_NODE} from "../../../../graphql/Node/queries";
+import { useQuery } from "@apollo/client";
 import cx from 'classnames';
+import gql from "graphql-tag";
+import ContentLoader from "react-content-loader";
+import { useNavigate } from 'react-router-dom';
+import ErrorMessage from "../../../../components/ErrorMessage";
+import { INTERACTION_FRAGMENT } from "../../../../graphql/Interaction/fragments";
+import { SAVE_NODE_PAGE } from "../../../../utils/EventEmitter";
+import ElementToolbar from "../../../interaction/components/ElementToolbar";
+import { nodePath } from "../../../node/routes";
+import { useElementGroupRoute, useElementRoute } from "../../routeHooks";
+import ElementGroupProperties from "../ElementGroupProperties";
 
 const ElementPropertiesMenu = () => <ElementProperties />;
 export default ElementPropertiesMenu;
