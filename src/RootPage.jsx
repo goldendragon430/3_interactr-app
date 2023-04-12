@@ -72,7 +72,6 @@ const RootPage = () => {
       const isOurDomain = findIndex(ourDomains, (i)=>{
         return (i === window.location.hostname);
       });
-
       if(isOurDomain > 0) {
         setCheckingWhitelabel(false)
         return;
@@ -91,7 +90,6 @@ const RootPage = () => {
 
   // Just show plain loader until we can confirm whitelabel status
   if(checkingWhitelabel) return <PageLoader />;
-
   // After here we can work knowing that the whitelabel state has
   // already been established.
   return (

@@ -419,6 +419,10 @@ const TimeSelect = ({ value, update, label }) => {
 
 	const { duration, playedSeconds } = data.player;
 
+	const handleChange = (val) => {
+		update(label, val + "");
+	}
+
 	return (
 		<div className={cx('clearfix', 'mb-2')}>
 			<InteractionTime
@@ -426,7 +430,7 @@ const TimeSelect = ({ value, update, label }) => {
 				fontSize={'100%'}
 				value={value}
 				component={TimeRangeInput}
-				onChange={(val) => update(label, val)}
+				onChange={handleChange}
 				max={duration}
 				actions={
 					<div>

@@ -128,7 +128,7 @@ const useSaveNodeEditorListener = (nodeId) => {
           errorAlert({
             title: 'Unable to save node',
             text:
-              'An error occurred w hen trying to save your node. Please try again. If the problem persists please contact support.',
+              'An error occurred when trying to save your node. Please try again. If the problem persists please contact support.',
           });
         });
     };
