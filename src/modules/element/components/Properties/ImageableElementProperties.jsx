@@ -1,22 +1,15 @@
-import React, {useState, useEffect} from 'react';
-import { ADD_IMAGE_VAR_INITIAL_DATA, setAddImage } from "../../../../graphql/LocalState/addImage";
-import ImageElementModal from "./ImageElementModal";
-import YouzignModal from "../../../../components/YouzignModal";
-import {Option, Section} from "components/PropertyEditor/PropertyEditor";
-import { RangeInput } from 'components/PropertyEditor/PropertyEditor';
-import {useParams} from 'react-router-dom'
-import DropImageZone from "../../../media/components/DropImageZone";
-import {motion} from "framer-motion";
-import {useAuthUser} from "../../../../graphql/User/hooks";
-import {useImageElementCommands} from "../../../../graphql/ImageElement/hooks";
-import {INTERACTION_FRAGMENT} from "../../../../graphql/Interaction/fragments";
-import {useElementGroupRoute, useElementRoute} from "../../routeHooks";
-import {useQuery, useReactiveVar} from "@apollo/client";
+import React, { useEffect, useState } from 'react';
+import { useReactiveVar } from "@apollo/client";
+import { Option, RangeInput, Section } from "components/PropertyEditor/PropertyEditor";
+import { motion } from "framer-motion";
 import gql from "graphql-tag";
-import {getAcl} from "../../../../graphql/LocalState/acl";
-import LinkButton from "../../../../components/Buttons/LinkButton";
-import Modal from "../../../../components/Modal";
-
+import { useImageElementCommands } from "../../../../graphql/ImageElement/hooks";
+import { INTERACTION_FRAGMENT } from "../../../../graphql/Interaction/fragments";
+import { getAcl } from "../../../../graphql/LocalState/acl";
+import { ADD_IMAGE_VAR_INITIAL_DATA, setAddImage } from "../../../../graphql/LocalState/addImage";
+import { useAuthUser } from "../../../../graphql/User/hooks";
+import ImageElementModal from "./ImageElementModal";
+import getAsset from "../../../../utils/getAsset";
 
 const QUERY = gql`
     query interaction($id: ID!) {
@@ -108,7 +101,7 @@ const ImageableElementProperties = ({tabAnimation, element, update, save}) => {
           <div style={{ width: '100%', height:'300px', position: 'relative', display: 'flex'}}>
             <img className={'img-fluid'} src={src} style={{opacity, height: '100%', marginLeft: 'auto', marginRight: 'auto', zIndex: 2}}/> 
             <img
-              src={'/img/modal-page-bg.jpg'}
+              src={getAsset('/img/modal-page-bg-720.jpg')}
               style={{ position: 'absolute', height: '100%', width: '100%', top: 0, left: 0, zIndex: 1 }}
             />
           </div>
