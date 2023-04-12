@@ -138,7 +138,7 @@ const LoginPage = () => {
           <div className="text-center" style={{padding: '20px', paddingBottom: '60px'}}>
             <p style={{color: 'white'}}>
               <strong>Purchased via JVZOO?</strong>
-              &nbsp;Create your account <Link to={'/register/jvzoo'}><span style={{textDecoration: 'underline', color:'white'}}>here</span></Link>
+              &nbsp;Create your account <Link to={'/register'}><span style={{textDecoration: 'underline', color:'white'}}>here</span></Link>
             </p>
           </div>
       )}
