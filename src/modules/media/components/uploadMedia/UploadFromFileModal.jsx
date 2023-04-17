@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import DropMediaZone from "../DropMediaZone";
+import { useReactiveVar } from "@apollo/client";
 import Icon from 'components/Icon';
-import {useReactiveVar} from "@apollo/client";
+import React from 'react';
+import Modal from "../../../../components/Modal";
 import {
   getAddMedia,
   setAddMedia,
   SHOW_MEDIA_NAME_MODAL, SHOW_THUMBNAIL_SELECT_MODAL,
   SHOW_UPLOAD_FROM_FILE_MODAL
 } from "../../../../graphql/LocalState/addMedia";
-import Modal from "../../../../components/Modal";
-import {AcceptedMedia} from "../../utils";
-import {errorAlert} from "../../../../utils/alert";
+import { errorAlert } from "../../../../utils/alert";
+import { AcceptedMedia } from "../../utils";
+import DropMediaZone from "../DropMediaZone";
 
 function UploadFromFileModal({onClose, onBack, onNext}) {
-  const {activeModal, droppedFiles} = useReactiveVar(getAddMedia);
+  const { activeModal, droppedFiles } = useReactiveVar(getAddMedia);
 
   let dropzoneParams = {
    // projectId: newMediaObject.project_id

@@ -20,7 +20,7 @@ export const AddProjectModalBody = ({
 }) => {
 	const { templateId, show } = useReactiveVar(getAddProject);
 	const { title, description } = state;
-
+	
 	return (
 		<Modal
 			show={show}
@@ -50,7 +50,7 @@ export const AddProjectModalBody = ({
 						<BlankProjectMessage />
 					)}
 				</div>
-				<div className={'col5'}>
+				<div className={'col5'} style={{ height: '480px', overflow: 'auto'}}>
 					<div className='form-control'>
 						<label htmlFor='title'>Enter a name for your project</label>
 						<input
@@ -70,11 +70,14 @@ export const AddProjectModalBody = ({
 							onChange={(val) => setState({ description: val })}
 						/>
 					</div>
-					<div className='form-control'>
-						<ProjectRatio 
-							onChange={(val) => setState({ base_width: val })}
-						/>
-					</div>
+					{
+						!templateId ?
+						<div className='form-control'>
+							<ProjectRatio 
+								onChange={(val) => setState({ base_width: val })}
+							/>
+						</div> : null
+					}
 					<AddProjectGroupSelect state={state} setState={setState} />
 				</div>
 			</div>

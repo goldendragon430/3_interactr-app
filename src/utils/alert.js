@@ -38,10 +38,8 @@ export function confirm(args) {
 
 export function success(message) {
   toast.success(message, {
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    progress: undefined,
+    position: 'top-right',
+    theme:"colored"
   });
 }
 
