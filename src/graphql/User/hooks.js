@@ -1,16 +1,13 @@
-import {UPDATE_USER, CREATE_USER, DELETE_USER, UPDATE_SUBUSER} from "./mutations";
-import {GET_AUTH_USER, GET_USER, GET_USERS} from "./queries";
-import {addItem, createMutationHook, createQueryHook, deleteItem} from "../utils";
-import {gql, useMutation, useReactiveVar} from "@apollo/client";
-import { USER_FRAGMENT} from "./fragments";
-import {isAgencyUser, isClubUser, isEvolutionUser, isProUser} from "../../modules/auth/authorization";
-import mapValues from "lodash/mapValues";
-import {cache} from "../client";
-import {DELETE_INTERACTION} from "../Interaction/mutations";
-import {setClientModal} from "../LocalState/clientModal";
-import {getFields} from "../../utils/helpers";
-import {getAcl} from "../LocalState/acl";
+import { useMutation, useReactiveVar } from "@apollo/client";
 import reduce from 'lodash/reduce';
+import { getFields } from "../../utils/helpers";
+import { getAcl } from "../LocalState/acl";
+import { setClientModal } from "../LocalState/clientModal";
+import { cache } from "../client";
+import { createMutationHook, createQueryHook, deleteItem } from "../utils";
+import { USER_FRAGMENT } from "./fragments";
+import { CREATE_USER, DELETE_USER, UPDATE_SUBUSER, UPDATE_USER, FORGOT_PASSWORD } from "./mutations";
+import { GET_USER, GET_USERS } from "./queries";
 
 /**
  * Custom hook for using a user
@@ -59,6 +56,11 @@ export const useAuthUser = () => {
  */
 export const useSaveUser = (options = {}) => createMutationHook({
     mutation: UPDATE_USER,
+    options
+});
+
+export const useForgotPassword = (options = {}) => createMutationHook({
+    mutation: FORGOT_PASSWORD,
     options
 });
 

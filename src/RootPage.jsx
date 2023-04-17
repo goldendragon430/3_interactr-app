@@ -112,7 +112,7 @@ const RootPage = () => {
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/forgotten-password" element={<ForgottenPasswordPage/>} />
-          <Route path="/password/reset" element={<PasswordResetFromTokenPage/>} />
+          <Route path="/password/reset/:token" element={<PasswordResetFromTokenPage/>} />
           <Route path="/register" element={<RegisterPage/>} />
           <Route path="/share/:projectHash" element={<SharePage/>} />
           <Route path="/privacy-policy/:userId(\d+)" element={<PrivacyPolicy />} />

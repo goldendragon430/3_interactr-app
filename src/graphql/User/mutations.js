@@ -14,6 +14,17 @@ export const UPDATE_USER = gql`
     ${USER_FRAGMENT}
 `;
 
+
+export const FORGOT_PASSWORD = gql`
+    mutation updateForgottenPassword($input: ForgotPasswordInput!) {
+        updateForgottenPassword(input: $input) {
+            success
+            message
+        }
+    }
+`;
+
+
 /**
  * Update the subUser item
  * @type {DocumentNode}
