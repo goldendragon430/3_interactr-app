@@ -45,7 +45,7 @@ import { MediaLibraryPage } from './modules/media/components/MediaLibraryPage/Me
 import PreviewProjectModal from './modules/project/components/PreviewProjectModal';
 import EmbedCodeModal from './modules/project/components/EmbedCodeModal';
 import { AddProjectModal } from './modules/project/components/AddProject';
-import AddMediaModal from './modules/media/components/AddMediaModals';
+// import AddMediaModals from './modules/media/components/AddMediaModals';
 import { UploadUserAvatarModal } from './modules/account/components/UpdateUserAvatarModal';
 import mapValues from 'lodash/mapValues';
 import { GET_AUTH_USER } from './graphql/User/queries';
@@ -123,7 +123,7 @@ const LoggedInPage = () => {
 			<PreviewProjectModal />
 			<EmbedCodeModal />
 			<AddProjectModal />
-			<AddMediaModal />
+			{/* <AddMediaModals /> */}
 			<EditMediaModal />
 			<ReplaceMediaSourceModal />
 			<UploadUserAvatarModal />

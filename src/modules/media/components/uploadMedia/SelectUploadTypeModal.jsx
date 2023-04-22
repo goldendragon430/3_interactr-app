@@ -1,4 +1,4 @@
-import React  from 'react';
+import React, { useEffect }  from 'react';
 import { useReactiveVar } from "@apollo/client";
 
 import getAsset from "utils/getAsset";
@@ -10,6 +10,7 @@ import {
 } from "@/graphql/LocalState/nodeSettings";
 import {
   getAddMedia,
+  setAddMedia,
   SHOW_UPLOAD_FROM_FILE_MODAL, 
   SHOW_UPLOAD_FROM_LIBRARY_MODAL, 
   SHOW_UPLOAD_FROM_STOCK_MODAL, 
@@ -17,7 +18,10 @@ import {
   SHOW_UPLOAD_TYPE_SELECT_MODAL
 } from "@/graphql/LocalState/addMedia";
 
-
+import { useParams } from 'react-router-dom';
+import {useQuery} from "@apollo/client";
+import {GET_PROJECT} from "@/graphql/Project/queries";
+import { toast } from 'react-toastify';
 
 /**
  * Display the allowed types of media upload
@@ -32,6 +36,31 @@ import {
  */
 const SelectUploadTypeModal = ({ onClose, onNext }) => {
   const {activeModal, addingNode, previousModals} = useReactiveVar(getAddMedia);
+  const {projectId} = useParams();
+
+  const {data, loading, error} = useQuery(GET_PROJECT, {
+    fetchPolicy: 'cache-only',
+    variables: { projectId }
+  });
+
+  useEffect(() => {
+    if(!loading && !error && activeModal===SHOW_UPLOAD_TYPE_SELECT_MODAL) {
+      const project = data.result;
+      setAddMedia({
+				newMediaObject: {
+					base_width: project.base_width,
+          base_height: project.base_height
+				}
+			});
+    }
+    if(error) {
+      console.error(error);
+      toast.error(error, {
+        position: 'top-right',
+        theme:"colored"
+      });
+    }
+  }, [loading, error, activeModal]);
 
   const SelectType = (type) => {
     onNext(type, SHOW_UPLOAD_TYPE_SELECT_MODAL);

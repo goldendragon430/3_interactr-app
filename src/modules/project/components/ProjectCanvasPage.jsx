@@ -31,6 +31,7 @@ import {GET_PROJECT} from "../../../graphql/Project/queries";
 import ContentLoader from "react-content-loader";
 import AddNodeModals from "../../node/components/AddNode/AddNodeModals";
 import { delay } from "utils/timeUtils"
+import AddMediaModals from 'modules/media/components/AddMediaModals';
 
 const ProjectCanvasPage = () => {
   const {projectId} = useParams();
@@ -104,6 +105,7 @@ const ProjectCanvasPage = () => {
           style={{height:'100%', width: '100%'}}
         >
           <AddNodeModals project={project} />
+          <AddMediaModals />
           <YouTubePrompt nodes={project.nodes} />
           <div className={styles.canvas_body}>
             <OpenLibraryBtn shouldShowMediaDrawer={shouldShowMediaDrawer} />

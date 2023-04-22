@@ -64,7 +64,6 @@ const StockListModal = ({ onClose, onNext, onError, onBack }) => {
 	};
 
 	const onSelect = (newMediaObject) => {
-
 		setAddMedia({ newMediaObject });
 
 		const nextModal = newMediaObject.is_image
@@ -84,7 +83,8 @@ const StockListModal = ({ onClose, onNext, onError, onBack }) => {
 			closeMaskOnClick={false}
 			heading={
 				<>
-					<Icon name='list' /> Stock Library
+					<Icon name='list' /> Stock Library 
+					<span style={{marginLeft: '250px', fontSize: '12px'}}>Stock Medias are only available for 16:9 ratio projects</span>
 				</>
 			}
 			submitButton={

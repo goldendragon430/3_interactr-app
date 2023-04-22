@@ -1,25 +1,22 @@
-import React, {useState}  from 'react';
-import styles from "./uploadMedia/StockListModalStyles.module.scss";
-import VideoPlayer from "components/VideoPlayer";
+import { useReactiveVar } from "@apollo/client";
 import Button from "components/Buttons/Button";
 import LinkButton from "components/Buttons/LinkButton";
+import VideoPlayer from "components/VideoPlayer";
 import _map from 'lodash/map';
-import {useCreateMediaByUrl} from "../../../graphql/Media/hooks";
-import {errorAlert} from "../../../utils/alert";
-import {useProject} from "../../../graphql/Project/hooks";
-import {addItem} from "../../../graphql/utils";
-import {GET_MEDIAS} from "../../../graphql/Media/queries";
-import {useMediaLibraryRoute} from "../routeHooks";
-import {useAuthUser} from "../../../graphql/User/hooks";
-import Icon from "../../../components/Icon";
-import {getAcl} from "../../../graphql/LocalState/acl";
-import {useReactiveVar} from "@apollo/client";
+import React, { useState } from 'react';
 import apis from 'utils/apis';
+import Icon from "../../../components/Icon";
+import { getAcl } from "../../../graphql/LocalState/acl";
+import styles from "./uploadMedia/StockListModalStyles.module.scss";
+import { toast } from "react-toastify";
+import { getAddMedia } from "@/graphql/LocalState/addMedia";
+import { getMediaRatio } from "utils/mediaUtils";
 
 const StockItem = ({stockItem, user, onSelect, setFilterText, isImage}) => {
     const [uploading, setUploading] = useState(false);
 
     const acl = useReactiveVar(getAcl);
+    const { newMediaObject } = useReactiveVar(getAddMedia);
 
     const handleTagClick = tag => {
         const loading = true,
@@ -45,14 +42,29 @@ const StockItem = ({stockItem, user, onSelect, setFilterText, isImage}) => {
     };
 
     const handleBtnSelectClick = async () => {
-        setUploading(true);
-        const path = await uploadFile(isImage ? "" : stockItem.videos.large.url);
-        setUploading(false);
-        onSelect( {
-            is_image: isImage ? 1 : 0,
-            temp_storage_url: path,
-            // thumbnail_url: stockItem.largeImageURL,
-        })
+        const projectRatio = getMediaRatio(newMediaObject?.base_width, newMediaObject?.base_height);
+        const mediaRatio = getMediaRatio(stockItem?.videos?.large?.width, stockItem?.videos?.large?.height);
+        if(projectRatio != mediaRatio) {
+            toast.info("Stock medias are only available for 16:9 ratio projects.", {
+                position: 'top-right',
+                theme:"colored"
+            });
+            return;
+        }
+
+        try { 
+            setUploading(true);
+            const path = await uploadFile(isImage ? "" : stockItem.videos.large.url);
+            onSelect( {
+                is_image: isImage ? 1 : 0,
+                temp_storage_url: path,
+                // thumbnail_url: stockItem.largeImageURL,
+            })
+        } catch(e) {
+            console.log(e);
+        } finally {
+            setUploading(false);
+        }
     }
 
     const uploadFile = async (url) => {

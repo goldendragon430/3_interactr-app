@@ -1,23 +1,11 @@
 import React from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import _map from 'lodash/map';
 import times from 'lodash/times';
-import { AnimatePresence, motion } from 'framer-motion';
 import ContentLoader from 'react-content-loader';
-
 import StockItem from '../StockItem';
-import Spinner from 'components/Spinner';
-
-import cx from 'classnames';
-import cardstyles from 'components/Card.module.scss';
-
-import {
-	animationState,
-	preAnimationState,
-	transition,
-} from 'components/PageBody';
-
+import { animationState, preAnimationState, transition} from 'components/PageBody';
 import styles from './StockListModalStyles.module.scss';
-
 /**
  * Stock videos list from pixabay API
  * @param user
@@ -35,10 +23,10 @@ const StockItems = ({
 	isImages,
 	loading,
 }) => {
+
 	if (loading) {
 		return <ItemsLoading />;
 	}
-
 	return (
 		<AnimatePresence>
 			<motion.div
@@ -48,8 +36,8 @@ const StockItems = ({
 				transition={transition}
 				style={{ width: '100%' }}
 			>
-				{_map(items, (stockItem) => (
-					<StockItem
+				{_map(items, (stockItem) => {
+					return <StockItem
 						isImage={isImages}
 						onSelect={onSelect}
 						stockItem={stockItem}
@@ -57,7 +45,7 @@ const StockItems = ({
 						user={user}
 						setFilterText={setFilterText}
 					/>
-				))}
+				})}
 			</motion.div>
 		</AnimatePresence>
 	);

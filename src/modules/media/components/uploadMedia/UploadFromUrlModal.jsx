@@ -12,12 +12,16 @@ import {
 import Modal from "../../../../components/Modal";
 import {Option, TextInput} from "../../../../components/PropertyEditor";
 import apis from 'utils/apis';
+import { MEDIA_RATIOS, getMediaRatio } from "utils/mediaUtils";
+import { toast } from 'react-toastify';
 
 const UploadFromUrlModal = ({ onNext, onError, onClose, onBack }) => {
-    const {activeModal} = useReactiveVar(getAddMedia);
-
+    const {activeModal, newMediaObject} = useReactiveVar(getAddMedia);
     const [url, setUrl] = useState('');
     const [uploading, setUploading] = useState(false);
+
+    if(!newMediaObject) return null;
+    const { base_width, base_height } = newMediaObject;
 
     const isValidUrl = () => {
         // check it's an https
@@ -45,15 +49,12 @@ const UploadFromUrlModal = ({ onNext, onError, onClose, onBack }) => {
         }
     };
 
-    const handleSubmit = async () => {
-        if(isValidUrl()) {
-            const isImage = isImageUrl();
-            
-            setUploading(true);
+
+    const handleNext = async (isImage, url) => {
+        try {
             // need to add code for saving media to S3
             const path = await uploadFile(url);
             setUploading(false);
-            
             setAddMedia({
                 newMediaObject: {
                     is_image: isImage,
@@ -61,9 +62,52 @@ const UploadFromUrlModal = ({ onNext, onError, onClose, onBack }) => {
                     // url: url
                 },
             });
-
+    
             const nextModal = (isImage) ? SHOW_MEDIA_NAME_MODAL : SHOW_THUMBNAIL_SELECT_MODAL;
             onNext(nextModal, SHOW_UPLOAD_FROM_URL_MODAL)
+        } catch(e) {
+            console.error(e);
+            setUploading(false);
+        }
+    }
+
+    const checkMediaRatio = (mediaRatio, projectRatio, isImage, url) => {
+        if(projectRatio != mediaRatio) {
+            toast.error("Media ratio doesn't match project ratio.", {
+                position: 'top-right',
+                theme:"colored"
+            });
+            setUploading(false);
+        } else {
+            handleNext(isImage, url);
+        }
+    }
+
+    const handleSubmit = async () => {
+        if(isValidUrl()) {
+            try {
+                setUploading(true);
+                const isImage = isImageUrl();
+                const projectRatio = getMediaRatio(base_width, base_height);
+                if(isImage) {
+                    const image = document.createElement('img');
+                    image.src = url;
+                    image.addEventListener('load', () => {
+                      const imageRatio = getMediaRatio(image.width, image.height);
+                      checkMediaRatio(imageRatio, projectRatio, isImage, url);
+                    });
+                } else {
+                    const video = document.createElement('video');
+                    video.src = url;
+                    video.addEventListener('loadedmetadata', () => {
+                        const videoRatio = getMediaRatio(video.videoWidth, video.videoHeight);
+                        checkMediaRatio(videoRatio, projectRatio, isImage, url);
+                    });
+                }
+            } catch(e) {
+                console.log(e);
+                setUploading(false);
+            }
         }
     }
 
@@ -77,34 +121,42 @@ const UploadFromUrlModal = ({ onNext, onError, onClose, onBack }) => {
 
     return (
         <Modal
-          show={activeModal===SHOW_UPLOAD_FROM_URL_MODAL}
-          onBack={()=>onBack("showUploadFromUrlModal")}
-          onClose={onClose}
-          height={270}
-          closeMaskOnClick={false}
-          width={500}
-          heading={
-              <><Icon name="cloud-upload"/> Upload Media from URL</>
-          }
-          submitButton={
-              <Button
-                onClick={handleSubmit}
-                icon="cloud-upload"
-                primary
-                loading={uploading}
-              >
-                  Upload
-              </Button>
-          }
+            show={activeModal===SHOW_UPLOAD_FROM_URL_MODAL}
+            onBack={()=>onBack("showUploadFromUrlModal")}
+            onClose={onClose}
+            height={370}
+            closeMaskOnClick={false}
+            width={500}
+            heading={
+                <><Icon name="cloud-upload"/> Upload Media from URL</>
+            }
+            submitButton={
+                <Button
+                    onClick={handleSubmit}
+                    icon="cloud-upload"
+                    primary
+                    loading={uploading}
+                >
+                    Upload
+                </Button>
+            }
         >
             <Option
-              label="Media File Url"
-              placeholder="ex. https://your/video/file/source.mp4"
-              value={url}
-              Component={TextInput}
-              onChange={val=>setUrl(val)}
-              onEnter={handleSubmit}
+                label="Media File Url"
+                placeholder="ex. https://your/video/file/source.mp4"
+                value={url}
+                Component={TextInput}
+                onChange={val=>setUrl(val)}
+                onEnter={handleSubmit}
             />
+             <p>
+                <strong>Videos</strong><br/>
+                All uploaded videos should be aspect ratio { MEDIA_RATIOS[base_width]}
+            </p>
+            <p>
+                <strong>Images</strong><br/>
+                All uploaded images should be {base_width}px * {base_height}px
+            </p>
         </Modal>
     );
 };

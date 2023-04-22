@@ -26,6 +26,7 @@ import {
 } from '@/graphql/LocalState/addMedia';
 
 import styles from './NewMediaSettingsModal.module.scss';
+import { getMediaRatio } from '../../../../utils/mediaUtils';
 
 const NewMediaNameModal = ({ onClose, onBack }) => {
 	const {
@@ -65,7 +66,7 @@ const NewMediaNameModal = ({ onClose, onBack }) => {
 		
 		// added for media_size
 		const imageTag = document.getElementById('add-media-preview-image');
-		const mediaRatio = getVideoRatio(imageTag.width, imageTag.height);
+		const mediaRatio = getMediaRatio(imageTag.width, imageTag.height);
 
 		try {
 			// This creates a media record in the DB, the next step will create the job for encoding IF required
@@ -176,7 +177,7 @@ const NewMediaNameModal = ({ onClose, onBack }) => {
 
 		// added for media_size
 		const imageTag = document.getElementById('add-media-preview-image');
-		const mediaRatio = getVideoRatio(imageTag.width, imageTag.height);
+		const mediaRatio = getMediaRatio(imageTag.width, imageTag.height);
 
 		try {
 			const req = await saveMedia({
@@ -414,14 +415,3 @@ const CompressionItemSelect = ({
 		</div>
 	);
 };
-
-const getVideoRatio = (width, height) => {
-	const ratio = width / height;
-	if(ratio >= 1.7 && ratio <= 1.8)
-		return "16:9";
-	if(ratio >= 1.3 && ratio <= 1.4)
-		return "4:3";
-	if(ratio >= 0.5 && ratio <= 0.6)
-		return "9:16";	
-	return "16:9";
-}

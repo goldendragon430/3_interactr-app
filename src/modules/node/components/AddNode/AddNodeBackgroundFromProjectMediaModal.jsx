@@ -126,6 +126,7 @@ const MediaItem = ({item}) => {
   const imageStyles = {
     borderRadius: '5px',
     boxShadow: '0 2px 5px rgba(0,0,0,.1), 0 1px 2px rgba(0,0,0,.05)',
+    maxHeight: '60px'
   }
 
   return(

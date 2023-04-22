@@ -12,6 +12,7 @@ export const GET_MEDIAS = gql`
         $orderBy: String = "created_at",
         $sortOrder: SortOrder = DESC,
         $not_project_id: Int,
+        $media_size: String
     ) {
         result: medias(
             search: $search,
@@ -21,6 +22,7 @@ export const GET_MEDIAS = gql`
             is_image: $is_image,
             orderBy: [{column: $orderBy, order: $sortOrder}],
             not_project_id: $not_project_id
+            media_size: $media_size
         ) {
             data {
                 ...MediaFragment

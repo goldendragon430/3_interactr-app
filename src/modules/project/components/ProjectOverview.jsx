@@ -1,48 +1,29 @@
-import React from 'react';
-import { Routes, Route, useParams } from 'react-router-dom';
 import { toRoutePath } from '@/routeBuilders';
-import { useQuery } from '@apollo/client';
-import { GET_PROJECT } from '../../../graphql/Project/queries';
-import AdminPage from './AdminPage';
-import PublishProjectPage from './PublishProjectPage';
-import ProjectSettingsPage from './ProjectSettingsPage';
-import ProjectCanvasPage from './ProjectCanvasPage';
-import SharingProjectPage from './ProjectSharingPage/SharingProjectPage';
-import ProjectChaptersPage from './ProjectChapters';
+import { useQuery, useReactiveVar } from '@apollo/client';
+import NotFoundPage from 'components/NotFoundPage';
+import { MediaLibraryContainer } from 'modules/media/components/mediaLibrarySidebar';
+import { ModalsPage } from 'modules/modal/components/ModalsPage';
 import { NodePage } from 'modules/node/components/NodePage';
 import LoadableProjectStatsPage from 'modules/project/components/ProjectStatsPage';
-import {
-	projectChaptersPage,
-	projectPlayerPath,
-	projectSettingsPath,
-	projectSharingPage,
-	projectStatsPath,
-	projectSurveyPath,
-	publishProjectPath,
-	adminPagePath,
-} from '../routes';
-import PageBody from '../../../components/PageBody';
-import ProjectSubNav from './ProjectSubNav';
-import { useProject } from '../../../graphql/Project/hooks';
+import React from 'react';
+import { Route, Routes, useParams } from 'react-router-dom';
 import ErrorMessage from '../../../components/ErrorMessage';
 import Icon from '../../../components/Icon';
+import PageBody from '../../../components/PageBody';
+import { getAcl } from '../../../graphql/LocalState/acl';
+import { GET_PROJECT } from '../../../graphql/Project/queries';
+import {
+	projectChaptersPage
+} from '../routes';
+import AdminPage from './AdminPage';
+import ProjectCanvasPage from './ProjectCanvasPage';
+import ProjectChaptersPage from './ProjectChapters';
 import { ProjectButtons, ProjectHeading } from './ProjectPage';
 import ProjectPlayerPage from './ProjectPlayerPage';
+import ProjectSettingsPage from './ProjectSettingsPage';
+import SharingProjectPage from './ProjectSharingPage/SharingProjectPage';
+import ProjectSubNav from './ProjectSubNav';
 import SurveysPage from './Surveys/SurveysPage';
-import { interactionPath } from '../../interaction/routes';
-import {
-	modalElementPath,
-	modalPath,
-	modalsPath,
-} from '../../modal/routes';
-import { nodePath } from '../../node/routes';
-import { elementGroupPath } from '../../element/routes';
-import { ModalsPage } from 'modules/modal/components/ModalsPage';
-import AddMediaModal from '../../media/components/AddMediaModals';
-import NotFoundPage from 'components/NotFoundPage';
-import { useReactiveVar } from '@apollo/client';
-import { getAcl } from '../../../graphql/LocalState/acl';
-import { MediaLibraryContainer } from 'modules/media/components/mediaLibrarySidebar';
 
 // const LoadableProjectStatsPage = React.lazy(() =>
 //   import(/* webpackChunkName: 'ProjectStasPage'*/ 'modules/project/components/ProjectStatsPage')

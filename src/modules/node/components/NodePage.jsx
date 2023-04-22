@@ -21,6 +21,7 @@ import { GET_NODE } from '@/graphql/Node/queries';
 import styles from './NodePage.module.scss';
 import 'react-toastify/dist/ReactToastify.css';
 import { EditPopupModal } from '../../modal/components/EditPopupModal';
+import AddMediaModals from 'modules/media/components/AddMediaModals';
 
 export const NodePage = () => {
 	const { projectId, nodeId } = useParams();
@@ -78,6 +79,7 @@ export const NodePage = () => {
 			<SelectInteractionModal />
 			{/* <SelectPopupModals /> */}
 			<ElementPropertiesMenu />
+			<AddMediaModals />
 		</>
 	);
 };

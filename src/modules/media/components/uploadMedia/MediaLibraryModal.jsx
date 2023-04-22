@@ -29,6 +29,7 @@ import times from 'lodash/times';
 import ContentLoader from 'react-content-loader';
 import { useParams } from 'react-router-dom';
 import filter from 'lodash/filter';
+import { getMediaRatio } from "utils/mediaUtils";
 
 /**
  * Create new media by selecting one of existing media items in popup
@@ -58,16 +59,16 @@ const MediaLibraryModal = ({ onError, onClose, onNext, onBack }) => {
 	/**
 	 * Use a lazy query so the query doesn't run until the modal is opened
 	 */
-	const [getMedias, { data, loading, error, refetch, called }] =
-		useLazyQuery(GET_MEDIAS);
-
+	const [getMedias, { data, loading, error, refetch, called }] = useLazyQuery(GET_MEDIAS);
 	useEffect(() => {
 		if (activeModal === SHOW_UPLOAD_FROM_LIBRARY_MODAL && !called) {
 			// Modal is open and the query hasn't been called
+			const projectRatio = getMediaRatio(newMediaObject?.base_width, newMediaObject.base_height);
 			getMedias({
 				variables: {
 					...params,
 					...{ not_project_id: newMediaObject?.project_id },
+					media_size: projectRatio
 				},
 			});
 		}
@@ -160,7 +161,7 @@ const ModalBody = ({ loading, error, onSelect, data, called, projectId }) => {
 	if (!size(data.result.data)) {
 		return (
 			<h3 className='text-center' style={{ marginTop: '225px' }}>
-				You have no Media in your Media Library
+				You have no available Media for this project in your Media Library
 			</h3>
 		);
 	}
