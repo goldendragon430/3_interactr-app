@@ -67,10 +67,12 @@ const NewMediaNameModal = ({ onClose, onBack }) => {
 		// added for media_size
 		const imageTag = document.getElementById('add-media-preview-image');
 		const mediaRatio = getMediaRatio(imageTag.width, imageTag.height);
-
 		try {
 			// This creates a media record in the DB, the next step will create the job for encoding IF required
 			// this should make the BE much cleaner
+			if(newMediaObject?.base_width) delete newMediaObject.base_width;
+			if(newMediaObject?.base_height) delete newMediaObject.base_height;
+			
 			const req = await createMedia({
 				variables: {
 					input: {
@@ -166,7 +168,7 @@ const NewMediaNameModal = ({ onClose, onBack }) => {
 			setLoading(false);
 			setName('');
 		} catch (e) {
-			console.error(e);
+			console.log(e);
 			errorAlert({ text: 'Error creating new media' });
 			setLoading(false);
 		}
