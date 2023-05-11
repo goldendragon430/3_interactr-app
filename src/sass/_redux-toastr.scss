@@ -14,8 +14,8 @@
   
 }
 
-// .Toastify__toast--success {
-//   background: $primary;
-//   border-radius: 15px;
-//   color: white;
-// }
+.Toastify__toast-theme--colored.Toastify__toast--success {
+  background: #41c186;
+  // border-radius: 15px;
+  color: white;
+}

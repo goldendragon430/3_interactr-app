@@ -51,7 +51,7 @@ const Timeline = ({children}) => {
 
     // Fire event to the player to move the video to the current played seconds
     Emitter.emit(VIDEO_SCRUB, percentage);
-    };
+  };
 
   const getXForPlayed = (played) => {
     const timelineHolder = document.getElementById("axis-wrapper");

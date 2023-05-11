@@ -1,19 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import styles from './DashboardSidebar.module.scss';
-import MenuItem from "../MenuItem";
+import React, { useEffect, useState } from 'react';
+import { accountPath } from "@/modules/account/routes";
+import { agencyPath } from "@/modules/agency/routes";
+import { logout } from "@/modules/auth/utils";
+import { videosPath } from "@/modules/media/routes";
+import { projectsPath } from "@/modules/project/routes";
+import { trainingPath } from "@/modules/training/routes";
+import { useReactiveVar } from "@apollo/client";
 import Icon from 'components/Icon';
-import {motion} from 'framer-motion'
-import {logout} from "@/modules/auth/utils";
-import {trainingPath} from "@/modules/training/routes";
-import {agencyPath} from "@/modules/agency/routes";
-import {adminPath} from "@/modules/auth/routes";;
-import {accountPath} from "@/modules/account/routes";
-import {projectsPath} from "@/modules/project/routes";
-import {videosPath} from "@/modules/media/routes";
-import {useReactiveVar} from "@apollo/client";
-import {getWhitelabel} from "../../graphql/LocalState/whitelabel";
-import {getAcl} from "../../graphql/LocalState/acl";
-
+import { motion } from 'framer-motion';
+import { getAcl } from "../../graphql/LocalState/acl";
+import { getWhitelabel } from "../../graphql/LocalState/whitelabel";
+import MenuItem from "../MenuItem";
+import styles from './DashboardSidebar.module.scss';
 
 const ParentUserMenu = ({setClasses, user, isSuperUser, list, item}) => {
   const [viewTraining, setViewTraining] = useState(true);
@@ -24,7 +22,7 @@ const ParentUserMenu = ({setClasses, user, isSuperUser, list, item}) => {
       setViewTraining(false);
     }
   }, [acl, whitelabel]);
-
+  
   return(
     <motion.ul className={styles.menu_section}   initial="hidden" animate="show"  variants={list}>
       <motion.li variants={item} >
@@ -44,12 +42,14 @@ const ParentUserMenu = ({setClasses, user, isSuperUser, list, item}) => {
           <span className={styles.menu_item_text}>Media</span>
         </MenuItem>
       </motion.li>
-
-      <motion.li variants={item} >
-        <MenuItem icon="users-cog" to={agencyPath()} page="agency">
-          <span className={styles.menu_item_text}>Agency</span>
-        </MenuItem>
-      </motion.li>
+      {
+        acl.hasAgency && 
+        <motion.li variants={item} >
+          <MenuItem icon="users-cog" to={agencyPath()} page="agency">
+            <span className={styles.menu_item_text}>Agency</span>
+          </MenuItem>
+        </motion.li>
+      }
 
       {/*<motion.li className={setClasses('surveys')} variants={item} >*/}
       {/*  <MenuItem icon="tools"  to={'/surveys'}>*/}
@@ -57,13 +57,12 @@ const ParentUserMenu = ({setClasses, user, isSuperUser, list, item}) => {
       {/*  </MenuItem>*/}
       {/*</motion.li>*/}
       {
-        viewTraining ? 
+        viewTraining && 
         <motion.li variants={item} >
           <MenuItem icon="user-graduate" to={trainingPath()} page="training">
             <span className={styles.menu_item_text}>Training</span>
           </MenuItem>
         </motion.li>
-        : null
       }
 
       <motion.li variants={item} >

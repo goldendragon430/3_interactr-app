@@ -9,7 +9,7 @@ import Icon from "../../../components/Icon";
 import { setPreviewProject } from "../../../graphql/LocalState/previewProject";
 import { setProjectEmbedCode } from "../../../graphql/LocalState/projectEmbedCode";
 import { usePublishProject } from "../../../graphql/Project/hooks";
-import { errorAlert, info } from "../../../utils/alert";
+import { errorAlert, success } from "../../../utils/alert";
 import { projectsPath } from "../routes";
 import styles from './ProjectPage.module.scss';
 
@@ -118,11 +118,17 @@ export const ProjectButtons = () => {
     };
 
     const handlePublish = async () => {
-      await updateProject({
-        variables: {
-          id: projectId
-        }
-      });
+      try {
+        await updateProject({
+          variables: {
+            id: projectId
+          }
+        });        
+        success("Project Published");
+      } catch(e) {
+        console.log(e);
+        errorAlert({ title: 'Error', text: 'Error in publishing project'});
+      }
     }
 
     return(
