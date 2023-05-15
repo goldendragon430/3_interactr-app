@@ -11,15 +11,15 @@ import map from 'lodash/map';
 import SurveysPieChart from "./SurveysPieChart";
 
 const SurveyChart = ({node, loading, data}) => {
-
-  const interactions = (!loading && data && data.element_clicks) ? filter(node.interactions, interaction => {
+  
+  const interactions = (!loading && data) ? filter(node.interactions, interaction => {
     return (interaction.element && interaction.element.send_survey_click_event);
   }) : null;
 
-  const stats = (!loading && data && data.element_clicks) ? map(interactions, interaction => {
+  const stats = (!loading && data) ? map(interactions, interaction => {
     return{
       ...interaction,
-      clicks: (data.element_clicks[interaction.id]) ? data.element_clicks[interaction.id] : 0
+      clicks: (data[interaction.id]) ? data[interaction.id] : 0
     }
   }) : null;
 

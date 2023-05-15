@@ -86,7 +86,7 @@ const Page = ({project}) => {
   if(!project.enable_surveys) {
     return <EnableSurveysPrompt projectId={Number(project?.id)} />
   }
-  
+
   if (!data?.result.length) {
     return (
       <div className={'grid'}>

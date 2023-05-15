@@ -34,7 +34,7 @@ export const useSurveys = (nodes) => {
         loading: false
       })
     });
-  }, []);
+  }, [nodes]);
 
   const refetch = () => {};
 
@@ -46,8 +46,8 @@ export const useSurveys = (nodes) => {
 const fetchStats = async ( nodes, startDate, endDate ) => {
   try {
     // 👇 must be an array of queries
-    const queries = map(nodes, node => ({
-      "name": "element_clicks",
+    const queries = map(nodes, (node, index) => ({
+      "name": "element_clicks_" + index,
       "collection": "ElementClick",
       "api": "Interactr",
       "filters": {"node_id": node.id},
