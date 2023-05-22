@@ -1,19 +1,16 @@
 import React from 'react';
-import {Option, TextInput, LargeTextInput} from "components/PropertyEditor";
+import { useQuery } from "@apollo/client";
 import Button from "components/Buttons/Button";
-import MessageBox from "components/MessageBox";
-import {useProjectCommands} from "../../../graphql/Project/hooks";
-import {errorAlert} from "../../../utils/alert";
-import {useSetState} from "../../../utils/hooks";
 import ErrorMessage from "components/ErrorMessage";
-import {useProject} from "../../../graphql/Project/hooks";
-import styles from "./ProjectSharingPage/SharingProjectPage.module.scss";
-import ReplaceProjectThumbnailButton from "./ProjectSharingPage/ReplaceProjectThumbnailButton";
+import MessageBox from "components/MessageBox";
+import { LargeTextInput, Option, TextInput } from "components/PropertyEditor";
 import gql from "graphql-tag";
-import {useQuery} from "@apollo/client";
-import {useParams} from "react-router-dom";
 import ContentLoader from "react-content-loader";
-
+import { useParams } from "react-router-dom";
+import { useProjectCommands } from "../../../graphql/Project/hooks";
+import { errorAlert } from "../../../utils/alert";
+import { useSetState } from "../../../utils/hooks";
+import ReplaceProjectThumbnailButton from "./ProjectSharingPage/ReplaceProjectThumbnailButton";
 
 const QUERY = gql`
     query project($id: ID!){

@@ -1,5 +1,4 @@
 import React from 'react';
-import IconButton from 'components/Buttons/IconButton';
 import styles from './CopyToClipboard.module.scss';
 import Icon from 'components/Icon';
 

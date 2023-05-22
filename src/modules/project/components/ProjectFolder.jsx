@@ -1,15 +1,14 @@
 import React from 'react';
 import Button from "components/Buttons/Button";
-import MessageBox from "components/MessageBox";
-import {useProjectCommands} from "../../../graphql/Project/hooks";
-import {useProject} from "../../../graphql/Project/hooks";
-import {errorAlert} from "../../../utils/alert";
-import {useSetState} from "../../../utils/hooks";
 import ErrorMessage from "components/ErrorMessage";
-import ProjectGroupsSelect from "./ProjectGroupsSelect";
+import MessageBox from "components/MessageBox";
+import ContentLoader from "react-content-loader";
+import { useProject, useProjectCommands } from "../../../graphql/Project/hooks";
+import { useProjectGroups } from "../../../graphql/ProjectGroup/hooks";
+import { errorAlert } from "../../../utils/alert";
+import { useSetState } from "../../../utils/hooks";
 import { AddProjectGroupModal } from "./AddProjectGroupModal";
-
-
+import ProjectGroupsSelect from "./ProjectGroupsSelect";
 
 const ProjectFolder = () => {
   const [project, updateProject, {loading, error}] = useProject();
@@ -41,6 +40,9 @@ export default ProjectFolder;
 
 const Form = ({ project, updateProject }) => {
   const { moveProject } = useProjectCommands();
+  const [projectGroups, _, {loading, error}] = useProjectGroups();
+  
+  if(error) return <ErrorMessage error={error} />;
 
   const [state, setState] = useSetState({
     saving: false,
@@ -77,22 +79,26 @@ const Form = ({ project, updateProject }) => {
 
   return(
     <>
-      <div className="grid">
-        <div className="col9">
-          <ProjectGroupsSelect
-            value={projectGroupId}
-            onChange={val => setState({ projectGroupId: val })}
-          />
+      {
+        loading ? <LoadingContent /> :
+        <div className="grid">
+          <div className="col9">
+            <ProjectGroupsSelect
+              value={projectGroupId}
+              onChange={val => setState({ projectGroupId: val })}
+              projectGroups={projectGroups}
+            />
+          </div>
+          <div className="col3">
+            <Button 
+              primary 
+              loading={saving} 
+              icon={'plus'} 
+              onClick={val => setState({ showCreateFolderModal: true })}
+            />
+          </div>
         </div>
-        <div className="col3">
-          <Button 
-            primary 
-            loading={saving} 
-            icon={'plus'} 
-            onClick={val => setState({ showCreateFolderModal: true })}
-          />
-        </div>
-      </div>
+      }
       <Button 
         primary 
         loading={saving} 
@@ -107,5 +113,22 @@ const Form = ({ project, updateProject }) => {
         onCreated={projectGroup => updateProject('project_group_id', projectGroup.id)}
       />
     </>
+  )
+}
+
+const LoadingContent = () => {
+  return (
+    <div className={'form-control'}>
+      <ContentLoader
+        speed={2}
+        width="746"
+        height="50"
+        viewBox={`0 0 746 50`}
+        backgroundColor="#f3f6fd"
+      >
+        {/* Only SVG shapes */}
+        <rect x="0" y="0" rx="10" ry="10" width="746" height="50" />
+      </ContentLoader>
+    </div>
   )
 }

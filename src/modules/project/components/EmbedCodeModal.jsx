@@ -61,28 +61,16 @@ const PROJECT_QUERY = gql`
     }
 `;
 
-const PLAYER_QUERY = gql`
-    query playerVersion {
-        result: playerVersion {
-            id,
-            version_id
-        }
-    }
-`;
-
 const ProjectEmbedCode = ({projectId}) => {
     const project = useQuery(PROJECT_QUERY, {
         variables: {projectId}
     });
 
-    const player = useQuery(PLAYER_QUERY);
-
-    if(project.loading || player.loading) return <Icon loading />;
+    if(project.loading) return <Icon loading />;
 
     if(project.error) return <ErrorMessage error={project.error} />
-    if(player.error) return <ErrorMessage error={player.error} />
 
-    return <CopyToClipboard value={generateEmbedCode(project.data.result, player.data.result)} />
+    return <CopyToClipboard value={generateEmbedCode(project.data.result)} />
 }
 
 
@@ -104,12 +92,9 @@ const TemplateEmbedCode = ({projectId}) => {
         variables: {projectId}
     });
 
-    const player = useQuery(PLAYER_QUERY);
-
-    if(project.loading || player.loading) return <Icon loading />;
+    if(project.loading) return <Icon loading />;
 
     if(project.error) return <ErrorMessage error={project.error} />
-    if(player.error) return <ErrorMessage error={player.error} />
 
-    return <CopyToClipboard value={generateEmbedCode(project.data.result, player.data.result)} />
+    return <CopyToClipboard value={generateEmbedCode(project.data.result)} />
 }

@@ -6,7 +6,7 @@ import { PROJECT_FRAGMENT } from '@/graphql/Project/fragments';
 
 
 // Addded some extra input fields so we can call this method without having the project on the share page
-export function generateEmbedCode(project, player, storagePath) {
+export function generateEmbedCode(project) {
   if (!project) return null;
 
   let wrapperUrl = import.meta.env.VITE_WRAPPER_URL;
