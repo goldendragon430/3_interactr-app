@@ -27,7 +27,7 @@ const ModalCanvas = ({ modal, preview, canPreview }) => {
 	
 	const { elements } = modal;
 	const { base_width, base_height, font } = modal.project;
-	
+
 	return (
 		<>
 			<div

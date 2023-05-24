@@ -80,7 +80,8 @@ function DraggableResizable({
   }
   
   let styles = {
-    zIndex: selected? 1000000 : zIndex
+    zIndex: selected? 1000000 : zIndex,
+    pointerEvents: 'auto'
   };  
 
   return (

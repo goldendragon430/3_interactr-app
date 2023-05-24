@@ -65,25 +65,23 @@ const ModalElementEditor = ({ modalElement, preview, projectFont }) => {
 
 	const { element_type } = modalElement;
 
-	// const el = document.querySelector('#edit-popup #editor-portal');
-	// if(activeModalElement === modalElement.id && !preview) {
-	// 	console.log('TIGER', el);
-	// 	el.style.zIndex = 1000000000;
-	// 	return createPortal(
-	// 		<ElementContainer
-	// 			key={key}
-	// 			element={modalElement.element}
-	// 			element_type={element_type}
-	// 			onSelect={() => setActiveModalElement(modalElement.id)}
-	// 			selected={activeModalElement === modalElement.id}
-	// 			onDelete={handleDelete}
-	// 			// This is used so when we fire the global animation event the
-	// 			// right elements actually animate
-	// 			animationKey={'Modal:' + modalElement.modal_id}
-	// 			preview={preview}
-	// 		/>, document.querySelector('#edit-popup #editor-portal')
-	// 	)
-	// }
+	const el = document.querySelector('#edit-popup #editor-portal');
+	if(activeModalElement === modalElement.id && !preview && el) {
+		return createPortal(
+			<ElementContainer
+				key={key}
+				element={modalElement.element}
+				element_type={element_type}
+				onSelect={() => setActiveModalElement(modalElement.id)}
+				selected={activeModalElement === modalElement.id}
+				onDelete={handleDelete}
+				// This is used so when we fire the global animation event the
+				// right elements actually animate
+				animationKey={'Modal:' + modalElement.modal_id}
+				preview={preview}
+			/>, document.querySelector('#edit-popup #editor-portal')
+		)
+	}
 	
 	return (
 		<ElementContainer

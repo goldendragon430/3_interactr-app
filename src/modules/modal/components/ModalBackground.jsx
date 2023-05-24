@@ -72,7 +72,8 @@ const ModalBackground = ({ modal, children }) => {
 				style={{
 					...modalPosition,
 					position: 'absolute',
-					zIndex: 15,
+					zIndex: 1000000000,
+					pointerEvents: 'none',
 				}}
 				id="editor-portal"
 			></div>
