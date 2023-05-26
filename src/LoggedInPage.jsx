@@ -269,4 +269,17 @@ const plugPusher = (user) => {
 			fields: fieldsToUpdate,
 		});
 	});
+
+	const migration = pusher.subscribe('migration_' + user.id);
+	migration.bind('started', (res) => {
+		console.log('TIGER started', res);
+	})
+
+	migration.bind('completed', (res) => {
+		console.log('TIGER completed', res);
+	})
+
+	migration.bind('error', (res) => {
+		console.log('TIGER error', res);
+	})
 };
