@@ -110,10 +110,7 @@ const LoggedInPage = () => {
 		return <UpgradeMessage userId={user.id} />;
 	}
 
-	useEffect(() => {
-		console.log('Pusher initialized...')
-		plugPusher(user);
-	}, []);
+	plugPusher(user);
 	
 	return (
 		<div className={styles.wrapper}>
