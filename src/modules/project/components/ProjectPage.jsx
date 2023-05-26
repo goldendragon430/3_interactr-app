@@ -9,10 +9,9 @@ import Icon from "../../../components/Icon";
 import { setPreviewProject } from "../../../graphql/LocalState/previewProject";
 import { setProjectEmbedCode } from "../../../graphql/LocalState/projectEmbedCode";
 import { usePublishProject } from "../../../graphql/Project/hooks";
-import { errorAlert, success } from "../../../utils/alert";
+import { errorAlert, success, info } from "../../../utils/alert";
 import { projectsPath } from "../routes";
 import styles from './ProjectPage.module.scss';
-
 
 /**
  * Handle the project heading
