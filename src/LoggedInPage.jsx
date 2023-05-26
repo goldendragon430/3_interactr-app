@@ -58,6 +58,7 @@ import {
 	ReplaceMediaSourceModal,
 } from 'modules/media/components';
 import SelectPopupModals from 'modules/modal/components/SelectPopup/SelectPopupModals';
+import { toast } from "react-toastify";
 
 // const StatsListPage = React.lazy(() =>
 //   import(/* webpackChunkName:'statsPage' */ 'modules/stat/components/StatsListPage')
@@ -109,7 +110,10 @@ const LoggedInPage = () => {
 		return <UpgradeMessage userId={user.id} />;
 	}
 
-	plugPusher(user);
+	useEffect(() => {
+		console.log('Pusher initialized...')
+		plugPusher(user);
+	}, []);
 	
 	return (
 		<div className={styles.wrapper}>
@@ -272,14 +276,34 @@ const plugPusher = (user) => {
 
 	const migration = pusher.subscribe('migration_' + user.id);
 	migration.bind('started', (res) => {
-		console.log('TIGER started', res);
+		const message = `Migration of project "${res.project_title}" has been started.`;
+		toast.info(message, {
+			position: 'top-right',
+			theme:"colored",
+		});
+	})
+
+	migration.bind('processing', (res) => {
+		const message = `Project "${res.project_title}" is being migrated now.`;
+		toast.info(message, {
+			position: 'top-right',
+			theme:"colored",
+		});
 	})
 
 	migration.bind('completed', (res) => {
-		console.log('TIGER completed', res);
+		const message = `Project "${res.project_title}" has been migrated successfully.`;
+		toast.success(message, {
+			position: 'top-right',
+			theme:"colored"
+		});
 	})
 
 	migration.bind('error', (res) => {
-		console.log('TIGER error', res);
+		const message = `Project "${res.project_title}" Migration Error:  ${res.message}`;
+		toast.error(message, {
+			position: 'top-right',
+			theme:"colored"
+		});
 	})
 };
