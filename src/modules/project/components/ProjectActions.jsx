@@ -224,9 +224,9 @@ const ProjectActions = ({ project, refetchProjects, allowedActions }) => {
 					)}
 				</SubMenu>
 			)}
-			{project.migration_status < 2 && checkActionIsAllowed('changeFolder') && (
+			{checkActionIsAllowed('changeFolder') && (
 				<MenuItem onClick={handlePublish}>
-					<Icon name={'publish'} /> Publish Project
+					<Icon name={'cloud-upload'} /> {project.migration_status < 2 ? "Migrate Project" : "Publish Project"}
 				</MenuItem>
 			)
 			}

@@ -7,6 +7,8 @@ import { useProjectGroupRoute } from 'modules/project/routeHooks';
 import { NoProjects } from './NoProjects';
 import { ProjectsList } from './ProjectsList';
 import { ProjectsPageBody } from './ProjectsPageBody';
+import { useEffect } from 'react';
+import { MIGRATION_DONE } from '../../../../utils/EventEmitter';
 
 /**
  * Page for looking projects list
@@ -46,6 +48,13 @@ export const ProjectsPage = () => {
 		refetchProjects();
 		refetchProjectGroups();
 	};
+
+	useEffect(() => {
+		window.addEventListener(MIGRATION_DONE, refetch);
+		return () => {
+			window.removeEventListener(MIGRATION_DONE, refetch);
+		}
+	}, [refetchProjects, refetchProjectGroups]);
 
 	if (error)
 		return (

@@ -59,6 +59,7 @@ import {
 } from 'modules/media/components';
 import SelectPopupModals from 'modules/modal/components/SelectPopup/SelectPopupModals';
 import { toast } from "react-toastify";
+import { MIGRATION_DONE } from './utils/EventEmitter';
 
 // const StatsListPage = React.lazy(() =>
 //   import(/* webpackChunkName:'statsPage' */ 'modules/stat/components/StatsListPage')
@@ -294,6 +295,9 @@ const plugPusher = (user) => {
 			position: 'top-right',
 			theme:"colored"
 		});
+
+		const event = new CustomEvent(MIGRATION_DONE);
+      	window.dispatchEvent(event);
 	})
 
 	migration.bind('error', (res) => {
