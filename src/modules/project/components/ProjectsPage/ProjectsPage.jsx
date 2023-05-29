@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-import { ErrorMessage } from 'components';
 import { useProjects } from '@/graphql/Project/hooks';
-import { useProjectGroupRoute } from 'modules/project/routeHooks';
-import { ProjectsPageBody } from './ProjectsPageBody';
 import { useProjectGroups } from '@/graphql/ProjectGroup/hooks';
-import { ProjectsList } from './ProjectsList';
+import { ErrorMessage } from 'components';
+import { useProjectGroupRoute } from 'modules/project/routeHooks';
 import { NoProjects } from './NoProjects';
+import { ProjectsList } from './ProjectsList';
+import { ProjectsPageBody } from './ProjectsPageBody';
 
 /**
  * Page for looking projects list
@@ -64,12 +64,17 @@ export const ProjectsPage = () => {
 			projectGroups={projectGroups}
 			projectsLoading={loading}
 		>
-			{!loading && !projects && <NoProjects />}
-			<ProjectsList
-				projects={projects?.data}
-				loading={loading}
-				refetchProjects={refetch}
-			/>
+			{
+				!loading && projects?.data.length == 0 
+				? 
+					<NoProjects /> 
+				: 
+					<ProjectsList
+						projects={projects?.data}
+						loading={loading}
+						refetchProjects={refetch}
+					/>
+			}
 		</ProjectsPageBody>
 	);
 };

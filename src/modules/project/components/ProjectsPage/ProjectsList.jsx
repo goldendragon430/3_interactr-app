@@ -30,7 +30,7 @@ export const ProjectsList = ({ projects, loading, refetchProjects }) => {
 	});
 
 	useEffect(() => {
-		if (!loading) {
+		if (!loading && projects && projects?.length > 0) {
 			(async () => {
 				try {
 					const projectIds = reduce(
