@@ -1,0 +1,18 @@
+.CodeButton {
+    background : white;
+    width : 40px;
+    height : 30px;
+    padding : 0px;
+    display : flex;
+    justify-content : center;
+    align-items : center;
+    border-radius : 0px !important;
+
+    border : 1px solid #F1F1F1;
+    &:hover{
+      border : 1px solid #BFBDBD !important;
+    };
+    svg{
+      margin:0px !important;
+    }
+  }

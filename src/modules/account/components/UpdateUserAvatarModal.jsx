@@ -26,7 +26,7 @@ export const UploadUserAvatarModal = () => {
 	const { saveUser, updateUser } = useUserCommands();
 
 	const [saving, setSaving] = useState(false);
-
+	const [saveEnable,setSaveEnable] = useState(false)
 	if (loading || error) return null;
 
 	const { avatar_url, id } = data.result;
@@ -39,6 +39,7 @@ export const UploadUserAvatarModal = () => {
 			id,
 			avatar_url: src,
 		});
+		setSaveEnable(true)
 	};
 
 	const handleError = (error) => {
@@ -54,7 +55,6 @@ export const UploadUserAvatarModal = () => {
 	// Submit the changes to the BE
 	const handleSubmit = async () => {
 		setSaving(true);
-
 		try {
 			await saveUser({
 				variables: {
@@ -85,7 +85,7 @@ export const UploadUserAvatarModal = () => {
 				</>
 			}
 			submitButton={
-				<Button primary onClick={handleSubmit} icon={'save'} loading={saving}>
+				<Button primary onClick={handleSubmit} icon={'save'} loading={saving}  disabled = {!saveEnable}>
 					Save Changes
 				</Button>
 			}

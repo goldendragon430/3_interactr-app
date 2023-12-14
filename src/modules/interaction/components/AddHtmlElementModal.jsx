@@ -30,7 +30,7 @@ const AddHtmlElementModal = ({ close, handleCreate, loading, newElement, show, o
         label="Paste in your HTML below"
         value={newElement?.html}
         Component={HtmlInput}
-        width="385px"
+        width="560px"
         height="225px"
         onChange={onChange}
         />

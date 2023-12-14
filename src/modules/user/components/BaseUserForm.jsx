@@ -20,7 +20,7 @@ import Button from "../../../components/Buttons/Button";
  */
 const BaseUserForm = ({isAdminPage, isAgencyPage, selectedUserID, reset}) => {
     const [selectedUser, updateUser, {error, loading}] = useUser(selectedUserID);
-
+    const [modalState,setModalState] = useState(false)
     const options = {
         onCompleted() {
             reset();
@@ -33,45 +33,65 @@ const BaseUserForm = ({isAdminPage, isAgencyPage, selectedUserID, reset}) => {
 
     if(error) return <ErrorMessage error={error} />;
 
-    if(mutationError) {
+    if(modalState)
+    {
+        if(mutationError) {
         console.error(mutationError);
         errorAlert({text: 'Unable to save  user'})
-    }
+        setModalState(false)
+        }
 
     if(createUserError) {
-        console.error(createUserError);
-        errorAlert({text: 'Unable to create new user'})
+
+        const errorMsg = createUserError.graphQLErrors
+        if (errorMsg[0]['debugMessage'].includes('Duplicate entry')){
+            console.log("Entered")
+            errorAlert({text: 'User already exists with the email.'})
+        }
+        else
+            errorAlert({text: 'Unable to create new user'})
+
+        setModalState(false)
+
     }
 
     if(deleteUserError) {
         console.error(deleteUserError);
         errorAlert({text: "Unable to delete user"})
-    }
+        setModalState(false)
 
-    const onUpdate = (user) => {
+    }
+}
+
+    const onUpdate = async (user) => {
         if (!user.password) {
           delete user.password
         }
 
         let {subusers, superuser, max_projects, parent_user_id, gravatar, parent, ...userData} = user;
-
+        setModalState(true)
         // Update User
-        saveUser({...userData});
+        await saveUser({...userData});
+        setModalState(false)
     }
 
-    const onCreate = (user) => {
+    const onCreate = async (user) => {
         user.email = user.email.toLowerCase();
+        setModalState(true)
         // Create brand new user
-        createUser({...user});
+       await createUser({...user});
+        setModalState(false)
     }
 
     const onDelete = async (userId) => {
+        setModalState(true)
         await deleteConfirmed(
             'user',
             () => {
                 deleteUser(null, parseInt(userId));
             }
         );
+        setModalState(false)
     }
 
     const disableInputs = loading || updateUserLoading || createUserLoading || deleteUserLoading;

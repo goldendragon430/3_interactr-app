@@ -92,6 +92,7 @@
     "sass": "^1.55.0",
     "sweetalert2": "^11.4.8",
     "tui-chart": "^3.11.3",
+    "validator": "^13.9.0",
     "webfontloader": "^1.6.28"
   },
   "moduleRoots": [

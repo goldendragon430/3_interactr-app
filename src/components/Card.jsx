@@ -14,7 +14,8 @@ export default function Card({
   heading,
   subHeading,
   meta,
-  actions
+  actions,
+  migrationLabel
 }) {
   
   const [isHovered, setHovered] = useState(false);
@@ -53,7 +54,10 @@ export default function Card({
       <div className={cx(styles.content)}>
         <div className={styles.info}>
           {heading && <h4 className={styles.title}>{heading}</h4>}
-          {subHeading && <h4 className={styles.small_title}>{subHeading}</h4>}
+          <div className = {styles.subHeading} >
+            {subHeading && <h4 className={styles.small_title}>{subHeading}</h4>}
+            {migrationLabel && <h4 className={styles.migratingTitle}>{migrationLabel}</h4>}
+          </div>
         </div>
         <div className={styles.actionsBar}>
           <div className={styles.meta}>

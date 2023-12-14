@@ -59,7 +59,7 @@ import {
 } from 'modules/media/components';
 import SelectPopupModals from 'modules/modal/components/SelectPopup/SelectPopupModals';
 import { toast } from "react-toastify";
-import { MIGRATION_DONE } from './utils/EventEmitter';
+import {MIGRATION_UPDATE } from './utils/EventEmitter';
 
 // const StatsListPage = React.lazy(() =>
 //   import(/* webpackChunkName:'statsPage' */ 'modules/stat/components/StatsListPage')
@@ -279,6 +279,20 @@ const plugPusher = (user) => {
 			position: 'top-right',
 			theme:"colored",
 		});
+		 
+		const cacheKey = cache.identify({
+			id: res.project_id,
+			__typename: 'Project',
+		});
+		 
+		cache.modify({
+			id: cacheKey,
+			fields: {
+				migration_status(){ return 1 }
+			  },
+		});
+		// const event = new CustomEvent(MIGRATION_UPDATE);
+      	// window.dispatchEvent(event);
 	})
 
 	migration.bind('processing', (res) => {
@@ -287,6 +301,7 @@ const plugPusher = (user) => {
 			position: 'top-right',
 			theme:"colored",
 		});
+	 
 	})
 
 	migration.bind('completed', (res) => {
@@ -296,7 +311,7 @@ const plugPusher = (user) => {
 			theme:"colored"
 		});
 
-		const event = new CustomEvent(MIGRATION_DONE);
+		const event = new CustomEvent(MIGRATION_UPDATE);
       	window.dispatchEvent(event);
 	})
 
@@ -306,5 +321,17 @@ const plugPusher = (user) => {
 			position: 'top-right',
 			theme:"colored"
 		});
+		const cacheKey = cache.identify({
+			id: res.project_id,
+			__typename: 'Project',
+		});
+		 
+		cache.modify({
+			id: cacheKey,
+			fields: {
+				migration_status(){ return 0 }
+			  },
+		});
+
 	})
 };

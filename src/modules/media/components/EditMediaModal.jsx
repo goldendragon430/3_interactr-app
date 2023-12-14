@@ -12,6 +12,7 @@ import {
 	setEditMedia,
 	SHOW_EDIT_MEDIA_MODAL,
 } from '@/graphql/LocalState/editMedia';
+import {toast} from 'react-toastify'
 
 /**
  * Show popup for updating/deleting the single media item
@@ -37,11 +38,12 @@ export const EditMediaModal = () => {
 		try {
 			await updateMedia({
 				id: Number(media.id),
-				name,
+				name
 			});
-
+			toast.success('Success')
 			handleClose();
 		} catch (error) {
+			
 			errorAlert({ text: error });
 		}
 	};

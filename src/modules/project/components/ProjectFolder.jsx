@@ -9,6 +9,7 @@ import { errorAlert } from "../../../utils/alert";
 import { useSetState } from "../../../utils/hooks";
 import { AddProjectGroupModal } from "./AddProjectGroupModal";
 import ProjectGroupsSelect from "./ProjectGroupsSelect";
+import {toast} from 'react-toastify'
 
 const ProjectFolder = () => {
   const [project, updateProject, {loading, error}] = useProject();
@@ -51,11 +52,16 @@ const Form = ({ project, updateProject }) => {
   });
 
   const handleSave = async () => {
+    if(state.projectGroupId == undefined) {
+      errorAlert({text: 'Please select Project Folder'})
+      return  
+    }
     setState({
       saving: true
     });
 
     try {
+     
       await moveProject({
         variables: {
           input: {
@@ -64,6 +70,7 @@ const Form = ({ project, updateProject }) => {
           }
         }
       })
+      toast.success('Success')
     }
     catch(err){
       console.error(err)
@@ -110,7 +117,10 @@ const Form = ({ project, updateProject }) => {
       <AddProjectGroupModal
         show={showCreateFolderModal}
         toggle={() => setState({ showCreateFolderModal: !showCreateFolderModal })}
-        onCreated={projectGroup => updateProject('project_group_id', projectGroup.id)}
+        onCreated={projectGroup => {
+          updateProject('project_group_id', projectGroup.id)
+        
+        }}
       />
     </>
   )

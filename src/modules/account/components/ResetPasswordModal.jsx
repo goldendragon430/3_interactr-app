@@ -10,7 +10,7 @@ import Modal from "../../../components/Modal";
 import {errorAlert} from "../../../utils/alert";
 import cx from "classnames";
 import styles from './ResetPasswordModal.module.scss';
-
+import {toast} from 'react-toastify'
 /**
  * Show the form for a user to reset their account password
  * @param show
@@ -64,6 +64,10 @@ const ResetPasswordModal = ({show, close, user}) => {
                     }
                 }
             })
+            toast.success('Password has been changed successfully.', {
+                position: 'top-right',
+                theme:"colored"
+              });
             close();
         }
         catch(err){

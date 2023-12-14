@@ -29,20 +29,20 @@ export default function StartPosition({startNodeId}) {
   
   const {updateStartNode} = useProjectCommands();
 
-  const [state, setState] = useState({ posX: node.posX, posY: node.posY });
+  const [state, setState] = useState({ posX: node?.posX, posY: node?.posY });
 
   const {posX, posY} = state;
   
   useEffect(() => {
-    if (posX !== node.posX || posY !== node.posY) {
-      setState({ posX: node.posX, posY: node.posY });
+    if (posX !== node?.posX || posY !== node?.posY) {
+      setState({ posX: node?.posX, posY: node?.posY });
     }
   }, [node]);
 
   function handleDrag(e, dragObj) {
     const { deltaX: dx, deltaY: dy } = applyZoom(dragObj, zoom);
-    let newStateX = state.posX;
-    if (state.posX === node.posX && state.posY === node.posY) {
+    let newStateX = state?.posX;
+    if (state?.posX === node?.posX && state?.posY === node?.posY) {
       // offset from mouse so that e.target isn't this element on drop
       newStateX = state.posX - 30;
     }
@@ -53,7 +53,7 @@ export default function StartPosition({startNodeId}) {
     const data = findDragData(e.target);
     if (!data || data.dragType !== NODE) {
       // Not dropped ona node so send back to original pos
-      setState({ posX: node.posX, posY: node.posY  });
+      setState({ posX: node?.posX, posY: node?.posY  });
       return;
     }
     updateStartNode(projectId, data.id);

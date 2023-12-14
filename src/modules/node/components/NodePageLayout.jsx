@@ -107,32 +107,34 @@ const SAVE_NODE_MUTATION = gql`
     }
 `
 const useSaveNodeEditorListener = (nodeId) => {
-  const [saveNode] = useMutation(SAVE_NODE_MUTATION)
+  const [saveNode] = useMutation(SAVE_NODE_MUTATION)  
+ 
+
+  const handleSaveEvent = (payload) => {  
+
+    // Events emitted here for the UI indication that the
+    // page is saving
+    Emitter.emit(NODE_PAGE_SAVE_START);
+    
+    saveNode({
+      variables: {
+        input: getNodeForSaving(nodeId, payload.detail),
+      },
+    })
+      .then(() => {
+        Emitter.emit(NODE_PAGE_SAVE_COMPLETE);
+      })
+      .catch((err) => {
+        console.error(err);
+        errorAlert({
+          title: 'Unable to save node',
+          text:
+            'An error occurred when trying to save your node. Please try again. If the problem persists please contact support.',
+        });
+      });
+  };
 
   useEffect(() => {
-    const handleSaveEvent = (payload) => {
-      // Events emitted here for the UI indication that the
-      // page is saving
-      Emitter.emit(NODE_PAGE_SAVE_START);
-      
-      saveNode({
-        variables: {
-          input: getNodeForSaving(nodeId, payload.detail),
-        },
-      })
-        .then(() => {
-          Emitter.emit(NODE_PAGE_SAVE_COMPLETE);
-        })
-        .catch((err) => {
-          console.error(err);
-          errorAlert({
-            title: 'Unable to save node',
-            text:
-              'An error occurred when trying to save your node. Please try again. If the problem persists please contact support.',
-          });
-        });
-    };
-
     window.addEventListener(SAVE_NODE_PAGE, (payload) => handleSaveEvent(payload));
     return window.removeEventListener(SAVE_NODE_PAGE, handleSaveEvent);
   }, [nodeId]);

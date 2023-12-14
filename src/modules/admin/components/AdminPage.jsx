@@ -238,7 +238,7 @@ const AddUserModal = ({ show, onClose }) => {
     }
 
     state.email = state.email.toLowerCase();
-    
+    state.upgraded = 1
     // Create brand new user
     await createUser({...state});
   }

@@ -1,8 +1,8 @@
 import Button from 'components/Buttons/Button';
 import map from 'lodash/map';
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import { useSetState } from "../utils/hooks";
-
+import {toast} from 'react-toastify'
 /**
  * Show the form for a user to set the given integration params
  * @param className
@@ -17,20 +17,23 @@ import { useSetState } from "../utils/hooks";
 const SimpleForm = ({className, data, saving = false, onSubmit, fields, error}) => {
 
   const [state, setState] = useSetState(data);
-
+  const [input, setInput] = useState('!')
   useEffect(() => {
       setState(data);
   }, [data]);
 
   const handleChange = e => {
     const {name, value} = e.target;
-
+    setInput(value)
     setState({[name]: value});
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit(e, state);
+    if(input == '')
+      toast.error('Empty Input')
+    else
+      onSubmit(e, state);
   };
 
   const renderField = (label, name) => {

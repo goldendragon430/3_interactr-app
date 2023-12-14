@@ -116,6 +116,7 @@ const PreviewUsersProject = ({cacheBuster, projectId, startNodeId, ...props }) =
 
 const Preview = React.forwardRef(({ project, startNodeId }) => {
   useEffect(() => {
+    console.log( project.id, project.start_node_id,project.preview_url)
     const wrapperUrl = import.meta.env.VITE_WRAPPER_URL;    
     runPlayerWrapper(wrapperUrl);
     return () => {

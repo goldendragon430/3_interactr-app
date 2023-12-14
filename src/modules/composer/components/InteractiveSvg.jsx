@@ -30,6 +30,7 @@ const InteractiveSvg = ({children}) => {
 
   function _getViewBox() {
     const { width, height } = state;
+    // console.log(width,height,'w-h')
      //console.log('viewbox calculating ............', { zoom, pan, width, height });
     if (isNaN(width) || isNaN(height)) {
       return;

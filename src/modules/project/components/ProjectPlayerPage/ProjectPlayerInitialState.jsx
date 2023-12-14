@@ -42,7 +42,7 @@ const ProjectPlayerInitialState = ({ project, update, updateSkin, updateEditingS
                       <Option
                         label="Unmute Text"
                         Component={TextInput}
-                        value={player_skin.unmute_text}
+                        value={player_skin?.unmute_text}
                         onChange={updateSkin('unmute_text')}
                       />
                     </motion.div>
@@ -71,7 +71,7 @@ const ProjectPlayerInitialState = ({ project, update, updateSkin, updateEditingS
                     <div className={'col5'}>
                       <Option
                         label="Big Play Icon Color"
-                        value={player_skin.bigPlay.color}
+                        value={player_skin?.bigPlay?.color}
                         Component={ColorPicker}
                         stackOrder={5}
                         onChange={updateSkin('color', { bigPlay: true })}
@@ -80,7 +80,7 @@ const ProjectPlayerInitialState = ({ project, update, updateSkin, updateEditingS
                     <div className={'col7'}>
                       <Option
                         label="Big Play Icon Size"
-                        value={parseInt(player_skin.bigPlay.size)}
+                        value={parseInt(player_skin?.bigPlay?.size)}
                         Component={RangeInput}
                         onChange={updateSkin('size', { bigPlay: true })}
                         max={10}

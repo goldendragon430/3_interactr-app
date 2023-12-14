@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { Icon } from 'components';
 import { errorAlert } from 'utils/alert';
 import { useModalCommands } from '@/graphql/Modal/hooks';
-
+import {toast} from 'react-toastify'
 export const ModalsListItemDelete = ({ id }) => {
 	const [deleting, setDeleting] = useState(false);
 	const { deleteModal } = useModalCommands();
@@ -29,6 +29,7 @@ export const ModalsListItemDelete = ({ id }) => {
 							id,
 						},
 					});
+					toast.success('Successfully deleted.')
 				} catch (err) {
 					console.error(err);
 					errorAlert({ text: 'Unable to delete element' });

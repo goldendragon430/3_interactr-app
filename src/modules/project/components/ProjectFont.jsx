@@ -7,7 +7,7 @@ import { useProject, useProjectCommands } from "../../../graphql/Project/hooks";
 import SelectFont from "../../../modules/project/components/SelectFont";
 import { errorAlert } from "../../../utils/alert";
 import { useSetState } from "../../../utils/hooks";
-
+import {toast} from 'react-toastify'
 
 
 const ProjectFont = () => {
@@ -57,6 +57,7 @@ const Form = ({ project }) => {
           }
         }
       })
+      toast.success('Success')
     }
     catch(err){
       console.error(err)

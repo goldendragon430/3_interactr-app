@@ -18,7 +18,7 @@ import {useReactiveVar} from "@apollo/client";
 import {composerVar, useComposerCommands} from "../../../graphql/LocalState/composer";
 import { getProjectFromCache, assignProjectStartNode } from "../../project/utils";
 import { removeFromCache } from "../../node/utils";
-
+import {SAVE_NODE_PAGE} from '../../../utils/EventEmitter' 
 const setNodeData = dragDataSetter(NODE);
 
 export const WIDTH = 142;
@@ -74,11 +74,12 @@ function Node({ node }) {
   }
 
   const handleDelete = async () =>  {
+
     if (activeNode) {
       await deleteConfirmed("Node", async () => {
         setDeleting(true)
         try {
-
+            window.removeEventListener(SAVE_NODE_PAGE, null);
           await deleteNode({
             variables: {id}
           })
@@ -93,8 +94,8 @@ function Node({ node }) {
 
           // Finally remove the node from the cache
           removeFromCache(id)
-
           setDeleting(false)
+
         }catch(e){
           setDeleting(false)
           console.error(e);

@@ -7,7 +7,7 @@ import styles from '../styles/Integration.module.scss';
 import { useSetState } from "../../../utils/hooks";
 import { useSaveUser } from "../../../graphql/User/hooks";
 import { validateIntegration } from "../utils";
-
+import {toast} from 'react-toastify'
 /**
  * "Save" button to save integration input values
  * @param integrationData
@@ -64,7 +64,7 @@ export const Integration = ({ buttonClickURL, integrationType, fields, buttonTex
     const errorsKeys = Object.keys(errors);
 
     if(errorsKeys.length) {
-      toastr.error('Error', errors[errorsKeys[0]]);
+      toast.error('Error', errors[errorsKeys[0]]);
       return;      
     }
 
@@ -73,20 +73,28 @@ export const Integration = ({ buttonClickURL, integrationType, fields, buttonTex
       /**
        * If API integration validation response is success, update the user integration field
        */
-      onSuccess() {
+      onSuccess(res) {
+         
         setState({error: false, loading: false});
         saveUser({
           id: user.id,
           [integrationType]: data
         });
+        if(res['success'])
+          toast.success('Validation Success.')
+        else 
+          toast.error('Validation Failed')
+
       },
       /**
        * If API integration validation response is error, show the error message above form
        */
       onFail() {
+        toast.error('Validation Error')
         setState({error: true, loading: false});
       }
     });
+
   };
 
   const validate = (data) => {

@@ -10,7 +10,7 @@ import DropImageZone from 'modules/media/components/DropImageZone';
 import {useProjectCommands} from "../../../graphql/Project/hooks";
 import Button from "../../../components/Buttons/Button";
 import {errorAlert} from "../../../utils/alert";
-
+import {toast} from 'react-toastify'
 const TemplateProperties = ({item, modalProperties}) => {
 
   // For performance we write the template name to local state otherwise
@@ -47,6 +47,7 @@ const TemplateProperties = ({item, modalProperties}) => {
             }
           }
         })
+        toast.success("Success")
       }
       setSaving(false);
 

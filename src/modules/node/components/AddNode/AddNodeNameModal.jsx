@@ -44,6 +44,11 @@ const AddNodeNameModal = ({onClose, project}) => {
   };
 
   const onSubmit = async () => {
+
+    if(media_id == null) {
+      newNodeObject.media_id = 0
+    }
+    
     if(! name) {
       errorAlert({text: 'The node has no name'})
       return;
@@ -71,7 +76,7 @@ const AddNodeNameModal = ({onClose, project}) => {
         showBackgroundFromProjectMediaModal: false,
         showNameSelectModal:false,
         newNodeObject:{
-          media_id: null,
+          media_id: 0,
           background_color: null
         },
         staticNode: false,

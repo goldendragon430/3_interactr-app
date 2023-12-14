@@ -8,7 +8,7 @@ import { NoProjects } from './NoProjects';
 import { ProjectsList } from './ProjectsList';
 import { ProjectsPageBody } from './ProjectsPageBody';
 import { useEffect } from 'react';
-import { MIGRATION_DONE } from '../../../../utils/EventEmitter';
+import { MIGRATION_UPDATE } from '../../../../utils/EventEmitter';
 
 /**
  * Page for looking projects list
@@ -50,11 +50,13 @@ export const ProjectsPage = () => {
 	};
 
 	useEffect(() => {
-		window.addEventListener(MIGRATION_DONE, refetch);
+		window.addEventListener(MIGRATION_UPDATE, refetch);
 		return () => {
-			window.removeEventListener(MIGRATION_DONE, refetch);
+			window.removeEventListener(MIGRATION_UPDATE, refetch);
 		}
 	}, [refetchProjects, refetchProjectGroups]);
+
+	 
 
 	if (error)
 		return (

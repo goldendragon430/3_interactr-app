@@ -235,3 +235,15 @@
   height: 50px;
   width: 50px;
 }
+
+.subHeading{
+  display : flex;
+  justify-content:flex-start;
+  align-items: center;
+}
+.migratingTitle{
+  padding-top: 5px;
+  opacity: 0.8;
+  font-size: 11px;
+  margin-left:5px !important;
+}

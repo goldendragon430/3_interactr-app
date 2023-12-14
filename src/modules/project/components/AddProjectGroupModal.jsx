@@ -5,7 +5,7 @@ import { useCreateProjectGroup } from "@/graphql/ProjectGroup/hooks";
 import { Option, TextInput } from "components/PropertyEditor";
 import { Button } from "components/Buttons";
 import { errorAlert } from "utils/alert";
-
+import {toast} from 'react-toastify'
 
 /**
  * Open new popup to create new project group
@@ -21,6 +21,7 @@ export const AddProjectGroupModal = ({show, toggle}) => {
     const onSubmit = async () => {
         try {
             await createProjectGroup({ title });
+            toast.success("Success")
             setTitle("");
             toggle(false);
         } catch (error) {

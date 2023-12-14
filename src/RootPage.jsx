@@ -167,7 +167,9 @@ const BeaconMask = () => {
 		});
 
 		Beacon('on', 'open', () => {
+      Beacon('navigate', '/')
 			setBeaconMask(true);
+
 		});
 		Beacon('on', 'close', () => {
 			setBeaconMask(false);

@@ -11,7 +11,7 @@ import { useProjectCommands } from "../../../graphql/Project/hooks";
 import { errorAlert } from "../../../utils/alert";
 import { useSetState } from "../../../utils/hooks";
 import ReplaceProjectThumbnailButton from "./ProjectSharingPage/ReplaceProjectThumbnailButton";
-
+import {toast} from 'react-toastify'
 const QUERY = gql`
     query project($id: ID!){
         project(id: $id){
@@ -80,6 +80,7 @@ const Form = ({ project }) => {
           }
         }
       })
+      toast.success('Success')
     }
     catch(err){
       console.error(err)

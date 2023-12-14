@@ -8,6 +8,7 @@ import { Option, TextInput } from 'components/PropertyEditor';
 import { errorAlert } from 'utils';
 import { useSaveMedia } from '@/graphql/Media/hooks';
 import DropImageZone from './DropImageZone';
+import {toast} from 'react-toastify'
 import {
 	getEditMedia,
 	setEditMedia,
@@ -36,12 +37,14 @@ export const ReplaceMediaSourceModal = () => {
 		await saveMedia({
 			manifest_url: source,
 		});
+		toast.success('Success')
 	};
 
 	const updateThumbnail = async () => {
 		await saveMedia({
 			thumbnail_url: thumbnail,
 		});
+		toast.success('Success')
 	};
 
 	const saveMedia = async (data) => {
@@ -50,7 +53,7 @@ export const ReplaceMediaSourceModal = () => {
 				id: Number(media.id),
 				...data,
 			});
-
+			toast.success('Success')
 			handleClose();
 		} catch (error) {
 			errorAlert({ text: error });

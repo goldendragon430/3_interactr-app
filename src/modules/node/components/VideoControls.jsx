@@ -109,12 +109,12 @@ const PlayIcon = ({updatePlayer, playing, node, playedSeconds}) => {
 
   const handlePlay = () => {
     if(!node.media) {
+      
       timer.current = setInterval(()=>{
         const player = playerVar();
         updatePlayer('playedSeconds', player.playedSeconds + 0.100)
       }, 100);
     }
-
     updatePlayer('playing', true)
   };
 

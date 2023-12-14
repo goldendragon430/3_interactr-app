@@ -23,7 +23,7 @@ import ErrorMessage from "../../../../components/ErrorMessage";
 import ContentLoader from "react-content-loader";
 import gql from "graphql-tag";
 import {getWhitelabel} from "../../../../graphql/LocalState/whitelabel";
-
+import {toast} from 'react-toastify'
 
 const QUERY = gql`
     query project($projectId: ID!) {
@@ -122,7 +122,7 @@ const Form = ({project}) => {
           }
         }
       });
-
+      toast.success('Successfully Saved.')
       setSaving(false)
     }catch(err){
       setSaving(false)

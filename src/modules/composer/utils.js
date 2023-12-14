@@ -1,6 +1,6 @@
-import { NODE_FRAGMENT } from '@/graphql/Node/fragments';
-import mapValues from 'lodash/mapValues';
-import {cache} from "../../graphql/client";
+import { NODE_FRAGMENT } from "@/graphql/Node/fragments";
+import mapValues from "lodash/mapValues";
+import { cache } from "../../graphql/client";
 
 export function applyZoom(obj, zoom) {
   return mapValues(obj, (val) => val / zoom);
@@ -13,7 +13,7 @@ export function getNodeFromCache(id) {
   return cache.readFragment({
     id: `Node:${id}`,
     fragment: NODE_FRAGMENT,
-    fragmentName: 'NodeFragment',
+    fragmentName: "NodeFragment",
   });
 }
 
@@ -24,15 +24,15 @@ export function getNodeFromCache(id) {
 export function cacheModifyNode(nodeId, fields) {
   cache.modify({
     id: `Node:${nodeId}`,
-    fields
-  })
+    fields,
+  });
 }
 
 export function cacheModifyButton(buttonId, fields) {
   cache.modify({
     id: `ButtonElement:${buttonId}`,
-    fields
-  })
+    fields,
+  });
 }
 
 export function scaleThePolygon(scaleBy) {
@@ -44,7 +44,7 @@ export function scaleThePolygon(scaleBy) {
   let val6 = 60 / scaleBy;
   let val7 = 85.33 / scaleBy;
   let val8 = 11.33 / scaleBy;
-  let val9 = '0';
+  let val9 = "0";
   let val10 = 85.33 / scaleBy;
   let val11 = 42.66 / scaleBy;
 

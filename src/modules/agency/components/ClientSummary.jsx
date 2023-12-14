@@ -132,6 +132,7 @@ const UserForm = ({clientId}) => {
 
   const handleCreate = async (user) => {
       user.email = user.email.toLowerCase();
+      user.upgraded = 1
       // Create brand new user
       const { data } = await createUser({...user});
       navigate(AgencyClientsPagePath({clientId: data.createUser.id}));

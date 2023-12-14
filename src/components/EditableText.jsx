@@ -43,8 +43,9 @@ class DynamicText extends React.Component {
   }
 
   render() {
+    
     return (
-      <Button icon="code" onClick={this.insertDynamicText}></Button>
+      <Button icon="code" className={styles.CodeButton} title = "Dynamic Text" onClick={this.insertDynamicText}></Button>
     );
   }
 }
@@ -86,6 +87,7 @@ class ColorPic extends React.Component {
         aria-expanded={expanded}
         aria-label="rdw-color-picker"
         style={{position:'relative'}}
+        title = "Color picker"
       >
         <div
           onClick={onExpandEvent}

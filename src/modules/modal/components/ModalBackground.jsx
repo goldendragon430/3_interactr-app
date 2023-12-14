@@ -84,6 +84,9 @@ const ModalBackground = ({ modal, children }) => {
 					position: 'absolute',
 					zIndex: 10,
 					overflow: 'hidden',
+					width:'100%',
+					height:'100%',
+					inset:'0%'
 				}}
 			>
 				<div style={modalStyles} ref={refContainer} />
@@ -95,6 +98,9 @@ const ModalBackground = ({ modal, children }) => {
 					zIndex: 20,
 					overflow:'hidden',
 					borderRadius: border_radius + 'px',
+					width:'100%',
+					height:'100%',
+					inset:'0%'
 				}}
 			>
 				{

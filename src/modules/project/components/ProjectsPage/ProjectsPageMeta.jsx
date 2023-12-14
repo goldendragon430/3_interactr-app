@@ -23,7 +23,7 @@ const DEFAULT_PROJECT_CRUMBS = [
 
 const LEGACY_PROJECT_CRUMBS = [
 	{ text: 'Projects', link: projectsPath() },
-	{ text: 'Legacy Folder', link: projectsPath() },
+	{ text: 'Legacy Projects', link: projectsPath() },
 ];
 /**
  * List project folders list in header
@@ -59,7 +59,7 @@ export const ProjectsPageMeta = ({
 	const legacyNavItem = {
 		id: -1,
 		active: folderId === -1,
-		text: 'Legacy Folder',
+		text: 'Legacy Projects',
 		action() {
 			setGroupParams(-1, {});
 		},
@@ -99,7 +99,7 @@ export const ProjectsPageMeta = ({
 				transition={transition}
 			>
 				<ProjectsPageSubNav
-					items={[legacyNavItem, firstNavItem, ...sortedFolders]}
+					items={[firstNavItem, ...sortedFolders,legacyNavItem]}
 					loading={loading}
 					foldersLoading={foldersLoading}
 					verticalFoldersScroll

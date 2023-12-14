@@ -11,13 +11,16 @@ import {useRegenerateSocialThumbnails} from "../../../../graphql/Project/hooks";
  */
 const RegenerateSocialThumbnailsButton = ({project}) => {
     const [regenerateSocialThumbnails, {loading: regenerating}] = useRegenerateSocialThumbnails();
-
+    const onRegenerate = async(project_id)=>{
+       const result = await regenerateSocialThumbnails(null, parseInt(project.id))
+        console.log(result)
+    }
     return (
         <Button
             disabled={!project.image_url}
             secondary
             className={styles.replaceButton}
-            onClick={() => regenerateSocialThumbnails(null, parseInt(project.id))}
+            onClick={onRegenerate}
             loading={regenerating}
             icon="redo-alt"
         >

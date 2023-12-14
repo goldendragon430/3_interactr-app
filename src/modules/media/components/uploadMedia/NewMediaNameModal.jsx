@@ -411,7 +411,7 @@ const CompressionItemSelect = ({
 				</div>
 				<div className={'col11'}>
 					<h4 style={{ margin: 0 }}>{label}</h4>
-					<small style={{ opacity: '0.8' }}>{description}</small>
+				<small style={{ opacity: '0.8' }}>{description}</small>
 				</div>
 			</div>
 		</div>

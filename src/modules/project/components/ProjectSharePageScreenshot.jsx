@@ -3,19 +3,20 @@ import React, {useEffect, useState} from "react";
 import {useProjectCommands} from "../../../graphql/Project/hooks";
 import ContentLoader from "react-content-loader";
 
-const ProjectSharePageScreenshot = ({project}) => {
+const ProjectSharePageScreenshot = ({previewState,project}) => {
+  console.log(previewState,'key')
   return (
     <>
       <h4 className="faded-heading" style={{ marginBottom: '5px' }}>
         PREVIEW
       </h4>
-      <Screenshot project={project} />
+      <Screenshot project={project} previewState = {previewState}/>
     </>
   )
 };
 export default ProjectSharePageScreenshot;
 
-const Screenshot = ({project}) => {
+const Screenshot = ({project,previewState}) => {
 
   const {getSharePageUrl, updateProject} = useProjectCommands(project.id);
 
@@ -53,12 +54,17 @@ const Screenshot = ({project}) => {
   }
 
   useEffect(() => {
+
     if ( project.storage_path && ! project.share_page_screenshot ) {
      generateScreenshot();
     } else {
       setLoading(false)
     }
   }, []);
+  useEffect(() => {
+    if(previewState > 0)
+      generateScreenshot();
+  }, [previewState]);
 
   if(loading) {
     return(

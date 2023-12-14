@@ -1,12 +1,5 @@
-import {motion} from "framer-motion";
 import DashboardCard from "./DashboardCard";
-import React, {useEffect, useState} from "react";
-import {useSetState} from "../../../utils/hooks";
-import reduce from 'lodash/reduce';
-import moment from "moment";
-import analytics from "../../../utils/analytics";
-import {percentage} from "../../../utils/numberUtils";
-
+import DashboardStorageCard from './DashboardStorageCard'
 const DashboardCards = ({
                           all_project_impressions_current, all_project_impressions_previous,
                           all_project_plays_current, all_project_plays_previous,
@@ -15,6 +8,9 @@ const DashboardCards = ({
                         }) => {
   return(
     <div className="grid" >
+      <div className = "col12">
+          <DashboardStorageCard />
+      </div>
       <div className="col3" >
         <DashboardCard
           heading="Total Impressions"

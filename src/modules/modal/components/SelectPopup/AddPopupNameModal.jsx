@@ -20,6 +20,8 @@ import client from '@/graphql/client';
 import { GET_MODALS } from '@/graphql/Modal/queries';
 import ModalPreview from '../ModalPreview';
 import {useLocation} from "react-router-dom";
+import {toast} from 'react-toastify'
+
 
 const AddPopupNameModal = ({ onClose }) => {
 	const { showPopupNameModal, newModalObject, currentModalId, projectId } =
@@ -135,7 +137,7 @@ const AddPopupNameModal = ({ onClose }) => {
 				});
 
 			}
-			
+			toast.success('Successfully Created.')
 			setLoading(false);
 			setName('');
 		} catch (err) {

@@ -43,12 +43,13 @@ const ProjectCard = ({ project, refetchProjects, currentImpressions, currentPlay
     const path = projectPath({projectId: project.id, library: 'open'});
     navigate(path);
   };
-
+  
   return (
       <>
         <Card
           heading={<ProjectTitle project={project}/>}
           subHeading={<ProjectSubHeading project={project}/>}
+          migrationLabel = {<ProjectMigrateStatusLabel project = {project} />}
           thumbnail={project.thumbnails}
           button={
             <Button primary onClick={goToProject}>
@@ -81,4 +82,10 @@ const ProjectCard = ({ project, refetchProjects, currentImpressions, currentPlay
 const ProjectSubHeading = ({project}) => {
   return <Label secondary tooltip={'Project Created'}>{moment.utc(project.created_at).fromNow()}</Label>
 }
+const ProjectMigrateStatusLabel = ({project}) => {
+  if(project?.migration_status == 1)
+    return <Label primary flash tooltip={'Migrating Started'}>Migrating...</Label>
+  else return null
+  }
+
 export default ProjectCard;

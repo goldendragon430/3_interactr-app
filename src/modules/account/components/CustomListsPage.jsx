@@ -18,7 +18,7 @@ import {errorAlert} from "../../../utils/alert";
 import {setPageHeader} from "../../../graphql/LocalState/pageHeading";
 import cx from "classnames";
 import {Table, TableColumn, TableHeading, TableRow} from "../../../components/Table";
-
+import {toast} from 'react-toastify'
 /**
  * Render user custom lists page, to create/delete custom list items
  * @returns {*}
@@ -48,6 +48,10 @@ const CustomListsPage = () => {
 
         try {
             await createCustomList({ custom_list_name });
+            toast.success('Created Successfully.', {
+                position: 'top-right',
+                theme:"colored"
+              });
             setCustomListName('');
         } catch (e) {
             errorAlert({text: e});
@@ -100,6 +104,10 @@ const CustomListsPage = () => {
                 setDeletingId(listId);
                 try {
                     deleteCustomList(null, parseInt(listId));
+                    toast.success('Deleted Successfully.', {
+                        position: 'top-right',
+                        theme:"colored"
+                      });
                 } catch (e) {
                     errorAlert({text: e});
                 }

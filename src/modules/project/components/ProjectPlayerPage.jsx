@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, forwardRef, useLayoutEffect, useCallback } from 'react';
+import React, { useEffect, useRef, forwardRef, useLayoutEffect, useCallback,useState } from 'react';
 import { setBreadcrumbs } from '../../../graphql/LocalState/breadcrumb';
 import { dashboardPath } from '../../dashboard/routes';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -28,7 +28,7 @@ import ProjectPlayerPlayingState from './ProjectPlayerPage/ProjectPlayerPlayingS
 import PlayerSharingSettings from './ProjectPlayerPage/PlayerSharingSettings';
 import PlayerChaptersPage from './ProjectPlayerPage/PlayerChaptersPage';
 import PlayerEvents from './ProjectPlayerPage/playerEvents';
-
+import {toast} from 'react-toastify'
 const ProjectPlayerPage = () => {
   const [project, updateProject, { loading, error }] = useProject();
   
@@ -65,7 +65,7 @@ const PageBody = ({ project, updateProject }) => {
   const [saveProject, { loading: saving }] = useSaveProject();
   const playerFrame = useRef();
   const playerEventsManager = useRef();
-
+  const [previewKey, setPreviewKey] = useState(0);
   useLayoutEffect(() => {
     window.addEventListener('message', handleMessageFromPlayer);
     return () => {
@@ -98,10 +98,15 @@ const PageBody = ({ project, updateProject }) => {
   }
 
 
-  const handleSaveProject = () => {
+  const handleSaveProject = async() => {
     const { nodes, modals, ...projectData } = project;
-
-    saveProject({ ...projectData });
+    try{
+      await saveProject({ ...projectData });
+      toast.success('Success')
+      setPreviewKey(previewKey=>previewKey + 1)
+    }catch(err){
+      toast.error('Failed')
+    }
   };
 
   const changeHandler = (name) => (val) => {
@@ -139,6 +144,7 @@ const PageBody = ({ project, updateProject }) => {
         <ProjectPreview
           projectId={project.id}
           frameRef={playerFrame}
+          key={previewKey}
         />
       </div>
       <div className={styles.right}>

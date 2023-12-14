@@ -15,7 +15,7 @@ import ContentLoader from "react-content-loader";
 import {useParams} from "react-router-dom";
 import ProjectSharePageScreenshot from "../ProjectSharePageScreenshot";
 import PreviewPageUrl from "../PreviewPageUrl";
-
+import {toast} from 'react-toastify'
 
 const QUERY = gql`
     query project($projectId: ID!) {
@@ -109,9 +109,9 @@ export default ProjectSharingSetupPage;
 
 const Form = ({project}) => {
   const [saving, setSaving] = useState(false);
-
   const {updateProject, saveProject} = useProjectCommands(project.id);
-
+  const [previewState,setPreviewState] = useState(0)
+  
   const handleSaveProject = async () => {
     setSaving(true)
 
@@ -126,7 +126,8 @@ const Form = ({project}) => {
           }
         }
       });
-
+      toast.success("Success")
+      setPreviewState(previewState => (previewState + 1))
       setSaving(false)
     }
     catch(err){
@@ -170,7 +171,7 @@ const Form = ({project}) => {
         <Button icon={'save'} primary loading={saving} onClick={handleSaveProject}>Save Changes</Button>
       </div>
       <div className={'col6'}>
-        <ProjectSharePageScreenshot project={project} />
+        <ProjectSharePageScreenshot project={project} previewState = {previewState} />
       </div>
     </div>
   )

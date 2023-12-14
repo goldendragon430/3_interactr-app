@@ -98,7 +98,7 @@ const InteractiveSvgDraggableCore = ({children}) => {
    */
   function onDrag(coords) {
     const { deltaX: dx, deltaY: dy, x, y } = coords;
-
+    console.log(Math.floor(x),Math.floor(y),zoom)
     if (!dragType) {
       // we're panning since no dragtype is set on state
       updateComposer({
@@ -108,12 +108,12 @@ const InteractiveSvgDraggableCore = ({children}) => {
         }
       });
     }
-    else if (dx || dy) {
+    else  {
 
       if (dragType === NODE) {
         cacheModifyNode(dragData.id, {
-          posX: (prevX) => prevX + dx,
-          posY: (prevY) => prevY + dy,
+          posX: (prevX) => {console.log(Math.floor(prevX),'x'); return prevX + dx},
+          posY: (prevY) => {console.log(Math.floor(prevY),'y'); return prevY + dy},
         });
       }
 

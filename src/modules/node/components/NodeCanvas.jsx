@@ -141,7 +141,7 @@ const Player = ({ media }) => {
   // Debounce the seek to func for performance
   const seekTo = debounce((percentage) => {
     mediaPlayer.seekTo(percentage);
-  }, 100);
+  }, 10);
 
   return (
     <div className={styles.player}>
@@ -168,7 +168,7 @@ const Player = ({ media }) => {
           muted={muted}
           // Set the 100ms as that's the same as the animation time on the playhead so this makes
           // the playhead move nice and smooth
-          progressInterval={100}
+          progressInterval={10}
         />
       </EventListener>
     </div>

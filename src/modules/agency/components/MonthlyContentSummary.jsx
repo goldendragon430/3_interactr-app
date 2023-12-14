@@ -27,9 +27,11 @@ const DFY_CONTENT = gql`
         }
     }
     ${AGENCY_CLUB_CONTENT_PAGE_FRAGMENT}
+    
 `
 
 const MonthlyContentSummary = () => {
+
   const {data, error, loading} = useQuery(DFY_CONTENT);
 
   if(error) return <ErrorMessage error={error} />
@@ -40,6 +42,10 @@ const MonthlyContentSummary = () => {
     <div >
       <h4 style={{marginBottom: '15px'}}><strong>Done For You Content</strong></h4>
       {map(data.result, block => (<ListItem block={block} />))}
+      {data?.result?.length == 0 && 
+      <div style = {{marginTop:18}}>
+        No Search Result
+      </div>}
     </div>
   );
 }

@@ -102,7 +102,6 @@ const useSaveModalEditorListener = (modalId) => {
       // Events emitted here for the UI indication that the
       // page is saving
       Emitter.emit(MODAL_PAGE_SAVE_START);
-			
       saveModal({
         variables: {
           input: getModalForSaving(modalId, payload.detail),

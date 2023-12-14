@@ -22,22 +22,22 @@ const ProjectPlayerPlayingState = ({project, update, updateSkin , updateEditingS
         animate={animationState}
         transition={transition}>
           <div>
-            <Option
+            {/* <Option
               label="Show Player Seek Bar"
               Component={BooleanInput}
               value={show_controls}
               onChange={update('show_controls')}
-            />
+            /> */}
             <Option
               label="Controls Icon Color"
-              value={player_skin.controls.color}
+              value={player_skin?.controls?.color}
               Component={ColorPicker}
               stackOrder={3}
               onChange={updateSkin('color', {controls: true})}
             />
             <Option
               label="Controls Background Color"
-              value={player_skin.controls.background}
+              value={player_skin?.controls?.background}
               Component={ColorPicker}
               stackOrder={2}
               onChange={updateSkin('background', {controls: true})}

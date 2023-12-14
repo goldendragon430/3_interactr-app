@@ -78,19 +78,6 @@ const SharePage = ()=>{
       <div className={styles.topWrapper} style={customStyles}>
         <img src={getAsset('/img/img-wave-zig.png')} className={styles.divider} />
 
-        {/* TODO may look later at implementing this */}
-        {/*<div className="shape shape-style-1 shape-default shape-skew ">*/}
-        {/*  <span/>*/}
-        {/*  <span/>*/}
-        {/*  <span/>*/}
-        {/*  <span/>*/}
-        {/*  <span/>*/}
-        {/*  <span/>*/}
-        {/*  <span/>*/}
-        {/*  <span/>*/}
-        {/*  <span/>*/}
-        {/*</div>*/}
-
         <Logo />
 
         <StatsSection />
@@ -109,7 +96,7 @@ const SharePage = ()=>{
       <div className={styles.bottomWrapper}>
         <div className={styles.bottom}>
           <Meta project={project}/>
-
+          {/* <Comments project={project}/> */}
           {!!allow_comments && <Comments project={project}/>}
 
           {!!show_more_videos_on_share_page && <MoreVideos project={project} /> }

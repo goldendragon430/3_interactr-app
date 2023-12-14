@@ -11,7 +11,7 @@ import DropImageZone from 'modules/media/components/DropImageZone';
 
 import styles from 'modules/modal/components/ModalEditor/ModalTabs/ModalTabs.module.scss';
 import { errorAlert } from 'utils';
-
+import validator from 'validator';
 /**
  * Displays the form for creating or editing user item based on selected type
  * @param onDelete
@@ -73,6 +73,12 @@ const AgencyUserForm = ({
 	};
 
 	const handleCreateUser = (user) => {
+		const email = user?.email
+		const isValid = validator.isEmail(email);
+		if(!isValid){
+		  errorAlert({text:'Email is invalid.'})
+		  return	
+		}
 		delete user.id;
 		user.agency_page = 1;
 		onCreate(user);

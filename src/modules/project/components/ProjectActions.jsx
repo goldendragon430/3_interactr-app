@@ -25,7 +25,7 @@ import {
 import { errorAlert, info, success } from "../../../utils/alert";
 import { openInNewTab } from '../../../utils/helpers';
 import { projectPath } from '../routes';
-
+import {toast} from 'react-toastify'
 /**
  * Render the single project actions list - delete/copy/move to folder
  * @param project
@@ -55,6 +55,9 @@ const ProjectActions = ({ project, refetchProjects, allowedActions }) => {
           id: project.id
         }
       });
+	  if(project?.migration_status == 2)
+	  	toast.success('Success')
+	  
     }catch(err){
       console.error(err);
       info({
@@ -78,6 +81,7 @@ const ProjectActions = ({ project, refetchProjects, allowedActions }) => {
 			});
 			setLoading(false);
 			refetchProjects();
+			toast.success('Success')
 		} catch (error) {
 			setLoading(false);
 			console.error(error);
@@ -98,6 +102,7 @@ const ProjectActions = ({ project, refetchProjects, allowedActions }) => {
 						id: project.id,
 					},
 				});
+				toast.success('Success')
 				setLoading(false);
 			} catch (err) {
 				setLoading(false);
@@ -166,7 +171,7 @@ const ProjectActions = ({ project, refetchProjects, allowedActions }) => {
 	const checkActionIsAllowed = (action = '') => {
 		return indexOf(allowedActions, action) > -1;
 	};
-
+	
 	return (
 		<Menu
 			menuButton={
@@ -205,7 +210,13 @@ const ProjectActions = ({ project, refetchProjects, allowedActions }) => {
 				</SubMenu>
 			)}
 			{project.migration_status > 1 && checkActionIsAllowed('changeFolder') && (
-				<SubMenu label='Move To Folder'>
+		
+	 		(folders?.result.length == 0 && !project.project_group_id) ?
+			 <MenuItem onClick={() => {}}>
+			  Move To Folder
+		 	</MenuItem>
+			:
+		  		<SubMenu label='Move To Folder'>
 					{map(folders?.result, (folder) => {
 						if (!folder.projectIds.includes(parseInt(project.id))) {
 							return (

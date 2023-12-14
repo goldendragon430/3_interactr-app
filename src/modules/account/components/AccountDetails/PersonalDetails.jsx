@@ -9,7 +9,7 @@ import {useUserCommands} from "../../../../graphql/User/hooks";
 import {errorAlert} from "../../../../utils/alert";
 import ErrorMessage from "../../../../components/ErrorMessage";
 import {useSetState} from "../../../../utils/hooks";
-
+import {toast} from 'react-toastify'
 
 const QUERY = gql`
     query AuthUser {
@@ -71,6 +71,10 @@ const Form = ({user}) => {
           }
         }
       })
+      toast.success('Email has been changed successfully.', {
+        position: 'top-right',
+        theme:"colored"
+      });
     }
     catch(err){
       console.error(err)

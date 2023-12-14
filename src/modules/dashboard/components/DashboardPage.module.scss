@@ -104,3 +104,28 @@
   margin-bottom: 30px;
   padding: 15px;
 }
+
+.storageCardWrapper{
+  width : 100%;
+  display: flex;
+  border-radius: 8px;
+  height: 80px;
+  background : $background;
+  color : white;
+}
+.storageCardImg {
+  width:50px;
+  height: 50px;
+}
+.storageSubWrapper{
+  display: flex;
+  width : 100%;
+  justify-content: center;
+  align-items: center;
+} 
+.storageSubTitle{
+  font-size: 12px;
+  margin-bottom:0px;
+  margin-top:20px;
+  color : rgb(177, 177, 177);
+}

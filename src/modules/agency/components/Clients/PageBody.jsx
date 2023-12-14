@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import { useReactiveVar } from "@apollo/client";
 import { Menu, MenuButton, MenuItem } from "@szhsin/react-menu";
 import Modal from 'components/Modal';
@@ -13,14 +13,15 @@ import { deleteConfirmed } from "../../../../graphql/utils";
 import { errorAlert } from "../../../../utils/alert";
 import AgencyUserForm from "../../../user/components/AgencyUserForm";
 import { AgencyClientsPagePath } from "../../routes";
+import validator from "validator";
 import ProfileCover from "./ProfileCover";
 import ProjectsList from "./ProjectsList";
-
+import {toast} from 'react-toastify'
 const PageBody = () => {
     const authUser = useAuthUser();
     const navigate = useNavigate();
     const {clientId: selectedUserID } = useParams();
-
+    const [modalState,setModalState] = useState(false)
     useEffect(() => {
         if(!selectedUserID) navigate(AgencyClientsPagePath({clientId: authUser.subusers.length ? authUser.subusers[0].id : 0}));
     }, [selectedUserID]);
@@ -44,29 +45,55 @@ const PageBody = () => {
 
     if(loading) return <div style={{marginLeft: '30px'}}><Icon loading /></div>;    
     const disableInputs = loading || updateUserLoading || createUserLoading || deleteUserLoading;
-    if(mutationError) {
+    if(modalState)
+    {
+        if(mutationError) {
         console.error(mutationError);
         errorAlert({text: 'Unable to save  user'})
-    }
+        setModalState(false)
+        }
 
     if(createUserError) {
-        console.error(createUserError);
-        errorAlert({text: 'Unable to create new user'})
+
+        const errorMsg = createUserError.graphQLErrors
+        if (errorMsg[0]['debugMessage'].includes('Duplicate entry')){
+            console.log("Entered")
+            errorAlert({text: 'User already exists with the email.'})
+        }
+        else
+            errorAlert({text: 'Unable to create new user'})
+
+        setModalState(false)
+
     }
 
     if(deleteUserError) {
         console.error(deleteUserError);
         errorAlert({text: "Unable to delete user"})
+        setModalState(false)
+
     }
+}
 
     const handleCreate = async (user) => {
         user.email = user.email.toLowerCase();
+        user.upgraded = 1
+        const isValid = validator.isEmail(user.email);
+		if(!isValid){
+		  errorAlert({text:'Email is invalid.'})
+		  return	
+		}
+        setModalState(true)
         // Create brand new user
         const { data } = await createUser({...user});
+        setModalState(false)
+
         navigate(AgencyClientsPagePath({clientId: data.createUser.id}));
     }
 
     const handleUpdate = (user) => {
+        setModalState(true)
+
         if (!user.password) {
           delete user.password
         }
@@ -75,9 +102,13 @@ const PageBody = () => {
 
         // Update User
         saveUser({...userData});
+        setModalState(false)
+
     }    
 
     const handleDelete = async (userId) => {
+        setModalState(true)
+
         await deleteConfirmed(
             'user',
             async () => {
@@ -90,6 +121,9 @@ const PageBody = () => {
                 navigate(AgencyClientsPagePath({clientId: subusers.length > 0 ? subusers[0].id : 0}));
             }
         );
+        toast.success('Success')
+        setModalState(false)
+
     }
 
     const formProps = {

@@ -8,7 +8,7 @@ import { errorAlert } from '../../../../utils/alert';
 import { useParams } from 'react-router-dom';
 import { useModalCommands } from '../../../../graphql/Modal/hooks';
 import getAsset from '../../../../utils/getAsset';
-
+import {toast} from 'react-toastify'
 const SelectModalStepThree = ({ setState, state, onChange }) => {
 	const [saving, setSaving] = useState(false);
 	const { template, hideModal } = state;
@@ -56,6 +56,7 @@ const SelectModalStepThree = ({ setState, state, onChange }) => {
 			}
 
 			await onChange(currentModalId);
+			toast.success("Successfully Created")
 			hideModal();
 		} catch (err) {
 			console.error(err);

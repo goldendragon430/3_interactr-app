@@ -12,7 +12,7 @@ import ErrorMessage from "../../../components/ErrorMessage";
 import {GET_USERS} from "../../../graphql/User/queries";
 import {addItem} from "../../../graphql/utils";
 import {DEFAULT_FILTERS} from "../../admin/components/AdminPage";
-
+import validator from 'validator';
 const _props = {
   isAdminPage : PropTypes.bool.isRequired,
   /** set if we're an agency editing sub user as opposed to admin editing any user */
@@ -105,9 +105,14 @@ const UserForm = ({selectedUserID, reset, isAdminPage, isAgencyPage}) => {
 
     if (isAgencyPage) {
       user.email = user.email.toLowerCase();
+      const isValid = validator.isEmail(user.email);
+      if(!isValid){
+        errorAlert({text:'Email is invalid.'})
+        return	
+      }
       user.agency_page = 1;
     }
-
+    user.upgraded = 1
     createUser({...user});
   }
 

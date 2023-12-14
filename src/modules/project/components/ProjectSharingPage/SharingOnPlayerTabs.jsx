@@ -81,7 +81,7 @@ const SharingOnPlayerTabs = ({ project, updateProject }) => {
                   <SharingPlatformOptions project={project} platformName="linkedin" onShareDataChange={handleShareDataChange}>
                     <Option
                       label="Title"
-                      value={project.share_data.linkedin.title}
+                      value={project?.share_data?.linkedin?.title}
                       Component={TextInput}
                       onChange={(e, val) =>
                         handleShareDataChange({ ...getProjectShareData(project, 'linkedin'), title: val }, 'linkedin')
@@ -110,7 +110,7 @@ const SharingOnPlayerTabs = ({ project, updateProject }) => {
                   <SharingPlatformOptions project={project} platformName="email" onShareDataChange={handleShareDataChange}>
                     <Option
                       label="Email Subject"
-                      value={project.share_data.email.subject}
+                      value={project?.share_data?.email?.subject}
                       Component={TextInput}
                       onChange={(e, val) =>
                         handleShareDataChange({ ...getProjectShareData(project, 'email'), subject: val }, 'email')
@@ -118,7 +118,7 @@ const SharingOnPlayerTabs = ({ project, updateProject }) => {
                     />
                     <Option
                       label="Email Body"
-                      value={project.share_data.email.body}
+                      value={project?.share_data?.email?.body}
                       Component={TextInput}
                       onChange={(e, val) =>
                         handleShareDataChange({ ...getProjectShareData(project, 'email'), body: val }, 'email')
@@ -176,7 +176,7 @@ function SharingPlatformOptions({ children, project, platformName, onShareDataCh
 }
 
 function getProjectShareData(project, platformName) {
-  if (project && !project.legacy && project.share_data && project.share_data[platformName])
+  if (project && !project?.legacy && project?.share_data && project?.share_data[platformName])
     return project.share_data[platformName];
   else return {};
 }

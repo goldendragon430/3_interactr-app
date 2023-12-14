@@ -9,7 +9,7 @@ import ErrorMessage from "components/ErrorMessage";
 import {useProject} from "../../../graphql/Project/hooks";
 import cx from 'classnames';
 import styles from '../../media/components/uploadMedia/NewMediaSettingsModal.module.scss';
-
+import {toast} from 'react-toastify'
 
 const ProjectMediaCompressionSettings = () => {
   const [project, {loading, error}] = useProject();
@@ -63,6 +63,8 @@ const Form = ({ project }) => {
           }
         }
       })
+      toast.success('Success')
+
     }
     catch(err){
       console.error(err)
@@ -147,8 +149,8 @@ const CompressionItemSelect = ({label, value, selected, setSelected, description
           }
         </div>
         <div className={'col11'}>
-          <h4 style={{margin: 0}}>{label}</h4>
-          <small style={{opacity: '0.8'}}>{description}</small>
+          <h4 style={{margin: 0, marginTop: description?0:11 }}>{label}</h4>
+          {description && <small style={{opacity: '0.8'}}>{description}</small>}
         </div>
       </div>
     </div>
